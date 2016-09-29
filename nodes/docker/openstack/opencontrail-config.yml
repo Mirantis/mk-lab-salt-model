@@ -1,0 +1,67 @@
+applications:
+  - opencontrail
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+parameters:
+  _param:
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: opencontrail-config
+  opencontrail:
+    common:
+      version: ${_param:opencontrail_version}
+      identity:
+        engine: keystone
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        token: '${_param:keystone_service_token}'
+        password: '${_param:keystone_admin_password}'
+      network:
+        engine: neutron
+        host: "$NEUTRON_SERVER_SERVICE_HOST"
+        port: 9696
+    config:
+      version: ${_param:opencontrail_version}
+      enabled: true
+      multi_tenancy: true
+      network:
+        engine: neutron
+        host: "$NEUTRON_SERVER_SERVICE_HOST"
+        port: 9696
+      discovery:
+        host: "$OPENCONTRAIL_CONFIG_LOCAL_HOST"
+      analytics:
+        host: "$OPENCONTRAIL_COLLECTOR_SERVICE_HOST"
+      bind:
+        address: 0.0.0.0
+      message_queue:
+        engine: rabbitmq
+        host: "$RABBITMQ_SERVER_NODE01_SERVICE_HOST"
+        port: "$RABBITMQ_SERVER_NODE01_SERVICE_PORT"
+      database:
+        members:
+        - host: "$OPENCONTRAIL_DATABASE_SERVICE_HOST"
+          port: 9160
+#        - host: ${_param:cluster_node02_address}
+#          port: 9160
+#        - host: ${_param:cluster_node03_address}
+#          port: 9160
+      identity:
+        engine: keystone
+        version: '2.0'
+        region: RegionOne
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        user: admin
+        password: '${_param:keystone_admin_password}'
+        token: '${_param:keystone_service_token}'
+        tenant: admin
+      members:
+      - host: "$OPENCONTRAIL_CONTROL_SERVICE_HOST"
+        id: 1
+#      - host: ${_param:cluster_node02_address}
+#        id: 2
+#      - host: ${_param:cluster_node03_address}
+#        id: 3

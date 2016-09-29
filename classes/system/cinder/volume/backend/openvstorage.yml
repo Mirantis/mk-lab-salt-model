@@ -1,0 +1,8 @@
+parameters:
+  cinder:
+    volume:
+      storage:
+        engine: openvstorage
+      notification:
+        driver: cinder.openstack.common.notifier.rpc_notifier
+        topics: notifications

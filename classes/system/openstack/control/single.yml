@@ -1,0 +1,88 @@
+classes:
+- service.memcached.server.single
+- service.mysql.server.single
+- service.rabbitmq.server.single
+- system.keystone.server.single
+- system.keystone.server.service.keystone
+- system.keystone.server.service.glance
+- system.keystone.server.service.nova
+- system.keystone.server.service.neutron
+- system.keystone.server.service.cinder
+- system.glance.control.single
+- system.nova.control.single
+- system.neutron.control.single
+- system.cinder.control.single
+- system.heat.server.single
+- system.opencontrail.control.single
+- system.openstack.common.single
+parameters:
+  linux:
+    system:
+      repo:
+        tcpcloud_openstack:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:keystone_version} galera-s9s"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+        tcpcloud_opencontrail:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+  rabbitmq:
+    server:
+      host:
+        '/':
+          enabled: true
+          user: guest
+          password: guest
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+        '/openstack':
+          enabled: true
+          user: openstack
+          password: ${_param:rabbitmq_openstack_password}
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+  keystone:
+    server:
+      admin_email: stackmaster@domain.com
+  glance:
+    server:
+      storage:
+        engine: file
+      images: []
+      workers: 1
+  nova:
+    controller:
+      networking: contrail
+      bind:
+        private_address: ${_param:single_address}
+        public_address: ${_param:single_address}
+        public_name: public.domain.com
+        novncproxy_port: 6080
+      vncproxy_url: http://${_param:single_address}:6080
+      metadata:
+        password: metadataPass
+      cache:
+        engine: memcached
+        prefix: 'CACHE_HORIZON'
+        members: 
+        - host: 127.0.0.1
+          port: 11211
+      workers: 1
+  cinder:
+    volume:
+      notification: true
+    controller:
+      notification: true
+  neutron:
+    server:
+      plugin: contrail
+      tunnel_type: vxlan
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+

@@ -1,0 +1,17 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_novnc:
+          enabled: true
+          type: nginx_proxy
+          name: novnc
+          proxy:
+            host: ${_param:cluster_vip_address}
+            port: 6080
+            protocol: http
+            websocket: true
+          host:
+            name: ${_param:cluster_public_host}
+            port: 6080

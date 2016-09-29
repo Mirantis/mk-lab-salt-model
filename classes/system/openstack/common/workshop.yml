@@ -1,0 +1,129 @@
+classes:
+- system.collectd.client.carbon
+- system.sensu.client.single
+- system.heka.shipper.single
+parameters:
+  _param:
+    admin_email: root@localhost
+    cluster_public_host: _
+    graphite_secret_key: password
+    rabbitmq_monitor_password: password
+    sensu_dashboard_password: workshop
+    sensu_message_queue_host: mon01
+    carbon_message_queue_host: mon01
+    collectd_backend_carbon_host: mon01
+    collectd_backend_carbon_port: 2023
+    opencontrail_version: 3.0
+    opencontrail_compute_dns: 8.8.8.8
+    opencontrail_stats_password: contrail123
+    galera_server_cluster_name: openstack_cluster
+    galera_server_maintenance_password: workshop
+    galera_server_admin_password: workshop
+    cluster_vip_address: 172.16.10.254
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: 172.16.10.101
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: 172.16.10.102
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: 172.16.10.103
+    rabbitmq_secret_key: workshop
+    rabbitmq_admin_password: workshop
+    rabbitmq_openstack_password: workshop
+    rabbitmq_cold_password: workshop
+    glance_version: liberty
+    glance_service_host: ${_param:cluster_vip_address}
+    keystone_version: liberty
+    keystone_service_host: ${_param:cluster_vip_address}
+    heat_version: liberty
+    heat_service_host: ${_param:cluster_vip_address}
+    heat_domain_admin_password: workshop
+    ceilometer_version: liberty
+    ceilometer_service_host: 172.16.10.108
+    cinder_version: liberty
+    cinder_service_host: ${_param:cluster_vip_address}
+    ceilometer_graphite_publisher_host: 172.16.10.107
+    ceilometer_graphite_publisher_port: 2013
+    nova_version: liberty
+    nova_service_host: ${_param:cluster_vip_address}
+    nova_vncproxy_url: http://${_param:cluster_vip_address}:8060
+    neutron_version: liberty
+    neutron_service_host: ${_param:cluster_vip_address}
+    glusterfs_service_host: ${_param:cluster_vip_address}
+    mysql_admin_user: root
+    mysql_admin_password: workshop
+    mysql_cinder_password: workshop
+    mysql_ceilometer_password: workshop
+    mysql_glance_password: workshop
+    mysql_heat_password: workshop
+    mysql_keystone_password: workshop
+    mysql_neutron_password: workshop
+    mysql_nova_password: workshop
+    keystone_service_token: workshop
+    keystone_admin_password: workshop
+    keystone_ceilometer_password: workshop
+    keystone_cinder_password: workshop
+    keystone_glance_password: workshop
+    keystone_heat_password: workshop
+    keystone_keystone_password: workshop
+    keystone_neutron_password: workshop
+    keystone_nova_password: workshop
+    ceilometer_secret_key: workshop
+    horizon_version: liberty
+    horizon_secret_key: opaesee8Que2yahJoh9fo0eefo1Aeyo6ahyei8zeiboh3aeth5loth7ieNa5xi5e
+    horizon_identity_host: ${_param:cluster_vip_address}
+    horizon_identity_encryption: none
+    horizon_identity_version: 3
+    mongodb_server_replica_set: ceilometer
+    mongodb_ceilometer_password: cloudlab
+    mongodb_admin_password: cloudlab
+    mongodb_shared_key: eoTh1AwahlahqueingeejooLughah4tei9feing0eeVaephooDi2li1TaeV1ooth
+  linux:
+    network:
+      host:
+        ctl01:
+          address: ${_param:cluster_node01_address}
+          names:
+          - ${_param:cluster_node01_hostname}
+          - ${_param:cluster_node01_hostname}.workshop.cloudlab.cz
+        ctl02:
+          address: ${_param:cluster_node02_address}
+          names:
+          - ${_param:cluster_node02_hostname}
+          - ${_param:cluster_node02_hostname}.workshop.cloudlab.cz
+        ctl03:
+          address: ${_param:cluster_node03_address}
+          names:
+          - ${_param:cluster_node03_hostname}
+          - ${_param:cluster_node03_hostname}.workshop.cloudlab.cz
+        web01:
+          address: 172.16.10.104
+          names:
+          - web01
+          - web01.workshop.cloudlab.cz
+        cmp01:
+          address: 172.16.10.105
+          names:
+          - cmp01
+          - cmp01.workshop.cloudlab.cz
+        cmp02:
+          address: 172.16.10.106
+          names:
+          - cmp02
+          - cmp02.workshop.cloudlab.cz
+        mon01:
+          address: 172.16.10.107
+          names:
+          - mon01
+          - mon01.workshop.cloudlab.cz
+        mtr01:
+          address: 172.16.10.108
+          names:
+          - mtr01
+          - mtr01.workshop.cloudlab.cz
+        log01:
+          address: 172.16.10.110
+          names:
+          - log01
+          - log01.workshop.cloudlab.cz
+

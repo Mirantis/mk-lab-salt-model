@@ -1,0 +1,5 @@
+classes:
+- system.openstack.common.workshop
+- system.elasticsearch.server.single
+- system.heka.router.single
+

@@ -1,0 +1,39 @@
+classes:
+- service.haproxy.proxy.single
+- service.neutron.control.cluster
+parameters:
+  mysql:
+    server:
+      database:
+        neutron:
+          encoding: utf8
+          users:
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: '%'
+            rights: all
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+  haproxy:
+    proxy:
+      listen:
+        neutron_api:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9696
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 9696
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 9696
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 9696
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3

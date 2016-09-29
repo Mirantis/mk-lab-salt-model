@@ -1,0 +1,86 @@
+classes:
+- service.heat.server.cluster
+- service.haproxy.proxy.single
+parameters:
+  mysql:
+    server:
+      database:
+        heat:
+          encoding: utf8
+          users:
+          - name: heat
+            password: ${_param:mysql_heat_password}
+            host: '%'
+            rights: all
+          - name: heat
+            password: ${_param:mysql_heat_password}
+            host: ${_param:single_address}
+            rights: all
+  haproxy:
+    proxy:
+      listen:
+        heat_api_cloudwatch:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8000
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        heat_api:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8004
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8004
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8004
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8004
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        heat_api_cfn:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8003
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8003
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8003
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8003
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+  heat:
+    server:
+      notification: true
+      stack_domain_admin:
+        name: heat_domain_admin
+        password: ${_param:heat_domain_admin_password}
+        domain: heat
+      logging:
+        heka:
+          enabled: true
+

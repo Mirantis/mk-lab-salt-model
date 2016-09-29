@@ -1,0 +1,9 @@
+classes:
+- service.sensu.client
+#- service.ruby.environment.version_1_9
+parameters:
+  sensu:
+    client:
+      plugin:
+        monitoring_for_openstack:
+          enabled: True

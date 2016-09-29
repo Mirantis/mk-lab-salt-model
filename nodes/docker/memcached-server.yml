@@ -1,0 +1,7 @@
+classes:
+- service.linux.system.container
+- service.memcached.server.single
+parameters:
+  linux:
+    system:
+      name: memcached-service

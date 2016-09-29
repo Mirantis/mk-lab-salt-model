@@ -1,0 +1,10 @@
+parameters:
+  keystone:
+    client:
+      enabled: true
+      server:
+        host: ${_param:keystone_server_host}
+        public_port: 5000
+        tenant: tcp_monitoring
+        user: monitoring
+        password: ${_param:keystone_monitoring_password}

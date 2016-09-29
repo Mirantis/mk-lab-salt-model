@@ -1,0 +1,24 @@
+parameters:
+  keystone:
+    server:
+      service:
+        neutron:
+          type: network
+          description: OpenStack Networking Service
+          user:
+            name: neutron
+            password: ${_param:keystone_neutron_password}
+          bind:
+            public_address: ${_param:neutron_service_host}
+            public_protocol: http
+            public_port: 9696
+            internal_address: ${_param:neutron_service_host}
+            internal_port: 9696
+            admin_address: ${_param:neutron_service_host}
+            admin_port: 9696
+            public_protocol: http
+            public_path: '/'
+            internal_protocol: http
+            internal_path: '/'
+            admin_protocol: http
+            admin_path: '/'

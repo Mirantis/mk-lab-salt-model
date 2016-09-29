@@ -1,0 +1,16 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_sensu:
+          enabled: true
+          type: nginx_proxy
+          name: sensu
+          proxy:
+            host: mon01
+            port: 3000
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8088

@@ -1,0 +1,47 @@
+classes:
+- service.memcached.server.local
+- service.postgresql.server.local
+- service.graphite.server.single
+- service.apache.server.single
+- service.supervisor.server.single
+parameters:
+  _param:
+    graphite_secret_key: secret
+    postgresql_graphite_password: password
+    apache2_site_graphite_host: ${_param:single_address}
+    rabbitmq_graphite_password: password
+    rabbitmq_monitor_password: password
+    rabbitmq_admin_password: password
+    rabbitmq_secret_key: password
+  apache:
+    server:
+      modules:
+      - wsgi
+      site:
+        graphite_server:
+          enabled: true
+          type: graphite
+          name: server
+          host:
+            name: ${_param:apache2_site_graphite_host}
+  postgresql:
+    server:
+      database:
+        graphite:
+          encoding: UTF8
+          locale: cs_CZ
+          users:
+          - name: graphite
+            password: ${_param:postgresql_graphite_password}
+            host: 127.0.0.1
+            rights: all privileges
+  rabbitmq:
+    server:
+      host:
+        '/monitor':
+          enabled: true
+          user: monitor
+          password: ${_param:rabbitmq_graphite_password}
+  supervisor:
+    server:
+      enabled: false

@@ -1,0 +1,21 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            aptly:
+              source: pkg
+              name: salt-formula-aptly
+            heat:
+              source: pkg
+              name: salt-formula-heat
+            java:
+              source: pkg
+              name: salt-formula-java
+            jenkins:
+              source: pkg
+              name: salt-formula-jenkins
+            packer:
+              source: pkg
+              name: salt-formula-packer

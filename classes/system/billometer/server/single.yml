@@ -1,0 +1,38 @@
+classes:
+- service.billometer.server.single
+- service.git.client
+- service.postgresql.server.local
+- service.python.environment
+- service.rabbitmq.server.single
+- service.supervisor.server.single
+parameters:
+  _param:
+    billometer_secret_key: billometer
+    keystone_billometer_address: localhost
+    keystone_billometer_password: password
+    postgresql_billometer_password: password
+    postgresql_graphite_password: password
+    rabbitmq_admin_name: admin
+    rabbitmq_admin_password: password
+    rabbitmq_secret_key: rabbitmq
+    rabbitmq_billometer_password: password
+    rabbitmq_graphite_password: password
+  postgresql:
+    server:
+      database:
+        billometer:
+          encoding: UTF8
+          locale: cs_CZ
+          users:
+          - name: billometer
+            createdb: true
+            password: ${_param:postgresql_billometer_password}
+            host: 127.0.0.1
+            rights: all privileges
+  rabbitmq:
+    server:
+      host:
+        '/billometer':
+          enabled: true
+          user: billometer
+          password: ${_param:rabbitmq_billometer_password}

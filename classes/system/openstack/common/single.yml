@@ -1,0 +1,82 @@
+parameters:
+  _param:
+    cluster_public_host: _
+    cluster_vip_address: 10.10.10.201
+    control_address: 10.10.10.201
+    admin_email: root@localhost
+    cluster_public_host: _
+    graphite_secret_key: password
+    carbon_message_queue_host: ${_param:single_address}
+    opencontrail_version: 3.0
+    opencontrail_compute_dns: 8.8.8.8
+    opencontrail_stats_password: password
+    cluster_domain: cloudlab.cz
+    rabbitmq_secret_key: password
+    rabbitmq_admin_password: password
+    rabbitmq_openstack_password: password
+    rabbitmq_cold_password: password
+    glance_version: liberty
+    glance_service_host: ${_param:single_address}
+    keystone_version: liberty
+    keystone_service_host: ${_param:single_address}
+    heat_version: liberty
+    heat_service_host: ${_param:single_address}
+    heat_domain_admin_password: password
+    cinder_version: liberty
+    cinder_service_host: ${_param:single_address}
+    nova_version: liberty
+    nova_service_host: ${_param:single_address}
+    nova_vncproxy_url: http://${_param:single_address}:8060
+    neutron_version: liberty
+    neutron_service_host: ${_param:single_address}
+    glusterfs_service_host: ${_param:single_address}
+    mysql_admin_user: root
+    mysql_admin_password: password
+    mysql_cinder_password: password
+    mysql_ceilometer_password: password
+    mysql_glance_password: password
+    mysql_heat_password: password
+    mysql_keystone_password: password
+    mysql_neutron_password: password
+    mysql_nova_password: password
+    keystone_service_token: password
+    keystone_admin_password: password
+    keystone_ceilometer_password: password
+    keystone_cinder_password: password
+    keystone_glance_password: password
+    keystone_heat_password: password
+    keystone_keystone_password: password
+    keystone_neutron_password: password
+    keystone_nova_password: password
+    ceilometer_secret_key: password
+    horizon_version: liberty
+    horizon_secret_key: password
+    horizon_identity_host: ${_param:single_address}
+    horizon_identity_encryption: none
+    horizon_identity_version: 3
+    mongodb_server_replica_set: ceilometer
+    mongodb_ceilometer_password: cloudlab
+    mongodb_admin_password: cloudlab
+    mongodb_shared_key: password
+  linux:
+    system:
+      package:
+        nfs-common:
+          version: latest
+    network:
+      host:
+        control:
+          address: 10.10.10.201
+          names:
+          - control
+          - control.openstack.local
+        compute:
+          address: 10.10.10.202
+          names:
+          - compute
+          - compute.openstack.local
+        proxy:
+          address: 10.10.10.203
+          names:
+          - proxy
+          - proxy.openstack.local

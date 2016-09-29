@@ -1,0 +1,36 @@
+classes:
+- service.glusterfs.server
+- service.glusterfs.client
+parameters:
+  glusterfs:
+    server:
+      peers:
+      - ${_param:cluster_node01_address}
+      - ${_param:cluster_node02_address}
+      - ${_param:cluster_node03_address}
+      volumes:
+        glance:
+          storage: /srv/glusterfs/glance
+          replica: 3
+          bricks:
+            - ${_param:cluster_node01_address}:/srv/glusterfs/glance
+            - ${_param:cluster_node02_address}:/srv/glusterfs/glance
+            - ${_param:cluster_node03_address}:/srv/glusterfs/glance
+          options:
+            cluster.readdir-optimize: On
+            nfs.disable: On
+            network.remote-dio: On
+            diagnostics.client-log-level: WARNING
+            diagnostics.brick-log-level: WARNING
+    client:
+      volumes:
+        glance:
+          path: /var/lib/glance/images
+          server: ${_param:glusterfs_service_host}
+          user: glance
+          group: glance
+  glance:
+    server:
+      storage:
+        engine: file
+      images: []

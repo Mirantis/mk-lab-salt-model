@@ -1,0 +1,10 @@
+classes:
+- service.heka.server.amqp.shipper
+parameters:
+  _param:
+    heka_shipper_output_exchange: heka
+    heka_shipper_output_host: ${_param:heka_amqp_host}
+    heka_shipper_output_password: ${_param:heka_amqp_password}
+    heka_shipper_output_vhost: log
+    heka_shipper_output_user: log
+

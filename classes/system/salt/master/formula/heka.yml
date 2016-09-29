@@ -1,0 +1,19 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            heka:
+              source: pkg
+              name: salt-formula-heka
+            kibana:
+              source: pkg
+              name: salt-formula-kibana
+            elasticsearch:
+              source: pkg
+              name: salt-formula-elasticsearch
+            java:
+              source: pkg
+              name: salt-formula-java
+

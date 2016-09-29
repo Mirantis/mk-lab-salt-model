@@ -1,0 +1,16 @@
+classes:
+- service.reclass.storage.salt
+- service.git.client
+parameters:
+  reclass:
+    storage:
+      data_source:
+        engine: git
+        address:  '${_param:reclass_data_repository}'
+        branch: ${_param:reclass_data_revision}
+  salt:
+    master:
+      pillar:
+        engine: reclass
+        data_dir: /srv/salt/reclass
+

@@ -1,0 +1,16 @@
+classes:
+- service.git.client
+- service.redis.server.local
+- service.rabbitmq.server.single
+- service.sensu.server.single
+parameters:
+  _param:
+    rabbitmq_monitor_password: password
+    sensu_message_queue_host: 127.0.0.1
+  rabbitmq:
+    server:
+      host:
+        '/monitor':
+          enabled: true
+          user: monitor
+          password: ${_param:rabbitmq_monitor_password}

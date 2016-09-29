@@ -1,0 +1,28 @@
+classes:
+- service.horizon.server.single
+parameters:
+  horizon:
+    server:
+      bind:
+        # Horizon is proxied by Nginx
+        address: 127.0.0.1
+        port: 8078
+      plugin:
+        horizon_theme:
+          theme_name: tcp
+          source:
+            engine: pkg
+            name: openstack-dashboard-tcp-theme
+        contrail:
+          source:
+            engine: pkg
+            name: openstack-dashboard-contrail-panels
+        horizon_overrides:
+          override: true
+          overrides:
+            - contrail_openstack_dashboard
+          app: horizon_overrides
+          source:
+            engine: pkg
+            name: python-horizon-overrides-plugin
+

@@ -1,0 +1,16 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_openvstorage:
+          enabled: true
+          type: nginx_proxy
+          name: openvstorage
+          proxy:
+            host: 172.16.10.109
+            port: 443
+            protocol: https
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8243

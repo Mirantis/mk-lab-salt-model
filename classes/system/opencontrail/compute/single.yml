@@ -1,0 +1,50 @@
+applications:
+- opencontrail
+parameters:
+  _param:
+    opencontrail_compute_iface_mask: 24
+  opencontrail:
+    common:
+      version: ${_param:opencontrail_version}
+      identity:
+        engine: keystone
+        host: ${_param:control_address}
+        port: 35357
+        token: ${_param:keystone_service_token}
+        password: ${_param:keystone_admin_password}
+      network:
+        engine: neutron
+        host: ${_param:control_address}
+        port: 9696
+    compute:
+      version: ${_param:opencontrail_version}
+      enabled: True
+      discovery:
+        host: ${_param:control_address}
+      interface:
+        address: ${_param:opencontrail_compute_address}
+        dev: ${_param:opencontrail_compute_iface}
+        gateway: ${_param:opencontrail_compute_gateway}
+        mask: ${_param:opencontrail_compute_iface_mask}
+        dns: ${_param:opencontrail_compute_dns}
+        mtu: 9000
+  nova:
+    compute:
+      networking: contrail
+      network:
+        engine: keystone
+        host: ${_param:control_address}
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        tenant: service
+  neutron:
+    switch:
+      enabled: false
+      identity:
+        engine: keystone
+        host: ${_param:control_address}
+        port: 35357
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        tenant: service
+

@@ -1,0 +1,69 @@
+applications:
+  - neutron
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+parameters:
+  _param:
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: neutron-server
+  opencontrail:
+    config:
+      discovery:
+        host: "$OPENCONTRAIL_CONFIG_SERVICE_HOST"
+      identity:
+        engine: keystone
+        region: RegionOne
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        user: admin
+        tenant: service
+        engine: keystone
+        version: '2.0'
+        password: '${_param:keystone_admin_password}'
+        token: '${_param:keystone_service_token}'
+        tenant: admin
+  neutron:
+    server:
+      enabled: true
+      fwaas: false
+      dns_domain: novalocal
+      tunnel_type: vxlan
+      plugin: contrail
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+      version: ${_param:neutron_version}
+      bind:
+        address: 0.0.0.0
+        port: 9696
+      database:
+        engine: mysql
+        host: "$MYSQL_SERVER_SERVICE_HOST"
+        port: "$MYSQL_SERVER_SERVICE_PORT"
+        name: neutron
+        user: neutron
+        password: ${_param:mysql_neutron_password}
+      identity:
+        engine: keystone
+        region: RegionOne
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        host: "$RABBITMQ_SERVER_NODE01_SERVICE_HOST"
+        port: "$RABBITMQ_SERVER_NODE01_SERVICE_PORT"
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+      compute:
+        host: "$NOVA_CONTROLLER_SERVICE_HOST"
+        region: RegionOne
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service

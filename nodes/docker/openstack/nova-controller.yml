@@ -1,0 +1,75 @@
+applications:
+  - nova
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+parameters:
+  _param:
+    single_address: 127.0.0.1
+    nova_networking: contrail
+  linux:
+    system:
+      name: nova-controller
+  nova:
+    controller:
+      enabled: true
+      networking: ${_param:nova_networking}
+      version: ${_param:nova_version}
+      vncproxy_url: ${_param:nova_vncproxy_url}
+      security_group: false
+      dhcp_domain: novalocal
+      scheduler_default_filters: "DifferentHostFilter,RetryFilter,AvailabilityZoneFilter,RamFilter,CoreFilter,DiskFilter,ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,ServerGroupAntiAffinityFilter,ServerGroupAffinityFilter"
+      cpu_allocation_ratio: 16.0
+      ram_allocation_ratio: 1.5
+      disk_allocation_ratio: 1.0
+      workers: 1
+      bind:
+        private_address: 0.0.0.0
+        public_address: 0.0.0.0
+        public_name: 0.0.0.0
+        novncproxy_port: 6080
+      database:
+        engine: mysql
+        host: "$MYSQL_SERVER_SERVICE_HOST"
+        port: "$MYSQL_SERVER_SERVICE_PORT"
+        name: nova
+        user: nova
+        password: ${_param:mysql_nova_password}
+      identity:
+        engine: keystone
+        region: RegionOne
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        host: "$RABBITMQ_SERVER_NODE01_SERVICE_HOST"
+        port: "$RABBITMQ_SERVER_NODE01_SERVICE_PORT"
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+      glance:
+        host: "$GLANCE_SERVER_SERVICE_HOST"
+        port: 9292
+      network:
+        engine: neutron
+        region: RegionOne
+        host: "$NEUTRON_SERVER_SERVICE_HOST"
+        password: ${_param:keystone_nova_password}
+        user: neutron
+        tenant: service
+        port: 9696
+        mtu: 1500
+      metadata:
+        password: metadataPass
+      cache:
+        engine: memcached
+        members:
+          - host: "$MEMCACHED_SERVER_NODE01_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE01_SERVICE_PORT"
+          - host: "$MEMCACHED_SERVER_NODE02_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE02_SERVICE_PORT"
+          - host: "$MEMCACHED_SERVER_NODE03_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE03_SERVICE_PORT"

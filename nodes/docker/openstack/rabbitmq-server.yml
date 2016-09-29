@@ -1,0 +1,30 @@
+classes:
+- service.linux.system.container
+- system.openstack.common.cluster
+- service.rabbitmq.server.single
+parameters:
+  _param:
+    single_address: 127.0.0.1
+    rabbitmq_cluster_role: slave
+  linux:
+    system:
+      name: rabbitmq-service
+  rabbitmq:
+    server:
+      host:
+        '/':
+          enabled: true
+          user: guest
+          password: guest
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+        '/openstack':
+          enabled: true
+          user: openstack
+          password: ${_param:rabbitmq_openstack_password}
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'

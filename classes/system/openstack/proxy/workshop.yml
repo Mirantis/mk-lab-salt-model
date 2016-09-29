@@ -1,0 +1,21 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.contrail_web
+- system.nginx.server.proxy.graphite_web
+- system.nginx.server.proxy.openstack_api
+- system.nginx.server.proxy.openstack_vnc
+- system.nginx.server.proxy.openstack_web
+- system.nginx.server.proxy.openvstorage_web
+- system.nginx.server.proxy.sensu_web
+- system.nginx.server.proxy.kibana_web
+- system.horizon.server.single
+- system.openstack.common.workshop
+parameters:
+  linux:
+    system:
+      repo:
+        tcpcloud_horizon:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:horizon_version}"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+

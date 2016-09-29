@@ -1,0 +1,16 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_contrail:
+          enabled: true
+          type: nginx_proxy
+          name: contrail
+          proxy:
+            host: ${_param:cluster_vip_address}
+            port: 8143
+            protocol: https
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8143

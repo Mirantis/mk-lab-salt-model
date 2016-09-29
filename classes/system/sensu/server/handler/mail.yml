@@ -1,0 +1,18 @@
+parameters:
+  sensu:
+    server:
+      enabled: true
+      handler:
+        default:
+          enabled: true
+          set:
+          - mail
+        stdout:
+          enabled: true
+        mail:
+          enabled: true
+          mail_to: root@localhost
+          host: localhost
+          port: 25
+          user: root
+          domain: localhost

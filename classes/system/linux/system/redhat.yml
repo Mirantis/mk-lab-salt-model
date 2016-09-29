@@ -1,0 +1,17 @@
+classes:
+- service.linux.system
+- service.ntp.client
+- service.salt.minion.master
+- system.openssh.server.single
+parameters:
+  linux:
+    system:
+      package:
+        centos-release-openstack-kilo:
+          version: latest
+        centos-release-gluster:
+          version: latest
+  _param:
+    heka_amqp_host: 172.16.10.110
+    heka_amqp_password: Use.toylett1823
+    heka_elasticsearch_host: 172.16.10.110

@@ -1,0 +1,21 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            git:
+              source: pkg
+              name: salt-formula-git
+            linux:
+              source: pkg
+              name: salt-formula-linux
+            openssh:
+              source: pkg
+              name: salt-formula-openssh
+            reclass:
+              source: pkg
+              name: salt-formula-reclass
+            salt:
+              source: pkg
+              name: salt-formula-salt

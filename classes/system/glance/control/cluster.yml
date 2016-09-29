@@ -1,0 +1,65 @@
+classes:
+- service.glance.control.cluster
+- service.haproxy.proxy.single
+- system.glance.control.storage.glusterfs
+parameters:
+  glance:
+    server:
+      notification: true
+      logging:
+        heka:
+          enabled: true
+  mysql:
+    server:
+      database:
+        glance:
+          encoding: utf8
+          users:
+          - name: glance
+            password: ${_param:mysql_glance_password}
+            host: '%'
+            rights: all
+          - name: glance
+            password: ${_param:mysql_glance_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+  haproxy:
+    proxy:
+      listen:
+        glance_api:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9292
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 9292
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 9292
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 9292
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        glance_registry:
+          type: general-service
+          check: false
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9191
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 9191
+            params: check
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 9191
+            params: check
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 9191
+            params: check

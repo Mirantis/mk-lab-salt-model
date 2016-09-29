@@ -1,0 +1,9 @@
+classes:
+- service.nginx.server.single
+parameters:
+  nginx:
+    server:
+      logging:
+        heka:
+          enabled: true
+

@@ -1,0 +1,134 @@
+parameters:
+  _param:
+    nginx_proxy_openstack_api_host: ${_param:cluster_public_host}
+    nginx_proxy_openstack_api_proxy_host: ${_param:cluster_vip_address}
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_openstack_api_keystone:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_keystone
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 5000
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 5000
+        nginx_proxy_openstack_api_keystone_private:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_keystone_private
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 35357
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 35357
+        nginx_proxy_openstack_api_nova:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_nova
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8774
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8774
+        nginx_proxy_openstack_api_cinder:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_cinder
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8776
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8776
+        nginx_proxy_openstack_api_glance:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_glance
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 9292
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 9292
+        nginx_proxy_openstack_api_neutron:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_neutron
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 9696
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 9696
+        nginx_proxy_openstack_api_heat_cfn:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_heat_cfn
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8000
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8000
+        nginx_proxy_openstack_api_heat:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_heat
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8004
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8004
+        nginx_proxy_openstack_api_nova_ec2:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_nova_ec2
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8773
+            protocol: http
+            filter:
+              search: ${_param:nginx_proxy_openstack_api_proxy_host}
+              replace: '$server_addr'
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8773

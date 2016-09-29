@@ -1,0 +1,26 @@
+classes:
+- service.cinder.control.single
+parameters:
+  mysql:
+    server:
+      database:
+        cinder:
+          encoding: utf8
+          users:
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: '%'
+            rights: all
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: ${_param:single_address}
+            rights: all
+  cinder:
+    volume:
+      enabled: false
+    controller:
+      backend: {}
+      default_volume_type: ''
+      database:
+        host: ${_param:single_address}
+

@@ -1,0 +1,63 @@
+classes:
+- service.linux.system.container
+- system.openstack.common.cluster
+- service.mysql.server.single
+parameters:
+  _param:
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: mysql-service
+  mysql:
+    enabled: True
+    server:
+      database:
+        nova:
+          encoding: utf8
+          users:
+          - name: nova
+            password: ${_param:mysql_nova_password}
+            host: '%'
+            rights: all
+        cinder:
+          encoding: utf8
+          users:
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: '%'
+            rights: all
+        ceilometer:
+          encoding: utf8
+          users:
+          - name: ceilometer
+            password: ${_param:mysql_ceilometer_password}
+            host: '%'
+            rights: all
+        glance:
+          encoding: utf8
+          users:
+          - name: glance
+            password: ${_param:mysql_glance_password}
+            host: '%'
+            rights: all
+        heat:
+          encoding: utf8
+          users:
+          - name: heat
+            password: ${_param:mysql_heat_password}
+            host: '%'
+            rights: all
+        keystone:
+          encoding: utf8
+          users:
+          - name: keystone
+            password: ${_param:mysql_keystone_password}
+            host: '%'
+            rights: all
+        neutron:
+          encoding: utf8
+          users:
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: '%'
+            rights: all

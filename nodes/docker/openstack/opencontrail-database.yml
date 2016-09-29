@@ -1,0 +1,48 @@
+applications:
+  - opencontrail
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+parameters:
+  _param:
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: opencontrail-database
+  opencontrail:
+    common:
+      version: ${_param:opencontrail_version}
+      identity:
+        engine: keystone
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        token: '${_param:keystone_service_token}'
+        password: '${_param:keystone_admin_password}'
+      network:
+        engine: neutron
+        host: "$NEUTRON_SERVER_SERVICE_HOST"
+        port: 9696
+    database:
+      version: ${_param:opencontrail_version}
+      cassandra:
+        version: 2
+      enabled: true
+      name: 'Contrail'
+      minimum_disk: 10
+      original_token: 0
+      data_dirs:
+      - /var/lib/cassandra
+      id: 1
+      discovery:
+        host: "$OPENCONTRAIL_CONFIG_SERVICE_HOST"
+      bind:
+        host: "$OPENCONTRAIL_DATABASE_LOCAL_HOST"
+        port: 9042
+        rpc_port: 9160
+      members:
+      - host: "$OPENCONTRAIL_DATABASE_LOCAL_HOST"
+        id: 1
+#      - host: ${_param:cluster_node02_address}
+#        id: 2
+#      - host: ${_param:cluster_node03_address}
+#        id: 3

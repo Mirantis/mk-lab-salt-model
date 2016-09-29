@@ -1,0 +1,15 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            rabbitmq:
+              source: pkg
+              name: salt-formula-rabbitmq
+            redis:
+              source: pkg
+              name: salt-formula-redis
+            sensu:
+              source: pkg
+              name: salt-formula-sensu

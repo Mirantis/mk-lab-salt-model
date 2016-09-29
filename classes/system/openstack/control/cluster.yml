@@ -1,0 +1,112 @@
+classes:
+- service.keepalived.cluster.single
+- service.haproxy.proxy.single
+- service.memcached.server.single
+- service.rabbitmq.server.cluster
+- system.keystone.server.cluster
+- system.keystone.server.service.keystone
+- system.keystone.server.service.glance
+- system.keystone.server.service.nova
+- system.keystone.server.service.neutron
+- system.keystone.server.service.cinder
+- system.keystone.server.service.heat
+- system.glance.control.cluster
+- system.nova.control.cluster
+- system.neutron.control.cluster
+- system.cinder.control.cluster
+- system.heat.server.cluster
+- system.opencontrail.control.cluster
+- system.openstack.common.cluster
+parameters:
+  linux:
+    system:
+      repo:
+        tcpcloud_openstack:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:keystone_version} galera-s9s"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+        tcpcloud_opencontrail:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+  rabbitmq:
+    server:
+      host:
+        '/':
+          enabled: true
+          user: guest
+          password: guest
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+        '/openstack':
+          enabled: true
+          user: openstack
+          password: ${_param:rabbitmq_openstack_password}
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          virtual_router_id: 150
+  keystone:
+    server:
+      admin_email: ${_param:admin_email}
+  glance:
+    server:
+      storage:
+        engine: file
+      images: []
+      workers: 1
+  nova:
+    controller:
+      networking: contrail
+      bind:
+        private_address: ${_param:cluster_local_address}
+        public_address: ${_param:cluster_vip_address}
+        novncproxy_port: 6080
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      cache:
+        engine: memcached
+        prefix: CACHE_NOVA
+        members:
+        - host: 127.0.0.1
+          port: 11211
+      workers: 1
+  neutron:
+    server:
+      plugin: contrail
+      tunnel_type: vxlan
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+  haproxy:
+    proxy:
+      listen:
+        mysql_cluster:
+          type: mysql
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 3306
+          servers:
+          - name: ${_param:cluster_node01_hostname}
+            host: ${_param:cluster_node01_address}
+            port: 3306
+            params: check
+          - name: ${_param:cluster_node02_hostname}
+            host: ${_param:cluster_node02_address}
+            port: 3306
+            params: backup check
+          - name: ${_param:cluster_node03_hostname}
+            host: ${_param:cluster_node03_address}
+            port: 3306
+            params: backup check
+  cinder:
+    volume:
+      notification: true
+    controller:
+      notification: true

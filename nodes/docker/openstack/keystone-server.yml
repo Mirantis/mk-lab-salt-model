@@ -1,0 +1,71 @@
+applications:
+  - keystone
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+- system.keystone.server.service.keystone
+- system.keystone.server.service.glance
+- system.keystone.server.service.nova
+- system.keystone.server.service.neutron
+- system.keystone.server.service.cinder
+- system.keystone.server.service.heat
+parameters:
+  _param:
+    single_address: 127.0.0.1
+    keystone_service_host: "$KEYSTONE_SERVER_SERVICE_HOST"
+    nova_service_host: "$NOVA_CONTROLLER_SERVICE_HOST"
+    billometer_service_host: "$BILLOMETER_SERVER_SERVICE_HOST"
+    ceilometer_service_host: "$CEILOMETER_SERVER_SERVICE_HOST"
+    cinder_service_host: "$CINDER_CONTROLLER_SERVICE_HOST"
+    glance_service_host: "$GLANCE_SERVER_SERVICE_HOST"
+    heat_service_host: "$HEAT_SERVER_SERVICE_HOST"
+    neutron_service_host: "$NEUTRON_SERVER_SERVICE_HOST"
+  linux:
+    system:
+      name: keystone-server
+  keystone:
+    server:
+      enabled: true
+      version: ${_param:keystone_version}
+      service_token: ${_param:keystone_service_token}
+      service_tenant: service
+      admin_tenant: admin
+      admin_name: admin
+      admin_password: ${_param:keystone_admin_password}
+      admin_email: root@localhost
+      bind:
+        address: 0.0.0.0
+        private_address: ${_param:keystone_service_host}
+        private_port: 35357
+        public_address: ${_param:keystone_service_host}
+        public_port: 5000
+      region: RegionOne
+      database:
+        engine: mysql
+        host: "$MYSQL_SERVER_SERVICE_HOST"
+        port: "$MYSQL_SERVER_SERVICE_PORT"
+        name: 'keystone'
+        password: '${_param:mysql_keystone_password}'
+        user: 'keystone'
+      tokens:
+        engine: cache
+        expiration: 43200
+        location: /etc/keystone/fernet-keys/
+      message_queue:
+        engine: rabbitmq
+        host: "$RABBITMQ_SERVER_NODE01_SERVICE_HOST"
+        port: "$RABBITMQ_SERVER_NODE01_SERVICE_PORT"
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        ha_queues: true
+      cache:
+        engine: memcached
+        members:
+          - host: "$MEMCACHED_SERVER_NODE01_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE01_SERVICE_PORT"
+          - host: "$MEMCACHED_SERVER_NODE02_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE02_SERVICE_PORT"
+          - host: "$MEMCACHED_SERVER_NODE03_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE03_SERVICE_PORT"

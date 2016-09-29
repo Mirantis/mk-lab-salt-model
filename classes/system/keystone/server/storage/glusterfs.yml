@@ -1,0 +1,35 @@
+classes:
+- service.glusterfs.server
+- service.glusterfs.client
+parameters:
+  glusterfs:
+    server:
+      peers:
+      - ${_param:cluster_node01_address}
+      - ${_param:cluster_node02_address}
+      - ${_param:cluster_node03_address}
+      volumes:
+        keystone-keys:
+          storage: /srv/glusterfs/keystone-keys
+          replica: 3
+          bricks:
+            - ${_param:cluster_node01_address}:/srv/glusterfs/keystone-keys
+            - ${_param:cluster_node02_address}:/srv/glusterfs/keystone-keys
+            - ${_param:cluster_node03_address}:/srv/glusterfs/keystone-keys
+          options:
+            cluster.readdir-optimize: On
+            nfs.disable: On
+            network.remote-dio: On
+            diagnostics.client-log-level: WARNING
+            diagnostics.brick-log-level: WARNING
+    client:
+      volumes:
+        keystone-keys:
+          path: /var/lib/keystone/fernet-keys
+          server: ${_param:glusterfs_service_host}
+          user: keystone
+          group: keystone
+  keystone:
+    server:
+      tokens:
+        location: /var/lib/keystone/fernet-keys

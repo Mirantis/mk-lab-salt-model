@@ -1,0 +1,10 @@
+parameters:
+  keystone:
+    client:
+      enabled: true
+      server:
+        host: ${_param:keystone_server_host}
+        public_port: 5000
+        tenant: admin
+        user: admin
+        password: ${_param:keystone_admin_password}

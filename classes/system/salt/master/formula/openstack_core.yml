@@ -1,0 +1,69 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            ceilometer:
+              source: pkg
+              name: salt-formula-ceilometer
+            cinder:
+              source: pkg
+              name: salt-formula-cinder
+            galera:
+              source: pkg
+              name: salt-formula-galera
+            glance:
+              source: pkg
+              name: salt-formula-glance
+            haproxy:
+              source: pkg
+              name: salt-formula-haproxy
+            heat:
+              source: pkg
+              name: salt-formula-heat
+            horizon:
+              source: pkg
+              name: salt-formula-horizon
+            keepalived:
+              source: pkg
+              name: salt-formula-keepalived
+            keystone:
+              source: pkg
+              name: salt-formula-keystone
+            memcached:
+              source: pkg
+              name: salt-formula-memcached
+            mongodb:
+              source: pkg
+              name: salt-formula-mongodb
+            mysql:
+              source: pkg
+              name: salt-formula-mysql
+            neutron:
+              source: pkg
+              name: salt-formula-neutron
+            nginx:
+              source: pkg
+              name: salt-formula-nginx
+            nova:
+              source: pkg
+              name: salt-formula-nova
+            openvstorage:
+              source: pkg
+              name: salt-formula-openvstorage
+            python:
+              source: pkg
+              name: salt-formula-python
+            opencontrail:
+              source: pkg
+              name: salt-formula-opencontrail
+            rabbitmq:
+              source: pkg
+              name: salt-formula-rabbitmq
+            supervisor:
+              source: pkg
+              name: salt-formula-supervisor
+            glusterfs:
+              source: pkg
+              name: salt-formula-glusterfs

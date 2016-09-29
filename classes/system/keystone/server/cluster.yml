@@ -1,0 +1,64 @@
+classes:
+- service.git.client
+- service.keystone.server.cluster
+- service.python.environment
+- system.openstack.common.workshop
+- system.keystone.server.storage.glusterfs
+parameters:
+  keystone:
+    server:
+      tokens:
+        engine: fernet
+  mysql:
+    server:
+      database:
+        keystone:
+          encoding: utf8
+          users:
+          - name: keystone
+            password: ${_param:mysql_keystone_password}
+            host: '%'
+            rights: all
+          - name: keystone
+            password: ${_param:mysql_keystone_password}
+            host: ${_param:single_address}
+            rights: all
+  haproxy:
+    proxy:
+      listen:
+        keystone_auth:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 5000
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 5000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 5000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 5000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        keystone_admin:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 35357
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 35357
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 35357
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 35357
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3

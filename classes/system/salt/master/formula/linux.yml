@@ -1,0 +1,27 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            backupninja:
+              source: pkg
+              name: salt-formula-backupninja
+            collectd:
+              source: pkg
+              name: salt-formula-collectd
+            git:
+              source: pkg
+              name: salt-formula-git
+            iptables:
+              source: pkg
+              name: salt-formula-iptables
+            linux:
+              source: pkg
+              name: salt-formula-linux
+            ntp:
+              source: pkg
+              name: salt-formula-ntp
+            openssh:
+              source: pkg
+              name: salt-formula-openssh

@@ -1,0 +1,51 @@
+classes:
+- service.cinder.control.cluster_control
+- service.haproxy.proxy.single
+parameters:
+  mysql:
+    server:
+      database:
+        cinder:
+          encoding: utf8
+          users:
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: '%'
+            rights: all
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+  haproxy:
+    proxy:
+      listen:
+        cinder_api:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8776
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8776
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8776
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8776
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+  cinder:
+    controller:
+      default_volume_type: ""
+      backend: {}
+    volume:
+      enabled: false
+      default_volume_type: ""
+      backend: {}
+      logging:
+        heka:
+          enabled: true
+

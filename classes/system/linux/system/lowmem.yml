@@ -1,0 +1,19 @@
+# Fixes for poor people with less than 12GB of memory :-)
+# ..with settings bellow, 8GB should be enough
+parameters:
+  linux:
+    storage:
+      swap:
+        swap01:
+          enabled: true
+          engine: file
+          device: /var/tmp/swap01
+          size: 2048
+  opencontrail:
+    database:
+      max_heap_size: "1G"
+      heap_newsize: "200M"
+  rabbitmq:
+    server:
+      memory:
+        vm_high_watermark: 0.2

@@ -1,0 +1,41 @@
+classes:
+- service.mongodb.server.single
+- service.ceilometer.server.single
+- system.openstack.common.workshop
+parameters:
+  linux:
+    network:
+      host:
+        ctl01:
+          address: ${_param:cluster_node01_address}
+          names:
+          - ${_param:cluster_node01_hostname}
+        ctl02:
+          address: ${_param:cluster_node02_address}
+          names:
+          - ${_param:cluster_node02_hostname}
+        ctl03:
+          address: ${_param:cluster_node03_address}
+          names:
+          - ${_param:cluster_node03_hostname}
+    system:
+      repo:
+        tcpcloud_openstack:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:keystone_version}"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+  mongodb:
+    server:
+      database:
+        ceilometer:
+          enabled: true
+          password: ${_param:mongodb_ceilometer_password}
+          users:
+          - name: ceilometer
+            password: ${_param:mongodb_ceilometer_password}
+  ceilometer:
+    server:
+      identity:
+        host: ${_param:cluster_vip_address}
+      message_queue:
+        host: ${_param:cluster_vip_address}

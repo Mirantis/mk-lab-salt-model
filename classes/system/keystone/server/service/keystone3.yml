@@ -1,0 +1,20 @@
+parameters:
+  keystone:
+    server:
+      service:
+        keystone3:
+          type: identity
+          description: OpenStack Identity Service v3.0
+          bind:
+            public_address: ${_param:keystone_service_host}
+            public_port: 5000
+            public_protocol: http
+            public_path: '/v2.0'
+            internal_address: ${_param:keystone_service_host}
+            internal_port: 5000
+            internal_protocol: http
+            internal_path: '/v2.0'
+            admin_address: ${_param:keystone_service_host}
+            admin_port: 35357
+            admin_protocol: http
+            admin_path: '/v2.0'

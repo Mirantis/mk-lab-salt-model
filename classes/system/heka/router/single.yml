@@ -1,0 +1,28 @@
+classes:
+- service.rabbitmq.server.single
+- service.heka.server.amqp.router
+- system.kibana.server.single
+parameters:
+  _param:
+    heka_router_input_exchange: heka
+    heka_router_input_host: ${_param:heka_amqp_host}
+    heka_router_input_password: ${_param:heka_amqp_password}
+    heka_router_input_vhost: log
+    heka_router_input_user: log
+    heka_router_output_host: ${_param:heka_elasticsearch_host}
+    heka_router_prefetch_count: 20
+    rabbitmq_secret_key: secret_key
+    rabbitmq_admin_name: admin
+    rabbitmq_admin_password: workshoplearning42
+    kibana_elasticsearch_host: localhost
+  heka:
+    shipper:
+      enabled: false
+  rabbitmq:
+    server:
+      host:
+        'log':
+          enabled: true
+          user: log
+          password: ${_param:heka_amqp_password}
+

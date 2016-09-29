@@ -1,0 +1,9 @@
+classes:
+- service.memcached.server.local
+- service.graphite.collector.single
+parameters:
+  _param:
+    rabbitmq_monitor_password: password
+  carbon:
+    relay:
+      enabled: false

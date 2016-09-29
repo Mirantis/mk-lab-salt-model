@@ -1,0 +1,54 @@
+applications:
+  - cinder
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+parameters:
+  _param:
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: cinder-controller
+  cinder:
+    controller:
+      enabled: true
+      version: ${_param:cinder_version}
+      default_volume_type: ""
+      backend: {}
+      osapi:
+        host: 0.0.0.0
+      database:
+        engine: mysql
+        host: "$MYSQL_SERVER_SERVICE_HOST"
+        port: "$MYSQL_SERVER_SERVICE_PORT"
+        port: 3306
+        name: cinder
+        user: cinder
+        password: ${_param:mysql_cinder_password}
+      identity:
+        engine: keystone
+        region: RegionOne
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        tenant: service
+        user: cinder
+        password: ${_param:keystone_cinder_password}
+      glance:
+        host: "$GLANCE_SERVER_SERVICE_HOST"
+        port: 9292
+      message_queue:
+        engine: rabbitmq
+        host: "$RABBITMQ_SERVER_NODE01_SERVICE_HOST"
+        port: "$RABBITMQ_SERVER_NODE01_SERVICE_PORT"
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+      cache:
+        engine: memcached
+        members:
+          - host: "$MEMCACHED_SERVER_NODE01_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE01_SERVICE_PORT"
+          - host: "$MEMCACHED_SERVER_NODE02_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE02_SERVICE_PORT"
+          - host: "$MEMCACHED_SERVER_NODE03_SERVICE_HOST"
+            port: "$MEMCACHED_SERVER_NODE03_SERVICE_PORT"

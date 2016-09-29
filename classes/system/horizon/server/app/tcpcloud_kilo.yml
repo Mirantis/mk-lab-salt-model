@@ -1,0 +1,71 @@
+parameters:
+  _param:
+    nginx_site_horizon_tcpcloud_kilo_host: _
+    horizon_tcpcloud_kilo_secret_key: workshop
+  nginx:
+    server:
+      site:
+        horizon_tcpcloud_kilo:
+          enabled: true
+          type: horizon
+          name: tcpcloud_kilo
+          host:
+            name: _
+  supervisor:
+    server:
+      service:
+        horizon_tcpcloud_kilo:
+          type: horizon
+          name: tcpcloud_kilo
+  horizon:
+    server:
+      app:
+        tcpcloud_kilo:
+          version: kilo
+          branding: "workshop dashboard | tcp cloud"
+          bind:
+            address: 0.0.0.0
+            port: 8078
+          secret_key: ${_param:horizon_tcpcloud_kilo_secret_key}
+          source:
+            engine: git
+            address: git@git.tcpcloud.eu:python-apps/horizon.git
+            revision: stable/kilo
+          cache:
+            engine: 'memcached'
+            host: '127.0.0.1'
+            port: 11211
+            prefix: 'CACHE_TCPCLOUD_KILO'
+          identity:
+            engine: keystone
+            host: ${_param:cluster_vip_address}
+            encryption: none
+            port: 5000
+            api_version: 3
+          api_versions:
+            identity: 3
+          plugin:
+            horizon_overrides:
+              app: horizon_overrides
+              override: true
+              overrides:
+              - contrail_openstack_dashboard
+              source:
+                engine: git
+                address: git@git.tcpcloud.eu:horizon-modules/horizon-overrides-plugin.git
+                revision: develop
+            contrail:
+              app: contrail_openstack_dashboard
+              source:
+                engine: git
+                address: git@git.tcpcloud.eu:horizon-modules/horizon-contrail-panels.git
+                revision: stable/kilo
+            horizon_theme:
+              app: horizon_theme
+              theme_name: tcp
+              source:
+                engine: git
+                address: git@git.tcpcloud.eu:horizon-themes/horizon-tcp-theme.git
+                revision: stable/kilo
+          mail:
+            engine: console

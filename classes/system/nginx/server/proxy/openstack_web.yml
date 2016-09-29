@@ -1,0 +1,17 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_openstack_web:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_web
+          proxy:
+            host: localhost
+            port: 8078
+            protocol: http
+            websocket: true
+          host:
+            name: ${_param:cluster_public_host}
+            port: 80

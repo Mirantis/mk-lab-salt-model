@@ -1,0 +1,40 @@
+applications:
+  - opencontrail
+classes:
+- system.linux.system.container
+- system.openstack.common.cluster
+parameters:
+  _param:
+    single_address: 127.0.0.1
+  linux:
+    system:
+      name: opencontrail-collector
+  opencontrail:
+    common:
+      version: ${_param:opencontrail_version}
+      identity:
+        engine: keystone
+        host: "$KEYSTONE_SERVER_SERVICE_HOST"
+        port: 35357
+        token: '${_param:keystone_service_token}'
+        password: '${_param:keystone_admin_password}'
+      network:
+        engine: neutron
+        host: "$NEUTRON_SERVER_SERVICE_HOST"
+        port: 9696
+    collector:
+      version: ${_param:opencontrail_version}
+      enabled: true
+      bind:
+        address: "$OPENCONTRAIL_COLLECTOR_LOCAL_HOST"
+      discovery:
+        host: "$OPENCONTRAIL_CONFIG_SERVICE_HOST"
+      data_ttl: 1
+      database:
+        members:
+        - host: "$OPENCONTRAIL_DATABASE_SERVICE_HOST"
+          port: 9160
+#        - host: ${_param:cluster_node02_address}
+#          port: 9160
+#        - host: ${_param:cluster_node03_address}
+#          port: 9160

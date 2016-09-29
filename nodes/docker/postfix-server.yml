@@ -1,0 +1,20 @@
+classes:
+- service.postfix.backupmx
+parameters:
+  postfix:
+    server:
+      origin: "$POSTFIX_ORIGIN"
+      myhostname: postfix.server
+      myorigin: ${postfix:server:myhostname}
+      ssl:
+        enabled: false
+      aliases:
+        webmaster: root
+        hostmaster: root
+        postmaster: root
+        mailer-daemon: root
+        abuse: root
+        security: root
+    backupmx:
+      domains:
+        - localhost

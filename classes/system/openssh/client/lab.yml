@@ -1,0 +1,49 @@
+applications:
+- openssh
+parameters:
+  openssh:
+    client:
+      enabled: true
+      user:
+        root:
+          enabled: true
+          user: ${linux:system:user:root}
+          private_key: ${private_keys:workshop}
+          known_hosts:
+          - ${known_hosts:git.tcpcloud.eu}
+  known_hosts:
+    git.tcpcloud.eu:
+      name: git.tcpcloud.eu
+      type: ecdsa
+      fingerprint: fc:77:72:6c:65:c0:e1:26:0d:68:b8:a8:4a:56:38:22
+  private_keys:
+    workshop:
+      type: rsa
+      key: |
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIEogIBAAKCAQEAqdHr4zmivHPEimCuK9vtATe4PvGEr0Np/JxYDlEQsr5Cajh4
+        tajxmZrjdAnJWFXVbmYl21sN1cUW0ltxB+9+lc4GNVNCZqE4kmpsyx2lrF7xCFvF
+        Qou26JYud/UCT9IpCYgWjQIGSC8gq1TzfgOpn6rWnLNSl3WdM5TKtQT7RXIkdSUw
+        kXFbObz9lsM+ULWNozCId2osJHj4zE0D3H5odU5DpcWLuSG0MmdxtWoQNJjSiPWt
+        HbRdvNmr/xeqcAfzdUdZxGf/VbXDdiNZn9TVv7UxxBHE812KNUf/Cvb5agDfEL7x
+        i2bWXbhr4jVTaDVr6MWl8Q7fAj79gdjQnUBWaQIDAQABAoIBAFU3kU6yIna9BViH
+        UX+S2ijtRBjZ68JjavEnp4xvo5h+nydcdT57q9lv/0nAi3g3gmXm/oJH+/ZU87HV
+        zy+zP+t+umDSChUkPBZFL5jxpKyN7BhMrP1KzRuEGYd6vJE/nfY5g095P5vDgnpX
+        o+SNg/YqrY1u8zgr/hnfRaV2/XyIDEEcQXTHseWTnnMQnULFU88xL8yq8ACT5GhK
+        7A9m5ukfcU6d/fs/psz5Yqw5IQsWbv1yJ3/FKufPHlo2Nzh3/3eDAZUXvaBgf1so
+        FWFpHtkry3OXOGaZ98HgF9hL0twS0pzMvuypdGUQAt6nyB1N5re4LK/MAOddqwEc
+        1+NQzfECgYEA2ryEf0GLJdtiYs3F4HbwTwJVIXdyWv7kjYGeMkutzzAjXl6wx8aq
+        kfqLJ7x7UkR5unZ1ajEbKBciAlSuFA+Gikn6a4Lv8h87aSnHpPd/2VSitRlI/gW7
+        w4U4CL3Br1JyonU5WA7VYfTow7KnHBhdwm27RMA9uosyIpveQRpqSG0CgYEAxsAS
+        wCQKrhuPq2YtGtFR7K4BL+N+0E1Vq6h49u1ukcgUe0GHVD3VzBypNCv7rWEVHzAg
+        biCVi7PCjzZYW4fYZmzVD4JbFLVGOUu7aJwLaE4wDe72DNr6YZhcS+Ta98BP+x0q
+        Wt34JNPDabRPfhXfhiCqnWjjod+4Zqx4VJVNgG0CgYB5EXL8xJhyAbW5Hk/x56Mm
+        +BGKjoR7HS3/rMiU6hJv5SMObrbGPI3YcqZm/gn8BO6jaEGg30E6tWMbiyc270j2
+        be/vZe/NQcAuevOHuX3IGvJb7nzaLO46UBgtrmnv0mCkzuFIfh1ZNKdI+i9Ie6wZ
+        m4bVjNod0EGVqlQgELDXGQKBgB+NNmzSS++/6FrpaZesSzkrlnynvOYMoOETacCp
+        iLgT70xx5q308w/oLORfZyDrHJNK7JsPCS6YZvadRgGh2zTHajuAEj2DWZaW8zV0
+        MEtqvi44FU+NI9qCeYSC3FAgc5IF20d5nX8bLxaEzWnSxx1f6jX7BMgZ4AhMsP2c
+        hiUxAoGAFaxn+t9blIjqUiuh0smSYFhLBVPZveYHQDmQYERjktptBd3X95fGnSKh
+        iDe2iPGyud2+Yu4X/VjHLh/MRru+ZXvPXw1XwEqX93q8a1n283ul0Rl9+KKKOVHR
+        eecTjI/BfXBf33mPRKny3xuHw6uwta2T3OXky9IhqYS1kkHiZWA=
+        -----END RSA PRIVATE KEY-----        

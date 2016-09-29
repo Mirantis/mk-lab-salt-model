@@ -1,0 +1,16 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_kibana:
+          enabled: true
+          type: nginx_proxy
+          name: kibana
+          proxy:
+            host: log01
+            port: 5601
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 5601

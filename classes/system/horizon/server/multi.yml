@@ -1,0 +1,13 @@
+classes:
+- service.git.client
+- service.horizon.server.multi
+- service.nginx.server.single
+- service.memcached.server.local
+- service.python.environment
+- service.supervisor.server.single
+- system.openssh.client.workshop
+- system.openstack.common.workshop
+parameters:
+  python:
+    environment:
+      development: true

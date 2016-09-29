@@ -1,0 +1,23 @@
+parameters:
+  keystone:
+    server:
+      service:
+        glance:
+          type: image
+          description: OpenStack Image Service
+          user:
+            name: glance
+            password: ${_param:keystone_glance_password}
+          bind:
+            public_address: ${_param:glance_service_host}
+            public_protocol: http
+            public_port: 9292
+            public_path: ''
+            internal_address: ${_param:glance_service_host}
+            internal_port: 9292
+            internal_protocol: http
+            internal_path: ''
+            admin_address: ${_param:glance_service_host}
+            admin_port: 9292
+            admin_protocol: http
+            admin_path: ''

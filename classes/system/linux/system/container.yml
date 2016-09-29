@@ -1,0 +1,14 @@
+classes:
+- service.linux.system.container
+parameters:
+  linux:
+    system:
+      repo:
+        tcpcloud_openstack:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:keystone_version} galera-s9s"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+        tcpcloud_opencontrail:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
