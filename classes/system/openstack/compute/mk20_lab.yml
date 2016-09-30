@@ -1,9 +1,19 @@
 classes:
-- system.openstack.common.single
-- system.nova.compute.single
-- system.opencontrail.compute.single
+- system.nova.compute.cluster
+- system.opencontrail.compute.cluster
+- system.openstack.common.mk20_lab
+- service.ceilometer.agent.cluster
+- service.ceilometer.agent.publisher.graphite
 parameters:
   linux:
+    system:
+      kernel:
+        type: generic
+        headers: true
+        version: 3.19.0-26
+        extra: true
+    storage:
+      multipath: false
     system:
       repo:
         tcpcloud_openstack:
@@ -14,5 +24,8 @@ parameters:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
           architectures: amd64
           key_url: "http://apt.tcpcloud.eu/public.gpg"
-    storage:
-      multipath: false
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2

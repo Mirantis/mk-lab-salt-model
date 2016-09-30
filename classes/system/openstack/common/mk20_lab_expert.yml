@@ -1,0 +1,45 @@
+parameters:
+  linux:
+    network:
+      host:
+        ctl01:
+          address: ${_param:cluster_node01_address}
+          names:
+          - ${_param:cluster_node01_hostname}
+          - ${_param:cluster_node01_hostname}.mk20-lab-expert.local
+        ctl02:
+          address: ${_param:cluster_node02_address}
+          names:
+          - ${_param:cluster_node02_hostname}
+          - ${_param:cluster_node02_hostname}.mk20-lab-expert.local
+        ctl03:
+          address: ${_param:cluster_node03_address}
+          names:
+          - ${_param:cluster_node03_hostname}
+          - ${_param:cluster_node03_hostname}.mk20-lab-expert.local
+        cmp01:
+          address: 172.16.10.105
+          names:
+          - cmp01
+          - cmp01.mk20-lab-expert.local
+        cmp02:
+          address: 172.16.10.106
+          names:
+          - cmp02
+          - cmp02.mk20-lab-expert.local
+        mon01:
+          address: 172.16.10.107
+          names:
+          - mon01
+          - mon01.mk20-lab-expert.local
+        mtr01:
+          address: 172.16.10.108
+          names:
+          - mtr01
+          - mtr01.mk20-lab-expert.local
+        log01:
+          address: 172.16.10.109
+          names:
+          - log01
+          - log01.mk20-lab-expert.local
+

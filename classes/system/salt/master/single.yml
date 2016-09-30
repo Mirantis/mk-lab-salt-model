@@ -1,5 +1,15 @@
 classes:
 - service.salt.master.single
+- system.salt.master.formula.graphite
+- system.salt.master.formula.kedb
+- system.salt.master.formula.linux
+- system.salt.master.formula.openstack_core
+- system.salt.master.formula.saltstack
+- system.salt.master.formula.sensu
+- system.salt.master.formula.heka
+- system.salt.master.formula.linux
+- system.salt.master.formula.openstack_core
+- system.salt.master.formula.saltstack
 parameters:
   linux:
     system:
@@ -8,4 +18,6 @@ parameters:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty tcp-salt"
           architectures: amd64
           key_url: "http://apt.tcpcloud.eu/public.gpg"
-
+  salt:
+    master:
+      accept_policy: open_mode

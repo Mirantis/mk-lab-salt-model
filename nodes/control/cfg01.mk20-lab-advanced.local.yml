@@ -1,0 +1,28 @@
+classes:
+- service.git.client
+- system.linux.system.single
+- system.openssh.client.lab
+- system.salt.master.single
+- system.reclass.storage.salt
+- system.reclass.storage.system.mk20_lab_advanced
+- system.openstack.proxy.mk20_lab_advanced
+- system.horizon.server.single
+parameters:
+  _param:
+    reclass_data_repository: "https://github.com/tcpcloud/mk20-lab-salt-model.git"
+    reclass_data_revision: master
+    reclass_config_master: 172.16.10.100
+    single_address: 172.16.10.100
+    salt_master_host: 127.0.0.1
+    salt_master_base_environment: prd
+    rabbitmq_monitor_password: password
+    sensu_message_queue_host: 172.16.10.107
+    collectd_backend_carbon_host: 172.16.10.107
+    collectd_backend_carbon_port: 2013
+  linux:
+    system:
+      name: cfg01
+      domain: mk20-lab-advanced.local
+      repo:
+        tcpcloud:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt liberty"
