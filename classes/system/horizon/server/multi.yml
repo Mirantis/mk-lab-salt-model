@@ -5,8 +5,6 @@ classes:
 - service.memcached.server.local
 - service.python.environment
 - service.supervisor.server.single
-- system.openssh.client.workshop
-- system.openstack.common.workshop
 parameters:
   python:
     environment:

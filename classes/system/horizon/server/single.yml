@@ -3,8 +3,8 @@ classes:
 parameters:
   horizon:
     server:
+      branding: "Mk20 Lab Dashboard"
       bind:
-        # Horizon is proxied by Nginx
         address: 127.0.0.1
         port: 8078
       plugin:

@@ -1,8 +1,5 @@
 classes:
-- service.git.client
 - service.keystone.server.cluster
-- service.python.environment
-- system.openstack.common.workshop
 - system.keystone.server.storage.glusterfs
 parameters:
   keystone:
