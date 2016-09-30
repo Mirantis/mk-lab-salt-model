@@ -6,7 +6,6 @@ classes:
 - system.reclass.storage.salt
 - system.reclass.storage.system.mk20_lab_advanced
 - system.openstack.proxy.mk20_lab_advanced
-- system.horizon.server.single
 parameters:
   _param:
     reclass_data_repository: "https://github.com/tcpcloud/mk20-lab-salt-model.git"
