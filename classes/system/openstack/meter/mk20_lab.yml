@@ -1,7 +1,7 @@
 classes:
 - service.mongodb.server.single
 - service.ceilometer.server.single
-- system.openstack.common.workshop
+- system.openstack.common.mk20_lab
 parameters:
   linux:
     network:

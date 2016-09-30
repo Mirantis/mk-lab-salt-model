@@ -8,3 +8,4 @@ classes:
 - system.nginx.server.proxy.openstack_web
 - system.nginx.server.proxy.sensu_web
 - system.nginx.server.proxy.kibana_web
+- system.openstack.common.mk20_lab

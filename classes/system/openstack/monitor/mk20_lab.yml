@@ -5,4 +5,4 @@ classes:
 - system.sensu.server.single
 - system.sensu.server.handler.mail
 - system.sensu.server.dashboard
-- system.openstack.common.workshop
+- system.openstack.common.mk20_lab
