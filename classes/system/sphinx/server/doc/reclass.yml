@@ -1,0 +1,35 @@
+classes:
+- system.sphinx.server.multi
+parameters:
+  _param:
+    nginx_static_reclass_doc_host: ${_param:cluster_public_host}
+  sphinx:
+    server:
+      doc:
+        reclass_doc:
+          theme: sphinx_tcpcloud_theme
+          builder: singlehtml
+          path: source
+          source:
+            engine: reclass
+  linux:
+    system:
+      package:
+        python-sphinx-tcpcloud-theme:
+          version: latest
+  nginx:
+    server:
+      site:
+        nginx_static_reclass_doc:
+          enabled: true
+          type: nginx_static
+          name: reclass_doc
+          host:
+            name: ${_param:nginx_static_reclass_doc_host}
+            port: 8090
+            protocol: https
+          ssl:
+            enabled: true
+            authority: mk20_lab_ca
+            engine: salt
+            mode: secure

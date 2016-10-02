@@ -14,3 +14,9 @@ parameters:
           host:
             name: ${_param:cluster_public_host}
             port: 8080
+            protocol: https
+          ssl:
+            enabled: true
+            authority: mk20_lab_ca
+            engine: salt
+            mode: secure
