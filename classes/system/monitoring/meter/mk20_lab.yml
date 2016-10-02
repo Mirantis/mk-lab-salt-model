@@ -1,3 +1,4 @@
 classes:
 - system.graphite.collector.single
 - system.graphite.server.single
+- system.openstack.common.mk20_lab
