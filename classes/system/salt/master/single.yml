@@ -1,15 +1,13 @@
 classes:
 - service.salt.master.single
+- system.salt.master.formula.linux
+- system.salt.master.formula.saltstack
+- system.salt.master.formula.openstack
 - system.salt.master.formula.graphite
 - system.salt.master.formula.kedb
-- system.salt.master.formula.linux
-- system.salt.master.formula.openstack_core
-- system.salt.master.formula.saltstack
 - system.salt.master.formula.sensu
 - system.salt.master.formula.heka
-- system.salt.master.formula.linux
-- system.salt.master.formula.openstack_core
-- system.salt.master.formula.saltstack
+- system.salt.master.formula.sphinx
 parameters:
   linux:
     system:
@@ -21,3 +19,6 @@ parameters:
   salt:
     master:
       accept_policy: open_mode
+      peer:
+        '.*':
+          - x509.sign_remote_certificate
