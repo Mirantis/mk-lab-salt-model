@@ -4,7 +4,7 @@ parameters:
       environment:
         prd:
           formula:
-             nginx:
+            nginx:
               source: pkg
               name: salt-formula-nginx
             sphinx:
