@@ -14,5 +14,5 @@ parameters:
           key_url: "http://apt.tcpcloud.eu/public.gpg"
   _param:
     heka_amqp_host: 172.16.10.110
-    heka_amqp_password: Use.toylett1823
+    heka_amqp_password: workshop
     heka_elasticsearch_host: 172.16.10.110
