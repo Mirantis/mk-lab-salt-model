@@ -6,3 +6,22 @@ classes:
 - system.sensu.server.handler.mail
 - system.sensu.server.dashboard
 - system.openstack.common.mk20_lab
+parameters:
+  collectd:
+    client:
+        check:
+          curl:
+            keystone_api:
+              url: "http://10.25.12.100:5000/v2/"
+            nova_api_v2:
+              url: "http://10.25.12.100:8774/"
+            glance-api:
+              url: "http://10.25.12.100:9292/"
+            neutron-api:
+              url: "http://10.25.12.20:9696/"
+            nova_api_v3:
+              url: "http://10.25.12.100:8774/v3/"
+            heat_cnf:
+              url: "http://10.25.12.100:8000/v1/"
+            heat_api:
+              url: "http://10.25.12.100:8004/v1/"
