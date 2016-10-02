@@ -80,8 +80,8 @@ parameters:
           name: mon01
           domain: mk20-lab-expert.local
           classes:
-          - system.linux.system.single
-          - system.openstack.monitor.mk20_lab
+          - system.linux.system.xenial
+          - system.monitoring.monitor.mk20_lab
           - system.openstack.common.mk20_lab_basic
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -90,8 +90,8 @@ parameters:
           name: mtr01
           domain: mk20-lab-expert.local
           classes:
-          - system.linux.system.single
-          - system.openstack.meter.mk20_lab
+          - system.linux.system.xenial
+          - system.monitoring.meter.mk20_lab
           - system.openstack.common.mk20_lab_basic
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -101,8 +101,8 @@ parameters:
           name: log01
           domain: mk20-lab-expert.local
           classes:
-          - system.linux.system.single
-          - system.openstack.log.mk20_lab
+          - system.linux.system.xenial
+          - system.monitoring.log.mk20_lab
           - system.openstack.common.mk20_lab_basic
           params:
             salt_master_host: ${_param:reclass_config_master}

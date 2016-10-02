@@ -1,0 +1,3 @@
+classes:
+- system.graphite.collector.single
+- system.graphite.server.single

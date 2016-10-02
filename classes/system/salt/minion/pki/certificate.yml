@@ -1,0 +1,9 @@
+parameters:
+  salt:
+    minion:
+      cert:
+        proxy_cert:
+          host: ${_param:salt_minion_ca_host}
+          signing_policy: cert_server
+          authority: mk20_lab_ca
+          common_name: ${_param:cluster_public_host}

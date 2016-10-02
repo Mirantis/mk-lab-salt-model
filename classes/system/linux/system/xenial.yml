@@ -8,11 +8,7 @@ parameters:
     system:
       repo:
         tcpcloud:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp"
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ xenial main security extra"
           architectures: amd64
           default: true
           key_url: "http://apt.tcpcloud.eu/public.gpg"
-  _param:
-    heka_amqp_host: 172.16.10.110
-    heka_amqp_password: Use.toylett1823
-    heka_elasticsearch_host: 172.16.10.110
