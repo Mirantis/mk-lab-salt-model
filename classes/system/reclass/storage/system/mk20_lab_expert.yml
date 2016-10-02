@@ -54,7 +54,7 @@ parameters:
           name: cmp01
           domain: mk20-lab-expert.local
           classes:
-          - system.linux.system.single
+          - system.linux.system.compute
           - system.openstack.compute.mk20_lab
           - system.openstack.common.mk20_lab_basic
           params:
@@ -67,7 +67,7 @@ parameters:
           name: cmp02
           domain: mk20-lab-expert.local
           classes:
-          - system.linux.system.single
+          - system.linux.system.compute
           - system.openstack.compute.mk20_lab
           - system.openstack.common.mk20_lab_basic
           params:
