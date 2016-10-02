@@ -9,6 +9,7 @@ classes:
 - system.salt.minion.pki.authority
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
+- system.openstack.common.mk20_lab_advanced
 parameters:
   _param:
     reclass_data_repository: "https://github.com/tcpcloud/mk20-lab-salt-model.git"

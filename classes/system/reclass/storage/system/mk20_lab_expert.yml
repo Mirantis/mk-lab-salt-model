@@ -9,7 +9,7 @@ parameters:
           - system.linux.system.single
           - service.galera.master.cluster
           - system.openstack.control.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.101
@@ -41,7 +41,7 @@ parameters:
           - system.linux.system.single
           - service.galera.slave.cluster
           - system.openstack.control.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.103
@@ -56,7 +56,7 @@ parameters:
           classes:
           - system.linux.system.compute
           - system.openstack.compute.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.105
@@ -69,7 +69,7 @@ parameters:
           classes:
           - system.linux.system.compute
           - system.openstack.compute.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.106
@@ -82,7 +82,7 @@ parameters:
           classes:
           - system.linux.system.xenial
           - system.monitoring.monitor.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.107
@@ -92,7 +92,7 @@ parameters:
           classes:
           - system.linux.system.xenial
           - system.monitoring.meter.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.108
@@ -103,7 +103,7 @@ parameters:
           classes:
           - system.linux.system.xenial
           - system.monitoring.log.mk20_lab
-          - system.openstack.common.mk20_lab_basic
+          - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.109
