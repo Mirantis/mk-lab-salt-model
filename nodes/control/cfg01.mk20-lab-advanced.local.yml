@@ -1,6 +1,7 @@
 classes:
 - service.git.client
 - system.linux.system.single
+- system.linux.system.lowmem
 - system.openssh.client.lab
 - system.salt.master.single
 - system.reclass.storage.salt
