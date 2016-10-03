@@ -1,7 +1,7 @@
 classes:
 - service.rabbitmq.server.single
 - service.heka.server.amqp.router
-- system.kibana.server.single
+
 parameters:
   _param:
     heka_router_input_exchange: heka
