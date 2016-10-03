@@ -12,8 +12,6 @@ parameters:
         headers: true
         version: 3.19.0-26
         extra: true
-    storage:
-      multipath: false
     system:
       repo:
         tcpcloud_openstack:
