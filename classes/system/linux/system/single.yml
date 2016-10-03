@@ -3,6 +3,7 @@ classes:
 - service.ntp.client
 - service.salt.minion.master
 - system.openssh.server.single
+- system.linux.system.lowmem
 parameters:
   linux:
     system:
