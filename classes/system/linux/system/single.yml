@@ -12,6 +12,9 @@ parameters:
           architectures: amd64
           default: true
           key_url: "http://apt.tcpcloud.eu/public.gpg"
+        saltstack:
+          source: "deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main"
+          key_url: "https://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/SALTSTACK-GPG-KEY.pub"
   _param:
     heka_amqp_host: 172.16.10.110
     heka_amqp_password: workshop
