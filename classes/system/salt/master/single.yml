@@ -1,5 +1,7 @@
 classes:
 - service.salt.master.single
+- system.salt.master.formula.elasticsearch
+- system.salt.master.formula.influxdb
 - system.salt.master.formula.linux
 - system.salt.master.formula.saltstack
 - system.salt.master.formula.openstack

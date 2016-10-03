@@ -1,6 +1,4 @@
 classes:
-- system.graphite.collector.single
-- system.graphite.server.single
 - system.sensu.client.remote
 - system.sensu.server.single
 - system.sensu.server.handler.mail
@@ -9,19 +7,17 @@ classes:
 parameters:
   collectd:
     client:
-        check:
-          curl:
-            keystone_api:
-              url: "http://${_param:cluster_vip_address}:5000/v2/"
-            nova_api_v2:
-              url: "http://${_param:cluster_vip_address}:8774/"
-            glance-api:
-              url: "http://${_param:cluster_vip_address}:9292/"
-            neutron-api:
-              url: "http://${_param:cluster_vip_address}:9696/"
-            nova_api_v3:
-              url: "http://${_param:cluster_vip_address}:8774/v3/"
-            heat_cnf:
-              url: "http://${_param:cluster_vip_address}:8000/v1/"
-            heat_api:
-              url: "http://${_param:cluster_vip_address}:8004/v1/"
+      check:
+        curl:
+          keystone_api:
+            url: "http://${_param:cluster_vip_address}:5000/v2/"
+          nova_api:
+            url: "http://${_param:cluster_vip_address}:8774/"
+          glance_api:
+            url: "http://${_param:cluster_vip_address}:9292/"
+          neutron_api:
+            url: "http://${_param:cluster_vip_address}:9696/"
+          heat_cnf:
+            url: "http://${_param:cluster_vip_address}:8000/v1/"
+          heat_api:
+            url: "http://${_param:cluster_vip_address}:8004/v1/"
