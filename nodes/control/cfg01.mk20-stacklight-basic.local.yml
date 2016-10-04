@@ -7,9 +7,9 @@ classes:
 - system.reclass.storage.salt
 - system.reclass.storage.system.mk20_lab_basic
 #- system.openstack.proxy.mk20_lab_advanced
-- system.salt.minion.pki.authority
-- system.salt.minion.pki.certificate
-- system.sphinx.server.doc.reclass
+#- system.salt.minion.pki.authority
+#- system.salt.minion.pki.certificate
+#- system.sphinx.server.doc.reclass
 - system.openstack.common.mk20_lab_basic
 parameters:
   _param:
