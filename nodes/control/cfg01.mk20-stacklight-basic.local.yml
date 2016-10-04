@@ -5,7 +5,7 @@ classes:
 - system.openssh.server.team.stacklight
 - system.salt.master.single
 - system.reclass.storage.salt
-- system.reclass.storage.system.mk20_lab_basic
+- system.reclass.storage.system.mk20_stacklight_basic
 #- system.openstack.proxy.mk20_lab_advanced
 #- system.salt.minion.pki.authority
 #- system.salt.minion.pki.certificate
@@ -27,7 +27,7 @@ parameters:
   linux:
     system:
       name: cfg01
-      domain: mk20-stacklight-basic.local
+        domain: mk20-stacklight-basic.local
       repo:
         tcpcloud:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt liberty"
