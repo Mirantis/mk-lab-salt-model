@@ -27,7 +27,7 @@ parameters:
   linux:
     system:
       name: cfg01
-        domain: mk20-stacklight-basic.local
+      domain: mk20-stacklight-basic.local
       repo:
         tcpcloud:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt liberty"
