@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        newt:
+          enabled: true
+          name: newt
+          sudo: true
+          full_name: Ales Komarek
+          home: /home/newt
+          email: mail@newt.cz
+  openssh:
+    client:
+      enabled: true
+    server:
+      enabled: true
+      user:
+        newt:
+          enabled: true
+          public_keys:
+          - ${public_keys:newt}
+          user: ${linux:system:user:newt}
+  public_keys:
+    newt:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3odU+3V2uDA2ptAFL9hrJRPNEEdAyztWOZFQ5Oyd9oerTGOU3p4xmrgWWjfKFKbYGhiiIUcYAol5PkTfKukGEkkjCHYA1t023soCaaAj85wCZCnw2zQNAziwxTYmAzTqgxiSvtZNMMrtJvFHRIRDzJ3M1lV0prWNWkMM1/3FAd4W49y6VT3fkMCo8uqG7CfGdgR2DgBCxf9KaNPfW5eDEPOgmE5lK8tVSEI6T+Cg7hbcTf4lFYnlFBnlQgp/0JstsM4Vbwb4B34LOpOsf2S8rrWk2xQMjwaMHXkc2s/E8iW3F5nVFuyEXYISFQIiAHw8dzC6CHgLcyHUVWwznKawZ newt@newt-dev1
