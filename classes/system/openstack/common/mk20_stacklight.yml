@@ -4,6 +4,7 @@ classes:
 - system.heka.metric_collector.single
 parameters:
   _param:
+    openstack_version: liberty
     admin_email: root@localhost
     cluster_public_host: _
     graphite_secret_key: password
