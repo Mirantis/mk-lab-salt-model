@@ -1,0 +1,14 @@
+classes:
+- service.collectd.client
+parameters:
+  _param:
+    collectd_backend_carbon_host: localhost
+    collectd_backend_carbon_port: 2003
+  collectd:
+    client:
+      enabled: true
+      backend:
+        carbon:
+          engine: carbon
+          host: ${_param:collectd_backend_carbon_host}
+          port: ${_param:collectd_backend_carbon_port}

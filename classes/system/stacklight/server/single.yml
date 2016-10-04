@@ -1,9 +1,10 @@
 classes:
+- system.heka.remote_collector.single
+- system.heka.aggregator.single
 - system.elasticsearch.server.single
-- system.heka.router.single
 - system.influxdb.server.single
 - system.kibana.server.single
-#- system.grafana.server.single
+- system.grafana.server.single
 - system.openstack.common.mk20_lab
 parameters:
   _param:

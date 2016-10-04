@@ -5,4 +5,3 @@ classes:
 - system.nginx.server.proxy.openstack_api
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
-- system.openstack.common.mk20_lab
