@@ -3,7 +3,7 @@ classes:
 - system.influxdb.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
-- system.openstack.common.mk20_lab
+- system.openstack.common.mk20_stacklight
 parameters:
   _param:
     kibana_elasticsearch_host: localhost
