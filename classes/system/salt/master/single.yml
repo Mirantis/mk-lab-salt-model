@@ -18,6 +18,10 @@ parameters:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty tcp-salt"
           architectures: amd64
           key_url: "http://apt.tcpcloud.eu/public.gpg"
+      package:
+        salt-formula-galera:
+          version: 0.2+0~20160414144014.7~1.gbpf4bfad
+          hold: true
   salt:
     master:
       accept_policy: open_mode
