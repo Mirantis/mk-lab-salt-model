@@ -7,6 +7,9 @@ parameters:
             apache:
               source: pkg
               name: salt-formula-apache
+            grafana:
+              source: pkg
+              name: salt-formula-grafana
             graphite:
               source: pkg
               name: salt-formula-graphite

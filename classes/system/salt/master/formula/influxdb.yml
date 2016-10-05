@@ -7,3 +7,6 @@ parameters:
             influxdb:
               source: pkg
               name: salt-formula-influxdb
+            grafana:
+              source: pkg
+              name: salt-formula-grafana

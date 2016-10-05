@@ -19,7 +19,6 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.opencontrail.control.cluster
-- system.openstack.common.mk20_lab
 parameters:
   linux:
     system:
@@ -68,6 +67,7 @@ parameters:
   nova:
     controller:
       networking: contrail
+      cpu_allocation: 54
       bind:
         private_address: ${_param:cluster_local_address}
         public_address: ${_param:cluster_vip_address}

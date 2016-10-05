@@ -1,4 +1,5 @@
 classes:
+- system.influxdb.server.single
 - system.graphite.collector.single
 - system.graphite.server.single
 - system.openstack.common.mk20_lab
