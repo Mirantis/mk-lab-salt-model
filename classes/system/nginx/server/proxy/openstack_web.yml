@@ -21,3 +21,10 @@ parameters:
             authority: mk20_lab_ca
             engine: salt
             mode: secure
+        nginx_ssl_redirect_openstack_web:
+          enabled: true
+          type: nginx_redirect
+          name: openstack_web_redirect
+          host:
+            name: ${_param:cluster_public_host}
+            port: 80

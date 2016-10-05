@@ -8,7 +8,7 @@ parameters:
           type: nginx_proxy
           name: kibana
           proxy:
-            host: log01
+            host: mon01
             port: 5601
             protocol: http
           host:
