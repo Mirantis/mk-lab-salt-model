@@ -6,4 +6,4 @@ parameters:
     client:
       plugin:
         monitoring_for_openstack:
-          enabled: True
+          enabled: False

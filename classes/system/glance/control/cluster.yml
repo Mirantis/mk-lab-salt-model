@@ -5,6 +5,8 @@ classes:
 parameters:
   glance:
     server:
+      identity:
+        region: RegionOne
       notification: true
       logging:
         heka:

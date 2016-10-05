@@ -9,7 +9,7 @@ parameters:
     system:
       repo:
         tcpcloud:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ xenial main security extra"
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ xenial main security extra tcp"
           architectures: amd64
           default: true
           key_url: "http://apt.tcpcloud.eu/public.gpg"
