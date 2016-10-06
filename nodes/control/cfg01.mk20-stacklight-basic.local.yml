@@ -6,14 +6,14 @@ classes:
 - system.salt.master.single
 - system.reclass.storage.salt
 - system.reclass.storage.system.mk20_stacklight_basic
-#- system.openstack.proxy.mk20_lab_advanced
-#- system.salt.minion.pki.authority
-#- system.salt.minion.pki.certificate
-#- system.sphinx.server.doc.reclass
+- system.openstack.proxy.mk20_lab_advanced
+- system.salt.minion.pki.authority
+- system.salt.minion.pki.certificate
+- system.sphinx.server.doc.reclass
 - system.openstack.common.mk20_stacklight_basic
 parameters:
   _param:
-    reclass_data_repository: "https://github.com/tcpcloud/mk20-lab-salt-model.git"
+    reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
     reclass_data_revision: master
     reclass_config_master: 172.16.10.100
     single_address: 172.16.10.100
