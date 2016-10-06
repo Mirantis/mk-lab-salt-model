@@ -2,6 +2,9 @@ classes:
 - system.horizon.server.single
 - system.nginx.server.single
 - system.nginx.server.proxy.contrail_web
+- system.nginx.server.proxy.graphite_web
 - system.nginx.server.proxy.openstack_api
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
+- system.nginx.server.proxy.sensu_web
+- system.nginx.server.proxy.kibana_web
