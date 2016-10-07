@@ -21,4 +21,4 @@ parameters:
         eth1:
           enabled: true
           type: eth
-          proto: dhpc
+          proto: dhcp

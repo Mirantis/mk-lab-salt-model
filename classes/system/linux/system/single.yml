@@ -20,7 +20,7 @@ parameters:
         eth1:
           enabled: true
           type: eth
-          proto: dhpc
+          proto: dhcp
   _param:
     heka_amqp_host: 172.16.10.110
     heka_amqp_password: workshop
