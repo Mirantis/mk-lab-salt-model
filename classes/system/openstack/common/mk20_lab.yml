@@ -9,6 +9,7 @@ parameters:
     admin_email: root@localhost
     cluster_public_host: _
     graphite_secret_key: password
+    rabbitmq_graphite_password: password
     rabbitmq_monitor_password: password
     sensu_dashboard_password: workshop
     sensu_message_queue_host: mon
