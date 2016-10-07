@@ -27,5 +27,12 @@ parameters:
         mon01:
           address: 172.16.10.107
           names:
+          - mon
+          - mon.mk20-lab-advanced.local
           - mon01
           - mon01.mk20-lab-advanced.local
+        ctl:
+          address: 172.16.10.254
+          names:
+          - ctl
+          - ctl.mk20-lab-advanced.local

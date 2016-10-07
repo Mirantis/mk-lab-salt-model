@@ -86,8 +86,8 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.107
-        mtr01.mk20-lab-expert.local:
-          name: mtr01
+        mon02.mk20-lab-expert.local:
+          name: mon02
           domain: mk20-lab-expert.local
           classes:
           - system.linux.system.xenial
@@ -97,8 +97,8 @@ parameters:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.108
             ceilometer_database_host: 172.16.10.108
-        log01.mk20-lab-expert.local:
-          name: log01
+        mon03.mk20-lab-expert.local:
+          name: mon03
           domain: mk20-lab-expert.local
           classes:
           - system.linux.system.xenial

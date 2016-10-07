@@ -47,5 +47,5 @@ parameters:
         ctl:
           address: 172.16.10.254
           names:
-          - mon
-          - mon.mk20-stacklight-advanced.local
+          - ctl
+          - ctl.mk20-stacklight-advanced.local

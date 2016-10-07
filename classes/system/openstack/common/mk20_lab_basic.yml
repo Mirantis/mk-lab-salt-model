@@ -24,3 +24,8 @@ parameters:
           names:
           - cmp01
           - cmp01.mk20-lab-basic.local
+        ctl:
+          address: 172.16.10.254
+          names:
+          - ctl
+          - ctl.mk20-lab-basic.local

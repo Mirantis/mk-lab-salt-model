@@ -34,14 +34,23 @@ parameters:
           names:
           - mon01
           - mon01.mk20-lab-expert.local
-        mtr01:
+        mon02:
           address: 172.16.10.108
           names:
-          - mtr01
-          - mtr01.mk20-lab-expert.local
-        log01:
+          - mon02
+          - mon02.mk20-lab-expert.local
+        mon03:
           address: 172.16.10.109
           names:
-          - log01
-          - log01.mk20-lab-expert.local
-
+          - mon03
+          - mon03.mk20-lab-expert.local
+        mon:
+          address: 172.16.10.253
+          names:
+          - mon
+          - mon.mk20-lab-expert.local
+        ctl:
+          address: 172.16.10.254
+          names:
+          - ctl
+          - ctl.mk20-lab-expert.local

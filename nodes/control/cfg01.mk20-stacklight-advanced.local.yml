@@ -5,8 +5,8 @@ classes:
 - system.openssh.server.team.stacklight
 - system.salt.master.single
 - system.reclass.storage.salt
-- system.reclass.storage.system.mk20_stacklight_basic
-- system.openstack.proxy.mk20_lab_advanced
+- system.reclass.storage.system.mk20_stacklight_advanced
+- system.openstack.proxy.mk20_stacklight
 - system.salt.minion.pki.authority
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
@@ -20,14 +20,10 @@ parameters:
     salt_master_host: 127.0.0.1
     salt_master_base_environment: prd
     salt_minion_ca_host: cfg01.mk20-stacklight-advanced.local
-    rabbitmq_monitor_password: password
-    sensu_message_queue_host: 172.16.10.107
-    collectd_backend_carbon_host: 172.16.10.107
-    collectd_backend_carbon_port: 2013
   linux:
     system:
       name: cfg01
-      domain: mk20-stacklight-basic.local
+      domain: mk20-stacklight-advanced.local
       repo:
         tcpcloud:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt liberty"
