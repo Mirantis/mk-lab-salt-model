@@ -1,0 +1,51 @@
+classes:
+- system.openstack.common.mk20_stacklight
+parameters:
+  linux:
+    network:
+      host:
+        ctl01:
+          address: ${_param:cluster_node01_address}
+          names:
+          - ${_param:cluster_node01_hostname}
+          - ${_param:cluster_node01_hostname}.mk20-stacklight-advanced.local
+        ctl02:
+          address: ${_param:cluster_node02_address}
+          names:
+          - ${_param:cluster_node02_hostname}
+          - ${_param:cluster_node02_hostname}.mk20-stacklight-advanced.local
+        ctl03:
+          address: ${_param:cluster_node03_address}
+          names:
+          - ${_param:cluster_node03_hostname}
+          - ${_param:cluster_node03_hostname}.mk20-stacklight-advanced.local
+        cmp01:
+          address: 172.16.10.105
+          names:
+          - cmp01
+          - cmp01.mk20-stacklight-advanced.local
+        mon01:
+          address: 172.16.10.107
+          names:
+          - mon01
+          - mon01.mk20-stacklight-advanced.local
+        mon02:
+          address: 172.16.10.108
+          names:
+          - mon02
+          - mon02.mk20-stacklight-advanced.local
+        mon03:
+          address: 172.16.10.109
+          names:
+          - mon03
+          - mon03.mk20-stacklight-advanced.local
+        mon:
+          address: 172.16.10.253
+          names:
+          - mon
+          - mon.mk20-stacklight-advanced.local
+        ctl:
+          address: 172.16.10.254
+          names:
+          - mon
+          - mon.mk20-stacklight-advanced.local
