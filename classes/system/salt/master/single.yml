@@ -29,7 +29,7 @@ parameters:
         net.ipv4.tcp_wmem: 4096 87380 16777216
   salt:
     master:
-      accept_policy: open_mode
+      accept_policy: auto_accept
       worker_threads: 40
       command_timeout: 10
       peer:
