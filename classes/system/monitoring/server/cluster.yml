@@ -1,8 +1,15 @@
 classes:
 - system.elasticsearch.server.single
+- service.keepalived.cluster.single
 - system.rabbitmq.server.monitoring
 - system.monitoring.server.check.api
 - system.openstack.common.mk20_lab
 parameters:
   _param:
-    kibana_elasticsearch_host: localhost
+    kibana_elasticsearch_host: ${_param:monitor_vip_address}
+  keepalived:
+    cluster:
+      enabled: True
+      instance:
+        VIP:
+          address: ${_param:monitor_vip_address}

@@ -8,13 +8,9 @@ parameters:
     keepalived_vip_interface: eth1
     admin_email: root@localhost
     cluster_public_host: _
-    graphite_secret_key: password
-    rabbitmq_monitor_password: password
-    sensu_dashboard_password: workshop
-    sensu_message_queue_host: mon01
-    carbon_message_queue_host: mon01
-    collectd_backend_carbon_host: mon01
-    collectd_backend_carbon_port: 2003
+    heka_amqp_host: mon
+    heka_amqp_password: workshop
+    heka_elasticsearch_host: mon
     opencontrail_version: 3.0
     opencontrail_compute_dns: 8.8.8.8
     opencontrail_stats_password: contrail123

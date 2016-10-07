@@ -16,7 +16,9 @@ parameters:
         saltstack:
           source: "deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main"
           key_url: "https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub"
-  _param:
-    heka_amqp_host: 172.16.10.110
-    heka_amqp_password: workshop
-    heka_elasticsearch_host: 172.16.10.110
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhpc
