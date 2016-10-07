@@ -1,0 +1,8 @@
+classes:
+- system.elasticsearch.server.single
+- system.rabbitmq.server.monitoring
+- system.monitoring.server.check.api
+- system.openstack.common.mk20_lab
+parameters:
+  _param:
+    kibana_elasticsearch_host: localhost

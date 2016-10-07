@@ -2,6 +2,16 @@ classes:
 - service.java.environment.openjdk8
 - service.elasticsearch.server.single
 parameters:
+  linux:
+    system:
+      sysctl:
+        vm.max_map_count: 262144
+        vm.swappiness: 0
+      repo:
+        tcpcloud_elasticsearch:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ elastic"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
   java:
     environment:
       headless: true
@@ -11,13 +21,3 @@ parameters:
       bind:
         address: 0.0.0.0
         port: 9200
-  linux:
-    sysctl:
-      vm.max_map_count: 262144
-      vm.swappiness: 0
-    system:
-      repo:
-        tcpcloud_elasticsearch:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ xenial elastic"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"

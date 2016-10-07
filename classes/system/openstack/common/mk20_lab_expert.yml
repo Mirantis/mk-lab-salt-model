@@ -1,6 +1,14 @@
 classes:
 - system.openstack.common.mk20_lab
 parameters:
+  _param:
+    monitor_vip_address: 172.16.10.253
+    monitor_node01_hostname: mon01
+    monitor_node01_address: 172.16.10.107
+    monitor_node02_hostname: mon02
+    monitor_node02_address: 172.16.10.108
+    monitor_node03_hostname: mon03
+    monitor_node03_address: 172.16.10.109
   linux:
     network:
       host:
@@ -30,27 +38,27 @@ parameters:
           - cmp02
           - cmp02.mk20-lab-expert.local
         mon01:
-          address: 172.16.10.107
+          address: ${_param:monitor_node01_address}
           names:
           - mon01
           - mon01.mk20-lab-expert.local
         mon02:
-          address: 172.16.10.108
+          address: ${_param:monitor_node01_address}
           names:
           - mon02
           - mon02.mk20-lab-expert.local
         mon03:
-          address: 172.16.10.109
+          address: ${_param:monitor_node01_address}
           names:
           - mon03
           - mon03.mk20-lab-expert.local
         mon:
-          address: 172.16.10.253
+          address: ${_param:monitor_vip_address}
           names:
           - mon
           - mon.mk20-lab-expert.local
         ctl:
-          address: 172.16.10.254
+          address: ${_param:cluster_vip_address}
           names:
           - ctl
           - ctl.mk20-lab-expert.local

@@ -35,13 +35,6 @@ parameters:
             password: ${_param:postgresql_graphite_password}
             host: 127.0.0.1
             rights: all privileges
-  rabbitmq:
-    server:
-      host:
-        '/monitor':
-          enabled: true
-          user: monitor
-          password: ${_param:rabbitmq_graphite_password}
   supervisor:
     server:
       enabled: false

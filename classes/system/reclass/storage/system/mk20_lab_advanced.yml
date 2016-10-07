@@ -68,9 +68,7 @@ parameters:
           domain: mk20-lab-advanced.local
           classes:
           - system.linux.system.xenial
-          - system.monitoring.monitor.mk20_lab
-          - system.monitoring.meter.mk20_lab
-          - system.monitoring.log.mk20_lab
+          - system.monitoring.server.single
           - system.openstack.common.mk20_lab_advanced
           params:
             salt_master_host: ${_param:reclass_config_master}

@@ -1,0 +1,16 @@
+classes:
+- system.sensu.client.remote
+- system.sensu.server.single
+- system.sensu.server.handler.mail
+- system.sensu.server.dashboard
+- system.graphite.collector.single
+- system.graphite.server.single
+- system.elasticsearch.server.single
+- system.heka.router.single
+- system.kibana.server.single
+- system.rabbitmq.server.monitoring
+- system.monitoring.server.check.api
+- system.openstack.common.mk20_lab
+parameters:
+  _param:
+    kibana_elasticsearch_host: localhost

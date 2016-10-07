@@ -1,23 +1,17 @@
-classes:
-- system.sensu.client.remote
-- system.sensu.server.single
-- system.sensu.server.handler.mail
-- system.sensu.server.dashboard
-- system.openstack.common.mk20_lab
 parameters:
   collectd:
     client:
       check:
         curl:
-          keystone_api:
+          openstack_keystone_api:
             url: "http://${_param:cluster_vip_address}:5000/v2/"
-          nova_api:
+          openstack_nova_api:
             url: "http://${_param:cluster_vip_address}:8774/"
-          glance_api:
+          openstack_glance_api:
             url: "http://${_param:cluster_vip_address}:9292/"
-          neutron_api:
+          openstack_neutron_api:
             url: "http://${_param:cluster_vip_address}:9696/"
-          heat_cnf:
+          openstack_heat_cnf:
             url: "http://${_param:cluster_vip_address}:8000/v1/"
-          heat_api:
+          openstack_heat_api:
             url: "http://${_param:cluster_vip_address}:8004/v1/"

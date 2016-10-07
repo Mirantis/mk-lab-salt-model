@@ -1,0 +1,12 @@
+classes:
+- service.rabbitmq.server.single
+parameters:
+  _param:
+    rabbitmq_monitor_password: password
+  rabbitmq:
+    server:
+      host:
+        '/monitor':
+          enabled: true
+          user: monitor
+          password: ${_param:rabbitmq_graphite_password}

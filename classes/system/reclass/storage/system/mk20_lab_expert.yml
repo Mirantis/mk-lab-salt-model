@@ -81,29 +81,31 @@ parameters:
           domain: mk20-lab-expert.local
           classes:
           - system.linux.system.xenial
-          - system.monitoring.monitor.mk20_lab
+          - system.monitoring.server.cluster
           - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.107
+            keepalived_vip_priority: 103
         mon02.mk20-lab-expert.local:
           name: mon02
           domain: mk20-lab-expert.local
           classes:
           - system.linux.system.xenial
-          - system.monitoring.meter.mk20_lab
+          - system.monitoring.server.cluster
           - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.108
-            ceilometer_database_host: 172.16.10.108
+            keepalived_vip_priority: 102
         mon03.mk20-lab-expert.local:
           name: mon03
           domain: mk20-lab-expert.local
           classes:
           - system.linux.system.xenial
-          - system.monitoring.log.mk20_lab
+          - system.monitoring.server.cluster
           - system.openstack.common.mk20_lab_expert
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.109
+            keepalived_vip_priority: 101

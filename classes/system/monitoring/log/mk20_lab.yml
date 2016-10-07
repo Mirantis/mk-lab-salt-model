@@ -1,8 +1,0 @@
-classes:
-- system.elasticsearch.server.single
-- system.heka.router.single
-- system.kibana.server.single
-- system.openstack.common.mk20_lab
-parameters:
-  _param:
-    kibana_elasticsearch_host: localhost
