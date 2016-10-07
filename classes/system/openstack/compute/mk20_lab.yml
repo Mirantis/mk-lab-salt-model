@@ -4,6 +4,10 @@ classes:
 - service.ceilometer.agent.cluster
 - service.ceilometer.agent.publisher.graphite
 parameters:
+  _param:
+    opencontrail_compute_gateway: 172.16.10.1
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_iface: eth1
   linux:
     system:
       kernel:
@@ -14,7 +18,7 @@ parameters:
     system:
       repo:
         tcpcloud_openstack:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:keystone_version}"
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:openstack_version}"
           architectures: amd64
           key_url: "http://apt.tcpcloud.eu/public.gpg"
         tcpcloud_opencontrail:

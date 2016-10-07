@@ -13,7 +13,6 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.101
-            keepalived_vip_interface: eth0
             keepalived_vip_priority: 103
             mysql_cluster_role: master
             rabbitmq_cluster_role: master
@@ -29,7 +28,6 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.102
-            keepalived_vip_interface: eth0
             keepalived_vip_priority: 102
             mysql_cluster_role: slave
             rabbitmq_cluster_role: slave
@@ -45,7 +43,6 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.103
-            keepalived_vip_interface: eth0
             keepalived_vip_priority: 101
             mysql_cluster_role: slave
             rabbitmq_cluster_role: slave
@@ -60,6 +57,3 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             single_address: 172.16.10.105
-            opencontrail_compute_address: 172.16.10.105
-            opencontrail_compute_gateway: 172.16.10.1
-            opencontrail_compute_iface: eth0
