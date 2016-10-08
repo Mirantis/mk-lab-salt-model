@@ -19,6 +19,7 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.opencontrail.control.cluster
+- system.horizon.server.cluster
 parameters:
   linux:
     system:

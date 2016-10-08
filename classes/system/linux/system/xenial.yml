@@ -3,10 +3,10 @@ classes:
 - service.ntp.client
 - service.salt.minion.master
 - system.openssh.server.single
-- system.linux.system.lowmem
 parameters:
   linux:
     system:
+      doc: True
       repo:
         tcpcloud:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ xenial main security extra tcp"

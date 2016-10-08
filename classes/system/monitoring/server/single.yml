@@ -3,6 +3,7 @@ classes:
 - system.sensu.server.single
 - system.sensu.server.handler.mail
 - system.sensu.server.dashboard
+- system.grafana.server.single
 - system.graphite.collector.single
 - system.graphite.server.single
 - system.elasticsearch.server.single
@@ -10,7 +11,6 @@ classes:
 - system.kibana.server.single
 - system.rabbitmq.server.monitoring
 - system.monitoring.server.check.api
-- system.openstack.common.mk20_lab
 parameters:
   _param:
     kibana_elasticsearch_host: localhost

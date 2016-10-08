@@ -3,16 +3,11 @@ classes:
 parameters:
   horizon:
     server:
-      branding: "Mk20 Lab Dashboard"
+      branding: "OpenStack Dashboard"
       bind:
-        address: 127.0.0.1
+        address: 0.0.0.0
         port: 8078
       plugin:
-        horizon_theme:
-          theme_name: tcp
-          source:
-            engine: pkg
-            name: openstack-dashboard-tcp-theme
         contrail:
           source:
             engine: pkg

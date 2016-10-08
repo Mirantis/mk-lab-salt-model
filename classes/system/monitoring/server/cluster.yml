@@ -3,7 +3,7 @@ classes:
 - service.keepalived.cluster.single
 - system.rabbitmq.server.monitoring
 - system.monitoring.server.check.api
-- system.openstack.common.mk20_lab
+- system.grafana.server.single
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:monitor_vip_address}

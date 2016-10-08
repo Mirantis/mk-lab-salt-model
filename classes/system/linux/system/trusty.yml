@@ -6,9 +6,10 @@ classes:
 parameters:
   linux:
     system:
+      doc: True
       repo:
         tcpcloud:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp galera-s9s ${_param:openstack_version}"
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp"
           architectures: amd64
           default: true
           key_url: "http://apt.tcpcloud.eu/public.gpg"
@@ -21,7 +22,3 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
-  _param:
-    heka_amqp_host: 172.16.10.110
-    heka_amqp_password: workshop
-    heka_elasticsearch_host: 172.16.10.110

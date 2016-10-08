@@ -15,7 +15,6 @@ parameters:
         headers: true
         version: 3.19.0-26
         extra: true
-    system:
       repo:
         tcpcloud_openstack:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:openstack_version}"
@@ -25,6 +24,22 @@ parameters:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
           architectures: amd64
           key_url: "http://apt.tcpcloud.eu/public.gpg"
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: manual
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 1500
+          address: ${_param:single_address}
+          netmask: '255.255.255.0'
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          use_interfaces:
+          - eth1
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080

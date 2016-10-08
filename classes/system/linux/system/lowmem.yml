@@ -1,5 +1,3 @@
-# Fixes for poor people with less than 12GB of memory :-)
-# ..with settings bellow, 8GB should be enough
 parameters:
   linux:
     storage:

@@ -1,5 +1,4 @@
 classes:
-- system.horizon.server.single
 - system.nginx.server.single
 - system.nginx.server.proxy.contrail_web
 - system.nginx.server.proxy.openstack_api

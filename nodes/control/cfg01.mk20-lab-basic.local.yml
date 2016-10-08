@@ -1,11 +1,12 @@
 classes:
 - service.git.client
-- system.linux.system.single
+- system.linux.system.trusty
 - system.openssh.client.lab
 - system.salt.master.single
 - system.reclass.storage.salt
 - system.reclass.storage.system.mk20_lab_basic
-- system.openstack.proxy.mk20_lab_basic
+- system.openstack.proxy.mk20
+- system.monitoring.proxy.mk20
 - system.salt.minion.pki.authority
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass

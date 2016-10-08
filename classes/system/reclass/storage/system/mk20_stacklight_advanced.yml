@@ -6,9 +6,9 @@ parameters:
           name: ctl01
           domain: mk20-stacklight-basic.local
           classes:
-          - system.linux.system.single
+          - system.linux.system.trusty
           - service.galera.master.cluster
-          - system.openstack.control.mk20_lab
+          - system.openstack.control.mk20
           - system.openstack.common.mk20_stacklight_basic
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -21,9 +21,9 @@ parameters:
           name: ctl02
           domain: mk20-stacklight-basic.local
           classes:  
-          - system.linux.system.single
+          - system.linux.system.trusty
           - service.galera.slave.cluster
-          - system.openstack.control.mk20_lab
+          - system.openstack.control.mk20
           - system.openstack.common.mk20_stacklight_basic
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -36,9 +36,9 @@ parameters:
           name: ctl03
           domain: mk20-stacklight-basic.local
           classes:
-          - system.linux.system.single
+          - system.linux.system.trusty
           - service.galera.slave.cluster
-          - system.openstack.control.mk20_lab
+          - system.openstack.control.mk20
           - system.openstack.common.mk20_stacklight_basic
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -51,8 +51,8 @@ parameters:
           name: cmp01
           domain: mk20-stacklight-basic.local
           classes:
-          - system.linux.system.compute
-          - system.openstack.compute.mk20_lab
+          - system.linux.system.trusty
+          - system.openstack.compute.mk20
           - system.openstack.common.mk20_stacklight_basic
           params:
             salt_master_host: ${_param:reclass_config_master}
