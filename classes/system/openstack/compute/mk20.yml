@@ -10,11 +10,6 @@ parameters:
     opencontrail_compute_iface: eth1
   linux:
     system:
-      kernel:
-        version: 3.19.0-49
-        type: generic
-        headers: true
-        extra: true
       repo:
         tcpcloud_openstack:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:openstack_version}"
