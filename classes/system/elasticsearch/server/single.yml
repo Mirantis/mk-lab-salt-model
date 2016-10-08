@@ -9,7 +9,7 @@ parameters:
         vm.swappiness: 0
       repo:
         tcpcloud_elasticsearch:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ elastic"
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ xenial elastic"
           architectures: amd64
           key_url: "http://apt.tcpcloud.eu/public.gpg"
   java:
