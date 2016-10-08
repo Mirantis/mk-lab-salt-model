@@ -30,4 +30,4 @@ parameters:
       domain: mk20-lab-expert.local
       repo:
         tcpcloud:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt liberty"
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt"
