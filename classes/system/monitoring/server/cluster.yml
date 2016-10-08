@@ -7,9 +7,13 @@ classes:
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:monitor_vip_address}
+parameters:
+  _param:
+    keepalived_vip_interface: ens4
   keepalived:
     cluster:
-      enabled: True
+      enabled: true
       instance:
         VIP:
           address: ${_param:monitor_vip_address}
+          virtual_router_id: 250

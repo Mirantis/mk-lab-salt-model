@@ -5,7 +5,6 @@ classes:
 parameters:
   _param:
     openstack_version: liberty
-    keepalived_vip_interface: eth1
     admin_email: root@localhost
     cluster_public_host: _
     heka_amqp_host: mon
