@@ -11,9 +11,9 @@ parameters:
   linux:
     system:
       kernel:
+        version: 3.19.0-49
         type: generic
         headers: true
-        version: 3.19.0-26
         extra: true
       repo:
         tcpcloud_openstack:

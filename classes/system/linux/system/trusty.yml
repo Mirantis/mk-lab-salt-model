@@ -6,7 +6,7 @@ classes:
 parameters:
   linux:
     system:
-      doc: True
+      doc: false
       repo:
         tcpcloud:
           source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp"
