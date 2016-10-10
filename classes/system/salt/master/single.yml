@@ -1,27 +1,8 @@
 classes:
 - service.salt.master.single
-- system.salt.master.formula.elasticsearch
-- system.salt.master.formula.influxdb
-- system.salt.master.formula.linux
-- system.salt.master.formula.saltstack
-- system.salt.master.formula.openstack
-- system.salt.master.formula.graphite
-- system.salt.master.formula.kedb
-- system.salt.master.formula.sensu
-- system.salt.master.formula.heka
-- system.salt.master.formula.sphinx
 parameters:
   linux:
     system:
-      repo:
-        tcpcloud_salt:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty tcp-salt"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"
-      package:
-        salt-formula-galera:
-          version: 0.2+0~20160414144014.7~1.gbpf4bfad
-          hold: true
       sysctl:
         net.core.rmem_max: 16777216
         net.core.wmem_max: 16777216

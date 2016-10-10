@@ -2,7 +2,7 @@ classes:
 - service.git.client
 - system.linux.system.trusty
 - system.openssh.client.lab
-- system.salt.master.single
+- system.salt.master.pkg
 - system.reclass.storage.salt
 - system.reclass.storage.system.mk20_lab_advanced
 - system.openstack.proxy.mk20

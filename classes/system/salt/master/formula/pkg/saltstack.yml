@@ -7,9 +7,6 @@ parameters:
             backupninja:
               source: pkg
               name: salt-formula-backupninja
-            collectd:
-              source: pkg
-              name: salt-formula-collectd
             git:
               source: pkg
               name: salt-formula-git
@@ -19,9 +16,21 @@ parameters:
             linux:
               source: pkg
               name: salt-formula-linux
+            nginx:
+              source: pkg
+              name: salt-formula-nginx
             ntp:
               source: pkg
               name: salt-formula-ntp
             openssh:
               source: pkg
               name: salt-formula-openssh
+            reclass:
+              source: pkg
+              name: salt-formula-reclass
+            salt:
+              source: pkg
+              name: salt-formula-salt
+            sphinx:
+              source: pkg
+              name: salt-formula-sphinx
