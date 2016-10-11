@@ -1,0 +1,27 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                glance:
+                  is_admin: true
+                  password: ${_param:keystone_glance_password}
+                  email: ${_param:admin_email}
+          service:
+            glance:
+              type: image
+              description: OpenStack Image Service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:glance_service_host}
+                public_port: 9292
+                public_path: ''
+                internal_address: ${_param:glance_service_host}
+                internal_port: 9292
+                internal_path: ''
+                admin_address: ${_param:glance_service_host}
+                admin_port: 9292
+                admin_path: ''

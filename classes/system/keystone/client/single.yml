@@ -1,0 +1,34 @@
+classes:
+- system.keystone.client.service.ceilometer
+- system.keystone.client.service.cinder
+- system.keystone.client.service.cinder2
+- system.keystone.client.service.glance
+- system.keystone.client.service.heat
+- system.keystone.client.service.heat-cfn
+- system.keystone.client.service.keystone
+- system.keystone.client.service.neutron
+- system.keystone.client.service.nova
+- system.keystone.client.service.nova-ec2
+parameters:
+  keystone:
+    client:
+      enabled: true
+      server:
+        identity:
+          admin:
+            host: ${_param:keystone_service_host}
+            port: 35357
+            token: ${_param:keystone_service_token}
+          roles:
+          - admin
+          - Member
+          project:
+            service:
+              description: "OpenStack Service tenant"
+            admin:
+              description: "OpenStack Admin tenant"
+              user:
+                admin:
+                  is_admin: true
+                  password: ${_param:keystone_admin_password}
+                  email: ${_param:admin_email}

@@ -1,0 +1,17 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            cinder:
+              encoding: utf8
+              users:
+              - name: cinder
+                password: ${_param:mysql_cinder_password}
+                host: '%'
+                rights: all
+              - name: cinder
+                password: ${_param:mysql_cinder_password}
+                host: ${_param:single_address}
+                rights: all

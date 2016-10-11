@@ -1,0 +1,20 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          service:
+            heat-cfn:
+              type: cloudformation
+              description: OpenStack CloudFormation Service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:heat_service_host}
+                public_port: 8000
+                public_path: '/v1'
+                internal_address: ${_param:heat_service_host}
+                internal_port: 8000
+                internal_path: '/v1'
+                admin_address: ${_param:heat_service_host}
+                admin_port: 8000
+                admin_path: '/v1'

@@ -1,0 +1,27 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                ceilometer:
+                  is_admin: true
+                  password: ${_param:keystone_ceilometer_password}
+                  email: ${_param:admin_email}
+          service:
+            ceilometer:
+              type: metering
+              description: OpenStack Telemetry Service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:ceilometer_service_host}
+                public_port: 8777
+                public_path: '/'
+                internal_address: ${_param:ceilometer_service_host}
+                internal_port: 8777
+                internal_path: '/'
+                admin_address: ${_param:ceilometer_service_host}
+                admin_port: 8777
+                admin_path: '/'

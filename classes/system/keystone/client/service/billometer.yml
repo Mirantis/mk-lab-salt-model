@@ -1,0 +1,27 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                billometer:
+                  is_admin: true
+                  password: ${_param:keystone_billometer_password}
+                  email: ${_param:admin_email}
+          service:
+            billometer:
+              type: billing
+              description: OpenStack Billing Service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:billometer_service_host}
+                public_port: 9753
+                public_path: '/v1'
+                internal_address: ${_param:billometer_service_host}
+                internal_port: 9753
+                internal_path: '/v1'
+                admin_address: ${_param:billometer_service_host}
+                admin_port: 9753
+                admin_path: '/v1'

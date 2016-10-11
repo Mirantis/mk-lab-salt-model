@@ -1,0 +1,20 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          service:
+            keystone3:
+              type: identity
+              description: OpenStack Identity Service v3
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:keystone_service_host}
+                public_port: 5000
+                public_path: '/v3'
+                internal_address: ${_param:keystone_service_host}
+                internal_port: 5000
+                internal_path: '/v3'
+                admin_address: ${_param:keystone_service_host}
+                admin_port: 35357
+                admin_path: '/v3'

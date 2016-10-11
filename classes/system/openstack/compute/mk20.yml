@@ -1,4 +1,6 @@
 classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
 - service.ceilometer.agent.cluster
@@ -9,16 +11,6 @@ parameters:
     opencontrail_compute_address: ${_param:single_address}
     opencontrail_compute_iface: eth1
   linux:
-    system:
-      repo:
-        tcpcloud_openstack:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:openstack_version}"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"
-        tcpcloud_opencontrail:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"
     network:
       interface:
         eth1:

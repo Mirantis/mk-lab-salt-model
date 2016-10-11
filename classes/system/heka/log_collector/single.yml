@@ -1,0 +1,39 @@
+#classes:
+#- service.heka.log_collector.single
+applications:
+- heka
+parameters:
+  ceilometer:
+    _support:
+      heka:
+        enabled: false
+  glance:
+    _support:
+      heka:
+        enabled: false
+  elasticsearch:
+    _support:
+      heka:
+        enabled: false
+  heat:
+    _support:
+      heka:
+        enabled: false
+  keystone:
+    _support:
+      heka:
+        enabled: false
+  nova:
+    _support:
+      heka:
+        enabled: true
+  neutron:
+    _support:
+      heka:
+        enabled: false
+  heka:
+    _support:
+      heka:
+        enabled: true
+    log_collector:
+      enabled: true

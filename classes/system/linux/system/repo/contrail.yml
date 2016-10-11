@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    system:
+      repo:
+        tcpcloud_opencontrail:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty extra oc30"
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"

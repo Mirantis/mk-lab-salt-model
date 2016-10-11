@@ -1,0 +1,8 @@
+#classes:
+#- service.heka.metric_collector.single
+applications:
+- heka
+parameters:
+  heka:
+    metric_collector:
+      enabled: true

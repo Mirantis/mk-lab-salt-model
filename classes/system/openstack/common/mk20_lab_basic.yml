@@ -4,6 +4,11 @@ parameters:
   linux:
     network:
       host:
+        cfg01:
+          address: 172.16.10.100
+          names:
+          - cfg01
+          - cfg01.mk20-lab-basic.local
         ctl01:
           address: ${_param:cluster_node01_address}
           names:
