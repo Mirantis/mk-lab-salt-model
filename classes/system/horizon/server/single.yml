@@ -20,4 +20,9 @@ parameters:
           source:
             engine: pkg
             name: python-horizon-overrides-plugin
-
+        horizon_theme:
+          app: horizon_theme
+          theme_name: tcp
+          source:
+            engine: pkg
+            name: openstack-dashboard-tcp-theme
