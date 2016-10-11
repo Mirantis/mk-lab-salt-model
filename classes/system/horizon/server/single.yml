@@ -22,7 +22,7 @@ parameters:
             name: python-horizon-overrides-plugin
         horizon_theme:
           app: horizon_theme
-          theme_name: tcp
+          theme_name: mirantis-theme
           source:
             engine: pkg
-            name: openstack-dashboard-tcp-theme
+            name: openstack-dashboard-mirantis-theme
