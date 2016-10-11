@@ -1,0 +1,5 @@
+classes:
+- system.salt.master.single
+- system.salt.master.formula.git.openstack
+- system.salt.master.formula.git.saltstack
+- system.salt.master.formula.git.stacklight
