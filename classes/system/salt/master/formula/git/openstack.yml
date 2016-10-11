@@ -22,7 +22,7 @@ parameters:
               revision: ${_param:salt_master_environment_revision}
             glusterfs:
               source: git
-              address: 'https://github.com/openstack/salt-formula-glusterfs.git'
+              address: 'https://github.com/tcpcloud/salt-formula-glusterfs.git'
               revision: ${_param:salt_master_environment_revision}
             haproxy:
               source: git
