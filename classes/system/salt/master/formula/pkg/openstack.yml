@@ -16,6 +16,9 @@ parameters:
             glance:
               source: pkg
               name: salt-formula-glance
+            glusterfs:
+              source: pkg
+              name: salt-formula-glusterfs
             haproxy:
               source: pkg
               name: salt-formula-haproxy
@@ -49,21 +52,18 @@ parameters:
             nova:
               source: pkg
               name: salt-formula-nova
-            openvstorage:
-              source: pkg
-              name: salt-formula-openvstorage
-            python:
-              source: pkg
-              name: salt-formula-python
             opencontrail:
               source: pkg
               name: salt-formula-opencontrail
+            python:
+              source: pkg
+              name: salt-formula-python
             rabbitmq:
               source: pkg
               name: salt-formula-rabbitmq
             supervisor:
               source: pkg
               name: salt-formula-supervisor
-            glusterfs:
+            swift:
               source: pkg
-              name: salt-formula-glusterfs
+              name: salt-formula-swift

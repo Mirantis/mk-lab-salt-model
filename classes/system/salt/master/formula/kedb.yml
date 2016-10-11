@@ -1,9 +1,0 @@
-parameters:
-  salt:
-    master:
-      environment:
-        prd:
-          formula:
-            kedb:
-              source: pkg
-              name: salt-formula-kedb
