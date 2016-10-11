@@ -1,4 +1,7 @@
 parameters:
+  _param:
+    nginx_proxy_openstack_web_host: ${_param:cluster_public_host}
+    nginx_proxy_openstack_web_proxy_host: ${_param:cluster_vip_address}
   nginx:
     server:
       enabled: true
@@ -8,12 +11,12 @@ parameters:
           type: nginx_proxy
           name: openstack_web
           proxy:
-            host: localhost
+            host: ${_param:nginx_proxy_openstack_web_proxy_host}
             port: 8078
             protocol: http
             websocket: true
           host:
-            name: ${_param:cluster_public_host}
+            name: ${_param:nginx_proxy_openstack_web_host}
             port: 443
             protocol: https
           ssl:
@@ -26,5 +29,5 @@ parameters:
           type: nginx_redirect
           name: openstack_web_redirect
           host:
-            name: ${_param:cluster_public_host}
+            name: ${_param:nginx_proxy_openstack_web_host}
             port: 80
