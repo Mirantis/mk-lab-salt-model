@@ -36,6 +36,13 @@ parameters:
           full_name: Swann Croiset
           home: /home/scroiset
           email: scroiset@mirantis.com
+        ppetit:
+          enabled: true
+          name: ppetit
+          sudo: true
+          full_name: Patrick Petit 
+          home: /home/ppetit
+          email: ppetit@mirantis.com
   openssh:
     client:
       enabled: true
@@ -67,6 +74,11 @@ parameters:
           public_keys:
           - ${public_keys:scroiset}
           user: ${linux:system:user:scroiset}
+        ppetit:
+          enabled: true
+          public_keys:
+          - ${public_keys:ppetit}
+          user: ${linux:system:user:ppetit}
   public_keys:
     newt:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3odU+3V2uDA2ptAFL9hrJRPNEEdAyztWOZFQ5Oyd9oerTGOU3p4xmrgWWjfKFKbYGhiiIUcYAol5PkTfKukGEkkjCHYA1t023soCaaAj85wCZCnw2zQNAziwxTYmAzTqgxiSvtZNMMrtJvFHRIRDzJ3M1lV0prWNWkMM1/3FAd4W49y6VT3fkMCo8uqG7CfGdgR2DgBCxf9KaNPfW5eDEPOgmE5lK8tVSEI6T+Cg7hbcTf4lFYnlFBnlQgp/0JstsM4Vbwb4B34LOpOsf2S8rrWk2xQMjwaMHXkc2s/E8iW3F5nVFuyEXYISFQIiAHw8dzC6CHgLcyHUVWwznKawZ newt@newt-dev1
@@ -78,3 +90,5 @@ parameters:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCXBHKQaGUNB92DsnyvflmCbmuXnkiuNahZiue3hnyXqLA2q8jmQmzBbxReAJzexnVfJhrUCTw8IPJUpMUP27u3igvGdkhfctdUuxVf9yGJErtGNgHK/aGbeLCvUOmhw6X/xbf3IbyFL1gwxOJ2cmmjlSptYU9E1W2xFY+IMFWBhzO3vso5EABgPVli/UUMfeXUUd++lIZpoyYe2Hkri1QGNhzfbZcFjEO78+vNiLZrvjJEtkXWu7iZTYK6eE365CiFJzqFL7N6Ichb28qakcmVqR/foreuz3cOMqMGssKoOQk1213x8w4fE0yLwf9Ft8L7GMf+vXQvuNt0ZKBPWqn7 spasquier@mirantis.com
     scroiset:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUfVxx6qi4fay4znw8M6yLJJcRr3pdvPPihTAszioFJP9V/GBbqfkofTfeKdpdvJ4j25p40boiDt43Ek7LfcRmKMP9+2SEfk9W7ec/umM8Mer+h4ocnShVQm69weELVUfr9q4G+qWf14ANc9D097bclqQ6FP/cjy8HodVPgQ+i1lpMjwP6xvAAERJJH353lCFsxkh2N8aOi9YcP9M2lQeKWM+eYFsdcmTFAPHbgPq0K4ma6/YXw5UibEBClYu1u4OJTFZSI3z8kERb2cU0aFGYAduiynDMBKM7y7YAoksgBOVprq0huEMFUqJ3vsrZbPn55GIpzmBga+EGnNbSCadt swann@scroiset
+    ppetit:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCUGCb+mGidT4FRa4rJxoYx39NX2vCjRw+CmCQJW/Uf6xc0NNp5WRWJ0hnyIMRVVfehvfjdXPo4bO4cXIwmo06C1Wx+DMyvjI9NvuHtt52p3QTsh+PYZe5t4hFuGh7veWQw3LuLtDLVlVS633FQMgT/BXDaBc65yfN9CuV6lHqZ6KPKoGAi3ADlcQFqhFttO+GsVkxd6uGtelnbYXsDMwylCIKop0C/obu6wG85d/8Q2/Zts5CvUcCiCNfZtl8otgNMrpfnuhC0xAsmgwDxqK2kshxUujclyFfO7ixl+E9Plc7kUJvodNbzOcAmY3YpuHVoJQkHx/Ou81/q+JOVtFxz ppetit@baobab 
