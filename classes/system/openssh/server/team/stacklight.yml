@@ -12,6 +12,7 @@ parameters:
         elemoine:
           enabled: true
           name: elemoine
+          sudo: true
           full_name: Eric Lemoine
           home: /home/elemoine
           email: elemoine@mirantis.com
