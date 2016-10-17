@@ -1,8 +1,0 @@
-parameters:
-  rabbitmq:
-    server:
-      host:
-        '/openstack':
-          enabled: true
-          user: monitor
-          password: ${_param:rabbitmq_graphite_password}
