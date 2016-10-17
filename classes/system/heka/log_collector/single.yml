@@ -1,0 +1,2 @@
+classes:
+- service.heka.log_collector
