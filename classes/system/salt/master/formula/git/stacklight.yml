@@ -60,3 +60,7 @@ parameters:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-sensu.git'
               revision: ${_param:salt_master_environment_revision}
+            nagios:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
+              revision: ${_param:salt_master_environment_revision}
