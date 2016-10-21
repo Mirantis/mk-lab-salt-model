@@ -1,18 +1,12 @@
 classes:
 - system.linux.system.lowmem
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos8
 - service.keepalived.cluster.single
 - service.haproxy.proxy.single
 - service.memcached.server.single
 - service.rabbitmq.server.cluster
 - system.keystone.server.cluster
-- system.keystone.server.service.keystone
-#- system.keystone.server.service.keystone3
-- system.keystone.server.service.ceilometer
-- system.keystone.server.service.glance
-- system.keystone.server.service.nova
-- system.keystone.server.service.neutron
-- system.keystone.server.service.cinder
-- system.keystone.server.service.heat
 - system.glance.control.cluster
 - system.nova.control.cluster
 - system.neutron.control.cluster
@@ -25,15 +19,9 @@ parameters:
     keepalived_vip_interface: eth1
   linux:
     system:
-      repo:
-        tcpcloud_openstack:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty ${_param:keystone_version} galera-s9s"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"
-        tcpcloud_opencontrail:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty oc30"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"
+      package:
+        python-msgpack:
+          version: latest
   keepalived:
     cluster:
       instance:

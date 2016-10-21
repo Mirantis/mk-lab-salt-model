@@ -1,0 +1,27 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                cinder:
+                  is_admin: true
+                  password: ${_param:keystone_cinder_password}
+                  email: ${_param:admin_email}
+          service:
+            cinderv2:
+              type: volumev2
+              description: OpenStack Volume Service v2
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:cinder_service_host}
+                public_port: 8776
+                public_path: '/v2/$(tenant_id)s'
+                internal_address: ${_param:cinder_service_host}
+                internal_port: 8776
+                internal_path: '/v2/$(tenant_id)s'
+                admin_address: ${_param:cinder_service_host}
+                admin_port: 8776
+                admin_path: '/v2/$(tenant_id)s'

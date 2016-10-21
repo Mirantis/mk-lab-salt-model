@@ -83,7 +83,7 @@ parameters:
             rabbitmq:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-rabbitmq.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             supervisor:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-supervisor.git'

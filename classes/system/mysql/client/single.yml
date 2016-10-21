@@ -1,0 +1,20 @@
+classes:
+- system.mysql.client.database.ceilometer
+- system.mysql.client.database.cinder
+- system.mysql.client.database.glance
+- system.mysql.client.database.heat
+- system.mysql.client.database.keystone
+- system.mysql.client.database.nova
+- system.mysql.client.database.nova_api
+parameters:
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          admin:
+            host: ${_param:cluster_vip_address}
+            port: 3306
+            user: ${_param:mysql_admin_user}
+            password: ${_param:mysql_admin_password}
+            encoding: utf8

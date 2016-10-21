@@ -1,6 +1,7 @@
 classes:
 - service.git.client
-- system.linux.system.trusty
+- system.linux.system.xenial
+- system.linux.system.repo.salt
 - system.openssh.client.lab
 - system.salt.master.pkg
 - system.reclass.storage.salt
@@ -10,6 +11,8 @@ classes:
 - system.salt.minion.pki.authority
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
+- system.keystone.client.single
+- system.mysql.client.single
 - system.openstack.common.mk20_lab_advanced
 parameters:
   _param:
@@ -28,6 +31,3 @@ parameters:
     system:
       name: cfg01
       domain: mk20-lab-advanced.local
-      repo:
-        tcpcloud:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty main security extra tcp tcp-salt"

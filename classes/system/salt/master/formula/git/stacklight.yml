@@ -27,7 +27,7 @@ parameters:
             heka:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-heka.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             influxdb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-influxdb.git'
@@ -47,7 +47,7 @@ parameters:
             rabbitmq:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-rabbitmq.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             redis:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-redis.git'

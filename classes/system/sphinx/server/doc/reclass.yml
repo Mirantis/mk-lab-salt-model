@@ -7,16 +7,10 @@ parameters:
     server:
       doc:
         reclass_doc:
-          theme: sphinx_tcpcloud_theme
           builder: singlehtml
           path: source
           source:
             engine: reclass
-  linux:
-    system:
-      package:
-        python-sphinx-tcpcloud-theme:
-          version: latest
   nginx:
     server:
       site:

@@ -5,6 +5,7 @@ classes:
 parameters:
   _param:
     openstack_version: liberty
+    openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_host: _
     heka_amqp_host: mon
