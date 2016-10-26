@@ -6,3 +6,11 @@ parameters:
   heka:
     metric_collector:
       enabled: true
+      output:
+        influxdb:
+          engine: influxdb
+          host: ${_param:heka_influxdb_host}
+          port: ${_param:influxdb_port}
+          database: ${_param:influxdb_database}
+          username: ${_param:influxdb_user}
+          password: ${_param:influxdb_password}
