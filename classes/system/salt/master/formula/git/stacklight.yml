@@ -11,7 +11,7 @@ parameters:
             collectd:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-collectd.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             elasticsearch:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-elasticsearch.git'
