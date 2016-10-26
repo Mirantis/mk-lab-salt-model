@@ -47,6 +47,17 @@ parameters:
             mysql_cluster_role: slave
             rabbitmq_cluster_role: slave
             opencontrail_database_id: 3
+        prx01.mk20-stacklight-basic.local:
+          name: prx01
+          domain: mk20-stacklight-basic.local
+          classes:
+          - system.linux.system.trusty
+          - system.linux.system.repo.mk20
+          - system.horizon.server.cluster
+          - system.openstack.common.mk20_stacklight_basic
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            single_address: 172.16.10.121
         cmp01.mk20-stacklight-basic.local:
           name: cmp01
           domain: mk20-stacklight-basic.local

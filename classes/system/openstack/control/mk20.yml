@@ -13,8 +13,6 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.opencontrail.control.cluster
-- system.horizon.server.cluster
-- service.grafana.collector
 parameters:
   _param:
     keepalived_vip_interface: eth1
