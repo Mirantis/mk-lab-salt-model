@@ -1,0 +1,40 @@
+parameters:
+  keystone:
+    server:
+      service:
+        heat:
+          type: orchestration
+          description: Heat Orchestration API
+          user:
+            name: heat
+            password: ${_param:keystone_heat_password}
+          bind:
+            public_address: ${_param:heat_service_host}
+            public_protocol: http
+            public_port: 8004
+            internal_address: ${_param:heat_service_host}
+            internal_port: 8004
+            admin_address: ${_param:heat_service_host}
+            admin_port: 8004
+            public_protocol: http
+            public_path: '/v1/%(tenant_id)s'
+            internal_protocol: http
+            internal_path: '/v1/%(tenant_id)s'
+            admin_protocol: http
+            admin_path: '/v1/%(tenant_id)s'
+        heat-cfn:
+          type: cloudformation
+          description: AWS CloudFormation API
+          bind:
+            public_address: ${_param:heat_service_host}
+            public_protocol: http
+            public_port: 8000
+            public_path: '/v1'
+            internal_address: ${_param:heat_service_host}
+            internal_protocol: http
+            internal_port: 8000
+            internal_path: '/v1'
+            admin_address: ${_param:heat_service_host}
+            admin_protocol: http
+            admin_port: 8000
+            admin_path: '/v1'

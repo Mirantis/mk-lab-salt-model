@@ -1,0 +1,23 @@
+parameters:
+  keystone:
+    server:
+      service:
+        ceilometer:
+          type: metering
+          description: OpenStack Telemetry Service
+          user:
+            name: ceilometer
+            password: ${_param:keystone_ceilometer_password}
+          bind:
+            public_address: ${_param:ceilometer_service_host}
+            public_protocol: http
+            public_port: 8777
+            public_path: '/'
+            internal_address: ${_param:ceilometer_service_host}
+            internal_protocol: http
+            internal_port: 8777
+            internal_path: '/'
+            admin_address: ${_param:ceilometer_service_host}
+            admin_protocol: http
+            admin_port: 8777
+            admin_path: '/'
