@@ -1,0 +1,41 @@
+parameters:
+  keystone:
+    server:
+      service:
+        cinder:
+          type: volume
+          description: OpenStack Volume Service
+          user:
+            name: cinder
+            password: ${_param:keystone_cinder_password}
+          bind:
+            public_address: ${_param:cinder_service_host}
+            public_protocol: http
+            public_port: 8776
+            public_path: '/v1/$(tenant_id)s'
+            internal_address: ${_param:cinder_service_host}
+            internal_protocol: http
+            internal_port: 8776
+            internal_path: '/v1/$(tenant_id)s'
+            admin_address: ${_param:cinder_service_host}
+            admin_protocol: http
+            admin_port: 8776
+            admin_path: '/v1/$(tenant_id)s'
+            public_protocol: http
+        cinderv2:
+          type: volumev2
+          description: OpenStack Volume Service v2.0
+          bind:
+            public_address: ${_param:cinder_service_host}
+            public_protocol: http
+            public_port: 8776
+            public_path: '/v2/$(tenant_id)s'
+            internal_address: ${_param:cinder_service_host}
+            internal_protocol: http
+            internal_port: 8776
+            internal_path: '/v2/$(tenant_id)s'
+            admin_address: ${_param:cinder_service_host}
+            admin_protocol: http
+            admin_port: 8776
+            admin_path: '/v2/$(tenant_id)s'
+            public_protocol: http

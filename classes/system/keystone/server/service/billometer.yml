@@ -1,0 +1,23 @@
+parameters:
+  keystone:
+    server:
+      service:
+        billometer:
+          type: billing
+          description: Openstack Billing Service
+          user:
+            name: billometer
+            password: ${_param:keystone_billometer_password}
+          bind:
+            public_address: ${_param:billometer_service_host}
+            public_protocol: http
+            public_port: 9753
+            public_path: '/v1'
+            internal_address: ${_param:billometer_service_host}
+            internal_protocol: http
+            internal_port: 9753
+            internal_path: '/v1'
+            admin_address: ${_param:billometer_service_host}
+            admin_protocol: http
+            admin_port: 9753
+            admin_path: '/v1'

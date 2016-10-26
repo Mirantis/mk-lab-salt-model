@@ -1,0 +1,39 @@
+parameters:
+  keystone:
+    server:
+      service:
+        nova:
+          type: compute
+          description: OpenStack Compute Service
+          user:
+            name: nova
+            password: ${_param:keystone_nova_password}
+          bind:
+            public_address: ${_param:nova_service_host}
+            public_protocol: http
+            public_port: 8774
+            public_path: '/v2/$(tenant_id)s'
+            internal_address: ${_param:nova_service_host}
+            internal_port: 8774
+            internal_protocol: http
+            internal_path: '/v2/$(tenant_id)s'
+            admin_address: ${_param:nova_service_host}
+            admin_port: 8774
+            admin_protocol: http
+            admin_path: '/v2/$(tenant_id)s'
+        ec2:
+          type: ec2
+          description: OpenStack EC2 Service
+          bind:
+            public_address: ${_param:nova_service_host}
+            public_protocol: http
+            public_port: 8773
+            public_path: '/services/Cloud'
+            internal_address: ${_param:nova_service_host}
+            internal_port: 8773
+            internal_protocol: http
+            internal_path: '/services/Cloud'
+            admin_address: ${_param:nova_service_host}
+            admin_port: 8773
+            admin_protocol: http
+            admin_path: '/services/Admin'
