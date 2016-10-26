@@ -1,0 +1,18 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_sphinx:
+          enabled: true
+          type: nginx_proxy
+          name: sphinx
+          proxy:
+            host: prx
+            port: 8090
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8088
+            protocol: https
+          ssl: ${_param:nginx_proxy_ssl}

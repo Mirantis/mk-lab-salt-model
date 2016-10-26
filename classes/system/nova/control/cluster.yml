@@ -1,6 +1,7 @@
 classes:
 - service.haproxy.proxy.single
 - service.nova.control.cluster
+- service.keepalived.cluster.single
 parameters:
   mysql:
     server:

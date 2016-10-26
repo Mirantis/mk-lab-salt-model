@@ -1,4 +1,5 @@
 classes:
+- service.keepalived.cluster.single
 - service.haproxy.proxy.single
 - service.neutron.control.cluster
 parameters:

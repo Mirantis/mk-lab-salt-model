@@ -3,11 +3,4 @@ classes:
 - system.salt.master.formula.pkg.openstack
 - system.salt.master.formula.pkg.saltstack
 - system.salt.master.formula.pkg.stacklight
-parameters:
-  linux:
-    system:
-      repo:
-        tcpcloud_salt:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty tcp-salt"
-          architectures: amd64
-          key_url: "http://apt.tcpcloud.eu/public.gpg"
+- system.linux.system.repo.tcp_salt

@@ -1,0 +1,46 @@
+classes:
+- system.linux.system.single
+parameters:
+  _param:
+    cluster_domain: mk22-lab-basic.local
+    cluster_name: mk22_lab_basic
+  linux:
+    network:
+      host:
+        cfg01:
+          address: 172.16.10.100
+          names:
+          - cfg01
+          - cfg01.mk22-lab-basic.local
+        ctl01:
+          address: ${_param:cluster_node01_address}
+          names:
+          - ${_param:cluster_node01_hostname}
+          - ${_param:cluster_node01_hostname}.mk22-lab-basic.local
+        ctl02:
+          address: ${_param:cluster_node02_address}
+          names:
+          - ${_param:cluster_node02_hostname}
+          - ${_param:cluster_node02_hostname}.mk22-lab-basic.local
+        ctl03:
+          address: ${_param:cluster_node03_address}
+          names:
+          - ${_param:cluster_node03_hostname}
+          - ${_param:cluster_node03_hostname}.mk22-lab-basic.local
+        cmp01:
+          address: 172.16.10.105
+          names:
+          - cmp01
+          - cmp01.mk22-lab-basic.local
+        mon01:
+          address: 172.16.10.107
+          names:
+          - mon
+          - mon.mk22-lab-basic.local
+          - mon01
+          - mon01.mk22-lab-basic.local
+        ctl:
+          address: ${_param:cluster_vip_address}
+          names:
+          - ctl
+          - ctl.mk22-lab-basic.local

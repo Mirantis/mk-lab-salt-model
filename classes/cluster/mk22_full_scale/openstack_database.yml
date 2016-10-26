@@ -1,0 +1,43 @@
+classes:
+- system.linux.system.repo.mos8
+- cluster.mk22_full_scale.openstack
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+  linux:
+    system:
+      package:
+        python-msgpack:
+          version: latest
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          virtual_router_id: 550
+  haproxy:
+    proxy:
+      listen:
+        mysql_cluster:
+          type: mysql
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 3306
+          servers:
+          - name: ${_param:cluster_node01_hostname}
+            host: ${_param:cluster_node01_address}
+            port: 3306
+            params: check
+          - name: ${_param:cluster_node02_hostname}
+            host: ${_param:cluster_node02_address}
+            port: 3306
+            params: backup check
+          - name: ${_param:cluster_node03_hostname}
+            host: ${_param:cluster_node03_address}
+            port: 3306
+            params: backup check

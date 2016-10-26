@@ -15,8 +15,4 @@ parameters:
             name: ${_param:cluster_public_host}
             port: 5601
             protocol: https
-          ssl:
-            enabled: true
-            authority: mk20_lab_ca
-            engine: salt
-            mode: secure
+          ssl: ${_param:nginx_proxy_ssl}

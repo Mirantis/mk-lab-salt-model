@@ -1,6 +1,7 @@
 classes:
 - service.cinder.control.cluster_control
 - service.haproxy.proxy.single
+- service.keepalived.cluster.single
 parameters:
   mysql:
     server:

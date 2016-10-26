@@ -1,0 +1,11 @@
+classes:
+- system.horizon.server.cluster
+- cluster.mk20_lab_basic.openstack
+parameters:
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp

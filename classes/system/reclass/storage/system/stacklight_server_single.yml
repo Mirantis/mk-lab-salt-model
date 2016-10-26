@@ -1,0 +1,13 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        mon01:
+          name: mon01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.stacklight_server
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: 172.16.10.107

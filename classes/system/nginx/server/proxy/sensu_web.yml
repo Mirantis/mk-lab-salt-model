@@ -8,9 +8,11 @@ parameters:
           type: nginx_proxy
           name: sensu
           proxy:
-            host: mon01
+            host: mon
             port: 3000
             protocol: http
           host:
             name: ${_param:cluster_public_host}
             port: 8088
+            protocol: https
+          ssl: ${_param:nginx_proxy_ssl}

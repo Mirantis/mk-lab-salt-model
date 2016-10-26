@@ -21,9 +21,4 @@ parameters:
           host:
             name: ${_param:nginx_static_reclass_doc_host}
             port: 8090
-            protocol: https
-          ssl:
-            enabled: true
-            authority: mk20_lab_ca
-            engine: salt
-            mode: secure
+            protocol: http
