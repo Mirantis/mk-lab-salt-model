@@ -11,7 +11,7 @@ parameters:
           type: nginx_proxy
           name: openstack_web
           proxy:
-            host: ${_param:nginx_proxy_openstack_web_proxy_host}
+            host: prx
             port: 8078
             protocol: http
             websocket: true
@@ -19,11 +19,7 @@ parameters:
             name: ${_param:nginx_proxy_openstack_web_host}
             port: 443
             protocol: https
-          ssl:
-            enabled: true
-            authority: mk20_lab_ca
-            engine: salt
-            mode: secure
+          ssl: ${_param:nginx_proxy_ssl}
         nginx_ssl_redirect_openstack_web:
           enabled: true
           type: nginx_redirect

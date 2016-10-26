@@ -1,0 +1,6 @@
+classes:
+- system.linux.system.single
+parameters:
+  _param:
+    cluster_domain: mk22-full-scale.local
+    cluster_name: mk22_full_scale

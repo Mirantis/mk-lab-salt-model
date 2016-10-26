@@ -1,0 +1,12 @@
+classes:
+- system.linux.system.repo.tcp_base
+- system.horizon.server.cluster
+- cluster.mk22_lab_advanced.openstack
+parameters:
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp

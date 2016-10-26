@@ -1,6 +1,7 @@
 classes:
 - service.heat.server.cluster
 - service.haproxy.proxy.single
+- service.keepalived.cluster.single
 parameters:
   mysql:
     server:

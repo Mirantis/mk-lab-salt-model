@@ -1,5 +1,6 @@
 classes:
 - service.keystone.server.cluster
+- service.keepalived.cluster.single
 - system.keystone.server.storage.glusterfs
 parameters:
   keystone:

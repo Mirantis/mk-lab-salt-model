@@ -1,0 +1,5 @@
+classes:
+- cluster.mk22_full_scale
+parameters:
+  _param:
+    heka_elasticsearch_host: mon

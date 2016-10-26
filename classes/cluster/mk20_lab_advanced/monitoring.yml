@@ -1,0 +1,5 @@
+classes:
+- cluster.mk20_lab_advanced
+parameters:
+  _param:
+    heka_elasticsearch_host: mon

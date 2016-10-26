@@ -1,0 +1,18 @@
+classes:
+- system.heka.remote_collector.single
+- system.heka.aggregator.single
+- system.elasticsearch.server.single
+- system.influxdb.server.single
+- system.kibana.server.single
+- system.grafana.server.single
+- cluster.mk20_stacklight_basic.stacklight
+parameters:
+  _param:
+    kibana_elasticsearch_host: localhost
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: dhcp
