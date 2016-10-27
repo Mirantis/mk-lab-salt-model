@@ -9,7 +9,7 @@ classes:
 - system.elasticsearch.server.single
 - system.heka.router.single
 - system.kibana.server.single
-- system.rabbitmq.server.monitoring
+- system.rabbitmq.server.vhost.monitoring
 - system.monitoring.server.check.api
 parameters:
   _param:
