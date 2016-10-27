@@ -1,0 +1,8 @@
+parameters:
+  rabbitmq:
+    server:
+      host:
+        '/monitor':
+          enabled: true
+          user: monitor
+          password: ${_param:rabbitmq_graphite_password}
