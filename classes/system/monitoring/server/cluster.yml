@@ -1,7 +1,7 @@
 classes:
 - system.elasticsearch.server.single
 - service.keepalived.cluster.single
-- system.rabbitmq.server.monitoring
+- system.rabbitmq.server.vhost.monitoring
 - system.monitoring.server.check.api
 - system.grafana.server.single
 parameters:
