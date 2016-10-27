@@ -3,3 +3,6 @@ classes:
 parameters:
   _param:
     heka_elasticsearch_host: mon
+    heka_amqp_host: mon
+    rabbitmq_graphite_password: password
+    rabbitmq_monitor_password: password
