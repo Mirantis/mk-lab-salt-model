@@ -3,6 +3,9 @@ parameters:
     client:
       server:
         identity:
+          roles:
+          - heat_stack_user
+          - heat_stack_owner
           project:
             service:
               user:
