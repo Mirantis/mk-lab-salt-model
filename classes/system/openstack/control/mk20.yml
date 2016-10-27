@@ -7,6 +7,7 @@ classes:
 - service.memcached.server.single
 - service.rabbitmq.server.cluster
 - system.keystone.server.cluster
+- system.keystone.client.single
 - system.glance.control.cluster
 - system.nova.control.cluster
 - system.neutron.control.cluster
