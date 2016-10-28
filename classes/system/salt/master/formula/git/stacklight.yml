@@ -30,9 +30,7 @@ parameters:
             heka:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-heka.git'
-              revision: stacklight
-              module:
-                heka_alarming.py:
+              revision: ${_param:salt_master_environment_revision}
             influxdb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-influxdb.git'
@@ -44,7 +42,11 @@ parameters:
             kibana:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-kibana.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
+            nagios:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
+              revision: ${_param:salt_master_environment_revision}
             postgresql:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-postgresql.git'
@@ -52,7 +54,7 @@ parameters:
             rabbitmq:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-rabbitmq.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             redis:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-redis.git'

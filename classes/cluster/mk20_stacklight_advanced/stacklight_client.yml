@@ -1,5 +1,5 @@
 classes:
-- system.collectd.client.heka
+- system.collectd.client.output.heka
 - system.heka.log_collector.single
 - system.heka.metric_collector.single
 - cluster.mk20_stacklight_advanced.stacklight

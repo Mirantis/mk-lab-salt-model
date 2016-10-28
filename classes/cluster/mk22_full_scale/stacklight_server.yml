@@ -1,4 +1,6 @@
 classes:
+- system.collectd.client.remote
+- system.heka.remote_collector.single
 - system.heka.aggregator.single
 - system.heka.remote_collector.single
 - system.elasticsearch.server.single
