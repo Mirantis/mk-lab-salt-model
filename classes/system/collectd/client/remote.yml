@@ -1,0 +1,6 @@
+classes:
+- service.collectd.client
+parameters:
+  collectd:
+    client:
+      remote_collector: true
