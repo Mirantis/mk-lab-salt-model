@@ -46,3 +46,6 @@ parameters:
             sensu:
               source: pkg
               name: salt-formula-sensu
+            nagios:
+              source: pkg
+              name: salt-formula-nagios
