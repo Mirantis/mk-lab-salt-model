@@ -1,0 +1,8 @@
+classes:
+- service.ceilometer.agent.cluster
+- service.ceilometer.agent.publisher.graphite
+parameters:
+  nova:
+    compute:
+      notification:
+        driver: messagingv2

@@ -1,0 +1,10 @@
+classes:
+- cluster.mk22_lab_rackspace.fuel.config
+parameters:
+  _param:
+    linux_system_codename: xenial
+    reclass_data_revision: dash
+  linux:
+    system:
+      name: cfg01
+      domain: mk22-lab-rackspace.local

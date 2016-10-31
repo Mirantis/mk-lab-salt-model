@@ -4,3 +4,9 @@ classes:
 - service.salt.minion.master
 - system.openssh.server.single
 - system.linux.system.repo.tcp_base
+parameters:
+  linux:
+    system:
+      package:
+        python-msgpack:
+          version: latest

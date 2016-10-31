@@ -2,34 +2,39 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
-          name: ctl01
+        ntw01:
+          name: ntw01
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - service.galera.master.cluster
+          - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.101
+            single_address: 172.16.10.131
             keepalived_vip_priority: 103
-        ctl02:
-          name: ctl02
+            opencontrail_database_id: 1
+        ntw02:
+          name: ntw02
           domain: ${_param:cluster_domain}
           classes:  
-          - cluster.${_param:cluster_name}.openstack.control
+          - service.galera.slave.cluster
+          - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.102
+            single_address: 172.16.10.132
             keepalived_vip_priority: 102
-        ctl03:
-          name: ctl03
+            opencontrail_database_id: 2
+        ntw03:
+          name: ntw03
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - service.galera.slave.cluster
+          - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.103
+            single_address: 172.16.10.133
             keepalived_vip_priority: 101
-
+            opencontrail_database_id: 3

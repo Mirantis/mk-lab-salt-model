@@ -5,15 +5,19 @@ classes:
 - system.nova.control.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
-- cluster.mk22_full_scale.openstack
+- cluster.mk22_lab_rackspace.openstack
 parameters:
   _param:
     keepalived_vip_interface: eth1
+    cluster_vip_address: 172.16.10.254
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: 172.16.10.101
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: 172.16.10.102
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: 172.16.10.103
   linux:
-    system:
-      package:
-        python-msgpack:
-          version: latest
     network:
       interface:
         eth1:

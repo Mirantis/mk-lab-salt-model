@@ -1,0 +1,12 @@
+classes:
+- system.salt.master.control.virt
+- system.salt.master.control.cluster.opencontrail_analytics_cluster
+- system.salt.master.control.cluster.opencontrail_control_cluster
+- system.salt.master.control.cluster.openstack_control_cluster
+- system.salt.master.control.cluster.openstack_proxy_single
+- system.salt.master.control.cluster.openstack_database_cluster
+- system.salt.master.control.cluster.openstack_message_queue_cluster
+- system.salt.master.control.cluster.stacklight_server_cluster
+- system.salt.master.control.cluster.stacklight_log_cluster
+- system.salt.master.control.cluster.stacklight_meter_cluster
+- cluster.mk22_lab_rackspace.fuel
