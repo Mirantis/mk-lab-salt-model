@@ -1,17 +1,13 @@
 classes:
 - system.linux.system.repo.contrail
-- system.linux.system.repo.mos8
+- system.linux.system.repo.mos9
 - system.neutron.control.cluster
 - system.opencontrail.control.cluster
-- cluster.mk22_lab_rackspace.openstack
+- cluster.mk22_lab_rackspace.opencontrail
 parameters:
   _param:
-    keepalived_vip_interface: eth1
+    keepalived_vip_interface: eth0
   linux:
-    system:
-      package:
-        python-msgpack:
-          version: latest
     network:
       interface:
         eth1:

@@ -1,19 +1,19 @@
 classes:
-- service.git.client
-- system.linux.system.single
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
 - system.salt.master.pkg
-- system.reclass.storage.salt
 - system.salt.minion.pki.authority
-- system.salt.minion.pki.certificate
-- system.sphinx.server.doc.reclass
-- system.keystone.client.single
-- system.mysql.client.single
+- system.reclass.storage.salt
+- system.reclass.storage.system.opencontrail_analytics_cluster
+- system.reclass.storage.system.opencontrail_control_cluster
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_compute_single
-- system.reclass.storage.system.openstack_dashboard_single
-- system.reclass.storage.system.stacklight_server_single
+- system.reclass.storage.system.openstack_proxy_single
+- system.reclass.storage.system.openstack_database_cluster
+- system.reclass.storage.system.openstack_message_queue_cluster
+- system.reclass.storage.system.stacklight_server_cluster
+- system.keystone.client.single
+- system.mysql.client.single
 - cluster.mk22_lab_rackspace.fuel
 parameters:
   _param:
@@ -31,3 +31,9 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  reclass:
+    storage:
+      node:
+        prx01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.dashboard

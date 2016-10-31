@@ -1,0 +1,26 @@
+parameters:
+  salt:
+    control:
+      size:
+        opencontrail.analytics:
+          cpu: 32
+          ram: 65536
+          disk_profile: small
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            nal01:
+              provider: kvm01.${_param:cluster_domain}
+              image: ${_param:salt_control_trusty_image}
+              size: opencontrail.analytics
+            nal02:
+              provider: kvm02.${_param:cluster_domain}
+              image: ${_param:salt_control_trusty_image}
+              size: opencontrail.analytics
+            nal03:
+              provider: kvm03.${_param:cluster_domain}
+              image: ${_param:salt_control_trusty_image}
+              size: opencontrail.analytics

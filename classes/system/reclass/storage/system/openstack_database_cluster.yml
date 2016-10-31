@@ -2,34 +2,39 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
-          name: ctl01
+        dbs01:
+          name: dbs01
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - service.galera.master.cluster
+          - cluster.${_param:cluster_name}.openstack.database
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.101
+            single_address: 172.16.10.125
             keepalived_vip_priority: 103
-        ctl02:
-          name: ctl02
+            mysql_cluster_role: master
+        dbs02:
+          name: dbs02
           domain: ${_param:cluster_domain}
           classes:  
-          - cluster.${_param:cluster_name}.openstack.control
+          - service.galera.slave.cluster
+          - cluster.${_param:cluster_name}.openstack.database
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.102
+            single_address: 172.16.10.126
             keepalived_vip_priority: 102
-        ctl03:
-          name: ctl03
+            mysql_cluster_role: slave
+        dbs03:
+          name: dbs03
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - service.galera.slave.cluster
+          - cluster.${_param:cluster_name}.openstack.database
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.103
+            single_address: 172.16.10.127
             keepalived_vip_priority: 101
-
+            mysql_cluster_role: slave

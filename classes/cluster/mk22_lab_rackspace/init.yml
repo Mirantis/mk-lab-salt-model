@@ -1,0 +1,6 @@
+classes:
+- system.linux.system.single
+parameters:
+  _param:
+    cluster_domain: mk22-lab-rackspace.local
+    cluster_name: mk22_lab_rackspace

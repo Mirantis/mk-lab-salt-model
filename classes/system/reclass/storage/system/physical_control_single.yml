@@ -2,12 +2,13 @@ parameters:
   reclass:
     storage:
       node:
-        prx01:
-          name: prx01
+        kvm01:
+          name: kvm01
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.dashboard
+          - cluster.${_param:cluster_name}.fuel.compute
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.121
+            single_address: 172.16.10.151
+            deploy_address: 192.168.10.151

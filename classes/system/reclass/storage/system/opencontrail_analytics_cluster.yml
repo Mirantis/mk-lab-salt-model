@@ -2,34 +2,36 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
-          name: ctl01
+        nal01:
+          name: nal01
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - cluster.${_param:cluster_name}.opencontrail.analytics
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.101
+            single_address: 172.16.10.135
             keepalived_vip_priority: 103
-        ctl02:
-          name: ctl02
+            opencontrail_database_id: 1
+        nal02:
+          name: nal02
           domain: ${_param:cluster_domain}
           classes:  
-          - cluster.${_param:cluster_name}.openstack.control
+          - cluster.${_param:cluster_name}.opencontrail.analytics
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.102
+            single_address: 172.16.10.136
             keepalived_vip_priority: 102
-        ctl03:
-          name: ctl03
+            opencontrail_database_id: 2
+        nal03:
+          name: nal03
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - cluster.${_param:cluster_name}.opencontrail.analytics
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.103
+            single_address: 172.16.10.137
             keepalived_vip_priority: 101
-
+            opencontrail_database_id: 3

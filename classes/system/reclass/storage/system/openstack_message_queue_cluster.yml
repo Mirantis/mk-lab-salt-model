@@ -2,34 +2,36 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
-          name: ctl01
+        amq01:
+          name: amq01
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - cluster.${_param:cluster_name}.openstack.message_queue
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.101
+            single_address: 172.16.10.141
             keepalived_vip_priority: 103
-        ctl02:
-          name: ctl02
+            rabbitmq_cluster_role: master
+        amq02:
+          name: amq02
           domain: ${_param:cluster_domain}
           classes:  
-          - cluster.${_param:cluster_name}.openstack.control
+          - cluster.${_param:cluster_name}.openstack.message_queue
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.102
+            single_address: 172.16.10.142
             keepalived_vip_priority: 102
-        ctl03:
-          name: ctl03
+            rabbitmq_cluster_role: slave
+        amq03:
+          name: amq03
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.openstack.control
+          - cluster.${_param:cluster_name}.openstack.message_queue
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.103
+            single_address: 172.16.10.143
             keepalived_vip_priority: 101
-
+            rabbitmq_cluster_role: slave

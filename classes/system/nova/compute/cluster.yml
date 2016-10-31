@@ -6,7 +6,7 @@ parameters:
       version: ${_param:nova_version}
       enabled: true
       virtualization: kvm
-      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      vncproxy_url: http://${_param:cluster_vip_address}:6080      
       bind:
         vnc_address: ${_param:cluster_local_address}
         vnc_port: 6080

@@ -1,4 +1,5 @@
 classes:
+- service.git.client
 - service.salt.master.single
 parameters:
   linux:

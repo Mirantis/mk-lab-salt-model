@@ -1,0 +1,42 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        kvm01:
+          name: kvm01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: 172.16.10.151
+            deploy_address: 192.168.10.151
+parameters:
+  reclass:
+    storage:
+      node:
+        kvm02:
+          name: kvm02
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: 172.16.10.152
+            deploy_address: 192.168.10.152
+parameters:
+  reclass:
+    storage:
+      node:
+        kvm03:
+          name: kvm03
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: 172.16.10.153
+            deploy_address: 192.168.10.153
