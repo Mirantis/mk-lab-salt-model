@@ -2,21 +2,40 @@ classes:
 - service.influxdb.server.single
 parameters:
   linux:
-    repo:
-      influxdb:
-        enabled: true
-        source: 'deb https://repos.influxdata.com/ubuntu xenial stable'
-        key_url: 'https://repos.influxdata.com/influxdb.key'
+    system:
+      repo:
+        influxdb:
+          enabled: true
+          source: 'deb https://repos.influxdata.com/ubuntu xenial stable'
+          key_url: 'https://repos.influxdata.com/influxdb.key'
   influxdb:
     server:
       enabled: true
       http:
         enabled: true
         bind:
-          address: 0.0.0.0
-          port: 8086
+          address: ${_param:single_address}
+          port: ${_param:influxdb_port}
       admin:
         enabled: true
         bind:
-          address: 0.0.0.0
+          address: ${_param:single_address}
           port: 8083
+        user:
+          name: 'root'
+          password: 'r00tme'
+      database:
+        stacklight:
+          enabled: true
+          name: ${_param:influxdb_database}
+      user:
+        stacklight:
+          enabled: true
+          name: ${_param:influxdb_user}
+          password: ${_param:influxdb_password}
+      grant:
+        grant_stacklight_all:
+          enabled: true
+          user:  ${_param:influxdb_user}
+          database: ${_param:influxdb_database}
+          grant: all
