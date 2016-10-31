@@ -22,6 +22,7 @@ parameters:
           address: ${_param:single_address}
           port: 8083
         user:
+          enabled: true
           name: 'root'
           password: 'r00tme'
       database:
@@ -38,4 +39,4 @@ parameters:
           enabled: true
           user:  ${_param:influxdb_user}
           database: ${_param:influxdb_database}
-          grant: all
+          privilege: all
