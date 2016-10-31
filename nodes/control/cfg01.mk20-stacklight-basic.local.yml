@@ -30,32 +30,3 @@ parameters:
     system:
       name: cfg01
       domain: mk20-stacklight-basic.local
-  salt:
-    master:
-      environment:
-        dev:
-          formula:
-            linux:
-              revision: stacklight
-            ntp:
-              revision: stacklight
-            rabbitmq:
-              revision: stacklight
-            galera:
-              revision: stacklight
-            haproxy:
-              revision: stacklight
-            memcached:
-              revision: stacklight
-            cinder:
-              revision: stacklight
-            glance:
-              revision: stacklight
-            keystone:
-              revision: stacklight
-            heat:
-              revision: stacklight
-            nova:
-              revision: stacklight
-            neutron:
-              revision: stacklight
