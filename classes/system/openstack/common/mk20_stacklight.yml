@@ -12,6 +12,7 @@ parameters:
     heka_amqp_password: workshop
     heka_elasticsearch_host: mon
     heka_influxdb_host: mon
+    grafana_influxdb_host: mon
     opencontrail_version: 3.0
     opencontrail_compute_dns: 8.8.8.8
     opencontrail_stats_password: contrail123
