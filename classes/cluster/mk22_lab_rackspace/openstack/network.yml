@@ -1,0 +1,25 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos8
+- system.neutron.control.cluster
+- system.opencontrail.control.cluster
+- cluster.mk22_full_scale.openstack
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+  linux:
+    system:
+      package:
+        python-msgpack:
+          version: latest
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          virtual_router_id: 250
