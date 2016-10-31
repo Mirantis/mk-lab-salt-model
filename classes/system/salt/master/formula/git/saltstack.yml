@@ -23,7 +23,7 @@ parameters:
             ntp:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-ntp.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             openssh:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-openssh.git'
