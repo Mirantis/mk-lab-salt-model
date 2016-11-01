@@ -1,8 +1,10 @@
 classes:
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
+- system.opencontrail.compute.cluster
 - service.ceilometer.agent.cluster
-- cluster.mk22_lab_rackspace.openstack
+- service.ceilometer.agent.publisher.graphite
+- cluster.mk22_lab_rackspace
 parameters:
   nova:
     compute:

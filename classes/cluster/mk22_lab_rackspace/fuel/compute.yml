@@ -9,4 +9,4 @@ classes:
 - system.salt.master.control.cluster.stacklight_server_cluster
 - system.salt.master.control.cluster.stacklight_log_cluster
 - system.salt.master.control.cluster.stacklight_meter_cluster
-- cluster.mk22_lab_rackspace.fuel
+- cluster.mk22_lab_rackspace
