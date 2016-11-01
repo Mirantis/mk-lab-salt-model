@@ -4,7 +4,6 @@ classes:
 - cluster.mk22_lab_rackspace.openstack
 - cluster.mk22_lab_rackspace.opencontrail
 - cluster.mk22_lab_rackspace.stacklight
-- cluster.mk22_lab_rackspace.stacklight.client
 parameters:
   _param:
     cluster_domain: mk22-lab-rackspace.local

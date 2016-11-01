@@ -1,0 +1,5 @@
+classes:
+- system.mysql.client.single
+parameters:
+  _param:
+    cluster_vip_address: ${_param:database_vip_address}

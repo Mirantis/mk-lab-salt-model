@@ -1,0 +1,5 @@
+classes:
+- system.keystone.client.single
+parameters:
+  _param:
+    cluster_vip_address: ${_param:control_vip_address}
