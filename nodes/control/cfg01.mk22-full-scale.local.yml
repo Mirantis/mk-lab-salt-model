@@ -1,6 +1,6 @@
 classes:
-- cluster.mk22_full_scale.openstack_config
-- cluster.mk22_full_scale.openstack_proxy
+- cluster.mk22_full_scale.openstack.config
+- cluster.mk22_full_scale.openstack.proxy
 parameters:
   _param:
     linux_system_codename: xenial
