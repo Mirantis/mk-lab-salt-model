@@ -12,6 +12,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.151
             deploy_address: 192.168.10.151
+            opencontrail_database_id: 1
 parameters:
   reclass:
     storage:
@@ -26,6 +27,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.152
             deploy_address: 192.168.10.152
+            opencontrail_database_id: 2
 parameters:
   reclass:
     storage:
@@ -40,3 +42,4 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.153
             deploy_address: 192.168.10.153
+            opencontrail_database_id: 3
