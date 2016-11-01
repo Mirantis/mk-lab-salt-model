@@ -21,19 +21,26 @@ parameters:
   elasticsearch:
     server:
       enabled: true
-      publish_host: ${_param:single_address}
       master: true
       data: false
-      index:
-        shards: 1
-        replicas: 1
+      mlockall: true
       bind:
         address: ${_param:single_address}
         port: 9200
+      index:
+        shards: 1
+        replicas: 1
+      threadpool:
+        bulk:
+         queue_size: 1000
+      gateway:
+        expected_nodes: 3
+        recover_after_nodes: 2
+        recover_after_time: 5m
       cluster:
         multicast: false
         minimum_master_nodes: 2
         members:
         - host: ${_param:monitor_node01_address}
-        - host: ${_param:monitor_node01_address}
-        - host: ${_param:monitor_node01_address}
+        - host: ${_param:monitor_node02_address}
+        - host: ${_param:monitor_node03_address}

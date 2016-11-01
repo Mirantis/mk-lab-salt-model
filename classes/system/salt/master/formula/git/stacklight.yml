@@ -11,15 +11,15 @@ parameters:
             collectd:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-collectd.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             elasticsearch:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-elasticsearch.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             grafana:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-grafana.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             graphite:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-graphite.git'
@@ -31,7 +31,7 @@ parameters:
             influxdb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-influxdb.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             java:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-java.git'
@@ -63,4 +63,8 @@ parameters:
             sensu:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-sensu.git'
+              revision: ${_param:salt_master_environment_revision}
+            nagios:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
               revision: ${_param:salt_master_environment_revision}
