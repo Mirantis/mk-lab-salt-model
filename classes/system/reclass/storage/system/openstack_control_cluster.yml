@@ -13,10 +13,11 @@ parameters:
             single_address: 172.16.10.101
             keepalived_vip_priority: 103
             opencontrail_database_id: 1
+            rabbitmq_cluster_role: master
         ctl02:
           name: ctl02
           domain: ${_param:cluster_domain}
-          classes:  
+          classes:
           - cluster.${_param:cluster_name}.openstack.control
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -24,6 +25,7 @@ parameters:
             single_address: 172.16.10.102
             keepalived_vip_priority: 102
             opencontrail_database_id: 2
+            rabbitmq_cluster_role: slave
         ctl03:
           name: ctl03
           domain: ${_param:cluster_domain}
@@ -35,4 +37,5 @@ parameters:
             single_address: 172.16.10.103
             keepalived_vip_priority: 101
             opencontrail_database_id: 3
+            rabbitmq_cluster_role: slave
 
