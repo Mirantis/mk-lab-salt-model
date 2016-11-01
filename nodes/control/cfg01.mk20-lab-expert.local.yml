@@ -1,6 +1,6 @@
 classes:
-- cluster.mk20_lab_expert.openstack_config
-- cluster.mk20_lab_expert.openstack_proxy
+- cluster.mk20_lab_expert.openstack.config
+- cluster.mk20_lab_expert.openstack.proxy
 parameters:
   _param:
     linux_system_codename: xenial

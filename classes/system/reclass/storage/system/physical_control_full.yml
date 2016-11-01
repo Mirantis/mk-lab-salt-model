@@ -12,6 +12,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.151
             deploy_address: 192.168.10.151
+            opencontrail_database_id: 1
 parameters:
   reclass:
     storage:
@@ -26,6 +27,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.152
             deploy_address: 192.168.10.152
+            opencontrail_database_id: 2
 parameters:
   reclass:
     storage:
@@ -40,6 +42,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.153
             deploy_address: 192.168.10.153
+            opencontrail_database_id: 3
 parameters:
   reclass:
     storage:
@@ -54,6 +57,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.154
             deploy_address: 192.168.10.154
+            opencontrail_database_id: 4
 parameters:
   reclass:
     storage:
@@ -68,6 +72,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.155
             deploy_address: 192.168.10.155
+            opencontrail_database_id: 5
 parameters:
   reclass:
     storage:
@@ -82,6 +87,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.156
             deploy_address: 192.168.10.156
+            opencontrail_database_id: 6
 parameters:
   reclass:
     storage:
@@ -96,6 +102,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.157
             deploy_address: 192.168.10.157
+            opencontrail_database_id: 7
 parameters:
   reclass:
     storage:
@@ -110,6 +117,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.158
             deploy_address: 192.168.10.158
+            opencontrail_database_id: 8
 parameters:
   reclass:
     storage:
@@ -124,3 +132,4 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.159
             deploy_address: 192.168.10.159
+            opencontrail_database_id: 9

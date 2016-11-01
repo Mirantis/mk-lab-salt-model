@@ -1,7 +1,7 @@
 classes:
-- cluster.mk20_stacklight_basic.openstack_config
-- cluster.mk20_stacklight_basic.openstack_proxy
-- cluster.mk20_stacklight_basic.stacklight_proxy
+- cluster.mk20_stacklight_basic.openstack.config
+- cluster.mk20_stacklight_basic.openstack.proxy
+- cluster.mk20_stacklight_basic.stacklight.proxy
 parameters:
   _param:
     linux_system_codename: xenial
