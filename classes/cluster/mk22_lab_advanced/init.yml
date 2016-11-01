@@ -46,6 +46,13 @@ parameters:
           - mon.mk20-lab-advanced.local
           - mon01
           - mon01.mk20-lab-advanced.local
+        prx01:
+          address: 172.16.10.121
+          names:
+          - prx
+          - prx.mk20-lab-advanced.local
+          - prx01
+          - prx01.mk20-lab-advanced.local
         ctl:
           address: 172.16.10.254
           names:
