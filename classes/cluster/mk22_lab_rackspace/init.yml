@@ -8,3 +8,7 @@ parameters:
   _param:
     cluster_domain: mk22-lab-rackspace.local
     cluster_name: mk22_lab_rackspace
+    cluster_public_host: _
+    control_vip_address: 172.16.10.254
+    monitor_vip_address: 172.16.10.253
+    database_vip_address: 172.16.10.254

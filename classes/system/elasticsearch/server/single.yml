@@ -33,7 +33,7 @@ parameters:
         multicast: false
         minimum_master_nodes: 1
         members:
-        - host: ${_param:monitor_address}
+        - host: ${_param:cluster_node01_address}
       curator:
         timeout: 30
         logfile: /var/log/elasticsearch/curator.log
