@@ -5,7 +5,7 @@ classes:
 - system.nova.control.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
-- cluster.mk22_lab_rackspace.openstack
+- cluster.mk22_lab_rackspace
 parameters:
   _param:
     keepalived_vip_interface: eth1

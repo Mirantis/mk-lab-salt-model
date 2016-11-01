@@ -3,7 +3,7 @@ classes:
 - system.linux.system.repo.mos9
 - system.neutron.control.cluster
 - system.opencontrail.control.cluster
-- cluster.mk22_lab_rackspace.opencontrail
+- cluster.mk22_lab_rackspace
 parameters:
   _param:
     keepalived_vip_interface: eth0

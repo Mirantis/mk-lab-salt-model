@@ -1,5 +1,3 @@
-classes:
-- cluster.mk22_lab_rackspace
 parameters:
   _param:
     openstack_version: mitaka
