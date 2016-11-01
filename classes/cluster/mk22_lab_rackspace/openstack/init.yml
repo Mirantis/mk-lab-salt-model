@@ -3,9 +3,6 @@ parameters:
     openstack_version: mitaka
     openstack_region: RegionOne
     admin_email: root@localhost
-    cluster_public_host: _
-    control_vip_address: 172.16.10.254
-    database_vip_address: 172.16.10.254
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
