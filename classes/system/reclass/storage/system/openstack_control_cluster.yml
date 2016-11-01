@@ -12,6 +12,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.101
             keepalived_vip_priority: 103
+            opencontrail_database_id: 1
         ctl02:
           name: ctl02
           domain: ${_param:cluster_domain}
@@ -22,6 +23,7 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.102
             keepalived_vip_priority: 102
+            opencontrail_database_id: 2
         ctl03:
           name: ctl03
           domain: ${_param:cluster_domain}
@@ -32,4 +34,5 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.103
             keepalived_vip_priority: 101
+            opencontrail_database_id: 3
 
