@@ -12,8 +12,6 @@ classes:
 - system.reclass.storage.system.openstack_database_cluster
 - system.reclass.storage.system.openstack_message_queue_cluster
 - system.reclass.storage.system.stacklight_server_cluster
-- system.keystone.client.single
-- system.mysql.client.single
 - cluster.mk22_lab_rackspace
 parameters:
   _param:
@@ -34,6 +32,9 @@ parameters:
   reclass:
     storage:
       node:
-        prx01:
+        ctl01:
           classes:
-          - cluster.${_param:cluster_name}.openstack.dashboard
+          - cluster.${_param:cluster_name}.openstack.control_init
+        dbs01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.database_init
