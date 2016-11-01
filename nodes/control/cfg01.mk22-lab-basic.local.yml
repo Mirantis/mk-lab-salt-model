@@ -1,6 +1,6 @@
 classes:
-- cluster.mk22_lab_basic.openstack_config
-- cluster.mk22_lab_basic.openstack_proxy
+- cluster.mk22_lab_basic.openstack.config
+- cluster.mk22_lab_basic.openstack.proxy
 parameters:
   _param:
     linux_system_codename: xenial
