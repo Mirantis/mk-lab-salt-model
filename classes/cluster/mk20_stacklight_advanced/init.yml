@@ -1,6 +1,6 @@
 classes:
 - system.linux.system.single
-- cluster.mk20_stacklight_advanced.stacklight_client
+- cluster.mk20_stacklight_advanced.stacklight
 parameters:
   _param:
     cluster_domain: mk20-stacklight-advanced.local
