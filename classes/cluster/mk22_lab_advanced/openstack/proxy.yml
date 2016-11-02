@@ -5,7 +5,7 @@ classes:
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
 - system.salt.minion.pki.certificate
-- cluster.mk22_lab_advanced.openstack
+- cluster.mk22_lab_advanced
 parameters:
   _param:
     nginx_proxy_ssl:

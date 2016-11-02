@@ -1,5 +1,3 @@
-classes:
-- cluster.mk22_lab_advanced
 parameters:
   _param:
     openstack_version: mitaka
@@ -8,6 +6,9 @@ parameters:
     cluster_public_host: _
     opencontrail_version: 3.0
     opencontrail_compute_dns: 8.8.8.8
+    opencontrail_compute_gateway: 172.16.10.1
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_iface: eth1
     opencontrail_stats_password: contrail123
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop

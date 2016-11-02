@@ -5,12 +5,8 @@ classes:
 - system.opencontrail.compute.cluster
 - service.ceilometer.agent.cluster
 - service.ceilometer.agent.publisher.graphite
-- cluster.mk22_lab_advanced.openstack
+- cluster.mk22_lab_advanced
 parameters:
-  _param:
-    opencontrail_compute_gateway: 172.16.10.1
-    opencontrail_compute_address: ${_param:single_address}
-    opencontrail_compute_iface: eth1
   linux:
     network:
       interface:

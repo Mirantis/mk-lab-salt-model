@@ -1,5 +1,7 @@
 classes:
 - system.linux.system.single
+- cluster.mk22_lab_basic.monitoring
+- cluster.mk22_lab_basic.openstack
 parameters:
   _param:
     cluster_domain: mk22-lab-basic.local
