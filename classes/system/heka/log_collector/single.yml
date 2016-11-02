@@ -21,3 +21,8 @@ parameters:
         enabled: true
     log_collector:
       enabled: true
+      output:
+        elasticsearch:
+          engine: elasticsearch
+          host: ${_param:heka_elasticsearch_host}
+          port: ${_param:elasticsearch_port}
