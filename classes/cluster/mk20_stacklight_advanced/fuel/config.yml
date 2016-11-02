@@ -33,3 +33,54 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  reclass:
+    storage:
+      node:
+        ctl01:
+          classes:
+          - service.galera.master.cluster
+          params:
+            mysql_cluster_role: master
+        ctl02:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            mysql_cluster_role: slave
+        ctl03:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            mysql_cluster_role: slave
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            cinder:
+              revision: stacklight
+            collectd:
+              revision: stacklight
+            galera:
+              revision: stacklight
+            glance:
+              revision: stacklight
+            haproxy:
+              revision: stacklight
+            heat:
+              revision: stacklight
+            heka:
+              revision: stacklight
+            keystone:
+              revision: stacklight
+            linux:
+              revision: stacklight
+            memcached:
+              revision: stacklight
+            neutron:
+              revision: stacklight
+            nova:
+              revision: stacklight
+            ntp:
+              revision: stacklight
+            rabbitmq:
+              revision: stacklight
