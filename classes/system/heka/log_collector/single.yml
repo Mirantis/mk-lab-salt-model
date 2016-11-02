@@ -7,19 +7,7 @@ parameters:
     _support:
       heka:
         enabled: false
-  glance:
-    _support:
-      heka:
-        enabled: false
   elasticsearch:
-    _support:
-      heka:
-        enabled: false
-  heat:
-    _support:
-      heka:
-        enabled: false
-  keystone:
     _support:
       heka:
         enabled: false
@@ -27,10 +15,6 @@ parameters:
     _support:
       heka:
         enabled: true
-  neutron:
-    _support:
-      heka:
-        enabled: false
   heka:
     _support:
       heka:
