@@ -6,9 +6,14 @@ classes:
 - service.ceilometer.agent.publisher.graphite
 - cluster.mk22_lab_rackspace
 parameters:
-parameters:
   _param:
-    cluster_vip_address: ${_param:control_vip_address}
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: 172.16.10.101
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: 172.16.10.102
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: 172.16.10.103
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
