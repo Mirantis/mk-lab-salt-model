@@ -1,8 +1,18 @@
 classes:
-- system.linux.system.repo.tcp_mk20
-- system.horizon.server.single
+- system.nginx.server.single
+- system.nginx.server.proxy.opencontrail_web
+- system.nginx.server.proxy.openstack_api
+- system.nginx.server.proxy.openstack_vnc
+- system.nginx.server.proxy.openstack_web
+- system.salt.minion.pki.certificate
 - cluster.mk22_full_scale
 parameters:
+  _param:
+    nginx_proxy_ssl:
+      enabled: true
+      authority: mk_lab_ca
+      engine: salt
+      mode: secure
   linux:
     network:
       interface:
