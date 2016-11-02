@@ -4,17 +4,11 @@ classes:
 - cluster.mk20_stacklight_advanced.openstack
 parameters:
   _param:
-    cluster_domain: ${_param:cluster_domain}
+    cluster_domain: mk20-stacklight-advanced.local
     cluster_name: mk20_stacklight_advanced
     cluster_public_host: _
-    control_vip_address: 172.16.10.254
-    monitor_vip_address: 172.16.10.253
-    monitor_node01_hostname: mon01
-    monitor_node01_address: 172.16.10.107
-    monitor_node02_hostname: mon02
-    monitor_node02_address: 172.16.10.108
-    monitor_node03_hostname: mon03
-    monitor_node03_address: 172.16.10.109
+    openstack_control_address: 172.16.10.254
+    stacklight_monitor_address: 172.16.10.253
   linux:
     network:
       host:
@@ -59,12 +53,12 @@ parameters:
           - mon03
           - mon03.${_param:cluster_domain}
         mon:
-          address: ${_param:monitor_vip_address}
+          address: ${_param:stacklight_monitor_address}
           names:
           - mon
           - mon.${_param:cluster_domain}
         ctl:
-          address: ${_param:cluster_vip_address}
+          address: ${_param:openstack_control_address}
           names:
           - ctl
           - ctl.${_param:cluster_domain}
