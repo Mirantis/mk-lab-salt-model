@@ -3,7 +3,7 @@ classes:
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
-- cluster.mk22_lab_basic.openstack
+- cluster.mk22_lab_basic
 parameters:
   _param:
     opencontrail_compute_gateway: 172.16.10.1

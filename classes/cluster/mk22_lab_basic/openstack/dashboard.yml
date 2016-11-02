@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.repo.tcp_base
 - system.horizon.server.cluster
-- cluster.mk22_lab_basic.openstack
+- cluster.mk22_lab_basic
 parameters:
   linux:
     network:

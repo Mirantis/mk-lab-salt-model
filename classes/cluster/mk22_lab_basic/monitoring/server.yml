@@ -10,7 +10,7 @@ classes:
 - system.heka.router.single
 - system.kibana.server.single
 - system.rabbitmq.server.vhost.monitoring
-- cluster.mk22_lab_basic.monitoring
+- cluster.mk22_lab_basic
 parameters:
   _param:
     kibana_elasticsearch_host: localhost
