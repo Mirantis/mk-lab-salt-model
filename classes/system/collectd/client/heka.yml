@@ -13,3 +13,4 @@ parameters:
           host: ${_param:collectd_backend_heka_host}
           port: ${_param:collectd_backend_heka_port}
       read_interval: 10
+      use_fqdn: false
