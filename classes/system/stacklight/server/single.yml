@@ -9,4 +9,4 @@ classes:
 - system.openstack.common.mk20_stacklight
 parameters:
   _param:
-    kibana_elasticsearch_host: localhost
+    kibana_elasticsearch_host: mon
