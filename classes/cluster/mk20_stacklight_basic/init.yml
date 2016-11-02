@@ -44,8 +44,7 @@ parameters:
           - cmp01
           - cmp01.mk20-stacklight-basic.local
         mon01:
-          address: ${_param:monitor_address}
-          # Important! order matters
+          address: 172.16.10.253
           names:
           - mon01
           - mon01.mk20-stacklight-basic.local
