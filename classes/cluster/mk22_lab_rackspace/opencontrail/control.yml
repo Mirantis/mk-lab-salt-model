@@ -6,7 +6,16 @@ classes:
 - cluster.mk22_lab_rackspace
 parameters:
   _param:
-    keepalived_vip_interface: eth0
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 250
+    cluster_vip_address: ${_param:opencontrail_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: 172.16.10.161
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: 172.16.10.162
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: 172.16.10.163
   linux:
     network:
       interface:
@@ -14,8 +23,3 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
-  keepalived:
-    cluster:
-      instance:
-        VIP:
-          virtual_router_id: 250

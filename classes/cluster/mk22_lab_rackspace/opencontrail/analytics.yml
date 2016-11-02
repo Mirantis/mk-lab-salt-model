@@ -2,3 +2,15 @@ classes:
 - system.linux.system.repo.contrail
 - system.opencontrail.control.cluster
 - cluster.mk22_lab_rackspace
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 290
+    cluster_vip_address: ${_param:opencontrail_analytics_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: nal01
+    cluster_node01_address: 172.16.10.171
+    cluster_node02_hostname: nal02
+    cluster_node02_address: 172.16.10.172
+    cluster_node03_hostname: nal03
+    cluster_node03_address: 172.16.10.173

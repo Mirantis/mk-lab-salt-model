@@ -31,9 +31,9 @@ parameters:
             kibana:
               source: pkg
               name: salt-formula-kibana
-            nagios:
-              source: pkg
-              name: salt-formula-nagios
+            #nagios:
+            #  source: pkg
+            #  name: salt-formula-nagios
             postgresql:
               source: pkg
               name: salt-formula-postgresql

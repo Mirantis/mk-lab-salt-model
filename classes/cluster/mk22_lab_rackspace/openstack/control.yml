@@ -9,7 +9,8 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: eth1
-    cluster_vip_address: ${_param:control_vip_address}
+    keepalived_vip_virtual_router_id: 150
+    cluster_vip_address: ${_param:openstack_control_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
     cluster_node01_address: 172.16.10.101
@@ -24,11 +25,6 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
-  keepalived:
-    cluster:
-      instance:
-        VIP:
-          virtual_router_id: 150
   keystone:
     server:
       admin_email: ${_param:admin_email}

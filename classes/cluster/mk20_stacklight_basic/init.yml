@@ -1,10 +1,13 @@
 classes:
 - system.linux.system.single
-- cluster.mk20_stacklight_advanced.stacklight
+- cluster.mk20_stacklight_basic.stacklight
+- cluster.mk20_stacklight_basic.openstack
 parameters:
   _param:
     cluster_domain: mk20-stacklight-basic.local
     cluster_name: mk20_stacklight_basic
+    cluster_public_host: _
+    control_vip_address: 172.16.10.254
   linux:
     network:
       host:

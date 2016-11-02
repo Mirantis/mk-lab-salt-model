@@ -9,8 +9,10 @@ classes:
 - cluster.mk22_lab_rackspace
 parameters:
   _param:
+    keepalived_vip_interface: ens4
+    keepalived_vip_virtual_router_id: 550
     kibana_elasticsearch_host: localhost
-    cluster_vip_address: ${_param:monitor_vip_address}
+    cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: mon01
     cluster_node01_address: 172.16.10.107
