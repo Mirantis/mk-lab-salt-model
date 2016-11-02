@@ -3,12 +3,10 @@
 applications:
 - heka
 parameters:
-  _param:
-    influxdb_time_precision: ms
   heka:
     metric_collector:
       enabled: true
-      influxdb_time_precision: ${_param:influxdb_time_precision}
+      influxdb_time_precision: ms
       output:
         influxdb:
           engine: influxdb
@@ -17,4 +15,3 @@ parameters:
           database: ${_param:influxdb_database}
           username: ${_param:influxdb_user}
           password: ${_param:influxdb_password}
-          time_precision: ${_param:influxdb_time_precision}
