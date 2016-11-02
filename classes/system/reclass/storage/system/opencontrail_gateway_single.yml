@@ -1,0 +1,12 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        ntw01:
+          name: gtw01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.opencontrail.gateway
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
