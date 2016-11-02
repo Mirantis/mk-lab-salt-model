@@ -41,3 +41,4 @@ parameters:
           user: ${_param:influxdb_user}
           password: ${_param:influxdb_password}
           database: ${_param:influxdb_database}
+          is_default: true
