@@ -34,17 +34,17 @@ parameters:
   reclass:
     storage:
       node:
-        dbs01:
+        ctl01:
           classes:
           - service.galera.master.cluster
           params:
             mysql_cluster_role: master
-        dbs02:
+        ctl02:
           classes:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-        dbs03:
+        ctl03:
           classes:
           - service.galera.slave.cluster
           params:
