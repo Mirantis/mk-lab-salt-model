@@ -1,5 +1,5 @@
 classes:
-- cluster.mk22_lab_basic.openstack.config
+- cluster.mk22_lab_basic.fuel.config
 - cluster.mk22_lab_basic.openstack.proxy
 parameters:
   _param:
