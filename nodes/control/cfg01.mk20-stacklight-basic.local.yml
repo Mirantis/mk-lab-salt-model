@@ -12,7 +12,7 @@ classes:
 - system.salt.minion.pki.authority
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
-- system.keystone.client.single
+- system.keystone.client.stacklight
 - system.mysql.client.single
 - system.openstack.common.mk20_stacklight_basic
 parameters:
