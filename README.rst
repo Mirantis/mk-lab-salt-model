@@ -119,13 +119,16 @@ Mk.22 advanced testing lab
 * 1 config node
 * 3 control nodes
 * 2 compute nodes
-* 3 monitor nodes
+* 3 monitoring nodes
 
 
 Mk.22 full scale lab
---------------------------
+--------------------
 
 * 1 config node
-* 3 control nodes
-* 2 compute nodes
-* 3 monitor nodes
+* 3 database nodes
+* 3 message queue nodes
+* 1 openstack dashboard node
+* 3 openstack control nodes
+* 2 openstack compute nodes
+* 3 monitoring nodes

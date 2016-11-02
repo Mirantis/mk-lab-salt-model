@@ -1,5 +1,7 @@
 classes:
 - system.linux.system.single
+- cluster.mk20_lab_expert.monitoring
+- cluster.mk20_lab_expert.openstack
 parameters:
   _param:
     cluster_domain: mk20-stacklight-expert.local

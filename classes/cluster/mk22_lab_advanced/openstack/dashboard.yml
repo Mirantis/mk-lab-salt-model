@@ -1,5 +1,5 @@
 classes:
-- system.linux.system.repo.tcp_base
+- system.linux.system.repo.tcp_mk20
 - system.horizon.server.cluster
 - cluster.mk22_lab_advanced
 parameters:
