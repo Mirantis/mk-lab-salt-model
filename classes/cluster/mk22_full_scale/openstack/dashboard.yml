@@ -1,0 +1,4 @@
+classes:
+- system.linux.system.repo.tcp_mk20
+- system.horizon.server.single
+- cluster.mk22_full_scale
