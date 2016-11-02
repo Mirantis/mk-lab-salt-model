@@ -1,6 +1,6 @@
 classes:
 - system.horizon.server.cluster
-- cluster.mk20_lab_advanced.openstack
+- cluster.mk20_lab_advanced
 parameters:
   linux:
     network:

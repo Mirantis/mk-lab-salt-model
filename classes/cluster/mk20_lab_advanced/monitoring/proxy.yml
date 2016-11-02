@@ -3,7 +3,7 @@ classes:
 - system.nginx.server.proxy.graphite_web
 - system.nginx.server.proxy.sensu_web
 - system.nginx.server.proxy.kibana_web
-- cluster.mk20_lab_advanced.monitoring
+- cluster.mk20_lab_advanced
 parameters:
   _param:
     nginx_proxy_ssl:

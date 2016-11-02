@@ -1,5 +1,7 @@
 classes:
 - system.linux.system.single
+- cluster.mk20_lab_advanced.monitoring
+- cluster.mk20_lab_advanced.openstack
 parameters:
   _param:
     cluster_domain: mk20-lab-advanced.local
@@ -27,6 +29,13 @@ parameters:
           names:
           - ${_param:cluster_node03_hostname}
           - ${_param:cluster_node03_hostname}.mk20-lab-advanced.local
+        prx01:
+          address: 172.16.10.121
+          names:
+          - prx
+          - prx.mk20-lab-advanced.local
+          - prx01
+          - prx01.mk20-lab-advanced.local
         cmp01:
           address: 172.16.10.105
           names:

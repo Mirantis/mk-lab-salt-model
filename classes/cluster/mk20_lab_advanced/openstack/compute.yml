@@ -3,14 +3,9 @@ classes:
 - system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
-- service.ceilometer.agent.cluster
-- service.ceilometer.agent.publisher.graphite
-- cluster.mk20_lab_advanced.openstack
+- system.ceilometer.compute.cluster
+- cluster.mk20_lab_advanced
 parameters:
-  _param:
-    opencontrail_compute_gateway: 172.16.10.1
-    opencontrail_compute_address: ${_param:single_address}
-    opencontrail_compute_iface: eth1
   linux:
     network:
       interface:
@@ -28,8 +23,3 @@ parameters:
           - /usr/lib/contrail/if-vhost0
           use_interfaces:
           - eth1
-  nova:
-    compute:
-      vncproxy_url: http://${_param:cluster_vip_address}:6080
-      notification:
-        driver: messagingv2
