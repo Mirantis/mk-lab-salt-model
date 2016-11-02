@@ -13,6 +13,7 @@ parameters:
       authority: mk_lab_ca
       engine: salt
       mode: secure
+    cluster_vip_address: ${_param:openstack_control_address}
   linux:
     network:
       interface:
