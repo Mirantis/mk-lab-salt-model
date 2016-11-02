@@ -1,6 +1,0 @@
-classes:
-- service.heka.remote_collector.single
-parameters:
-  collectd:
-    client:
-      remote_collector: true

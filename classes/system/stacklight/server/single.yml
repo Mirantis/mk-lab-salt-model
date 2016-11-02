@@ -1,5 +1,4 @@
 classes:
-- system.heka.remote_collector.single
 - system.heka.aggregator.single
 - system.elasticsearch.server.single
 - system.influxdb.server.single
@@ -10,3 +9,6 @@ classes:
 parameters:
   _param:
     kibana_elasticsearch_host: mon
+  collectd:
+    client:
+      remote_collector: true
