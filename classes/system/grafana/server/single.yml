@@ -1,21 +1,43 @@
 classes:
 - service.grafana.server.single
-- service.postgresql.server.local
 parameters:
   _param:
     postgresql_grafana_password: password
+    grafana_user: admin
+    grafana_password: admin
+  linux:
+    system:
+      repo:
+        grafana:
+          enabled: true
+          source: 'deb https://packagecloud.io/grafana/stable/debian/ jessie main'
+          key_url: 'https://packagecloud.io/gpg.key'
   grafana:
     server:
       enabled: true
-  postgresql:
-    server:
       database:
-        grafana:
-          encoding: UTF8
-          locale: cs_CZ
-          users:
-          - name: grafana
-            createdb: true
-            password: ${_param:postgresql_grafana_password}
-            host: 127.0.0.1
-            rights: all privileges
+        engine: sqlite3
+      auth:
+        engine: basic
+      admin:
+        user: ${_param:grafana_user}
+        password: ${_param:grafana_password}
+      dashboards:
+        enabled: true
+        path: /var/lib/grafana/dashboards
+    client:
+      enabled: true
+      server:
+        protocol: http
+        host: ${_param:single_address}
+        port: 3000
+        user: ${_param:grafana_user}
+        password: ${_param:grafana_password}
+      datasource:
+        influxdb:
+          type: influxdb
+          host: ${_param:grafana_influxdb_host}
+          port: ${_param:influxdb_port}
+          user: ${_param:influxdb_user}
+          password: ${_param:influxdb_password}
+          database: ${_param:influxdb_database}
