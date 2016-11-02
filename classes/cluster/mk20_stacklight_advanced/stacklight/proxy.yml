@@ -2,7 +2,7 @@ classes:
 - system.nginx.server.proxy.grafana_web
 - system.nginx.server.proxy.kibana_web
 - system.salt.minion.pki.certificate
-- cluster.mk20_stacklight_advanced.stacklight
+- cluster.mk20_stacklight_advanced
 parameters:
   _param:
     nginx_proxy_ssl:

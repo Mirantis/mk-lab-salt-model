@@ -1,11 +1,8 @@
-classes:
-- cluster.mk20_stacklight_basic
 parameters:
   _param:
     openstack_version: liberty
     openstack_region: RegionOne
     admin_email: root@localhost
-    cluster_public_host: _
     opencontrail_version: 3.0
     opencontrail_compute_dns: 8.8.8.8
     opencontrail_stats_password: contrail123
@@ -23,7 +20,6 @@ parameters:
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
-    rabbitmq_cold_password: workshop
     glance_version: ${_param:openstack_version}
     glance_service_host: ${_param:cluster_vip_address}
     keystone_version: ${_param:openstack_version}

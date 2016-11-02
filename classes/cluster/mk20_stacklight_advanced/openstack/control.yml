@@ -14,7 +14,7 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.opencontrail.control.cluster
-- cluster.mk20_stacklight_advanced.openstack
+- cluster.mk20_stacklight_advanced
 parameters:
   _param:
     keepalived_vip_interface: eth1

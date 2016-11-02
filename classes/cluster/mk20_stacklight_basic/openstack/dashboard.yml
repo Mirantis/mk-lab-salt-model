@@ -2,7 +2,7 @@ classes:
 - system.linux.system.repo.tcp_mk20
 - system.horizon.server.cluster
 - system.sphinx.server.doc.reclass
-- cluster.mk20_stacklight_basic.openstack
+- cluster.mk20_stacklight_basic
 parameters:
   linux:
     network:
