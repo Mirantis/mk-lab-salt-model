@@ -1,7 +1,0 @@
-parameters:
-  _param:
-    heka_elasticsearch_host: mon
-    influxdb_port: 8086
-    influxdb_database: lma
-    influxdb_user: lma
-    influxdb_password: lmapass

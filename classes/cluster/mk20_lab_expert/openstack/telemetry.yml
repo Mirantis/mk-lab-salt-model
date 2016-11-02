@@ -1,7 +1,7 @@
 classes:
 - service.mongodb.server.single
 - service.ceilometer.server.single
-- cluster.mk20_lab_expert.openstack
+- cluster.mk20_lab_expert
 parameters:
   mongodb:
     server:

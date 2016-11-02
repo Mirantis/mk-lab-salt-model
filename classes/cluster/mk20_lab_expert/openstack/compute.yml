@@ -5,7 +5,7 @@ classes:
 - system.opencontrail.compute.cluster
 - service.ceilometer.agent.cluster
 - service.ceilometer.agent.publisher.graphite
-- cluster.mk20_lab_expert.openstack
+- cluster.mk20_lab_expert
 parameters:
   _param:
     opencontrail_compute_gateway: 172.16.10.1
