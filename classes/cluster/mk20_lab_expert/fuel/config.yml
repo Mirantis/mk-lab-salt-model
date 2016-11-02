@@ -14,7 +14,7 @@ classes:
 - system.reclass.storage.system.openstack_compute_single
 - system.reclass.storage.system.openstack_dashboard_single
 - system.reclass.storage.system.stacklight_server_single
-- cluster.mk20_stacklight_expert
+- cluster.mk20_lab_expert
 parameters:
   _param:
     reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"

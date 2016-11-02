@@ -1,7 +1,6 @@
 classes:
 - system.linux.system.single
 - cluster.mk20_lab_basic.openstack
-
 parameters:
   _param:
     cluster_domain: mk20-lab-basic.local
