@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        ntw01:
+        gtw01:
           name: gtw01
           domain: ${_param:cluster_domain}
           classes:
