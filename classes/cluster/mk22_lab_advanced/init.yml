@@ -56,10 +56,13 @@ parameters:
         prx01:
           address: 172.16.10.121
           names:
-          - prx
-          - prx.mk22-lab-advanced.local
           - prx01
           - prx01.mk22-lab-advanced.local
+        prx:
+          address: 172.16.10.121
+          names:
+          - prx
+          - prx.mk22-lab-advanced.local
         mon:
           address: 172.16.10.253
           names:
