@@ -42,6 +42,6 @@ parameters:
         multicast: false
         minimum_master_nodes: 2
         members:
-        - host: ${_param:monitor_node01_address}
-        - host: ${_param:monitor_node02_address}
-        - host: ${_param:monitor_node03_address}
+        - host: ${_param:cluster_node01_address}
+        - host: ${_param:cluster_node02_address}
+        - host: ${_param:cluster_node03_address}
