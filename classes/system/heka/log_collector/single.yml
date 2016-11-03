@@ -11,10 +11,6 @@ parameters:
     _support:
       heka:
         enabled: false
-  nova:
-    _support:
-      heka:
-        enabled: true
   heka:
     _support:
       heka:
