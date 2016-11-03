@@ -11,6 +11,7 @@ parameters:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: 172.16.10.107
+            keepalived_vip_priority: 103
         mon02:
           name: mon02
           domain: ${_param:cluster_domain}
@@ -20,6 +21,7 @@ parameters:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: 172.16.10.108
+            keepalived_vip_priority: 102
         mon03:
           name: mon03
           domain: ${_param:cluster_domain}
@@ -29,3 +31,4 @@ parameters:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: 172.16.10.109
+            keepalived_vip_priority: 101
