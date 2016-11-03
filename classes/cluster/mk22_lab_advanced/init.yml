@@ -39,8 +39,6 @@ parameters:
         mon01:
           address: 172.16.10.107
           names:
-          - mon
-          - mon.mk22-lab-advanced.local
           - mon01
           - mon01.mk22-lab-advanced.local
         mon02:

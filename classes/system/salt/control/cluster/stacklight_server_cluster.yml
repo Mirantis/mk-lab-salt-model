@@ -12,15 +12,15 @@ parameters:
           domain: ${_param:cluster_domain}
           engine: virt
           node:
-            ctl01:
+            mon01:
               provider: kvm01.${_param:cluster_domain}
               image: ${_param:salt_control_xenial_image}
               size: stacklight.server
-            ctl02:
+            mon02:
               provider: kvm02.${_param:cluster_domain}
               image: ${_param:salt_control_xenial_image}
               size: stacklight.server
-            ctl03:
+            mon03:
               provider: kvm03.${_param:cluster_domain}
               image: ${_param:salt_control_xenial_image}
               size: stacklight.server

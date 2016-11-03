@@ -1,4 +1,5 @@
 classes:
+- system.nginx.server.single
 - system.nginx.server.proxy.grafana_web
 - system.nginx.server.proxy.kibana_web
 - system.salt.minion.pki.certificate

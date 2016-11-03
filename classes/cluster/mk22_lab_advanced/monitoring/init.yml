@@ -1,3 +1,0 @@
-parameters:
-  _param:
-    heka_elasticsearch_host: mon
