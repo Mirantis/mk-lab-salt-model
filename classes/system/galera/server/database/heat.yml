@@ -1,0 +1,15 @@
+parameters:
+  mysql:
+    server:
+      database:
+        heat:
+          encoding: utf8
+          users:
+          - name: heat
+            password: ${_param:mysql_heat_password}
+            host: '%'
+            rights: all
+          - name: heat
+            password: ${_param:mysql_heat_password}
+            host: ${_param:cluster_local_address}
+            rights: all
