@@ -6,7 +6,6 @@ parameters:
           name: ntw01
           domain: ${_param:cluster_domain}
           classes:
-          - service.galera.master.cluster
           - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -18,7 +17,6 @@ parameters:
           name: ntw02
           domain: ${_param:cluster_domain}
           classes:  
-          - service.galera.slave.cluster
           - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -30,7 +28,6 @@ parameters:
           name: ntw03
           domain: ${_param:cluster_domain}
           classes:
-          - service.galera.slave.cluster
           - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}

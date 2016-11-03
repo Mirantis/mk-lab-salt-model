@@ -1,0 +1,40 @@
+classes:
+- system.linux.system.single
+- cluster.mk22_scale_mirantis.fuel
+- cluster.mk22_scale_mirantis.openstack
+- cluster.mk22_scale_mirantis.opencontrail
+- cluster.mk22_scale_mirantis.stacklight
+parameters:
+  _param:
+    cluster_domain: mk22-scale.mirantis.local
+    cluster_name: mk22_scale_mirantis
+    cluster_public_host: _
+    openstack_control_address: 172.16.10.254
+    openstack_database_address: 172.16.10.252
+    openstack_message_queue_address: 172.16.10.251
+    opencontrail_analytics_address: 172.16.10.249
+    opencontrail_control_address: 172.16.10.250
+    stacklight_monitor_address: 172.16.10.253
+  linux:
+    network:
+      host:
+        mon:
+          address: ${_param:stacklight_monitor_address}
+          names:
+          - mon
+          - mon.${_param:cluster_domain}
+        ctl:
+          address: ${_param:openstack_control_address}
+          names:
+          - ctl
+          - ctl.${_param:cluster_domain}
+        ntw:
+          address: ${_param:opencontrail_control_address}
+          names:
+          - ntw
+          - nal.${_param:cluster_domain}
+        nal:
+          address: ${_param:opencontrail_analytics_address}
+          names:
+          - nal
+          - nal.${_param:cluster_domain}

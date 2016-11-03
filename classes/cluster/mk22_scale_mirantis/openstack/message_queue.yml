@@ -1,0 +1,14 @@
+classes:
+- cluster.mk22_scale_mirantis
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 500
+    cluster_vip_address: ${_param:openstack_message_queue_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: amq01
+    cluster_node01_address: 172.16.10.191
+    cluster_node02_hostname: amq02
+    cluster_node02_address: 172.16.10.192
+    cluster_node03_hostname: amq03
+    cluster_node03_address: 172.16.10.193
