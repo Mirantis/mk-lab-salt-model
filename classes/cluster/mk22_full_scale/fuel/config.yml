@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
-- system.salt.master.pkg
+- system.salt.master.git
 - system.salt.minion.pki.authority
 - system.reclass.storage.salt
 - system.reclass.storage.system.opencontrail_analytics_cluster
@@ -39,3 +39,36 @@ parameters:
         dbs01:
           classes:
           - cluster.${_param:cluster_name}.openstack.database_init
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            cinder:
+              revision: stacklight
+            collectd:
+              revision: stacklight
+            galera:
+              revision: stacklight
+            glance:
+              revision: stacklight
+            haproxy:
+              revision: stacklight
+            heat:
+              revision: stacklight
+            heka:
+              revision: stacklight
+            keystone:
+              revision: stacklight
+            linux:
+              revision: stacklight
+            memcached:
+              revision: stacklight
+            neutron:
+              revision: stacklight
+            nova:
+              revision: stacklight
+            ntp:
+              revision: stacklight
+            rabbitmq:
+              revision: stacklight
