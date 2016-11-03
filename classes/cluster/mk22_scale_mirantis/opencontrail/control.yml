@@ -1,0 +1,25 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.neutron.control.cluster
+- system.opencontrail.control.cluster
+- cluster.mk22_scale_mirantis
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 250
+    cluster_vip_address: ${_param:opencontrail_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: 172.16.10.161
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: 172.16.10.162
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: 172.16.10.163
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp

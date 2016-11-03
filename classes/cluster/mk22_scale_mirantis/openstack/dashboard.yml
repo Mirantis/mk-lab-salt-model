@@ -1,0 +1,12 @@
+classes:
+- system.linux.system.repo.tcp_mk20
+- system.horizon.server.single
+- cluster.mk22_scale_mirantis
+parameters:
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp
