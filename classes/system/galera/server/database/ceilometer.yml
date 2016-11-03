@@ -1,0 +1,15 @@
+parameters:
+  mysql:
+    server:
+      database:
+        ceilometer:
+          encoding: utf8
+          users:
+          - name: ceilometer
+            password: ${_param:mysql_ceilometer_password}
+            host: '%'
+            rights: all
+          - name: ceilometer
+            password: ${_param:mysql_ceilometer_password}
+            host: ${_param:cluster_local_address}
+            rights: all
