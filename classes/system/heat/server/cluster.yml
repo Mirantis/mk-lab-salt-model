@@ -3,20 +3,6 @@ classes:
 - service.haproxy.proxy.single
 - service.keepalived.cluster.single
 parameters:
-  mysql:
-    server:
-      database:
-        heat:
-          encoding: utf8
-          users:
-          - name: heat
-            password: ${_param:mysql_heat_password}
-            host: '%'
-            rights: all
-          - name: heat
-            password: ${_param:mysql_heat_password}
-            host: ${_param:single_address}
-            rights: all
   haproxy:
     proxy:
       listen:

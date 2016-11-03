@@ -7,20 +7,6 @@ parameters:
     server:
       tokens:
         engine: fernet
-  mysql:
-    server:
-      database:
-        keystone:
-          encoding: utf8
-          users:
-          - name: keystone
-            password: ${_param:mysql_keystone_password}
-            host: '%'
-            rights: all
-          - name: keystone
-            password: ${_param:mysql_keystone_password}
-            host: ${_param:single_address}
-            rights: all
   haproxy:
     proxy:
       listen:

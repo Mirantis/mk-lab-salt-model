@@ -2,8 +2,6 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos8
-- service.keepalived.cluster.single
-- service.haproxy.proxy.single
 - service.memcached.server.single
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
@@ -14,6 +12,13 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.opencontrail.control.cluster
+- system.galera.server.cluster
+- system.galera.server.database.ceilometer
+- system.galera.server.database.cinder
+- system.galera.server.database.glance
+- system.galera.server.database.heat
+- system.galera.server.database.keystone
+- system.galera.server.database.nova
 - cluster.mk20_stacklight_advanced
 parameters:
   _param:
