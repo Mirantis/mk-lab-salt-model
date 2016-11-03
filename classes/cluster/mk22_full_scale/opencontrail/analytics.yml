@@ -18,3 +18,12 @@ parameters:
     common:
       identity:
         host: ${_param:openstack_control_address}
+    collector:
+      discovery:
+        host: ${_param:opencontrail_control_address}
+    database:
+      discovery:
+        host: ${_param:opencontrail_control_address}
+    common:
+      network:
+        host: ${_param:opencontrail_control_address}
