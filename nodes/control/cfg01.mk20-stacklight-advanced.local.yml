@@ -5,6 +5,7 @@ classes:
 parameters:
   _param:
     linux_system_codename: xenial
+    reclass_data_revision: dash
   linux:
     system:
       name: cfg01
