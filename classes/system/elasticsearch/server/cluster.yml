@@ -1,4 +1,5 @@
 classes:
+- service.keepalived.cluster.single
 - service.elasticsearch.server.cluster
 - service.java.environment
 parameters:

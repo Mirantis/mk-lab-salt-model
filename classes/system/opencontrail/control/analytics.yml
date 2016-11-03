@@ -1,4 +1,5 @@
 classes:
+- service.keepalived.cluster.single
 - service.opencontrail.control.analytics
 parameters:
   haproxy:

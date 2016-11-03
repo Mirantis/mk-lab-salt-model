@@ -1,4 +1,5 @@
 classes:
+- service.keepalived.cluster.single
 - service.influxdb.server.single
 parameters:
   linux:
