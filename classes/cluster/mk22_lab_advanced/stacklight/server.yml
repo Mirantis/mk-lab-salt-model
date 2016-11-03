@@ -1,8 +1,8 @@
 classes:
-- system.elasticsearch.server.single
-- service.keepalived.cluster.single
-- system.rabbitmq.server.vhost.monitoring
-- system.monitoring.server.check.api
+- system.collectd.client.remote
+- system.elasticsearch.server.cluster
+- system.influxdb.server.cluster
+- system.kibana.server.single
 - system.grafana.server.single
 - cluster.mk22_lab_advanced
 parameters:

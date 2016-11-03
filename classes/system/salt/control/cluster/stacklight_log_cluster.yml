@@ -1,0 +1,26 @@
+parameters:
+  salt:
+    control:
+      size:
+        stacklight.log:
+          cpu: 32
+          ram: 65536
+          disk_profile: small
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            log01:
+              provider: kvm01.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: stacklight.log
+            log02:
+              provider: kvm02.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: stacklight.log
+            log03:
+              provider: kvm03.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: stacklight.log
