@@ -2,8 +2,8 @@ parameters:
   reclass:
     storage:
       node:
-        amq01:
-          name: amq01
+        msg01:
+          name: msg01
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.message_queue
@@ -13,8 +13,8 @@ parameters:
             single_address: 172.16.10.141
             keepalived_vip_priority: 103
             rabbitmq_cluster_role: master
-        amq02:
-          name: amq02
+        msg02:
+          name: msg02
           domain: ${_param:cluster_domain}
           classes:  
           - cluster.${_param:cluster_name}.openstack.message_queue
@@ -24,8 +24,8 @@ parameters:
             single_address: 172.16.10.142
             keepalived_vip_priority: 102
             rabbitmq_cluster_role: slave
-        amq03:
-          name: amq03
+        msg03:
+          name: msg03
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.message_queue
