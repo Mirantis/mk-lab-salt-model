@@ -15,6 +15,8 @@ parameters:
     opencontrail_analytics_address: 172.16.10.249
     opencontrail_control_address: 172.16.10.250
     stacklight_monitor_address: 172.16.10.253
+    stacklight_telemetry_address: 172.16.10.246
+    stacklight_log_address: 172.16.10.245
   linux:
     network:
       host:

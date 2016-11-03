@@ -14,3 +14,16 @@ parameters:
     cluster_node02_address: 172.16.10.172
     cluster_node03_hostname: nal03
     cluster_node03_address: 172.16.10.173
+  opencontrail:
+    common:
+      identity:
+        host: ${_param:openstack_control_address}
+    collector:
+      discovery:
+        host: ${_param:opencontrail_control_address}
+    database:
+      discovery:
+        host: ${_param:opencontrail_control_address}
+    common:
+      network:
+        host: ${_param:opencontrail_control_address}

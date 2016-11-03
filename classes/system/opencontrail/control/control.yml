@@ -1,20 +1,7 @@
 classes:
+- service.keepalived.cluster.single
 - service.opencontrail.control.control
 parameters:
-  opencontrail:
-    common:
-      identity:
-        host: ${_param:control_vip_address}
-    config:
-      message_queue:
-        host: ${_param:control_vip_address}
-      identity:
-        host: ${_param:control_vip_address}
-    web:
-      identity:
-        host: ${_param:control_vip_address}
-      cache:
-        host: 127.0.0.1
   haproxy:
     proxy:
       listen:

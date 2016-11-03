@@ -1,5 +1,6 @@
 classes:
 - cluster.mk22_full_scale
+- system.galera.server.cluster
 parameters:
   _param:
     keepalived_vip_interface: eth1

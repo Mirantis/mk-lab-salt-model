@@ -1,0 +1,15 @@
+parameters:
+  mysql:
+    server:
+      database:
+        keystone:
+          encoding: utf8
+          users:
+          - name: keystone
+            password: ${_param:mysql_keystone_password}
+            host: '%'
+            rights: all
+          - name: keystone
+            password: ${_param:mysql_keystone_password}
+            host: ${_param:cluster_local_address}
+            rights: all
