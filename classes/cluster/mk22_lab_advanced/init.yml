@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.single
-- cluster.mk22_lab_advanced.monitoring
 - cluster.mk22_lab_advanced.openstack
+- cluster.mk22_lab_advanced.stacklight
 parameters:
   _param:
     cluster_domain: mk22-lab-advanced.local
