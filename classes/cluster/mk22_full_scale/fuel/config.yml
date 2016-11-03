@@ -18,6 +18,7 @@ parameters:
   _param:
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
+    salt_master_base_environment: dev
     reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
     reclass_data_revision: master
     reclass_config_master: 192.168.10.100
