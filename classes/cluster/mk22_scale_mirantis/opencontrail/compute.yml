@@ -3,6 +3,8 @@ classes:
 - system.opencontrail.compute.cluster
 - cluster.mk22_scale_mirantis
 parameters:
+  _param:
+    opencontrail_compute_address: ${_param:single_address}
   linux:
     network:
       interface:
