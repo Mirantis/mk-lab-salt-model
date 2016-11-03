@@ -4,15 +4,19 @@ parameters:
   opencontrail:
     common:
       identity:
-        host: ${_param:control_vip_address}
+        host: ${_param:openstack_control_address}
     config:
       message_queue:
-        host: ${_param:control_vip_address}
+        host: ${_param:openstack_message_queue_address}
       identity:
-        host: ${_param:control_vip_address}
+        host: ${_param:openstack_control_address}
+      analytics:
+        host: ${_param:opencontrail_analytics_address}
     web:
       identity:
-        host: ${_param:control_vip_address}
+        host: ${_param:openstack_control_address}
+      analytics:
+        host: ${_param:opencontrail_analytics_address}
       cache:
         host: 127.0.0.1
   haproxy:

@@ -4,7 +4,7 @@ parameters:
   opencontrail:
     common:
       identity:
-        host: ${_param:control_vip_address}
+        host: ${_param:openstack_control_address}
   haproxy:
     proxy:
       listen:
