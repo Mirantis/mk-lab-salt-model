@@ -12,20 +12,6 @@ parameters:
       logging:
         heka:
           enabled: true
-  mysql:
-    server:
-      database:
-        glance:
-          encoding: utf8
-          users:
-          - name: glance
-            password: ${_param:mysql_glance_password}
-            host: '%'
-            rights: all
-          - name: glance
-            password: ${_param:mysql_glance_password}
-            host: ${_param:cluster_local_address}
-            rights: all
   haproxy:
     proxy:
       listen:
