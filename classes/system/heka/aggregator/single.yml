@@ -1,2 +1,15 @@
-classes:
-- service.heka.aggregator.single
+applications:
+- heka
+parameters:
+  heka:
+    aggregator:
+      enabled: true
+      influxdb_time_precision: ms
+      output:
+        influxdb:
+          engine: influxdb
+          host: ${_param:heka_influxdb_host}
+          port: ${_param:influxdb_port}
+          database: ${_param:influxdb_database}
+          username: ${_param:influxdb_user}
+          password: ${_param:influxdb_password}
