@@ -36,7 +36,7 @@ parameters:
   linux:
     network:
       interface:
-        eth1: ${_param: linux_static_interface}
+        eth1: ${_param:linux_static_interface}
       host:
         msg01:
           address: ${_param:cluster_node01_address}
