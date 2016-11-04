@@ -1,0 +1,20 @@
+#language: ruby
+
+sudo: true
+
+install:
+  # init/start docker in travis
+  - source <(curl -sL https://raw.githubusercontent.com/zuazo/kitchen-in-travis/master/scripts/start_docker.sh)
+  - DOCKER_IMAGE=${DOCKER_IMAGE:-"ubuntu:16.04"}
+  - DOCKER_OPTS="${DOCKER_OPTS} -e DEBIAN_FRONTEND=noninteractive -h cfg01.ci.local"
+
+script:
+  - cd $TRAVIS_BUILD_DIR
+  - ID=$(docker run ${DOCKER_OPTS} -v $(pwd):/tmp/reclass -i -t -d ${DOCKER_IMAGE})
+  - docker exec ${ID} /bin/bash -c "/tmp/reclass/.travis.provisioner.sh"
+
+after_script:
+  - docker stop ${ID}
+  - docker rm ${ID}
+
+after_failure: cat docker_daemon.log
