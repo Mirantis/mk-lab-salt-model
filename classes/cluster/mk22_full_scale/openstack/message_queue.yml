@@ -33,3 +33,10 @@ parameters:
           - name: HA
             pattern: '^(?!amq\.).*'
             definition: '{"ha-mode": "all", "message-ttl": 120000}'
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: dhcp
