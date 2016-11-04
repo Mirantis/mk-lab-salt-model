@@ -1,8 +1,7 @@
 classes:
 - cluster.mk22_full_scale
-- service.keepalived.cluster.single
-- service.haproxy.proxy.single
-- service.rabbitmq.server.cluster
+- system.rabbitmq.server.cluster
+- system.linux.system.repo.mos9
 parameters:
   _param:
     keepalived_vip_interface: eth1
