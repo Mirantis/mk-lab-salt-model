@@ -18,15 +18,9 @@ parameters:
     stacklight_telemetry_address: 172.16.10.246
     stacklight_log_address: 172.16.10.245
 
-    kvm01_single_address: 172.20.9.235
-    kvm02_single_address: 172.20.9.234
-    kvm03_single_address: 172.20.9.157
-    kvm04_single_address: 172.20.9.156
-    kvm05_single_address: 172.20.9.155
-    kvm06_single_address: 172.20.9.154
-    kvm07_single_address: 172.20.9.153
-    kvm08_single_address: 172.20.9.152
-    kvm09_single_address: 172.20.9.150
+    dbs01_single_address: 172.16.10.181
+    dbs02_single_address: 172.16.10.182
+    dbs03_single_address: 172.16.10.183
 
     linux_dhcp_interface:
           enabled: true
