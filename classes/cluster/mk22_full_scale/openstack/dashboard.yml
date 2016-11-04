@@ -10,4 +10,4 @@ parameters:
           source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty
     network:
       interface:
-        eth1: ${_param: linux_static_interface}
+        eth1: ${_param:linux_static_interface}
