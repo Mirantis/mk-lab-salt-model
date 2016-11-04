@@ -18,9 +18,9 @@ parameters:
     stacklight_telemetry_address: 172.16.10.246
     stacklight_log_address: 172.16.10.245
 
-    dbs01_single_address: 172.16.10.181
-    dbs02_single_address: 172.16.10.182
-    dbs03_single_address: 172.16.10.183
+    dbs01_single_address: 172.16.10.125
+    dbs02_single_address: 172.16.10.126
+    dbs03_single_address: 172.16.10.127
 
     linux_dhcp_interface:
           enabled: true
