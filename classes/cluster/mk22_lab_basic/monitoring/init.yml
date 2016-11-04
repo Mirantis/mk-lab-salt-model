@@ -7,3 +7,4 @@ parameters:
     heka_amqp_password: password
     rabbitmq_graphite_password: password
     rabbitmq_monitor_password: password
+    sensu_dashboard_password: password
