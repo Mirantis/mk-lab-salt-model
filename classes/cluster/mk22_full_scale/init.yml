@@ -17,6 +17,27 @@ parameters:
     stacklight_monitor_address: 172.16.10.253
     stacklight_telemetry_address: 172.16.10.246
     stacklight_log_address: 172.16.10.245
+
+    kvm01_single_address: 172.20.9.235
+    kvm02_single_address: 172.20.9.234
+    kvm03_single_address: 172.20.9.157
+    kvm04_single_address: 172.20.9.156
+    kvm05_single_address: 172.20.9.155
+    kvm06_single_address: 172.20.9.154
+    kvm07_single_address: 172.20.9.153
+    kvm08_single_address: 172.20.9.152
+    kvm09_single_address: 172.20.9.150
+
+    linux_dhcp_interface:
+          enabled: true
+          type: eth
+          proto: dhcp
+    linux_static_interface:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
   linux:
     network:
       host:

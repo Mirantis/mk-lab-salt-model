@@ -12,4 +12,3 @@ parameters:
             linux_system_codename: trusty
             single_address: 172.16.10.151
             deploy_address: 192.168.10.151
-            opencontrail_database_id: 1

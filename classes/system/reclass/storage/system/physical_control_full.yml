@@ -10,13 +10,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.151
-            deploy_address: 192.168.10.151
-            opencontrail_database_id: 1
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm01_single_address}
         kvm02:
           name: kvm02
           domain: ${_param:cluster_domain}
@@ -25,13 +19,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.152
-            deploy_address: 192.168.10.152
-            opencontrail_database_id: 2
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm02_single_address}
         kvm03:
           name: kvm03
           domain: ${_param:cluster_domain}
@@ -40,13 +28,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.153
-            deploy_address: 192.168.10.153
-            opencontrail_database_id: 3
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm03_single_address}
         kvm04:
           name: kvm04
           domain: ${_param:cluster_domain}
@@ -55,13 +37,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.154
-            deploy_address: 192.168.10.154
-            opencontrail_database_id: 4
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm04_single_address}
         kvm05:
           name: kvm05
           domain: ${_param:cluster_domain}
@@ -70,13 +46,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.155
-            deploy_address: 192.168.10.155
-            opencontrail_database_id: 5
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm05_single_address}
         kvm06:
           name: kvm06
           domain: ${_param:cluster_domain}
@@ -85,13 +55,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.156
-            deploy_address: 192.168.10.156
-            opencontrail_database_id: 6
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm06_single_address}
         kvm07:
           name: kvm07
           domain: ${_param:cluster_domain}
@@ -100,13 +64,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.157
-            deploy_address: 192.168.10.157
-            opencontrail_database_id: 7
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm07_single_address}
         kvm08:
           name: kvm08
           domain: ${_param:cluster_domain}
@@ -115,13 +73,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.158
-            deploy_address: 192.168.10.158
-            opencontrail_database_id: 8
-parameters:
-  reclass:
-    storage:
-      node:
+            single_address: ${_param:kvm08_single_address}
         kvm09:
           name: kvm09
           domain: ${_param:cluster_domain}
@@ -130,6 +82,4 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.159
-            deploy_address: 192.168.10.159
-            opencontrail_database_id: 9
+            single_address: ${_param:kvm09_single_address}

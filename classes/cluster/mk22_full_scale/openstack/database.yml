@@ -20,3 +20,7 @@ parameters:
     cluster_node02_address: 172.16.10.182
     cluster_node03_hostname: dbs03
     cluster_node03_address: 172.16.10.183
+  linux:
+    network:
+      interface:
+        eth1: ${_param: linux_static_interface}
