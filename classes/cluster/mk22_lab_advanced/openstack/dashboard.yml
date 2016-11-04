@@ -3,6 +3,9 @@ classes:
 - system.horizon.server.single
 - cluster.mk22_lab_advanced
 parameters:
+  horizon:
+    server:
+      version: liberty
   linux:
     system:
       repo:
