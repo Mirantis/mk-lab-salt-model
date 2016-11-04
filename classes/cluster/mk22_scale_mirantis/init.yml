@@ -15,6 +15,16 @@ parameters:
     opencontrail_analytics_address: 172.16.10.249
     opencontrail_control_address: 172.16.10.250
     stacklight_monitor_address: 172.16.10.253
+    linux_dhcp_interface:
+          enabled: true
+          type: eth
+          proto: dhcp
+    linux_static_interface:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
   linux:
     network:
       host:

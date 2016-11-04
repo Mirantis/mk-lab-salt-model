@@ -14,3 +14,7 @@ parameters:
     cluster_node02_address: 172.16.10.172
     cluster_node03_hostname: nal03
     cluster_node03_address: 172.16.10.173
+  linux:
+    network:
+      interface:
+        eth1: ${_param: linux_static_interface}
