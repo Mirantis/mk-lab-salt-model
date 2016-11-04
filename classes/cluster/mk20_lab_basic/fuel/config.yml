@@ -31,3 +31,21 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  reclass:
+    storage:
+      node:
+        ctl01:
+          classes:
+          - service.galera.master.cluster
+          params:
+            mysql_cluster_role: master
+        ctl02:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            mysql_cluster_role: slave
+        ctl03:
+          classes:
+          - service.galera.slave.cluster
+          params:
+            mysql_cluster_role: slave
