@@ -86,3 +86,5 @@ parameters:
       address: ${_param:single_address}
       netmask: 255.255.252.0
       gateway: 172.20.8.1
+      name_servers:
+        - 8.8.8.8
