@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        prx01:
+        openstack_proxy_node01:
           name: prx01
           domain: ${_param:cluster_domain}
           classes:

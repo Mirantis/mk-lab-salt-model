@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        mon01:
+        stacklight_server_node01:
           name: mon01
           domain: ${_param:cluster_domain}
           classes:

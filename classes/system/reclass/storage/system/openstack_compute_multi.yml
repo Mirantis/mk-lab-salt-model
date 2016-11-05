@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        cmp01:
+        openstack_compute_node01:
           name: cmp01
           domain: ${_param:cluster_domain}
           classes:
@@ -11,7 +11,7 @@ parameters:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
             single_address: 172.16.10.105
-        cmp02:
+        openstack_compute_node02:
           name: cmp02
           domain: ${_param:cluster_domain}
           classes:

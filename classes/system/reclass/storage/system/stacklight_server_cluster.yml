@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        mon01:
+        stacklight_server_node01:
           name: mon01
           domain: ${_param:cluster_domain}
           classes:
@@ -12,7 +12,7 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node01_address}
             keepalived_vip_priority: 103
-        mon02:
+        stacklight_server_node02:
           name: mon02
           domain: ${_param:cluster_domain}
           classes:
@@ -22,7 +22,7 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node02_address}
             keepalived_vip_priority: 102
-        mon03:
+        stacklight_server_node03:
           name: mon03
           domain: ${_param:cluster_domain}
           classes:

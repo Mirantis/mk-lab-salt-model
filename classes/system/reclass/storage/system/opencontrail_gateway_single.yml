@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        gtw01:
+        opencontrail_gateway_node01:
           name: gtw01
           domain: ${_param:cluster_domain}
           classes:

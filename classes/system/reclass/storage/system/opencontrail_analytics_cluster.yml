@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        nal01:
+        opencontrail_analytics_node01:
           name: nal01
           domain: ${_param:cluster_domain}
           classes:
@@ -13,7 +13,7 @@ parameters:
             single_address: ${_param:opencontrail_analytics_node01_address}
             keepalived_vip_priority: 103
             opencontrail_database_id: 1
-        nal02:
+        opencontrail_analytics_node02:
           name: nal02
           domain: ${_param:cluster_domain}
           classes:  
@@ -24,7 +24,7 @@ parameters:
             single_address: ${_param:opencontrail_analytics_node02_address}
             keepalived_vip_priority: 102
             opencontrail_database_id: 2
-        nal03:
+        opencontrail_analytics_node03:
           name: nal03
           domain: ${_param:cluster_domain}
           classes:
