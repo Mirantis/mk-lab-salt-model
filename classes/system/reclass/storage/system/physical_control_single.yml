@@ -2,8 +2,8 @@ parameters:
   reclass:
     storage:
       node:
-        kvm01:
-          name: kvm01
+        fuel_compute_node01:
+          name: fuel_compute_node01
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.fuel.compute

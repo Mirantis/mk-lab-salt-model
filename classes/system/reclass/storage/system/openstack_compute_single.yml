@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        cmp01:
+        openstack_compute_node01:
           name: cmp01
           domain: ${_param:cluster_domain}
           classes:

@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        prx01:
+        openstack_proxy_node01:
           name: prx01
           domain: ${_param:cluster_domain}
           classes:
@@ -11,7 +11,7 @@ parameters:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
             single_address: ${_param:openstack_proxy_node01_address}
-        prx02:
+        openstack_proxy_node02:
           name: prx02
           domain: ${_param:cluster_domain}
           classes:

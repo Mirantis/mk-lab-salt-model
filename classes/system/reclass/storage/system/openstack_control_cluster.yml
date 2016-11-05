@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
+        openstack_control_node01:
           name: ctl01
           domain: ${_param:cluster_domain}
           classes:
@@ -14,7 +14,7 @@ parameters:
             keepalived_vip_priority: 103
             opencontrail_database_id: 1
             rabbitmq_cluster_role: master
-        ctl02:
+        openstack_control_node02:
           name: ctl02
           domain: ${_param:cluster_domain}
           classes:
@@ -26,7 +26,7 @@ parameters:
             keepalived_vip_priority: 102
             opencontrail_database_id: 2
             rabbitmq_cluster_role: slave
-        ctl03:
+        openstack_control_node03:
           name: ctl03
           domain: ${_param:cluster_domain}
           classes:

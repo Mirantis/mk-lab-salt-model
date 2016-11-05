@@ -2,7 +2,7 @@ parameters:
   reclass:
     storage:
       node:
-        dbs01:
+        openstack_database_node01:
           name: dbs01
           domain: ${_param:cluster_domain}
           classes:
@@ -14,7 +14,7 @@ parameters:
             single_address: ${_param:openstack_database_node01_address}
             keepalived_vip_priority: 103
             mysql_cluster_role: master
-        dbs02:
+        openstack_database_node02:
           name: dbs02
           domain: ${_param:cluster_domain}
           classes:  
@@ -26,7 +26,7 @@ parameters:
             single_address: ${_param:openstack_database_node02_address}
             keepalived_vip_priority: 102
             mysql_cluster_role: slave
-        dbs03:
+        openstack_database_node03:
           name: dbs03
           domain: ${_param:cluster_domain}
           classes:
