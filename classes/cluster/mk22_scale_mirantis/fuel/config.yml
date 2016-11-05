@@ -35,10 +35,10 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
+        openstack_control_node01:
           classes:
           - cluster.${_param:cluster_name}.openstack.control_init
-        dbs01:
+        openstack_database_node01:
           classes:
           - cluster.${_param:cluster_name}.openstack.database_init
   salt:
