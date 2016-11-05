@@ -14,6 +14,8 @@ parameters:
     cluster_public_host: 10.26.247.6
     # fuel service addresses
     fuel_config_address: 172.20.9.235
+    fuel_config_deploy_address: 172.20.1.235
+
     fuel_compute_node01_address: 172.20.9.235
     fuel_compute_node02_address: 172.20.9.234
     fuel_compute_node03_address: 172.20.9.157
