@@ -1,5 +1,5 @@
 # Address plan covered at:
-/# https://docs.google.com/spreadsheets/d/17jhct4awbaoXVKp7_SdCbS-DBlikB6oEMb3gzLI4By8/edit#gid=0
+# https://docs.google.com/spreadsheets/d/17jhct4awbaoXVKp7_SdCbS-DBlikB6oEMb3gzLI4By8/edit#gid=0
 classes:
 - system.linux.system.single
 - cluster.mk22_scale_mirantis.fuel
