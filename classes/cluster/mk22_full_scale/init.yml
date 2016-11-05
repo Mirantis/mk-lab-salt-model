@@ -19,9 +19,9 @@ parameters:
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
     openstack_database_address: 172.16.10.252
-    openstack_database_node01_address: 172.16.10.51
-    openstack_database_node02_address: 172.16.10.51
-    openstack_database_node03_address: 172.16.10.53
+    openstack_database_node01_address: 172.16.10.181
+    openstack_database_node02_address: 172.16.10.182
+    openstack_database_node03_address: 172.16.10.183
     openstack_message_queue_address: 172.16.10.251
     openstack_message_queue_node01_address: 172.16.10.151
     openstack_message_queue_node02_address: 172.16.10.152
@@ -37,17 +37,17 @@ parameters:
     opencontrail_control_node03_address: 172.16.10.163
     # stacklight service addresses
     stacklight_monitor_address: 172.16.10.253
-    stacklight_monitor_node01_address: 172.16.10.81
-    stacklight_monitor_node02_address: 172.16.10.82
-    stacklight_monitor_node03_address: 172.16.10.83
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
     stacklight_log_address: 172.16.10.245
-    stacklight_log_node01_address: 172.16.10.101
-    stacklight_log_node02_address: 172.16.10.102
-    stacklight_log_node03_address: 172.16.10.103
+    stacklight_log_node01_address: 172.16.10.191
+    stacklight_log_node02_address: 172.16.10.192
+    stacklight_log_node03_address: 172.16.10.193
     stacklight_telemetry_address: 172.16.10.246
-    stacklight_telemetry_node01_address: 172.16.10.91
-    stacklight_telemetry_node02_address: 172.16.10.92
-    stacklight_telemetry_node03_address: 172.16.10.93
+    stacklight_telemetry_node01_address: 172.16.10.197
+    stacklight_telemetry_node02_address: 172.16.10.198
+    stacklight_telemetry_node03_address: 172.16.10.199
     # Common interface definitions
     linux_dhcp_interface:
       enabled: true

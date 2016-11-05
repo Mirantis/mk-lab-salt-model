@@ -3,7 +3,6 @@ parameters:
     openstack_version: liberty
     openstack_region: RegionOne
     admin_email: root@localhost
-    cluster_public_host: _
     opencontrail_version: 3.0
     opencontrail_compute_dns: 8.8.8.8
     opencontrail_stats_password: contrail123

@@ -13,7 +13,7 @@ classes:
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_compute_single
 - system.reclass.storage.system.openstack_dashboard_single
-- system.reclass.storage.system.stacklight_server_single
+- system.reclass.storage.system.monitoring_service_single
 - cluster.mk20_lab_advanced
 parameters:
   _param:
