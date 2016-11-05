@@ -6,13 +6,21 @@ parameters:
   _param:
     cluster_domain: mk20-stacklight-expert.local
     cluster_name: mk20_lab_expert
-    monitor_vip_address: 172.16.10.253
-    monitor_node01_hostname: mon01
-    monitor_node01_address: 172.16.10.107
-    monitor_node02_hostname: mon02
-    monitor_node02_address: 172.16.10.108
-    monitor_node03_hostname: mon03
-    monitor_node03_address: 172.16.10.109
+    cluster_public_host: _
+    # fuel service addresses
+    fuel_config_address: 172.16.10.100
+    # openstack service addresses
+    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_node01_address: 172.16.10.121
+    openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 172.16.10.101
+    openstack_control_node02_address: 172.16.10.102
+    openstack_control_node03_address: 172.16.10.103
+    # monitoring service addresses
+    monitoring_service_address: 172.16.10.253
+    monitoring_service_node01_address: 172.16.10.107
+    monitoring_service_node02_address: 172.16.10.108
+    monitoring_service_node03_address: 172.16.10.109
   linux:
     network:
       host:

@@ -7,8 +7,20 @@ parameters:
     cluster_domain: mk20-stacklight-advanced.local
     cluster_name: mk20_stacklight_advanced
     cluster_public_host: _
+    # fuel service addresses
+    fuel_config_address: 172.16.10.100
+    # openstack service addresses
+    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_node01_address: 172.16.10.121
     openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 172.16.10.101
+    openstack_control_node02_address: 172.16.10.102
+    openstack_control_node03_address: 172.16.10.103
+    # stacklight service addresses
     stacklight_monitor_address: 172.16.10.253
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
   linux:
     network:
       host:
@@ -17,21 +29,6 @@ parameters:
           names:
           - cfg01
           - cfg01.${_param:cluster_domain}
-        ctl01:
-          address: ${_param:cluster_node01_address}
-          names:
-          - ${_param:cluster_node01_hostname}
-          - ${_param:cluster_node01_hostname}.${_param:cluster_domain}
-        ctl02:
-          address: ${_param:cluster_node02_address}
-          names:
-          - ${_param:cluster_node02_hostname}
-          - ${_param:cluster_node02_hostname}.${_param:cluster_domain}
-        ctl03:
-          address: ${_param:cluster_node03_address}
-          names:
-          - ${_param:cluster_node03_hostname}
-          - ${_param:cluster_node03_hostname}.${_param:cluster_domain}
         cmp01:
           address: 172.16.10.105
           names:
@@ -57,8 +54,3 @@ parameters:
           names:
           - mon
           - mon.${_param:cluster_domain}
-        ctl:
-          address: ${_param:openstack_control_address}
-          names:
-          - ctl
-          - ctl.${_param:cluster_domain}

@@ -7,7 +7,18 @@ parameters:
     cluster_domain: mk20-stacklight-basic.local
     cluster_name: mk20_stacklight_basic
     cluster_public_host: _
-    control_vip_address: 172.16.10.254
+    # fuel service addresses
+    fuel_config_address: 172.16.10.100
+    # openstack service addresses
+    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_node01_address: 172.16.10.121
+    openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 172.16.10.101
+    openstack_control_node02_address: 172.16.10.102
+    openstack_control_node03_address: 172.16.10.103
+    # stacklight service addresses
+    stacklight_monitor_address: 172.16.10.107
+    stacklight_monitor_node01_address: 172.16.10.107
   linux:
     network:
       host:

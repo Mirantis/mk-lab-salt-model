@@ -58,6 +58,16 @@ parameters:
   linux:
     network:
       host:
+        prx:
+          address: ${_param:openstack_proxy_address}
+          names:
+          - prx
+          - prx.${_param:cluster_domain}
+        prx01:
+          address: ${_param:openstack_proxy_node01_address}
+          names:
+          - prx01
+          - prx01.${_param:cluster_domain}
         ctl:
           address: ${_param:openstack_control_address}
           names:
