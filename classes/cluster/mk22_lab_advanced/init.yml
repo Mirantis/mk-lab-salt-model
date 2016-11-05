@@ -17,10 +17,10 @@ parameters:
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
     # stacklight service addresses
-    stackgliht_monitor_address: 172.16.10.253
-    stackgliht_monitor_node01_address: 172.16.10.107
-    stackgliht_monitor_node02_address: 172.16.10.108
-    stackgliht_monitor_node03_address: 172.16.10.109
+    stacklight_monitor_address: 172.16.10.253
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
   linux:
     network:
       host:
