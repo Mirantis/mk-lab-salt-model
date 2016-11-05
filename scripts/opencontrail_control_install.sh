@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Install opencontrail database services
 salt -C 'I@opencontrail:database' state.sls opencontrail.database -b 1

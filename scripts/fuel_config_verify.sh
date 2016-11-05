@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Verify that Salt master is correctly bootstrapped
 salt-key

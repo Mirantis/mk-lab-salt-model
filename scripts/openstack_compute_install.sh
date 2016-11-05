@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Configure compute nodes
 salt "cmp*" state.apply

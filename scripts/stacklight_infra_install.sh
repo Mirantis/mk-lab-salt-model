@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Install StackLight collectors
 salt "*" state.sls collectd

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # StackLight services
 salt -C 'I@elasticsearch:server' state.sls elasticsearch -b 1
