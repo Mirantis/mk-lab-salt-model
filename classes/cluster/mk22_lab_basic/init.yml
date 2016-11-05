@@ -6,6 +6,12 @@ parameters:
   _param:
     cluster_domain: mk22-lab-basic.local
     cluster_name: mk22_lab_basic
+    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_node01_address: 172.16.10.121
+    openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 172.16.10.101
+    openstack_control_node02_address: 172.16.10.102
+    openstack_control_node03_address: 172.16.10.103
   linux:
     network:
       host:

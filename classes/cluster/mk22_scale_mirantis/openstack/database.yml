@@ -14,11 +14,11 @@ parameters:
     cluster_vip_address: ${_param:openstack_database_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: dbs01
-    cluster_node01_address: 172.16.10.181
+    cluster_node01_address: ${_param:openstack_database_node01_address}
     cluster_node02_hostname: dbs02
-    cluster_node02_address: 172.16.10.182
+    cluster_node02_address: ${_param:openstack_database_node02_address}
     cluster_node03_hostname: dbs03
-    cluster_node03_address: 172.16.10.183
+    cluster_node03_address: ${_param:openstack_database_node03_address}
   linux:
     network:
       interface:

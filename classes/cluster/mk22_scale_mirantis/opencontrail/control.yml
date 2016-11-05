@@ -11,11 +11,11 @@ parameters:
     cluster_vip_address: ${_param:opencontrail_control_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ntw01
-    cluster_node01_address: 172.16.10.161
+    cluster_node01_address: ${_param:opencontrail_control_node01_address}
     cluster_node02_hostname: ntw02
-    cluster_node02_address: 172.16.10.162
+    cluster_node02_address: ${_param:opencontrail_control_node02_address}
     cluster_node03_hostname: ntw03
-    cluster_node03_address: 172.16.10.163
+    cluster_node03_address: ${_param:opencontrail_control_node03_address}
   linux:
     network:
       interface:
@@ -23,3 +23,27 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+      host:
+        ctl:
+          address: ${_param:openstack_control_address}
+          names:
+          - ctl
+          - ctl.${_param:cluster_domain}
+  opencontrail:
+    common:
+      identity:
+        host: ${_param:openstack_control_address}
+    config:
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+      identity:
+        host: ${_param:openstack_control_address}
+      analytics:
+        host: ${_param:opencontrail_analytics_address}
+    web:
+      identity:
+        host: ${_param:openstack_control_address}
+      analytics:
+        host: ${_param:opencontrail_analytics_address}
+      cache:
+        host: 127.0.0.1

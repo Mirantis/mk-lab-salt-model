@@ -11,60 +11,63 @@ parameters:
     cluster_domain: mk22-scale.mirantis.local
     cluster_name: mk22_scale_mirantis
     cluster_public_host: 10.26.247.6
-    # VIP addresses
+    # fuel service addresses
+    fuel_config_address: 172.20.9.235
+    fuel_compute_node01_address: 172.20.9.235
+    fuel_compute_node02_address: 172.20.9.234
+    fuel_compute_node03_address: 172.20.9.157
+    fuel_compute_node04_address: 172.20.9.156
+    fuel_compute_node05_address: 172.20.9.155
+    fuel_compute_node06_address: 172.20.9.154
+    fuel_compute_node07_address: 172.20.9.153
+    fuel_compute_node08_address: 172.20.9.152
+    fuel_compute_node09_address: 172.20.9.150
+    # openstack service addresses
     openstack_proxy_address: 172.20.9.70
+    openstack_proxy_node01_address: 172.20.9.71
+    openstack_proxy_node02_address: 172.20.9.72
     openstack_control_address: 172.20.9.100
+    openstack_control_node01_address: 172.20.9.11
+    openstack_control_node02_address: 172.20.9.12
+    openstack_control_node03_address: 172.20.9.13
     openstack_database_address: 172.20.9.50
+    openstack_database_node01_address: 172.20.9.51
+    openstack_database_node02_address: 172.20.9.51
+    openstack_database_node03_address: 172.20.9.53
     openstack_message_queue_address: 172.20.9.40
+    openstack_message_queue_node01_address: 172.20.9.41
+    openstack_message_queue_node02_address: 172.20.9.42
+    openstack_message_queue_node03_address: 172.20.9.43
+    # opencontrail service addresses
     opencontrail_analytics_address: 172.20.9.30
+    opencontrail_analytics_node01_address: 172.20.9.31
+    opencontrail_analytics_node02_address: 172.20.9.32
+    opencontrail_analytics_node03_address: 172.20.9.33
     opencontrail_control_address: 172.20.9.20
+    opencontrail_control_node01_address: 172.20.9.21
+    opencontrail_control_node02_address: 172.20.9.22
+    opencontrail_control_node03_address: 172.20.9.23
+    # stacklight service addresses
     stacklight_monitor_address: 172.20.9.80
+    stacklight_monitor_node01_address: 172.20.9.81
+    stacklight_monitor_node02_address: 172.20.9.82
+    stacklight_monitor_node03_address: 172.20.9.83
     stacklight_log_address: 172.20.9.110
+    stacklight_log_node01_address: 172.20.9.101
+    stacklight_log_node02_address: 172.20.9.102
+    stacklight_log_node03_address: 172.20.9.103
     stacklight_telemetry_address: 172.20.9.90
-    # Node addresses
-    kvm01_single_address: 172.20.9.235
-    kvm02_single_address: 172.20.9.234
-    kvm03_single_address: 172.20.9.157
-    kvm04_single_address: 172.20.9.156
-    kvm05_single_address: 172.20.9.155
-    kvm06_single_address: 172.20.9.154
-    kvm07_single_address: 172.20.9.153
-    kvm08_single_address: 172.20.9.152
-    kvm09_single_address: 172.20.9.150
-    dbs01_single_address: 172.20.9.51
-    dbs02_single_address: 172.20.9.51
-    dbs03_single_address: 172.20.9.53
+    stacklight_telemetry_node01_address: 172.20.9.91
+    stacklight_telemetry_node02_address: 172.20.9.92
+    stacklight_telemetry_node03_address: 172.20.9.93
     # Interface definitions
     linux_dhcp_interface:
-          enabled: true
-          type: eth
-          proto: dhcp
+      enabled: true
+      type: eth
+      proto: dhcp
     linux_static_interface:
-          enabled: true
-          type: eth
-          proto: static
-          address: ${_param:single_address}
-          netmask: 255.255.255.0
-  linux:
-    network:
-      host:
-        mon:
-          address: ${_param:stacklight_monitor_address}
-          names:
-          - mon
-          - mon.${_param:cluster_domain}
-        ctl:
-          address: ${_param:openstack_control_address}
-          names:
-          - ctl
-          - ctl.${_param:cluster_domain}
-        ntw:
-          address: ${_param:opencontrail_control_address}
-          names:
-          - ntw
-          - nal.${_param:cluster_domain}
-        nal:
-          address: ${_param:opencontrail_analytics_address}
-          names:
-          - nal
-          - nal.${_param:cluster_domain}
+      enabled: true
+      type: eth
+      proto: static
+      address: ${_param:single_address}
+      netmask: 255.255.255.0
