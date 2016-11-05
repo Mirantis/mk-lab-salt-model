@@ -24,6 +24,7 @@ parameters:
     reclass_data_revision: master
     reclass_config_master: ${_param:fuel_config_address}
     single_address: ${_param:fuel_config_address}
+    deploy_address: ${_param:fuel_compute_node01_deploy_address}
     salt_master_host: 127.0.0.1
   reclass:
     storage:
