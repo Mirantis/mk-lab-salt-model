@@ -11,11 +11,11 @@ parameters:
     cluster_vip_address: ${_param:openstack_control_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
-    cluster_node01_address: 172.16.10.101
+    cluster_node01_address: ${_param:openstack_control_node01_address}
     cluster_node02_hostname: ctl02
-    cluster_node02_address: 172.16.10.102
+    cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
-    cluster_node03_address: 172.16.10.103
+    cluster_node03_address: ${_param:openstack_control_node03_address}
   linux:
     network:
       interface:

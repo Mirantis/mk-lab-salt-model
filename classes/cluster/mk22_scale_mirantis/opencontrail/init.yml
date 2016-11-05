@@ -5,3 +5,16 @@ parameters:
     opencontrail_compute_dns: 8.8.8.8
     opencontrail_compute_gateway: 172.16.10.1
     opencontrail_compute_iface: eth1
+  linux:
+    network:
+      host:
+        ntw:
+          address: ${_param:opencontrail_control_address}
+          names:
+          - ntw
+          - nal.${_param:cluster_domain}
+        nal:
+          address: ${_param:opencontrail_analytics_address}
+          names:
+          - nal
+          - nal.${_param:cluster_domain}

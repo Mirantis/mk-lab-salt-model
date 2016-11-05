@@ -9,49 +9,53 @@ parameters:
     cluster_domain: mk22-full-scale.local
     cluster_name: mk22_full_scale
     cluster_public_host: _
+    # fuel service addresses
+    fuel_config_address: 172.16.10.100
+    # openstack service addresses
+    openstack_proxy_address: 172.16.10.121
+    openstack_proxy_node01_address: 172.16.10.121
     openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 172.16.10.101
+    openstack_control_node02_address: 172.16.10.102
+    openstack_control_node03_address: 172.16.10.103
     openstack_database_address: 172.16.10.252
+    openstack_database_node01_address: 172.16.10.51
+    openstack_database_node02_address: 172.16.10.51
+    openstack_database_node03_address: 172.16.10.53
     openstack_message_queue_address: 172.16.10.251
+    openstack_message_queue_node01_address: 172.16.10.151
+    openstack_message_queue_node02_address: 172.16.10.152
+    openstack_message_queue_node03_address: 172.16.10.153
+    # opencontrail service addresses
     opencontrail_analytics_address: 172.16.10.249
+    opencontrail_analytics_node01_address: 172.16.10.171
+    opencontrail_analytics_node02_address: 172.16.10.172
+    opencontrail_analytics_node03_address: 172.16.10.173
     opencontrail_control_address: 172.16.10.250
+    opencontrail_control_node01_address: 172.16.10.161
+    opencontrail_control_node02_address: 172.16.10.162
+    opencontrail_control_node03_address: 172.16.10.163
+    # stacklight service addresses
     stacklight_monitor_address: 172.16.10.253
-    stacklight_telemetry_address: 172.16.10.246
+    stacklight_monitor_node01_address: 172.16.10.81
+    stacklight_monitor_node02_address: 172.16.10.82
+    stacklight_monitor_node03_address: 172.16.10.83
     stacklight_log_address: 172.16.10.245
-
-    dbs01_single_address: 172.16.10.125
-    dbs02_single_address: 172.16.10.126
-    dbs03_single_address: 172.16.10.127
-
+    stacklight_log_node01_address: 172.16.10.101
+    stacklight_log_node02_address: 172.16.10.102
+    stacklight_log_node03_address: 172.16.10.103
+    stacklight_telemetry_address: 172.16.10.246
+    stacklight_telemetry_node01_address: 172.16.10.91
+    stacklight_telemetry_node02_address: 172.16.10.92
+    stacklight_telemetry_node03_address: 172.16.10.93
+    # Common interface definitions
     linux_dhcp_interface:
-          enabled: true
-          type: eth
-          proto: dhcp
+      enabled: true
+      type: eth
+      proto: dhcp
     linux_static_interface:
-          enabled: true
-          type: eth
-          proto: static
-          address: ${_param:single_address}
-          netmask: 255.255.255.0
-  linux:
-    network:
-      host:
-        mon:
-          address: ${_param:stacklight_monitor_address}
-          names:
-          - mon
-          - mon.${_param:cluster_domain}
-        ctl:
-          address: ${_param:openstack_control_address}
-          names:
-          - ctl
-          - ctl.${_param:cluster_domain}
-        ntw:
-          address: ${_param:opencontrail_control_address}
-          names:
-          - ntw
-          - nal.${_param:cluster_domain}
-        nal:
-          address: ${_param:opencontrail_analytics_address}
-          names:
-          - nal
-          - nal.${_param:cluster_domain}
+      enabled: true
+      type: eth
+      proto: static
+      address: ${_param:single_address}
+      netmask: 255.255.255.0

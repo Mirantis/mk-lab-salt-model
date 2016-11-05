@@ -2,8 +2,6 @@ classes:
 - system.collectd.client.remote
 - system.heka.remote_collector.single
 - system.heka.aggregator.single
-- system.elasticsearch.server.single
-- system.influxdb.server.single
 - system.kibana.server.single
 - system.grafana.server.single
 - cluster.mk22_full_scale
@@ -15,15 +13,12 @@ parameters:
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: mon01
-    cluster_node01_address: 172.16.10.107
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
     cluster_node02_hostname: mon02
-    cluster_node02_address: 172.16.10.108
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
     cluster_node03_hostname: mon03
-    cluster_node03_address: 172.16.10.109
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
   linux:
     network:
       interface:
-        ens4:
-          enabled: true
-          type: eth
-          proto: dhcp
+        ens4: ${_param:linux_static_interface}

@@ -10,7 +10,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.121
+            single_address: ${_param:openstack_proxy_node01_address}
         prx02:
           name: prx02
           domain: ${_param:cluster_domain}
@@ -19,4 +19,4 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.122
+            single_address: ${_param:openstack_proxy_node02_address}

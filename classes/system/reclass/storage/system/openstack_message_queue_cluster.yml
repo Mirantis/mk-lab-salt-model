@@ -10,7 +10,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.151
+            single_address: ${_param:openstack_message_queue_node01_address}
             keepalived_vip_priority: 103
             rabbitmq_cluster_role: master
         msg02:
@@ -21,7 +21,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.152
+            single_address: ${_param:openstack_message_queue_node02_address}
             keepalived_vip_priority: 102
             rabbitmq_cluster_role: slave
         msg03:
@@ -32,6 +32,6 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.153
+            single_address: ${_param:openstack_message_queue_node03_address}
             keepalived_vip_priority: 101
             rabbitmq_cluster_role: slave

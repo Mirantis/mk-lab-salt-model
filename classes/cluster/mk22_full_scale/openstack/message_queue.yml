@@ -9,11 +9,11 @@ parameters:
     cluster_vip_address: ${_param:openstack_message_queue_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: msg01
-    cluster_node01_address: 172.16.10.151
+    cluster_node01_address: ${_param:openstack_message_queue_node01_address}
     cluster_node02_hostname: msg02
-    cluster_node02_address: 172.16.10.152
+    cluster_node02_address: ${_param:openstack_message_queue_node02_address}
     cluster_node03_hostname: msg03
-    cluster_node03_address: 172.16.10.153
+    cluster_node03_address: ${_param:openstack_message_queue_node03_address}
   rabbitmq:
     server:
       host:

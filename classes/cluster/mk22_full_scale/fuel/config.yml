@@ -22,16 +22,13 @@ parameters:
     reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
     reclass_data_revision: master
     reclass_config_master: 192.168.10.100
-    single_address: 172.16.10.100
+    single_address: ${_param:fuel_config_address}
     salt_master_host: 127.0.0.1
     salt_minion_ca_host: ${linux:network:fqdn}
   linux:
     network:
       interface:
-        ens4:
-          enabled: true
-          type: eth
-          proto: dhcp
+        ens4: ${_param:linux_static_interface}
   reclass:
     storage:
       node:

@@ -10,7 +10,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.135
+            single_address: ${_param:opencontrail_analytics_node01_address}
             keepalived_vip_priority: 103
             opencontrail_database_id: 1
         nal02:
@@ -21,7 +21,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.136
+            single_address: ${_param:opencontrail_analytics_node02_address}
             keepalived_vip_priority: 102
             opencontrail_database_id: 2
         nal03:
@@ -32,6 +32,6 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: 172.16.10.137
+            single_address: ${_param:opencontrail_analytics_node03_address}
             keepalived_vip_priority: 101
             opencontrail_database_id: 3

@@ -10,7 +10,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
-            single_address: 172.16.10.107
+            single_address: ${_param:stacklight_monitor_node01_address}
             keepalived_vip_priority: 103
         mon02:
           name: mon02
@@ -20,7 +20,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
-            single_address: 172.16.10.108
+            single_address: ${_param:stacklight_monitor_node02_address}
             keepalived_vip_priority: 102
         mon03:
           name: mon03
@@ -30,5 +30,5 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
-            single_address: 172.16.10.109
+            single_address: ${_param:stacklight_monitor_node03_address}
             keepalived_vip_priority: 101
