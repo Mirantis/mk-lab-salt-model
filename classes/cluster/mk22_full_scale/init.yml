@@ -59,3 +59,16 @@ parameters:
       proto: static
       address: ${_param:single_address}
       netmask: 255.255.255.0
+  linux:
+    network:
+      host:
+        cmp01:
+          address: 172.16.10.105
+          names:
+          - cmp01
+          - cmp01.${_param:cluster_domain}
+        cmp02:
+          address: 172.16.10.106
+          names:
+          - cmp02
+          - cmp02.${_param:cluster_domain}

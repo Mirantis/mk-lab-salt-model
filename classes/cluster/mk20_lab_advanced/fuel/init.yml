@@ -1,7 +1,4 @@
 parameters:
-  _param:
-    salt_control_trusty_image: http://apt.tcpcloud.eu/images/ubuntu-14-04-x64-201608231134.qcow2
-    salt_control_xenial_image: http://apt.tcpcloud.eu/images/ubuntu-16-04-x64-201608231004.qcow2
   linux:
     network:
       host:

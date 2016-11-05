@@ -1,7 +1,8 @@
 classes:
 - system.linux.system.single
-- cluster.mk20_lab_advanced.monitoring
+- cluster.mk20_lab_advanced.fuel
 - cluster.mk20_lab_advanced.openstack
+- cluster.mk20_lab_advanced.monitoring
 parameters:
   _param:
     cluster_domain: mk20-lab-advanced.local
@@ -22,47 +23,8 @@ parameters:
   linux:
     network:
       host:
-        cfg01:
-          address: 172.16.10.100
-          names:
-          - cfg01
-          - cfg01.mk20-lab-advanced.local
-        ctl01:
-          address: ${_param:cluster_node01_address}
-          names:
-          - ${_param:cluster_node01_hostname}
-          - ${_param:cluster_node01_hostname}.mk20-lab-advanced.local
-        ctl02:
-          address: ${_param:cluster_node02_address}
-          names:
-          - ${_param:cluster_node02_hostname}
-          - ${_param:cluster_node02_hostname}.mk20-lab-advanced.local
-        ctl03:
-          address: ${_param:cluster_node03_address}
-          names:
-          - ${_param:cluster_node03_hostname}
-          - ${_param:cluster_node03_hostname}.mk20-lab-advanced.local
-        prx01:
-          address: 172.16.10.121
-          names:
-          - prx
-          - prx.mk20-lab-advanced.local
-          - prx01
-          - prx01.mk20-lab-advanced.local
         cmp01:
           address: 172.16.10.105
           names:
           - cmp01
-          - cmp01.mk20-lab-advanced.local
-        mon01:
-          address: 172.16.10.107
-          names:
-          - mon
-          - mon.mk20-lab-advanced.local
-          - mon01
-          - mon01.mk20-lab-advanced.local
-        ctl:
-          address: 172.16.10.254
-          names:
-          - ctl
-          - ctl.mk20-lab-advanced.local
+          - cmp01.${_param:cluster_domain}
