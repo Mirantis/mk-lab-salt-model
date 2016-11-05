@@ -1,6 +1,5 @@
 classes:
 - cluster.mk22_scale_mirantis.fuel.config
-- cluster.mk22_scale_mirantis.openstack.proxy
 - cluster.mk22_scale_mirantis.fuel.compute
 parameters:
   _param:
