@@ -3,7 +3,7 @@ classes:
 - cluster.mk22_scale_mirantis.openstack.proxy
 parameters:
   _param:
-    linux_system_codename: xenial
+    linux_system_codename: trusty
     reclass_data_revision: dash
   linux:
     system:
