@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # setup keystone service
 salt -C 'I@keystone:server' state.sls keystone -b 1

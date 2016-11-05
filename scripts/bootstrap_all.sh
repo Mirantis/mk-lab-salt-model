@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 ./fuel_config_verify.sh
 ./fuel_infra_install.sh

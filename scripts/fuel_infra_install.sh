@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Refresh salt master config
 salt -C 'I@salt:master' state.sls salt.master,reclass

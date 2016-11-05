@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # Install keepaliveds
 salt -C 'I@keepalived:cluster' state.sls keepalived -b 1
