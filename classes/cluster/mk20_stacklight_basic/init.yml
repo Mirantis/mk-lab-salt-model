@@ -1,5 +1,6 @@
 classes:
 - system.linux.system.single
+- cluster.mk20_stacklight_basic.fuel
 - cluster.mk20_stacklight_basic.stacklight
 - cluster.mk20_stacklight_basic.openstack
 parameters:
@@ -22,47 +23,8 @@ parameters:
   linux:
     network:
       host:
-        cfg01:
-          address: 172.16.10.100
-          names:
-          - cfg01
-          - cfg01.mk20-stacklight-basic.local
-        ctl01:
-          address: ${_param:cluster_node01_address}
-          names:
-          - ${_param:cluster_node01_hostname}
-          - ${_param:cluster_node01_hostname}.mk20-stacklight-basic.local
-        ctl02:
-          address: ${_param:cluster_node02_address}
-          names:
-          - ${_param:cluster_node02_hostname}
-          - ${_param:cluster_node02_hostname}.mk20-stacklight-basic.local
-        ctl03:
-          address: ${_param:cluster_node03_address}
-          names:
-          - ${_param:cluster_node03_hostname}
-          - ${_param:cluster_node03_hostname}.mk20-stacklight-basic.local
-        prx01:
-          address: 172.16.10.121
-          names:
-          - prx
-          - prx.mk20-stacklight-basic.local
-          - prx01
-          - prx01.mk20-stacklight-basic.local
         cmp01:
           address: 172.16.10.105
           names:
           - cmp01
-          - cmp01.mk20-stacklight-basic.local
-        mon01:
-          address: 172.16.10.253
-          names:
-          - mon01
-          - mon01.mk20-stacklight-basic.local
-          - mon.mk20-stacklight-basic.local
-          - mon
-        ctl:
-          address: 172.16.10.254
-          names:
-          - ctl
-          - ctl.mk20-stacklight-advanced.local
+          - cmp01.${_param:cluster_domain}

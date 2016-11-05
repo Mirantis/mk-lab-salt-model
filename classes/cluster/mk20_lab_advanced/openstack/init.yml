@@ -75,3 +75,36 @@ parameters:
     influxdb_database: lma
     influxdb_user: lma
     influxdb_password: lmapass
+  linux:
+    network:
+      host:
+        prx:
+          address: ${_param:openstack_proxy_address}
+          names:
+          - prx
+          - prx.${_param:cluster_domain}
+        prx01:
+          address: ${_param:openstack_proxy_node01_address}
+          names:
+          - prx01
+          - prx01.${_param:cluster_domain}
+        ctl:
+          address: ${_param:openstack_control_address}
+          names:
+          - ctl
+          - ctl.${_param:cluster_domain}
+        ctl01:
+          address: ${_param:openstack_control_node01_address}
+          names:
+          - ctl01
+          - ctl01.${_param:cluster_domain}
+        ctl02:
+          address: ${_param:openstack_control_node02_address}
+          names:
+          - ctl02
+          - ctl02.${_param:cluster_domain}
+        ctl03:
+          address: ${_param:openstack_control_node03_address}
+          names:
+          - ctl03
+          - ctl03.${_param:cluster_domain}

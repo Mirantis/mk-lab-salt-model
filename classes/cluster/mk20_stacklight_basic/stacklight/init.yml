@@ -5,3 +5,16 @@ parameters:
     influxdb_database: lma
     influxdb_user: lma
     influxdb_password: lmapass
+  linux:
+    network:
+      host:
+        mon:
+          address: ${_param:stacklight_monitor_address}
+          names:
+          - mon
+          - mon.${_param:cluster_domain}
+        mon01:
+          address: ${_param:stacklight_monitor_node01_address}
+          names:
+          - mon01
+          - mon01.${_param:cluster_domain}

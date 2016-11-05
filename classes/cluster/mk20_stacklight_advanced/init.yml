@@ -1,7 +1,8 @@
 classes:
 - system.linux.system.single
-- cluster.mk20_stacklight_advanced.stacklight
+- cluster.mk20_stacklight_advanced.fuel
 - cluster.mk20_stacklight_advanced.openstack
+- cluster.mk20_stacklight_advanced.stacklight
 parameters:
   _param:
     cluster_domain: mk20-stacklight-advanced.local
@@ -24,33 +25,8 @@ parameters:
   linux:
     network:
       host:
-        cfg01:
-          address: 172.16.10.100
-          names:
-          - cfg01
-          - cfg01.${_param:cluster_domain}
         cmp01:
           address: 172.16.10.105
           names:
           - cmp01
           - cmp01.${_param:cluster_domain}
-        mon01:
-          address: 172.16.10.107
-          names:
-          - mon01
-          - mon01.${_param:cluster_domain}
-        mon02:
-          address: 172.16.10.108
-          names:
-          - mon02
-          - mon02.${_param:cluster_domain}
-        mon03:
-          address: 172.16.10.109
-          names:
-          - mon03
-          - mon03.${_param:cluster_domain}
-        mon:
-          address: ${_param:stacklight_monitor_address}
-          names:
-          - mon
-          - mon.${_param:cluster_domain}
