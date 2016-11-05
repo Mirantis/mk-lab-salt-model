@@ -1,4 +1,6 @@
 classes:
+- system.rabbitmq.server.cluster
+- system.rabbitmq.server.vhost.openstack
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
