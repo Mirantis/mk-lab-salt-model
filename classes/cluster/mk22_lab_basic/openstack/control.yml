@@ -2,7 +2,7 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos9
-- service.memcached.server.single
+- system.memcached.server.single
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
 - system.keystone.server.cluster
@@ -71,27 +71,6 @@ parameters:
       public_networks: []
       contrail:
         version: ${_param:opencontrail_version}
-  haproxy:
-    proxy:
-      listen:
-        mysql_cluster:
-          type: mysql
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 3306
-          servers:
-          - name: ${_param:cluster_node01_hostname}
-            host: ${_param:cluster_node01_address}
-            port: 3306
-            params: check
-          - name: ${_param:cluster_node02_hostname}
-            host: ${_param:cluster_node02_address}
-            port: 3306
-            params: backup check
-          - name: ${_param:cluster_node03_hostname}
-            host: ${_param:cluster_node03_address}
-            port: 3306
-            params: backup check
   cinder:
     volume:
       notification: true

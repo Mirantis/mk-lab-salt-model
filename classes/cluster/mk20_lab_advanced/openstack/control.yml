@@ -2,7 +2,7 @@ classes:
 - system.linux.system.lowmem
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos8
-- service.memcached.server.single
+- system.memcached.server.single
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
 - system.keystone.server.cluster
