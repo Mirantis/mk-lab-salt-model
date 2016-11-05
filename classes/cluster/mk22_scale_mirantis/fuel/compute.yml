@@ -3,10 +3,54 @@ classes:
 - system.salt.master.control.cluster.opencontrail_analytics_cluster
 - system.salt.master.control.cluster.opencontrail_control_cluster
 - system.salt.master.control.cluster.openstack_control_cluster
-- system.salt.master.control.cluster.openstack_proxy_single
 - system.salt.master.control.cluster.openstack_database_cluster
 - system.salt.master.control.cluster.openstack_message_queue_cluster
-- system.salt.master.control.cluster.stacklight_server_cluster
+- system.salt.master.control.cluster.openstack_proxy_single
 - system.salt.master.control.cluster.stacklight_log_cluster
-- system.salt.master.control.cluster.stacklight_meter_cluster
+- system.salt.master.control.cluster.stacklight_server_cluster
+- system.salt.master.control.cluster.stacklight_telemetry_cluster
 - cluster.mk22_scale_mirantis
+parameters:
+  salt:
+    control:
+      cluster:
+        internal:
+          node:
+            ctl01:
+              provider: cfg01.${_param:cluster_domain}
+            msg01:
+              provider: cfg01.${_param:cluster_domain}
+            dbs01:
+              provider: cfg01.${_param:cluster_domain}
+            prx01:
+              provider: cfg01.${_param:cluster_domain}
+            ntw01:
+              provider: kvm04.${_param:cluster_domain}
+            ntw02:
+              provider: kvm05.${_param:cluster_domain}
+            ntw03:
+              provider: kvm06.${_param:cluster_domain}
+            nal01:
+              provider: kvm04.${_param:cluster_domain}
+            nal02:
+              provider: kvm05.${_param:cluster_domain}
+            nal03:
+              provider: kvm06.${_param:cluster_domain}
+            mtr01:
+              provider: kvm07.${_param:cluster_domain}
+            mtr02:
+              provider: kvm08.${_param:cluster_domain}
+            mtr03:
+              provider: kvm09.${_param:cluster_domain}
+            mon01:
+              provider: kvm07.${_param:cluster_domain}
+            mon02:
+              provider: kvm08.${_param:cluster_domain}
+            mon03:
+              provider: kvm09.${_param:cluster_domain}
+            log01:
+              provider: kvm07.${_param:cluster_domain}
+            log02:
+              provider: kvm08.${_param:cluster_domain}
+            log03:
+              provider: kvm09.${_param:cluster_domain}
