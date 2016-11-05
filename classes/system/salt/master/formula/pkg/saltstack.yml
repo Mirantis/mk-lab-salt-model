@@ -13,6 +13,9 @@ parameters:
             iptables:
               source: pkg
               name: salt-formula-iptables
+            libvirt:
+              source: pkg
+              name: salt-formula-libvirt
             linux:
               source: pkg
               name: salt-formula-linux
