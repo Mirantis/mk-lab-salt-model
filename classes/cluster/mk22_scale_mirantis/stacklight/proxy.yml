@@ -10,3 +10,7 @@ parameters:
       authority: mk_lab_ca
       engine: salt
       mode: secure
+  linux:
+    network:
+      interface:
+        ens4: ${_param:linux_single_interface}
