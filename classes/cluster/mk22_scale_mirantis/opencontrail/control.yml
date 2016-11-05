@@ -18,6 +18,8 @@ parameters:
     cluster_node03_address: ${_param:opencontrail_control_node03_address}
   linux:
     network:
+      interface:
+        eth1: ${_param:linux_single_interface}
       host:
         ctl:
           address: ${_param:openstack_control_address}

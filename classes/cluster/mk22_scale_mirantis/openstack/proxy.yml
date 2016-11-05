@@ -18,9 +18,4 @@ parameters:
   linux:
     network:
       interface:
-        eth1:
-          enabled: true
-          type: eth
-          proto: static
-          address: ${_param:single_address}
-          netmask: 255.255.255.0
+        eth1: ${_param:linux_single_interface}

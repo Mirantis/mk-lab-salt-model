@@ -2,6 +2,7 @@
 # https://docs.google.com/spreadsheets/d/17jhct4awbaoXVKp7_SdCbS-DBlikB6oEMb3gzLI4By8/edit#gid=0
 classes:
 - system.linux.system.single
+- system.openssh.server.team.tcpcloud
 - cluster.mk22_scale_mirantis.fuel
 - cluster.mk22_scale_mirantis.openstack
 - cluster.mk22_scale_mirantis.opencontrail
@@ -13,6 +14,8 @@ parameters:
     cluster_public_host: 10.26.247.6
     # fuel service addresses
     fuel_config_address: 172.20.9.235
+    fuel_config_deploy_address: 172.20.1.235
+
     fuel_compute_node01_address: 172.20.9.235
     fuel_compute_node02_address: 172.20.9.234
     fuel_compute_node03_address: 172.20.9.157
@@ -22,6 +25,17 @@ parameters:
     fuel_compute_node07_address: 172.20.9.153
     fuel_compute_node08_address: 172.20.9.152
     fuel_compute_node09_address: 172.20.9.150
+
+    fuel_compute_node01_deploy_address: 172.20.1.235
+    fuel_compute_node02_deploy_address: 172.20.1.234
+    fuel_compute_node03_deploy_address: 172.20.1.157
+    fuel_compute_node04_deploy_address: 172.20.1.156
+    fuel_compute_node05_deploy_address: 172.20.1.155
+    fuel_compute_node06_deploy_address: 172.20.1.154
+    fuel_compute_node07_deploy_address: 172.20.1.153
+    fuel_compute_node08_deploy_address: 172.20.1.152
+    fuel_compute_node09_deploy_address: 172.20.1.150
+
     # openstack service addresses
     openstack_proxy_address: 172.20.9.70
     openstack_proxy_node01_address: 172.20.9.71
@@ -65,9 +79,9 @@ parameters:
       enabled: true
       type: eth
       proto: dhcp
-    linux_static_interface:
+    linux_single_interface:
       enabled: true
       type: eth
       proto: static
       address: ${_param:single_address}
-      netmask: 255.255.255.0
+      netmask: 255.255.252.0
