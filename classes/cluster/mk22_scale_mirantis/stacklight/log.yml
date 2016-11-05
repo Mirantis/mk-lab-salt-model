@@ -16,9 +16,4 @@ parameters:
   linux:
     network:
       interface:
-        ens4:
-          enabled: true
-          type: eth
-          proto: static
-          address: ${_param:single_address}
-          netmask: 255.255.255.0
+        ens4: ${_param:linux_single_interface}
