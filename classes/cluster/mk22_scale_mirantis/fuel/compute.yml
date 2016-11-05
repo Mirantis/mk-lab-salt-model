@@ -54,3 +54,33 @@ parameters:
               provider: kvm08.${_param:cluster_domain}
             log03:
               provider: kvm09.${_param:cluster_domain}
+  linux:
+    network:
+      interface:
+        p1p1:
+          enabled: true
+          type: eth
+          proto: manual
+        p4p1.602:
+          enabled: true
+          type: vlan
+          proto: manual
+          use_interfaces:
+          - p4p1
+        br0:
+          enabled: true
+          type: bridge
+          address: ${_param:deploy_address}
+          netmask: 255.255.252.0
+          use_interfaces:
+          - p1p1
+        br1:
+          enabled: true
+          type: bridge
+          address: ${_param:single_address}
+          gateway: 172.20.8.1
+          netmask: 255.255.252.0
+          use_interfaces:
+          - p4p1.602
+
+          
