@@ -25,13 +25,6 @@ parameters:
     reclass_config_master: ${_param:fuel_config_address}
     single_address: ${_param:fuel_config_address}
     salt_master_host: 127.0.0.1
-  linux:
-    network:
-      interface:
-        ens4:
-          enabled: true
-          type: eth
-          proto: dhcp
   reclass:
     storage:
       node:
