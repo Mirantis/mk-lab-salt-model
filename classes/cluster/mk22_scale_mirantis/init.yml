@@ -1,3 +1,5 @@
+# Address plan covered at:
+/# https://docs.google.com/spreadsheets/d/17jhct4awbaoXVKp7_SdCbS-DBlikB6oEMb3gzLI4By8/edit#gid=0
 classes:
 - system.linux.system.single
 - cluster.mk22_scale_mirantis.fuel
@@ -8,14 +10,18 @@ parameters:
   _param:
     cluster_domain: mk22-scale.mirantis.local
     cluster_name: mk22_scale_mirantis
-    cluster_public_host: _
-    openstack_control_address: 172.16.10.254
-    openstack_database_address: 172.16.10.252
-    openstack_message_queue_address: 172.16.10.251
-    opencontrail_analytics_address: 172.16.10.249
-    opencontrail_control_address: 172.16.10.250
-    stacklight_monitor_address: 172.16.10.253
-
+    cluster_public_host: 10.26.247.6
+    # VIP addresses
+    openstack_proxy_address: 172.20.9.70
+    openstack_control_address: 172.20.9.100
+    openstack_database_address: 172.20.9.50
+    openstack_message_queue_address: 172.20.9.40
+    opencontrail_analytics_address: 172.20.9.30
+    opencontrail_control_address: 172.20.9.20
+    stacklight_monitor_address: 172.20.9.80
+    stacklight_log_address: 172.20.9.110
+    stacklight_telemetry_address: 172.20.9.90
+    # Node addresses
     kvm01_single_address: 172.20.9.235
     kvm02_single_address: 172.20.9.234
     kvm03_single_address: 172.20.9.157
@@ -25,7 +31,10 @@ parameters:
     kvm07_single_address: 172.20.9.153
     kvm08_single_address: 172.20.9.152
     kvm09_single_address: 172.20.9.150
-
+    dbs01_single_address: 172.20.9.51
+    dbs02_single_address: 172.20.9.51
+    dbs03_single_address: 172.20.9.53
+    # Interface definitions
     linux_dhcp_interface:
           enabled: true
           type: eth
