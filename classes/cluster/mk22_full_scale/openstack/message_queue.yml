@@ -1,6 +1,7 @@
 classes:
 - cluster.mk22_full_scale
 - system.rabbitmq.server.cluster
+- system.rabbitmq.server.vhost.openstack
 - system.linux.system.repo.mos9
 parameters:
   _param:
@@ -14,43 +15,8 @@ parameters:
     cluster_node02_address: ${_param:openstack_message_queue_node02_address}
     cluster_node03_hostname: msg03
     cluster_node03_address: ${_param:openstack_message_queue_node03_address}
-  rabbitmq:
-    server:
-      host:
-        '/':
-          enabled: true
-          user: guest
-          password: guest
-          policies:
-          - name: HA
-            pattern: '^(?!amq\.).*'
-            definition: '{"ha-mode": "all", "message-ttl": 120000}'
-        '/openstack':
-          enabled: true
-          user: openstack
-          password: ${_param:rabbitmq_openstack_password}
-          policies:
-          - name: HA
-            pattern: '^(?!amq\.).*'
-            definition: '{"ha-mode": "all", "message-ttl": 120000}'
   linux:
     network:
       interface:
         eth1: ${_param:linux_static_interface}
-      host:
-        msg01:
-          address: ${_param:cluster_node01_address}
-          names:
-          - msg01
-          - msg01.${_param:cluster_domain}
-        msg02:
-          address: ${_param:cluster_node02_address}
-          names:
-          - msg02
-          - msg02.${_param:cluster_domain}
-        msg03:
-          address: ${_param:cluster_node03_address}
-          names:
-          - msg03
-          - msg03.${_param:cluster_domain}
        

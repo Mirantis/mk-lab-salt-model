@@ -20,7 +20,8 @@ salt -C 'I@rabbitmq:server' cmd.run "rabbitmqctl cluster_status"
 salt -C 'I@galera:master' state.sls galera
 salt -C 'I@galera:slave' state.sls galera
 # Check galera status
-salt -C 'I@galera:master' mysql.status
+salt -C 'I@galera:master' mysql.status | grep -A1 wsrep_cluster_size
+salt -C 'I@galera:slave' mysql.status | grep -A1 wsrep_cluster_size
 
 # Install haproxy
 salt -C 'I@haproxy:proxy' state.sls haproxy
