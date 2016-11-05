@@ -8,7 +8,7 @@ classes:
 - system.salt.control.cluster.openstack_message_queue_cluster
 - system.salt.control.cluster.stacklight_server_cluster
 - system.salt.control.cluster.stacklight_log_cluster
-- system.salt.control.cluster.stacklight_temeletry_cluster
+- system.salt.control.cluster.stacklight_telemetry_cluster
 - cluster.mk22_scale_mirantis
 parameters:
   salt:
