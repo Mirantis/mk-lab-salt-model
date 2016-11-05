@@ -19,10 +19,7 @@ parameters:
   linux:
     network:
       interface:
-        eth1:
-          enabled: true
-          type: eth
-          proto: dhcp
+        eth1: ${_param:linux_static_interface}
   opencontrail:
     common:
       identity:

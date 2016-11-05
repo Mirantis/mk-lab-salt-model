@@ -4,6 +4,7 @@ classes:
 - system.salt.master.git
 - system.salt.minion.pki.authority
 - system.reclass.storage.salt
+- system.reclass.storage.system.physical_control_full
 - system.reclass.storage.system.opencontrail_analytics_cluster
 - system.reclass.storage.system.opencontrail_control_cluster
 - system.reclass.storage.system.opencontrail_gateway_single

@@ -1,8 +1,7 @@
 classes:
 - cluster.mk22_full_scale
-- service.keepalived.cluster.single
-- service.haproxy.proxy.single
-- service.rabbitmq.server.cluster
+- system.rabbitmq.server.cluster
+- system.linux.system.repo.mos9
 parameters:
   _param:
     keepalived_vip_interface: eth1
@@ -10,11 +9,11 @@ parameters:
     cluster_vip_address: ${_param:openstack_message_queue_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: msg01
-    cluster_node01_address: 172.16.10.191
+    cluster_node01_address: 172.16.10.151
     cluster_node02_hostname: msg02
-    cluster_node02_address: 172.16.10.192
+    cluster_node02_address: 172.16.10.152
     cluster_node03_hostname: msg03
-    cluster_node03_address: 172.16.10.193
+    cluster_node03_address: 172.16.10.153
   rabbitmq:
     server:
       host:
@@ -34,3 +33,24 @@ parameters:
           - name: HA
             pattern: '^(?!amq\.).*'
             definition: '{"ha-mode": "all", "message-ttl": 120000}'
+  linux:
+    network:
+      interface:
+        eth1: ${_param:linux_static_interface}
+      host:
+        msg01:
+          address: ${_param:cluster_node01_address}
+          names:
+          - msg01
+          - msg01.${_param:cluster_domain}
+        msg02:
+          address: ${_param:cluster_node02_address}
+          names:
+          - msg02
+          - msg02.${_param:cluster_domain}
+        msg03:
+          address: ${_param:cluster_node03_address}
+          names:
+          - msg03
+          - msg03.${_param:cluster_domain}
+       

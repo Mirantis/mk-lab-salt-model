@@ -14,3 +14,7 @@ parameters:
       engine: salt
       mode: secure
     cluster_vip_address: ${_param:openstack_control_address}
+  linux:
+    network:
+      interface:
+        eth1: ${_param:linux_static_interface}
