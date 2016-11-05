@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 # setup keystone service
-salt -C 'I@keystone:server' state.sls keystone -b 1
+salt -C 'I@keystone:server' state.sls keystone.server -b 1
 # populate keystone services/tenants/admins
 salt -C 'I@keystone:client' state.sls keystone.client
 salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; keystone service-list"
@@ -12,7 +12,7 @@ salt -C 'I@glance:server' state.sls glusterfs.client
 salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; glance image-list"
 
 # Update fernet tokens
-salt -C 'I@keystone:server' state.sls keystone
+salt -C 'I@keystone:server' state.sls keystone.server
 
 # Install nova service
 salt -C 'I@nova:controller' state.sls nova -b 1
