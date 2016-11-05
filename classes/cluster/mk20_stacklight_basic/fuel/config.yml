@@ -36,17 +36,17 @@ parameters:
   reclass:
     storage:
       node:
-        ctl01:
+        openstack_control_node01:
           classes:
           - service.galera.master.cluster
           params:
             mysql_cluster_role: master
-        ctl02:
+        openstack_control_node02:
           classes:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-        ctl03:
+        openstack_control_node03:
           classes:
           - service.galera.slave.cluster
           params:
