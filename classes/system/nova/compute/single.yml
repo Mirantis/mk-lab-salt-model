@@ -1,5 +1,7 @@
 applications:
 - nova
+classes:
+- service.nova.compute.kvm
 parameters:
   nova:
     compute:

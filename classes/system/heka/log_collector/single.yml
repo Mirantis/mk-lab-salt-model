@@ -1,20 +1,7 @@
-#classes:
-#- service.heka.log_collector.single
 applications:
 - heka
 parameters:
-  ceilometer:
-    _support:
-      heka:
-        enabled: false
-  elasticsearch:
-    _support:
-      heka:
-        enabled: false
   heka:
-    _support:
-      heka:
-        enabled: true
     log_collector:
       enabled: true
       output:
