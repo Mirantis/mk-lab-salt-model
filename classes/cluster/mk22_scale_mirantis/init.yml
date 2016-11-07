@@ -46,7 +46,7 @@ parameters:
     openstack_control_node03_address: 172.20.9.13
     openstack_database_address: 172.20.9.50
     openstack_database_node01_address: 172.20.9.51
-    openstack_database_node02_address: 172.20.9.51
+    openstack_database_node02_address: 172.20.9.52
     openstack_database_node03_address: 172.20.9.53
     openstack_message_queue_address: 172.20.9.40
     openstack_message_queue_node01_address: 172.20.9.41
