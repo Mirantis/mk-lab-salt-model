@@ -108,3 +108,23 @@ parameters:
           names:
           - msg03
           - msg03.${_param:cluster_domain}
+        dbs:
+          address: ${_param:openstack_database_address}
+          names:
+          - dbs
+          - dbs.${_param:cluster_domain}
+        dbs01:
+          address: ${_param:openstack_database_node01_address}
+          names:
+          - dbs01
+          - dbs01.${_param:cluster_domain}
+        dbs02:
+          address: ${_param:openstack_database_node02_address}
+          names:
+          - dbs02
+          - dbs02.${_param:cluster_domain}
+        dbs03:
+          address: ${_param:openstack_database_node03_address}
+          names:
+          - dbs03
+          - dbs03.${_param:cluster_domain}
