@@ -13,67 +13,67 @@ parameters:
     cluster_name: mk22_scale_mirantis
     cluster_public_host: 10.26.247.6
     # fuel service addresses
-    fuel_config_address: 172.20.9.235
-    fuel_config_deploy_address: 172.20.1.235
+    fuel_config_address: 172.20.10.71
+    fuel_config_deploy_address: 172.20.1.71
 
-    fuel_compute_node01_address: 172.20.9.235
-    fuel_compute_node02_address: 172.20.9.234
-    fuel_compute_node03_address: 172.20.9.157
-    fuel_compute_node04_address: 172.20.9.156
-    fuel_compute_node05_address: 172.20.9.155
-    fuel_compute_node06_address: 172.20.9.154
-    fuel_compute_node07_address: 172.20.9.153
-    fuel_compute_node08_address: 172.20.9.152
-    fuel_compute_node09_address: 172.20.9.150
+    fuel_compute_node01_address: 172.20.10.71
+    fuel_compute_node02_address: 172.20.10.72
+    fuel_compute_node03_address: 172.20.10.73
+    fuel_compute_node04_address: 172.20.10.74
+    fuel_compute_node05_address: 172.20.10.75
+    fuel_compute_node06_address: 172.20.10.76
+    fuel_compute_node07_address: 172.20.10.77
+    fuel_compute_node08_address: 172.20.10.78
+    fuel_compute_node09_address: 172.20.10.79
 
-    fuel_compute_node01_deploy_address: 172.20.1.235
-    fuel_compute_node02_deploy_address: 172.20.1.234
-    fuel_compute_node03_deploy_address: 172.20.1.157
-    fuel_compute_node04_deploy_address: 172.20.1.156
-    fuel_compute_node05_deploy_address: 172.20.1.155
-    fuel_compute_node06_deploy_address: 172.20.1.154
-    fuel_compute_node07_deploy_address: 172.20.1.153
-    fuel_compute_node08_deploy_address: 172.20.1.152
-    fuel_compute_node09_deploy_address: 172.20.1.150
+    fuel_compute_node01_deploy_address: 172.20.1.71
+    fuel_compute_node02_deploy_address: 172.20.1.72
+    fuel_compute_node03_deploy_address: 172.20.1.73
+    fuel_compute_node04_deploy_address: 172.20.1.74
+    fuel_compute_node05_deploy_address: 172.20.1.75
+    fuel_compute_node06_deploy_address: 172.20.1.76
+    fuel_compute_node07_deploy_address: 172.20.1.77
+    fuel_compute_node08_deploy_address: 172.20.1.78
+    fuel_compute_node09_deploy_address: 172.20.1.79
 
     # openstack service addresses
-    openstack_proxy_address: 172.20.9.70
-    openstack_proxy_node01_address: 172.20.9.71
-    openstack_proxy_node02_address: 172.20.9.72
-    openstack_control_address: 172.20.9.100
-    openstack_control_node01_address: 172.20.9.11
-    openstack_control_node02_address: 172.20.9.12
-    openstack_control_node03_address: 172.20.9.13
-    openstack_database_address: 172.20.9.50
-    openstack_database_node01_address: 172.20.9.51
-    openstack_database_node02_address: 172.20.9.52
-    openstack_database_node03_address: 172.20.9.53
-    openstack_message_queue_address: 172.20.9.40
-    openstack_message_queue_node01_address: 172.20.9.41
-    openstack_message_queue_node02_address: 172.20.9.42
-    openstack_message_queue_node03_address: 172.20.9.43
+    openstack_proxy_address: 172.20.10.40
+    openstack_proxy_node01_address: 172.20.10.41
+    openstack_proxy_node02_address: 172.20.10.42
+    openstack_control_address: 172.20.10.10
+    openstack_control_node01_address: 172.20.10.11
+    openstack_control_node02_address: 172.20.10.12
+    openstack_control_node03_address: 172.20.10.13
+    openstack_database_address: 172.20.10.30
+    openstack_database_node01_address: 172.20.10.31
+    openstack_database_node02_address: 172.20.10.32
+    openstack_database_node03_address: 172.20.10.33
+    openstack_message_queue_address: 172.20.10.25
+    openstack_message_queue_node01_address: 172.20.10.26
+    openstack_message_queue_node02_address: 172.20.10.27
+    openstack_message_queue_node03_address: 172.20.10.28
     # opencontrail service addresses
-    opencontrail_analytics_address: 172.20.9.30
-    opencontrail_analytics_node01_address: 172.20.9.31
-    opencontrail_analytics_node02_address: 172.20.9.32
-    opencontrail_analytics_node03_address: 172.20.9.33
-    opencontrail_control_address: 172.20.9.20
-    opencontrail_control_node01_address: 172.20.9.21
-    opencontrail_control_node02_address: 172.20.9.22
-    opencontrail_control_node03_address: 172.20.9.23
+    opencontrail_analytics_address: 172.20.10.20
+    opencontrail_analytics_node01_address: 172.20.10.21
+    opencontrail_analytics_node02_address: 172.20.10.22
+    opencontrail_analytics_node03_address: 172.20.10.23
+    opencontrail_control_address: 172.20.10.15
+    opencontrail_control_node01_address: 172.20.10.16
+    opencontrail_control_node02_address: 172.20.10.17
+    opencontrail_control_node03_address: 172.20.10.18
     # stacklight service addresses
-    stacklight_monitor_address: 172.20.9.80
-    stacklight_monitor_node01_address: 172.20.9.81
-    stacklight_monitor_node02_address: 172.20.9.82
-    stacklight_monitor_node03_address: 172.20.9.83
-    stacklight_log_address: 172.20.9.110
-    stacklight_log_node01_address: 172.20.9.101
-    stacklight_log_node02_address: 172.20.9.102
-    stacklight_log_node03_address: 172.20.9.103
-    stacklight_telemetry_address: 172.20.9.90
-    stacklight_telemetry_node01_address: 172.20.9.91
-    stacklight_telemetry_node02_address: 172.20.9.92
-    stacklight_telemetry_node03_address: 172.20.9.93
+    stacklight_monitor_address: 172.20.10.45
+    stacklight_monitor_node01_address: 172.20.10.46
+    stacklight_monitor_node02_address: 172.20.10.47
+    stacklight_monitor_node03_address: 172.20.10.48
+    stacklight_log_address: 172.20.10.55
+    stacklight_log_node01_address: 172.20.10.56
+    stacklight_log_node02_address: 172.20.10.57
+    stacklight_log_node03_address: 172.20.10.58
+    stacklight_telemetry_address: 172.20.10.50
+    stacklight_telemetry_node01_address: 172.20.10.51
+    stacklight_telemetry_node02_address: 172.20.10.52
+    stacklight_telemetry_node03_address: 172.20.10.53
     # Interface definitions
     linux_dhcp_interface:
       enabled: true
