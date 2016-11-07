@@ -18,4 +18,4 @@ parameters:
   linux:
     network:
       interface:
-        eth1: ${_param:linux_single_interface}
+        ens4: ${_param:linux_single_interface}
