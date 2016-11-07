@@ -1,4 +1,5 @@
 classes:
+- system.linux.system.repo.mos9
 - system.galera.server.cluster
 - system.galera.server.database.ceilometer
 - system.galera.server.database.cinder
