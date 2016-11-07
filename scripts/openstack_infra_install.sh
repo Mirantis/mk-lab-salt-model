@@ -9,7 +9,7 @@ salt -C 'I@keepalived:cluster' cmd.run "ip a | grep 172.16.10.2"
 salt -C 'I@glusterfs:server' state.sls glusterfs.server.service
 salt -C 'I@glusterfs:server' state.sls glusterfs.server.setup -b 1
 # Check the gluster status
-salt -C 'I@glusterfs:server' cmd.run "gluster peer status; gluster volume status"
+salt -C 'I@glusterfs:server' cmd.run "gluster peer status; gluster volume status" -b 1
 
 # Install rabbitmq
 salt -C 'I@rabbitmq:server' state.sls rabbitmq
