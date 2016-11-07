@@ -25,3 +25,10 @@ parameters:
     network:
       interface:
         eth1: ${_param:linux_single_interface}
+    system:
+      repo:
+        tcpcloud:
+          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ ${_param:linux_system_codename} main security tcp extra"
+          architectures: amd64
+          default: true
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
