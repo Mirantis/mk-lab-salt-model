@@ -10,15 +10,18 @@ if [[ $DEBUG =~ ^(True|true|1|yes)$ ]]; then
     set -x
 fi
 
+test -e *.env && source *.env
 
-apt-get update
-apt-get install --allow-unauthenticated -y wget
-echo 'deb [arch=amd64] http://apt.tcpcloud.eu/nightly xenial main tcp tcp-salt' > /etc/apt/sources.list
-echo 'deb http://repo.saltstack.com/apt/ubuntu/ubuntu14/2016.3/ trusty main' > /etc/apt/sources.list.d/salt.list
-wget -O - http://apt.tcpcloud.eu/public.gpg | apt-key add -
-wget -O - http://repo.saltstack.com/apt/ubuntu/ubuntu14/2016.3/SALTSTACK-GPG-KEY.pub | apt-key add -
-apt-get update
-apt-get -qqq install --allow-unauthenticated -y python-pip salt-master curl reclass salt-formula-*
+test -e /usr/bin/salt-master || {
+  apt-get update
+  apt-get install --allow-unauthenticated -y wget
+  echo 'deb [arch=amd64] http://apt.tcpcloud.eu/nightly xenial main tcp tcp-salt' > /etc/apt/sources.list
+  echo 'deb http://repo.saltstack.com/apt/ubuntu/ubuntu14/2016.3/ trusty main' > /etc/apt/sources.list.d/salt.list
+  wget -O - http://apt.tcpcloud.eu/public.gpg | apt-key add -
+  wget -O - http://repo.saltstack.com/apt/ubuntu/ubuntu14/2016.3/SALTSTACK-GPG-KEY.pub | apt-key add -
+  apt-get update
+  apt-get -qqq install --allow-unauthenticated -y python-pip salt-master curl reclass salt-formula-*
+}
 
 
 ## Overrideable options
@@ -60,19 +63,8 @@ ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
 
 log_info "Uploading reclass"
 mkdir -p /srv/salt/reclass
-cp -a /tmp/kitchen/* /srv/salt/reclass
-cp -a /tmp/kitchen/.git /srv/salt/reclass
-
-log_info "Fixups"
-## use https (no keys are available)
-#find /srv/salt/reclass/classes/cluster/ -name "config.yml" | xargs -i{} \
-# sed -ie '/reclass_data_repository:/ s/git@github.com:/https:\/\/github.com\//' {}
-## cleanup
-#cd /srv/salt/reclass
-#git add .
-#git commit -am "fake commit to be able to pull during reclass state"
-##git clean -fd classes
-#cd -
+cp -a /tmp/reclass/* /srv/salt/reclass
+cp -a /tmp/reclass/.git /srv/salt/reclass
 
 
 log_info "Setting up Salt master"

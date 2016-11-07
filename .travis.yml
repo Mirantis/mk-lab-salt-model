@@ -11,7 +11,7 @@ install:
 script:
   - cd $TRAVIS_BUILD_DIR
   - ID=$(docker run ${DOCKER_OPTS} -v $(pwd):/tmp/reclass -i -t -d ${DOCKER_IMAGE})
-  - docker exec ${ID} /bin/bash -c "/tmp/reclass/.travis.provisioner.sh"
+  - docker exec ${ID} /bin/bash -c "/tmp/reclass/.provisioner.sh"
 
 after_script:
   - docker stop ${ID}
