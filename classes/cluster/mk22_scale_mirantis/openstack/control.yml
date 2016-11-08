@@ -26,29 +26,58 @@ parameters:
         eth1: ${_param:linux_single_interface}
   keystone:
     server:
+      region: ${_param:openstack_region}
+      tokens:
+        engine: fernet
       admin_email: ${_param:admin_email}
+      database:
+        host: ${_param:openstack_database_address}
+    message_queue:
+      host: ${_param:openstack_message_queue_address}
   glance:
     server:
+      identity:
+        region: ${_param:openstack_region}
       storage:
         engine: file
       images: []
-      workers: 1
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
   nova:
     controller:
+      workers: 32
+      database:
+        host: ${_param:openstack_database_address}
+      identity:
+        engine: keystone
+        region: ${_param:openstack_region}
+        host: ${_param:openstack_control_address}
+        port: 35357
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service
       networking: contrail
-      cpu_allocation: 54
+      network:
+        region: ${_param:openstack_region}
+        host: ${_param:opencontrail_control_address}
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        tenant: service
       bind:
         private_address: ${_param:cluster_local_address}
         public_address: ${_param:cluster_vip_address}
-        novncproxy_port: 6080
+        vncproxy_port: 6080
       vncproxy_url: http://${_param:cluster_vip_address}:6080
-      cache:
-        engine: memcached
-        prefix: CACHE_NOVA
+      message_queue:
         members:
-        - host: 127.0.0.1
-          port: 11211
-      workers: 1
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
   cinder:
     volume:
       notification: true

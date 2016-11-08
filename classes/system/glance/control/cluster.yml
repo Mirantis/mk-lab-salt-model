@@ -7,7 +7,7 @@ parameters:
   glance:
     server:
       identity:
-        region: RegionOne
+        region: ${_param:openstack_region}
       notification: true
       logging:
         heka:
