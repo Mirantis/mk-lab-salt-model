@@ -17,3 +17,8 @@ parameters:
     network:
       interface:
         ens4: ${_param:linux_single_interface}
+    system:
+      package:
+        apt-transport-https:
+          version: latest
+ 
