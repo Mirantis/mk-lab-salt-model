@@ -4,7 +4,7 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: ens4
-    keepalived_vip_virtual_router_id: 850
+    keepalived_vip_virtual_router_id: 110
     cluster_vip_address: ${_param:stacklight_log_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: log01
