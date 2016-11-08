@@ -44,3 +44,26 @@ parameters:
         host: ${_param:opencontrail_analytics_address}
       cache:
         host: 127.0.0.1
+  neutron:
+    server:
+      dns_domain: ${_param:cluster_domain}
+      database:
+        host: ${_param:openstack_database_address}
+      identity:
+        region: ${_param:openstack_region}
+        host: ${_param:openstack_control_address}
+      message_queue:
+        host: ${_param:openstack_control_address}
+      compute:
+        region: ${_param:openstack_region}
+        host: ${_param:openstack_control_address}
+      plugin: contrail
+      tunnel_type: vxlan
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
