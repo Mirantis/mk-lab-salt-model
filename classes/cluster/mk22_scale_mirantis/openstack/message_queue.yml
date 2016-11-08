@@ -14,6 +14,25 @@ parameters:
     cluster_node02_address: ${_param:openstack_message_queue_node02_address}
     cluster_node03_hostname: msg03
     cluster_node03_address: ${_param:openstack_message_queue_node03_address}
+  rabbitmq:
+    server:
+      host:
+        '/':
+          enabled: true
+          user: guest
+          password: guest
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+        '/openstack':
+          enabled: true
+          user: openstack
+          password: ${_param:rabbitmq_openstack_password}
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
   linux:
     network:
       interface:
