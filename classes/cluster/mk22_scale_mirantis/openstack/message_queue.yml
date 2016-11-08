@@ -5,7 +5,7 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: eth1
-    keepalived_vip_virtual_router_id: 500
+    keepalived_vip_virtual_router_id: 90
     cluster_vip_address: ${_param:openstack_message_queue_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: msg01

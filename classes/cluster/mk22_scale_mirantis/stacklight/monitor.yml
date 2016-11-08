@@ -8,7 +8,7 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: ens4
-    keepalived_vip_virtual_router_id: 550
+    keepalived_vip_virtual_router_id: 100
     kibana_elasticsearch_host: localhost
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_local_address: ${_param:single_address}
