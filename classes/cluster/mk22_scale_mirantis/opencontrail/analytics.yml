@@ -1,6 +1,6 @@
 classes:
 - system.linux.system.repo.contrail
-- system.opencontrail.control.cluster
+- system.opencontrail.control.analytics
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
