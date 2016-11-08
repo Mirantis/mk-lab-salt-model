@@ -1,5 +1,7 @@
 applications:
 - heka
+classes:
+- service.heka.support
 parameters:
   heka:
     aggregator:
