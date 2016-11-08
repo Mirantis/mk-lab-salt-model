@@ -80,6 +80,14 @@ parameters:
           - host: ${_param:openstack_message_queue_node03_address}
   cinder:
     volume:
+      identity:
+        region: ${_param:openstack_region}
+      enabled: false
       notification: true
     controller:
+      identity:
+        region: ${_param:openstack_region}
       notification: true
+      database:
+        host: ${_param:openstack_database_address}
+
