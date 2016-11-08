@@ -13,3 +13,6 @@ parameters:
           database: ${_param:influxdb_database}
           username: ${_param:influxdb_user}
           password: ${_param:influxdb_password}
+        aggregator:
+          engine: aggregator
+          host: ${_param:heka_aggregator_host}
