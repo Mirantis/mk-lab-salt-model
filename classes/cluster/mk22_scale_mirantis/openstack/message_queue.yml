@@ -1,4 +1,5 @@
 classes:
+- system.linux.repo.tcp_extra
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
 - cluster.mk22_scale_mirantis
