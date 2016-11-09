@@ -27,3 +27,17 @@ parameters:
           names:
           - cmp01
           - cmp01.${_param:cluster_domain}
+    # Interface definitions
+    linux_dhcp_interface:
+      enabled: true
+      type: eth
+      proto: dhcp
+    linux_single_interface:
+      enabled: true
+      type: eth
+      proto: static
+      address: ${_param:single_address}
+      netmask: 255.255.255.0
+      gateway: 172.16.10.1
+      name_servers:
+        - 8.8.8.8
