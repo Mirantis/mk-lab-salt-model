@@ -24,7 +24,7 @@ parameters:
       enabled: true
       type: eth
       proto: dhcp
-    linux_single_interface:
+    linux_static_interface:
       enabled: true
       type: eth
       proto: static
