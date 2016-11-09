@@ -1,5 +1,6 @@
 classes:
 - cluster.mk22_full_scale
+- system.linux.system.repo.tcp_extra
 - system.galera.server.cluster
 - system.galera.server.database.ceilometer
 - system.galera.server.database.cinder

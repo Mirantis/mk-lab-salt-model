@@ -1,5 +1,6 @@
 classes:
 - system.linux.system.repo.mos9
+- system.linux.system.repo.tcp_extra
 - system.memcached.server.single
 - system.keystone.server.cluster
 - system.glance.control.cluster
