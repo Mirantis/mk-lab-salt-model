@@ -12,6 +12,7 @@ classes:
 - system.neutron.control.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
+- system.opencontrail.control.analytics
 - system.opencontrail.control.cluster
 - cluster.mk22_qa_lab02
 parameters:
@@ -109,12 +110,12 @@ parameters:
       identity:
         host: ${_param:openstack_control_address}
       analytics:
-        host: ${_param:opencontrail_analytics_address}
+        host: ${_param:openstack_control_address}
     web:
       identity:
         host: ${_param:openstack_control_address}
       analytics:
-        host: ${_param:opencontrail_analytics_address}
+        host: ${_param:openstack_control_address}
       cache:
         host: 127.0.0.1
   neutron:
