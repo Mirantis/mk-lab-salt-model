@@ -1,11 +1,8 @@
-applications:
-- heka
 classes:
-- service.heka.support
+- service.heka.log_collector.single
 parameters:
   heka:
     log_collector:
-      enabled: true
       output:
         elasticsearch:
           engine: elasticsearch
