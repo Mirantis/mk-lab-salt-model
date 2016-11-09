@@ -3,6 +3,7 @@ classes:
 - system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
+- service.grafana.collector
 parameters:
   _param:
     opencontrail_compute_gateway: 172.16.10.1

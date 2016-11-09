@@ -7,6 +7,7 @@ classes:
 - system.grafana.server.single
 - system.nagios.server.single
 - system.openstack.common.mk20_stacklight
+- service.grafana.collector
 parameters:
   _param:
     kibana_elasticsearch_host: mon
