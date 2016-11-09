@@ -4,6 +4,7 @@ classes:
 - system.influxdb.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
+- system.nagios.server.single
 - cluster.mk20_stacklight_advanced
 parameters:
   _param:
