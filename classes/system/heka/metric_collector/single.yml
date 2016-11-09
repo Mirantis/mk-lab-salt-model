@@ -1,12 +1,8 @@
-applications:
-- heka
 classes:
-- service.heka.support
+- service.heka.metric_collector.single
 parameters:
   heka:
     metric_collector:
-      enabled: true
-      influxdb_time_precision: ms
       output:
         influxdb:
           engine: influxdb
