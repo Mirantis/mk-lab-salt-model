@@ -34,18 +34,21 @@ parameters:
   reclass:
     storage:
       node:
-        openstack_control_node01:
+        openstack_database_node01:
           classes:
           - service.galera.master.cluster
           params:
             mysql_cluster_role: master
-        openstack_control_node02:
+            rabbitmq_cluster_role: master
+        openstack_database_node02:
           classes:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-        openstack_control_node03:
+            rabbitmq_cluster_role: slave
+        openstack_database_node03:
           classes:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
+            rabbitmq_cluster_role: slave
