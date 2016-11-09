@@ -1,0 +1,13 @@
+classes:
+- service.heka.remote_collector.single
+parameters:
+  heka:
+    remote_collector:
+      output:
+        influxdb:
+          engine: influxdb
+          host: ${_param:heka_influxdb_host}
+          port: ${_param:influxdb_port}
+          database: ${_param:influxdb_database}
+          username: ${_param:influxdb_user}
+          password: ${_param:influxdb_password}
