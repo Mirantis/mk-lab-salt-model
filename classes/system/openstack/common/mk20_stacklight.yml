@@ -84,6 +84,7 @@ parameters:
     influxdb_database: lma
     influxdb_user: lma
     influxdb_password: lmapass
+    aggregator_port: 5565
     linux_timezone: UTC
   linux:
     system:
