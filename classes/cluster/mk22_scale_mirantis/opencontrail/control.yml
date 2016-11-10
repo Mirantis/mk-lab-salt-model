@@ -1,6 +1,6 @@
 classes:
 - system.linux.system.repo.contrail
-- system.linux.system.repo.mos8
+- system.linux.system.repo.mos9
 - system.neutron.control.cluster
 - system.opencontrail.control.control
 - cluster.mk22_scale_mirantis
@@ -31,6 +31,7 @@ parameters:
       identity:
         host: ${_param:openstack_control_address}
     config:
+      multi_tenancy: false
       message_queue:
         host: ${_param:openstack_message_queue_address}
       identity:
@@ -62,7 +63,6 @@ parameters:
       public_networks: []
       contrail:
         version: ${_param:opencontrail_version}
-      version: liberty
       message_queue:
         members:
           - host: ${_param:openstack_message_queue_node01_address}
