@@ -7,6 +7,8 @@ parameters:
     server:
       tokens:
         engine: fernet
+        expiration: 3600
+        max_active_keys: 3
   haproxy:
     proxy:
       listen:
