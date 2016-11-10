@@ -3,6 +3,11 @@ classes:
 - service.nova.control.cluster
 - service.keepalived.cluster.single
 parameters:
+  nova:
+    controller:
+      cpu_allocation_ratio: 1.0
+      ram_allocation_ratio: 1.0
+      disk_allocation_ratio: 1.0
   haproxy:
     proxy:
       listen:

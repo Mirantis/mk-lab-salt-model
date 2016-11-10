@@ -4,6 +4,7 @@ parameters:
   nova:
     compute:
       version: ${_param:nova_version}
+      disable_flow_collection: true
       enabled: true
       virtualization: kvm
       vncproxy_url: http://${_param:control_address}:6080
