@@ -2,15 +2,15 @@ classes:
 - service.collectd.client
 parameters:
   _param:
-    collectd_backend_heka_host: 127.0.0.1
-    collectd_backend_heka_port: 8325
+    collectd_metric_collector_host: 127.0.0.1
+    collectd_metric_collector_port: 8325
   collectd:
     client:
       enabled: true
       backend:
-        heka:
+        metric_collector:
           engine: http
-          host: ${_param:collectd_backend_heka_host}
-          port: ${_param:collectd_backend_heka_port}
+          host: ${_param:collectd_metric_collector_host}
+          port: ${_param:collectd_metric_collector_port}
       read_interval: 10
       use_fqdn: false
