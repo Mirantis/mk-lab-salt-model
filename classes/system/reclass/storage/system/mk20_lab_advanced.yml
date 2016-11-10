@@ -53,6 +53,7 @@ parameters:
           classes:
           - system.linux.system.trusty
           - system.openstack.compute.mk20
+          - system.openstack.compute.ceilometer_agent
           - system.openstack.common.mk20_lab_advanced
           params:
             salt_master_host: ${_param:reclass_config_master}
