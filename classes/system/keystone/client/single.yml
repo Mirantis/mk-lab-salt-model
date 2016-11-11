@@ -17,7 +17,7 @@ parameters:
           command: '/usr/bin/keystone-manage fernet_rotate --keystone-user keystone --keystone-group keystone >> /var/log/key_rotation_log 2>> /var/log/key_rotation_log'
           enabled: true
           user: root
-          minute:
+          minute: 0
   keystone:
     client:
       enabled: true
