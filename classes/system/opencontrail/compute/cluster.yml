@@ -18,6 +18,7 @@ parameters:
         port: 9696
     compute:
       version: ${_param:opencontrail_version}
+      disable_flow_collection: true
       enabled: True
       discovery:
         host: ${_param:cluster_vip_address}
