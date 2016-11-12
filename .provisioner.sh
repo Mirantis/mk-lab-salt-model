@@ -13,11 +13,7 @@ fi
 # source .kitchen.env and possibly others
 #shopt -u dotglob
 test -e /*.env && {
-  # initially use/copy a generated
-  test ! -e /tmp/reclass/kitchen.env && {
-    cp /*.env /tmp/reclass
-    source /*.env
-  } || source /tmp/reclass/*.env
+  source /*.env
 }
 
 
