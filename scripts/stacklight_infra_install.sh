@@ -9,5 +9,7 @@ salt "*" state.sls salt.minion.grains
 salt "*" mine.flush
 salt "*" mine.update
 
+sleep 5
+
 # Update monitoring node with mine metadata
 salt -C 'I@heka:aggregator' state.sls collectd,heka
