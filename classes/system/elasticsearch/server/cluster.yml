@@ -1,6 +1,7 @@
 classes:
 - service.keepalived.cluster.single
 - service.elasticsearch.server.cluster
+- service.haproxy.proxy.single
 - service.java.environment
 - service.glusterfs.server
 - service.glusterfs.client
