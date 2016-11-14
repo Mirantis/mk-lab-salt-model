@@ -21,3 +21,6 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  ntp:
+    client:
+      mode7: true
