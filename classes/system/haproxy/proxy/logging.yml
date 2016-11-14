@@ -1,0 +1,6 @@
+classes:
+  - service.haproxy.proxy.single
+  - service.haproxy.proxy.stats
+  # Services
+  - system.haproxy.proxy._kibana
+  - system.haproxy.proxy._elasticsearch
