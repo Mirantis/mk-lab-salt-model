@@ -1,5 +1,6 @@
 classes:
 - system.elasticsearch.server.cluster
+- system.linux.system.repo.tcp_salt
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
