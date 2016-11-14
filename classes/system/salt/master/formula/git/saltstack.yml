@@ -22,6 +22,9 @@ parameters:
               revision: ${_param:salt_master_environment_revision}
             linux:
               source: git
+              module:
+                linux_netlink.py:
+                  enabled: true
               address: '${_param:salt_master_environment_repository}/salt-formula-linux.git'
               revision: ${_param:salt_master_environment_revision}
             ntp:
