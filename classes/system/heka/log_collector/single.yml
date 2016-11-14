@@ -1,7 +1,5 @@
-#classes:
-#- service.heka.log_collector.single
-applications:
-- heka
+classes:
+- service.heka.log_collector.single
 parameters:
   ceilometer:
     _support:
