@@ -3,8 +3,6 @@ classes:
 - system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
-- service.ceilometer.agent.cluster
-- service.ceilometer.agent.publisher.graphite
 parameters:
   _param:
     opencontrail_compute_gateway: 172.16.10.1
@@ -30,5 +28,3 @@ parameters:
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
-      notification:
-        driver: messagingv2
