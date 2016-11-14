@@ -1,5 +1,7 @@
 classes:
-- system.elasticsearch.server.single
+- system.elasticsearch.server.cluster
+- system.linux.system.repo.saltstack_2016_3
+- system.haproxy.proxy._elasticsearch
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
