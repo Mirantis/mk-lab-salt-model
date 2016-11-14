@@ -139,3 +139,6 @@ parameters:
           - host: ${_param:openstack_database_node01_address}
           - host: ${_param:openstack_database_node02_address}
           - host: ${_param:openstack_database_node03_address}
+  heat:
+    database:
+        host: ${_param:openstack_database_address}
