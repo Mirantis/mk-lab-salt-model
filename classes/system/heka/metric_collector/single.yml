@@ -1,7 +1,5 @@
-#classes:
-#- service.heka.metric_collector.single
-applications:
-- heka
+classes:
+- service.heka.metric_collector.single
 parameters:
   heka:
     metric_collector:
@@ -10,7 +8,7 @@ parameters:
         influxdb:
           engine: influxdb
           host: ${_param:heka_influxdb_host}
-          port: ${_param:influxdb_port}
-          database: ${_param:influxdb_database}
-          username: ${_param:influxdb_user}
-          password: ${_param:influxdb_password}
+          port: 8086
+          database: lma
+          username: lma
+          password: ${_param:influxdb_stacklight_password}

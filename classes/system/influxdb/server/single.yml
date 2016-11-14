@@ -15,7 +15,7 @@ parameters:
         enabled: true
         bind:
           address: ${_param:single_address}
-          port: ${_param:influxdb_port}
+          port: 8086
       admin:
         enabled: true
         bind:
@@ -24,19 +24,19 @@ parameters:
         user:
           enabled: true
           name: 'root'
-          password: 'r00tme'
+          password: ${_param:influxdb_admin_password}
       database:
-        stacklight:
+        lma:
           enabled: true
-          name: ${_param:influxdb_database}
+          name: lma
       user:
-        stacklight:
+        lma:
           enabled: true
-          name: ${_param:influxdb_user}
-          password: ${_param:influxdb_password}
+          name: lma
+          password: ${_param:influxdb_stacklight_password}
       grant:
-        grant_stacklight_all:
+        grant_lma_all:
           enabled: true
-          user:  ${_param:influxdb_user}
-          database: ${_param:influxdb_database}
+          user: lma
+          database: lma
           privilege: all
