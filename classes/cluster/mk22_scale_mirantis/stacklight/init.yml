@@ -1,7 +1,7 @@
 parameters:
   _param:
     heka_elasticsearch_host: mon
-    heka_influxdb_host: ${param:stacklight_telemetry_address}
+    heka_influxdb_host: ${_param:stacklight_telemetry_address}
     influxdb_stacklight_password: lmapass
     influxdb_admin_password: r00tme
   linux:
