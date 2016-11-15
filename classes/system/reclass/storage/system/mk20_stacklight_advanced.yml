@@ -63,6 +63,7 @@ parameters:
           classes:
           - system.linux.system.xenial
           - system.heka.aggregator.single
+          - system.influxdb.server.single
           - system.stacklight.server.cluster
           - system.openstack.common.mk20_stacklight_advanced
           params:

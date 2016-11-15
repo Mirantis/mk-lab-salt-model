@@ -1,6 +1,5 @@
 classes:
 - system.elasticsearch.server.cluster
-- system.influxdb.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
 - system.openstack.common.mk20_stacklight
