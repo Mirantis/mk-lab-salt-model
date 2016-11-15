@@ -1,0 +1,41 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                nova:
+                  is_admin: true
+                  password: ${_param:keystone_nova_password}
+                  email: ${_param:admin_email}
+          service:
+            nova20:
+              type: compute_legacy
+              description: OpenStack Compute Service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:nova_service_host}
+                public_port: 8774
+                public_path: '/v2/$(tenant_id)s'
+                internal_address: ${_param:nova_service_host}
+                internal_port: 8774
+                internal_path: '/v2/$(tenant_id)s'
+                admin_address: ${_param:nova_service_host}
+                admin_port: 8774
+                admin_path: '/v2/$(tenant_id)s'
+            nova:
+              type: compute
+              description: OpenStack Compute Service v2.1
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:nova_service_host}
+                public_port: 8774
+                public_path: '/v2.1'
+                internal_address: ${_param:nova_service_host}
+                internal_port: 8774
+                internal_path: '/v2.1'
+                admin_address: ${_param:nova_service_host}
+                admin_port: 8774
+                admin_path: '/v2.1'
