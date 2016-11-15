@@ -1,4 +1,5 @@
 classes:
+- system.linux.system.repo.mos9
 - system.nginx.server.single
 - system.nginx.server.proxy.opencontrail_web
 - system.nginx.server.proxy.openstack_api
