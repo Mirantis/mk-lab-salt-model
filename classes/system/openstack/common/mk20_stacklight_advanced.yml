@@ -43,12 +43,12 @@ parameters:
           - mon01
           - mon01.mk20-stacklight-advanced.local
         mon02:
-          address: ${_param:monitor_node01_address}
+          address: ${_param:monitor_node02_address}
           names:
           - mon02
           - mon02.mk20-stacklight-advanced.local
         mon03:
-          address: ${_param:monitor_node01_address}
+          address: ${_param:monitor_node03_address}
           names:
           - mon03
           - mon03.mk20-stacklight-advanced.local
