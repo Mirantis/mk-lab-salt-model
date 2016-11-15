@@ -39,7 +39,7 @@ parameters:
             keepalived:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-keepalived.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             keystone:
               source: git
               address: 'https://github.com/openstack/salt-formula-keystone.git'
