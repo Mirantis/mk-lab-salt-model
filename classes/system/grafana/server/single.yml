@@ -26,7 +26,7 @@ parameters:
         user: ${_param:grafana_user}
         password: ${_param:grafana_password}
       dashboards:
-        enabled: true
+        enabled: false
         path: /var/lib/grafana/dashboards
     client:
       enabled: true
@@ -36,6 +36,8 @@ parameters:
         port: 3000
         user: ${_param:grafana_user}
         password: ${_param:grafana_password}
+      remote_data:
+        engine: 'salt_mine'
       datasource:
         lma:
           type: influxdb

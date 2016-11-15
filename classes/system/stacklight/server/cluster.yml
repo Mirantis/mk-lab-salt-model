@@ -4,6 +4,7 @@ classes:
 - system.kibana.server.single
 - system.grafana.server.single
 - system.openstack.common.mk20_stacklight
+- service.grafana.collector
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:monitor_vip_address}
