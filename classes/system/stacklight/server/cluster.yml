@@ -1,15 +1,37 @@
 applications:
 - keepalived
 classes:
-- service.keepalived.support
 - system.elasticsearch.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
 - system.openstack.common.mk20_stacklight
 - service.grafana.collector
+- service.haproxy.proxy.single
+- service.keepalived.support
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:monitor_vip_address}
+  haproxy:
+    proxy:
+      listen:
+        elasticsearch_server:
+          type: 'http'
+          binds:
+          - address: ${_param:monitor_vip_address}
+            port: ${_param:elasticsearch_port}
+          servers:
+          - name: mon01
+            host: ${_param:monitor_node01_hostname}
+            port: ${_param:elasticsearch_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+          - name: mon02
+            host: ${_param:monitor_node02_hostname}
+            port: ${_param:elasticsearch_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+          - name: mon03
+            host: ${_param:monitor_node03_hostname}
+            port: ${_param:elasticsearch_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
   keepalived:
     cluster:
       enabled: true
