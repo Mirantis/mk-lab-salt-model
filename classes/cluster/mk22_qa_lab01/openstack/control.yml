@@ -139,3 +139,17 @@ parameters:
           - host: ${_param:openstack_database_node01_address}
           - host: ${_param:openstack_database_node02_address}
           - host: ${_param:openstack_database_node03_address}
+  heat:
+    server:
+      database:
+        host: ${_param:openstack_database_address}
+      notification: true
+      stack_domain_admin:
+        name: heat_domain_admin
+        password: ${_param:heat_domain_admin_password}
+        domain: heat
+      message_queue:
+        members:
+          - host: ${_param:openstack_database_node01_address}
+          - host: ${_param:openstack_database_node02_address}
+          - host: ${_param:openstack_database_node03_address}
