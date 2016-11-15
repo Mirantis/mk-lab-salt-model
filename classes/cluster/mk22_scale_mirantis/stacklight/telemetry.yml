@@ -21,4 +21,3 @@ parameters:
       package:
         apt-transport-https:
           version: latest
- 
