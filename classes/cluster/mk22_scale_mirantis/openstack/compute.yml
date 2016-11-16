@@ -15,6 +15,7 @@ parameters:
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
+    opencontrail_compute_address: ${_param:single_address}
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
