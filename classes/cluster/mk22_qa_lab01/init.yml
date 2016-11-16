@@ -28,7 +28,7 @@ parameters:
           - cmp01
           - cmp01.${_param:cluster_domain}
         cmp02:
-          address: 172.16.10.105
+          address: 172.16.10.106
           names:
           - cmp02
           - cmp02.${_param:cluster_domain}
