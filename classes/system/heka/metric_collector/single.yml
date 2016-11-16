@@ -3,12 +3,11 @@ classes:
 parameters:
   heka:
     metric_collector:
-      enabled: true
-      output:
-        influxdb:
-          engine: influxdb
-          host: ${_param:heka_influxdb_host}
-          port: 8086
-          database: lma
-          username: lma
-          password: ${_param:influxdb_stacklight_password}
+      aggregator_host: ${_param:stacklight_monitor_address}
+      aggregator_port: ${_param:aggregator_port}
+      influxdb_database: lma
+      influxdb_host: ${_param:heka_influxdb_host}
+      influxdb_password: ${_param:influxdb_stacklight_password}
+      influxdb_port: 8086
+      influxdb_time_precision: mc
+      influxdb_username: lma
