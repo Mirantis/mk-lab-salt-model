@@ -1,5 +1,6 @@
 classes:
 - system.linux.system.repo.saltstack_2016_3
+- system.linux.system.repo.tcp_elastic
 - system.collectd.client.remote
 - system.heka.remote_collector.single
 - system.heka.aggregator.single
@@ -11,7 +12,6 @@ parameters:
   _param:
     keepalived_vip_interface: ens4
     keepalived_vip_virtual_router_id: 100
-    kibana_elasticsearch_host: localhost
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: mon01
