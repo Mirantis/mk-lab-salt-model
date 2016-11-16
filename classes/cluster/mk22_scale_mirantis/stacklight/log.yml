@@ -19,3 +19,7 @@ parameters:
     network:
       interface:
         ens4: ${_param:linux_single_interface}
+  elasticsearch:
+    server:
+      master: true
+      data: true
