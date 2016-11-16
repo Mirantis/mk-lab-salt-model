@@ -95,7 +95,7 @@ parameters:
           name: cmp03
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:data_address: 172.20.129.2cluster_name}.openstack.compute
+          - cluster.${_param:cluster_name}.openstack.compute
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
