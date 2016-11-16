@@ -33,6 +33,9 @@ parameters:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-heka.git'
               revision: ${_param:salt_master_environment_revision}
+              module:
+                heka_alarming.py:
+                  enabled: true
             influxdb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-influxdb.git'
