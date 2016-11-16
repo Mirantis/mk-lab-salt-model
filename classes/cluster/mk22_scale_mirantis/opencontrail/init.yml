@@ -3,8 +3,9 @@ parameters:
     opencontrail_version: 3.0
     opencontrail_stats_password: contrail123
     opencontrail_compute_dns: 8.8.8.8
-    opencontrail_compute_gateway: 172.16.10.1
-    opencontrail_compute_iface: eth1
+    opencontrail_compute_gateway: 172.20.128.1
+    opencontrail_compute_iface: p4p1.637
+    opencontrail_compute_iface_mask: 22
   linux:
     network:
       host:
