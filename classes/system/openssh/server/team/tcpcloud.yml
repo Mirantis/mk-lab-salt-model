@@ -86,6 +86,13 @@ parameters:
           sudo: true
           full_name: Petr Michalec
           home: /home/pmichalec
+        jjosef:
+          enabled: true
+          name: jjosef
+          sudo: true
+          full_name: Jakub Josef
+          home: /home/jjosef
+          email: jakub.josef@gmail.com
       group:
         libvirtd:
           enabled: true
@@ -159,6 +166,11 @@ parameters:
           public_keys:
           - ${public_keys:pmichalec}
           user: ${linux:system:user:pmichalec}
+        jjosef:
+          enabled: true
+          public_keys:
+          - ${public_keys:jjosef}
+          user: ${linux:system:user:jjosef}
   public_keys:
     askotnicky:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO6EnDYaGdF/Nn6lntxDNnKanCsheZRdh8kA/6ImyeRSjT2cgepm1Fsgv7wXBYoy0OxhB5wgCp5Az/Pj4oLkG3g+G05sUPUxxGCGRiwjcnyQ/FTz4TzHglAVqgbdgWoQYf9Hg6EKZovvPcH3STbEwcl+MhLqvxz0wm5+StE+wvp6I9dEfRV+2/e1uepauOTZ1+Ui1DMNXiMefTlbiIBHzUk7RiwJWgqzQXBndgunmbJWSed8zC0Ug97waDOFIX/oKZmAmsv0NLJ2e/kC3oUTuziGT74F9sh7Pqiw/9HZxvP45hJwEvytfUjfuiikIBbmYdF7Je93czaG/qjXGN8YvP== a.skotnicky@tcpisek.cz
@@ -186,4 +198,6 @@ parameters:
       key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCt9HA2bUwCVGGdUjyFzdPFp0j2z9XanLW9gHZ3BhB6Wc4ficU6zmbqYxrHUvdmUrRJbLMEAo9JDlzAIw4CPGhRkD3d7HfnmlEYcEeizLnnC+CmKo3+mrwkQIzWIz6PJOh1kvp5uaNp4ztjRGXXmPzcR0nk4jRD89gLHvH9EYStxZI6nsi3mmWR/LhgIhijb8p63duhE4HuK/RRRjeDQaUsbTG9TMEskY5ZI3p/QM55wlml9F8QJrtwxpaIPI5Fl8lflq+4YcoqgDIBFc6nwubIuiNY4gPJ8s1SQfsfxHSOJpFPZDwi76dxUpthtJrU46fqRvXPzTKoS29WZ5pSAY6p pavel.cizinsky@tcpcloud.eu
     pmichalec:
       key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGwsfObHWHqBv6UQBjvm0nkgnAGc5MZPuQXJ3ln4sM1P pmichalec@dontpanic
-
+    jjosef:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkK55PVyvnhW2XiIyDUTWOaW1frsd7g9t8SLRmjtEjKqJOBaRk48bSUfcV2twGcSOq3E2dUikh3URobYIZ6WBEiWrl1e7MYCJJAE+8qzVoskk01mC6tp9HGbsSRKrZTgpjzReM+kN6jffi/P1rSqgeg4U0O99N2aWqdfc7UJPFM09z9nqfB1Gj4HUnBkC1X+di4U3S6W8q62JLgxuK2MAry3xSnPztFVH5OXXbBltdVIxshOHj9i8wyof9iFHGdjFNvB+c5I3RJ2HRmmmHm3zey9iHU7PNIppXKglUFZ0EKIB4LsDjL6xrEjo2A5tfCaVZLNJgP95tdbGEcYQuDv3N jakub.josef@gmail.com
+      
