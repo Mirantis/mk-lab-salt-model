@@ -1,5 +1,6 @@
 classes:
 - system.influxdb.server.single
+- system.influxdb.server.tmpfs_wal
 - cluster.mk22_full_scale
 parameters:
   _param:
