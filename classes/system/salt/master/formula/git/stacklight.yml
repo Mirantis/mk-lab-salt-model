@@ -21,8 +21,10 @@ parameters:
               address: '${_param:salt_master_environment_repository}/salt-formula-grafana.git'
               revision: stacklight
               state:
-                grafana3_datasource.py: # only key is used
-                grafana3_dashboard.py: # only key is used
+                grafana3_datasource.py:
+                  enabled: true
+                grafana3_dashboard.py:
+                  enabled: true
             graphite:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-graphite.git'

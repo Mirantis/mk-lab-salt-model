@@ -1,6 +1,13 @@
 parameters:
   _param:
     heka_elasticsearch_host: mon
+    heka_influxdb_host: mon
+    heka_aggregator_host: mon
+    aggregator_port: 5565
+    grafana_user: admin
+    grafana_password: password
+    grafana_influxdb_host: mon
+    elasticsearch_port: 9200
     influxdb_port: 8086
     influxdb_database: lma
     influxdb_user: lma

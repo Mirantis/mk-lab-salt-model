@@ -1,6 +1,15 @@
 parameters:
   _param:
-    heka_elasticsearch_host: mon
+    heka_elasticsearch_host: ${_param:stacklight_monitor_address}
+    heka_influxdb_host: ${_param:stacklight_monitor_address}
+    heka_aggregator_host: ${_param:stacklight_monitor_address}
+    aggregator_port: 5565
+    grafana_user: admin
+    grafana_password: password
+    grafana_influxdb_host: ${_param:stacklight_monitor_address}
+    elasticsearch_port: 9200
+    influxdb_stacklight_password: lmapass
+    influxdb_admin_password: password
     influxdb_port: 8086
     influxdb_database: lma
     influxdb_user: lma
@@ -8,11 +17,6 @@ parameters:
   linux:
     network:
       host:
-        mon:
-          address: ${_param:stacklight_monitor_address}
-          names:
-          - mon
-          - mon.${_param:cluster_domain}
         mon01:
           address: ${_param:stacklight_monitor_node01_address}
           names:
@@ -28,3 +32,8 @@ parameters:
           names:
           - mon03
           - mon03.${_param:cluster_domain}
+        mon:
+          address: ${_param:stacklight_monitor_address}
+          names:
+          - mon
+          - mon.${_param:cluster_domain}
