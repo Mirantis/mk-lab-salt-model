@@ -5,6 +5,7 @@ classes:
 - system.nginx.server.proxy.openstack_api
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
+- system.horizon.server.single
 - system.salt.minion.pki.certificate
 - cluster.mk22_scale_mirantis
 parameters:
