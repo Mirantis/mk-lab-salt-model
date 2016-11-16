@@ -50,6 +50,9 @@ parameters:
               revision: ${_param:salt_master_environment_revision}
             nagios:
               source: git
+              module:
+                nagios_alarming.py:
+                  enabled: true
               address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
               revision: ${_param:salt_master_environment_revision}
             postgresql:
