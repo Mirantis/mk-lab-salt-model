@@ -22,14 +22,13 @@ parameters:
     server:
       enabled: true
       master: true
-      data: false
+      data: true
       mlockall: true
       bind:
         address: ${_param:single_address}
         port: 9200
       index:
-        shards: 1
-        replicas: 1
+        replicas: 2
       threadpool:
         bulk:
          queue_size: 1000
