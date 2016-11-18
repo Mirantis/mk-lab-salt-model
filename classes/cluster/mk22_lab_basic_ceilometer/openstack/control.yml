@@ -14,6 +14,7 @@ classes:
 - system.heat.server.cluster
 - system.ceilometer.server.cluster
 - system.opencontrail.control.cluster
+- system.heka.os_telemetry_collector.single
 - system.galera.server.cluster
 - system.galera.server.database.ceilometer
 - system.galera.server.database.cinder
@@ -21,7 +22,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
-- cluster.mk22_lab_basic
+- cluster.mk22_lab_basic_ceilometer
 parameters:
   _param:
     keepalived_vip_interface: eth1

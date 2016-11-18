@@ -2,9 +2,9 @@ classes:
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
-- system.ceilometer.agent.single
+- system.ceilometer.agent.cluster
 - system.opencontrail.compute.cluster
-- cluster.mk22_lab_basic
+- cluster.mk22_lab_basic_ceilometer
 parameters:
   _param:
     opencontrail_compute_gateway: 172.16.10.1
@@ -32,8 +32,3 @@ parameters:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
-      message_queue:
-        members:
-          - host: ${_param:openstack_control_node01_address}
-          - host: ${_param:openstack_control_node02_address}
-          - host: ${_param:openstack_control_node03_address}
