@@ -10,6 +10,7 @@ classes:
 - service.grafana.collector
 parameters:
   _param:
+    kibana_port: 5601
     kibana_elasticsearch_host: mon
     collectd_remote_collector_host: 127.0.0.1
     collectd_remote_collector_port: 8326

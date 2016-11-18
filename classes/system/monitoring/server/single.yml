@@ -13,4 +13,5 @@ classes:
 - system.monitoring.server.check.api
 parameters:
   _param:
+    kibana_port: 5601
     kibana_elasticsearch_host: localhost

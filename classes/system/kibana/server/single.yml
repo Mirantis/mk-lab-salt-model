@@ -1,11 +1,12 @@
 classes:
 - service.kibana.server.single
 parameters:
-  _param:
-    kibana_elasticsearch_host: localhost
   kibana:
     server:
       enabled: true
+      bind:
+        address: ${_param:single_address}
+        port: ${_param:kibana_port}
       database:
         engine: elasticsearch
         host: ${_param:kibana_elasticsearch_host}

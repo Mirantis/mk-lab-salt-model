@@ -10,6 +10,7 @@ classes:
 - service.keepalived.support
 parameters:
   _param:
+    kibana_port: 5601
     kibana_elasticsearch_host: ${_param:monitor_vip_address}
   haproxy:
     proxy:
