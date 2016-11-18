@@ -21,7 +21,7 @@ parameters:
     salt_master_environment_revision: master
     salt_master_base_environment: dev
     reclass_data_repository: "git@github.com:ityaptin/mk-lab-salt-model.git"
-    reclass_data_revision: dash
+    reclass_data_revision: dash_new
     reclass_config_master: 192.168.10.100
     single_address: 172.16.10.100
     salt_master_host: 127.0.0.1
