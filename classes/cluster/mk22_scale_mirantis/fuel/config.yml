@@ -79,7 +79,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            control_address: 172.16.10.91
+            control_address: 172.20.10.91
             single_address: 172.20.129.1
         openstack_compute_node02:
           name: cmp02
@@ -89,7 +89,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            control_address: 172.16.10.92
+            control_address: 172.20.10.92
             single_address: 172.20.129.2
         openstack_compute_node03:
           name: cmp03
@@ -99,7 +99,7 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            control_address: 172.16.10.93
+            control_address: 172.20.10.93
             single_address: 172.20.129.3
         openstack_compute_node04:
           name: cmp04
@@ -109,5 +109,5 @@ parameters:
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            control_address: 172.16.10.94
+            control_address: 172.20.10.94
             single_address: 172.20.129.4
