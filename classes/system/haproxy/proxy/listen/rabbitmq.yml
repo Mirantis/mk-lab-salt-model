@@ -4,6 +4,7 @@ parameters:
       listen:
         rabbitmq:
           type: rabbitmq
+          service_name: rabbitmq
           binds:
             - address: ${_param:cluster_vip_address}
               port: 5672
@@ -18,6 +19,7 @@ parameters:
               params: backup check
         rabbitmq_management:
           type: rabbitmq
+          service_name: rabbitmq
           binds:
             - address: ${_param:cluster_vip_address}
               port: 15672

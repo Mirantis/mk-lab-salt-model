@@ -8,6 +8,7 @@ parameters:
       listen:
         heat_api_cloudwatch:
           type: openstack-service
+          service_name: heat
           binds:
           - address: ${_param:cluster_vip_address}
             port: 8000
@@ -26,6 +27,7 @@ parameters:
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
         heat_api:
           type: openstack-service
+          service_name: heat
           binds:
           - address: ${_param:cluster_vip_address}
             port: 8004
@@ -44,6 +46,7 @@ parameters:
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
         heat_api_cfn:
           type: openstack-service
+          service_name: heat
           binds:
           - address: ${_param:cluster_vip_address}
             port: 8003

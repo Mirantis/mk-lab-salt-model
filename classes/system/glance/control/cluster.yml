@@ -17,6 +17,7 @@ parameters:
       listen:
         glance_api:
           type: openstack-service
+          service_name: glance
           binds:
           - address: ${_param:cluster_vip_address}
             port: 9292
@@ -35,6 +36,7 @@ parameters:
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
         glance_registry:
           type: general-service
+          service_name: glance
           check: false
           binds:
           - address: ${_param:cluster_vip_address}

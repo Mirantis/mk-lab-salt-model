@@ -7,6 +7,7 @@ parameters:
       listen:
         mysql_cluster:
           type: mysql
+          service_name: mysql
           binds:
           - address: ${_param:cluster_vip_address}
             port: 3306

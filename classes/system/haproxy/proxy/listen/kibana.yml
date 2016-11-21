@@ -4,6 +4,7 @@ parameters:
       listen:
         kibana:
           mode: http
+          service_name: kibana
           options:
             - forwardfor
 #            - httpchk
