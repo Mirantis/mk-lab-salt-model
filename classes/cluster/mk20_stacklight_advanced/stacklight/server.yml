@@ -1,5 +1,5 @@
 classes:
-- system.collectd.client.remote
+- system.collectd.remote_client.cluster
 - system.elasticsearch.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
@@ -12,6 +12,7 @@ classes:
 - system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
   _param:
+    collectd_remote_collector_host: ${_param:stacklight_monitor_address}
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
     keepalived_stacklight_monitor_vip_address: ${_param:stacklight_monitor_address}
     keepalived_stacklight_monitor_vip_password: 'password'

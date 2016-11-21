@@ -1,5 +1,5 @@
 classes:
-- system.collectd.client.remote
+- system.collectd.remote_client.cluster
 - system.elasticsearch.server.cluster
 - system.influxdb.server.cluster
 - system.kibana.server.single
@@ -8,6 +8,7 @@ classes:
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    collectd_remote_collector_host: ${_param:stacklight_monitor_address}
     keepalived_vip_interface: ens4
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_local_address: ${_param:single_address}

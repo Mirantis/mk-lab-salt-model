@@ -1,14 +1,13 @@
-classes:
-- service.collectd.client
 parameters:
   _param:
-    collectd_remote_collector_host: 127.0.0.1
     collectd_remote_collector_port: 8326
   collectd:
-    client:
-      remote_collector: true
+    remote_client:
+      enabled: true
       backend:
         remote_collector:
           engine: http
           host: ${_param:collectd_remote_collector_host}
           port: ${_param:collectd_remote_collector_port}
+      read_interval: 10
+      use_fqdn: false
