@@ -5,9 +5,23 @@ classes:
 - system.grafana.server.single
 - system.nagios.server.single
 - cluster.mk20_stacklight_advanced
+- system.haproxy.proxy.listen.stacklight.elasticsearch
+- service.haproxy.proxy.single
+- system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    keepalived_stacklight_monitor_vip_address: ${_param:stacklight_monitor_address}
+    keepalived_stacklight_monitor_vip_password: 'password'
+    keepalived_stacklight_monitor_vip_interface: ens4
+    cluster_vip_address: ${_param:stacklight_monitor_address}
+    cluster_elasticsearch_port: 9200
+    cluster_node01_name: mon01
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_name: mon02
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_name: mon03
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
   linux:
     network:
       interface:
