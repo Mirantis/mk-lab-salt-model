@@ -7,6 +7,7 @@ classes:
 - cluster.mk20_stacklight_advanced
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.grafana
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
@@ -18,6 +19,7 @@ parameters:
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_elasticsearch_port: 9200
     cluster_kibana_port: 5601
+    cluster_grafana_port: 3000
     cluster_node01_name: mon01
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
     cluster_node02_name: mon02
