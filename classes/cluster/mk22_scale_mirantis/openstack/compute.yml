@@ -3,8 +3,6 @@ classes:
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
-- service.ceilometer.agent.cluster
-- service.ceilometer.agent.publisher.graphite
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
