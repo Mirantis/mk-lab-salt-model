@@ -6,6 +6,7 @@ classes:
 - system.nagios.server.single
 - cluster.mk20_stacklight_advanced
 - system.haproxy.proxy.listen.stacklight.elasticsearch
+- system.haproxy.proxy.listen.stacklight.kibana
 - service.haproxy.proxy.single
 - system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
@@ -16,6 +17,7 @@ parameters:
     keepalived_stacklight_monitor_vip_interface: ens4
     cluster_vip_address: ${_param:stacklight_monitor_address}
     cluster_elasticsearch_port: 9200
+    cluster_kibana_port: 5601
     cluster_node01_name: mon01
     cluster_node01_address: ${_param:stacklight_monitor_node01_address}
     cluster_node02_name: mon02
