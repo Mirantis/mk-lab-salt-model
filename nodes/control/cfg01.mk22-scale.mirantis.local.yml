@@ -4,7 +4,7 @@ classes:
 parameters:
   _param:
     linux_system_codename: trusty
-    reclass_data_revision: dash
+    reclass_data_revision: master
   linux:
     system:
       name: cfg01
