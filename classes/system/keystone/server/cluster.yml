@@ -12,7 +12,7 @@ parameters:
   haproxy:
     proxy:
       listen:
-        keystone_auth:
+        keystone_public_api:
           type: openstack-service
           service_name: keystone
           binds:
@@ -31,7 +31,7 @@ parameters:
             host: ${_param:cluster_node03_address}
             port: 5000
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        keystone_admin:
+        keystone_admin_api:
           type: openstack-service
           service_name: keystone
           binds:

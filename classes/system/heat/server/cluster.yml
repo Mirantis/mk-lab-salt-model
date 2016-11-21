@@ -6,7 +6,7 @@ parameters:
   haproxy:
     proxy:
       listen:
-        heat_api_cloudwatch:
+        heat_cloudwatch_api:
           type: openstack-service
           service_name: heat
           binds:
@@ -44,7 +44,7 @@ parameters:
             host: ${_param:cluster_node03_address}
             port: 8004
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        heat_api_cfn:
+        heat_cfn_api:
           type: openstack-service
           service_name: heat
           binds:
