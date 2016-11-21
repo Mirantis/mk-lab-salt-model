@@ -7,6 +7,7 @@ salt "*" state.sls heka
 # Update salt-mine metadata definitions
 salt "*" state.sls salt.minion.grains
 salt "*" mine.flush
+salt "*" saltutil.refresh_modules
 salt "*" mine.update
 
 sleep 5
