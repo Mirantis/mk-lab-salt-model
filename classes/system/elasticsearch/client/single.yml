@@ -1,0 +1,8 @@
+classes:
+- service.elasticsearch.client
+parameters:
+  elasticsearch:
+    client:
+      enabled: true
+      server:
+        host: ${_param:stacklight_monitor_address}
