@@ -1,0 +1,11 @@
+parameters:
+  mysql:
+    server:
+      database:
+        graphite:
+          encoding: 'utf8'
+          users:
+          - name: 'graphite'
+            password: '${_param:mysql_graphite_password}'
+            host: '%'
+            rights: 'all'

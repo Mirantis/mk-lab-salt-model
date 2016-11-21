@@ -1,0 +1,113 @@
+classes:
+- system.linux.system.repo.tcp_salt
+- system.openssh.client.lab
+- system.salt.master.git
+- system.salt.minion.pki.authority
+- system.reclass.storage.salt
+- system.reclass.storage.system.physical_control_full
+- system.reclass.storage.system.opencontrail_analytics_cluster
+- system.reclass.storage.system.opencontrail_control_cluster
+- system.reclass.storage.system.openstack_control_cluster
+- system.reclass.storage.system.openstack_proxy_single
+- system.reclass.storage.system.openstack_database_cluster
+- system.reclass.storage.system.openstack_message_queue_cluster
+- system.reclass.storage.system.stacklight_log_cluster
+- system.reclass.storage.system.stacklight_monitor_cluster
+- system.reclass.storage.system.stacklight_telemetry_cluster
+- cluster.mk22_scale_mirantis
+parameters:
+  _param:
+    salt_master_environment_repository: "https://github.com/tcpcloud"
+    salt_master_environment_revision: master
+    salt_master_base_environment: dev
+    reclass_data_repository: "https://github.com/Mirantis/mk-lab-salt-model.git"
+    reclass_data_revision: master
+    reclass_config_master: ${_param:fuel_config_deploy_address}
+    single_address: ${_param:fuel_config_address}
+    deploy_address: ${_param:fuel_compute_node01_deploy_address}
+    salt_master_host: ${_param:fuel_config_address}
+  reclass:
+    storage:
+      node:
+        openstack_control_node01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.control_init
+        openstack_database_node01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.database_init
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            cinder:
+              revision: stacklight
+            collectd:
+              revision: stacklight
+            galera:
+              revision: stacklight
+            glance:
+              revision: stacklight
+            haproxy:
+              revision: stacklight
+            heat:
+              revision: stacklight
+            heka:
+              revision: stacklight
+            keystone:
+              revision: stacklight
+            linux:
+              revision: stacklight
+            memcached:
+              revision: stacklight
+            neutron:
+              revision: stacklight
+            nova:
+              revision: stacklight
+            ntp:
+              revision: stacklight
+            rabbitmq:
+              revision: stacklight
+  reclass:
+    storage:
+      node:
+        openstack_compute_node01:
+          name: cmp01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: 172.20.10.91
+            single_address: 172.20.129.1
+        openstack_compute_node02:
+          name: cmp02
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: 172.20.10.92
+            single_address: 172.20.129.2
+        openstack_compute_node03:
+          name: cmp03
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: 172.20.10.93
+            single_address: 172.20.129.3
+        openstack_compute_node04:
+          name: cmp04
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            control_address: 172.20.10.94
+            single_address: 172.20.129.4

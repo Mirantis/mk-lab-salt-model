@@ -16,12 +16,17 @@ parameters:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-iptables.git'
               revision: ${_param:salt_master_environment_revision}
+            libvirt:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-libvirt.git'
+              revision: ${_param:salt_master_environment_revision}
             linux:
               source: git
-              address: '${_param:salt_master_environment_repository}/salt-formula-linux.git'
-              revision: stacklight
               module:
                 linux_netlink.py:
+                  enabled: true
+              address: '${_param:salt_master_environment_repository}/salt-formula-linux.git'
+              revision: ${_param:salt_master_environment_revision}
             ntp:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-ntp.git'

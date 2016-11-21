@@ -1,0 +1,23 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.nova.compute.cluster
+- cluster.mk22_lab_dvr
+parameters:
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: manual
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}

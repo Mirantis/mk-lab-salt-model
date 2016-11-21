@@ -1,0 +1,5 @@
+classes:
+- system.collectd.client.output.carbon
+- system.sensu.client.single
+- system.heka.shipper.single
+- cluster.mk20_lab_expert

@@ -1,0 +1,37 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        openstack_message_queue_node01:
+          name: msg01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.message_queue
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_message_queue_node01_address}
+            keepalived_vip_priority: 103
+            rabbitmq_cluster_role: master
+        openstack_message_queue_node02:
+          name: msg02
+          domain: ${_param:cluster_domain}
+          classes:  
+          - cluster.${_param:cluster_name}.openstack.message_queue
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_message_queue_node02_address}
+            keepalived_vip_priority: 102
+            rabbitmq_cluster_role: slave
+        openstack_message_queue_node03:
+          name: msg03
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.message_queue
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_message_queue_node03_address}
+            keepalived_vip_priority: 101
+            rabbitmq_cluster_role: slave

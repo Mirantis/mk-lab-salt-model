@@ -1,25 +1,14 @@
 classes:
 - service.keystone.server.cluster
+- service.keepalived.cluster.single
 - system.keystone.server.storage.glusterfs
 parameters:
   keystone:
     server:
       tokens:
         engine: fernet
-  mysql:
-    server:
-      database:
-        keystone:
-          encoding: utf8
-          users:
-          - name: keystone
-            password: ${_param:mysql_keystone_password}
-            host: '%'
-            rights: all
-          - name: keystone
-            password: ${_param:mysql_keystone_password}
-            host: ${_param:single_address}
-            rights: all
+        expiration: 3600
+        max_active_keys: 3
   haproxy:
     proxy:
       listen:

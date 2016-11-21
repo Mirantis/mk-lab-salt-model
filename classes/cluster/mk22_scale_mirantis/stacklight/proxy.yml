@@ -1,0 +1,17 @@
+classes:
+- system.nginx.server.proxy.grafana_web
+- system.nginx.server.proxy.kibana_web
+- system.nginx.server.proxy.nagios_web
+- system.salt.minion.pki.certificate
+- cluster.mk22_scale_mirantis
+parameters:
+  _param:
+    nginx_proxy_ssl:
+      enabled: true
+      authority: mk_lab_ca
+      engine: salt
+      mode: secure
+  linux:
+    network:
+      interface:
+        ens4: ${_param:linux_single_interface}

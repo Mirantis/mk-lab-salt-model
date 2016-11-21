@@ -1,0 +1,4 @@
+classes:
+- service.rabbitmq.server.cluster
+- service.keepalived.cluster.single
+- service.haproxy.proxy.single

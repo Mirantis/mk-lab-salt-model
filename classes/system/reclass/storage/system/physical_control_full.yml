@@ -1,0 +1,94 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        fuel_compute_node01:
+          name: kvm01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node01_address}
+            deploy_address: ${_param:fuel_compute_node01_deploy_address}
+        fuel_compute_node02:
+          name: kvm02
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node02_address}
+            deploy_address: ${_param:fuel_compute_node02_deploy_address}
+        fuel_compute_node03:
+          name: kvm03
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node03_address}
+            deploy_address: ${_param:fuel_compute_node03_deploy_address}
+        fuel_compute_node04:
+          name: kvm04
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node04_address}
+            deploy_address: ${_param:fuel_compute_node04_deploy_address}
+        fuel_compute_node05:
+          name: kvm05
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node05_address}
+            deploy_address: ${_param:fuel_compute_node05_deploy_address}
+        fuel_compute_node06:
+          name: kvm06
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node06_address}
+            deploy_address: ${_param:fuel_compute_node06_deploy_address}
+        fuel_compute_node07:
+          name: kvm07
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node07_address}
+            deploy_address: ${_param:fuel_compute_node07_deploy_address}
+        fuel_compute_node08:
+          name: kvm08
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node08_address}
+            deploy_address: ${_param:fuel_compute_node08_deploy_address}
+        fuel_compute_node09:
+          name: kvm09
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node09_address}
+            deploy_address: ${_param:fuel_compute_node09_deploy_address}

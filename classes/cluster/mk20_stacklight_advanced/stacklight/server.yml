@@ -1,0 +1,17 @@
+classes:
+- system.collectd.client.remote
+- system.elasticsearch.server.cluster
+- system.influxdb.server.cluster
+- system.kibana.server.single
+- system.grafana.server.single
+- cluster.mk20_stacklight_advanced
+parameters:
+  _param:
+    kibana_elasticsearch_host: localhost
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: dhcp

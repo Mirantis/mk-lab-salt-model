@@ -67,7 +67,7 @@ parameters:
             nginx:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-nginx.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             nova:
               source: git
               address: 'https://github.com/openstack/salt-formula-nova.git'
@@ -83,7 +83,7 @@ parameters:
             rabbitmq:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-rabbitmq.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             supervisor:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-supervisor.git'

@@ -1,0 +1,18 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_grafana:
+          enabled: true
+          type: nginx_proxy
+          name: grafana
+          proxy:
+            host: mon
+            port: 3000
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8084
+            protocol: https
+          ssl: ${_param:nginx_proxy_ssl}

@@ -1,0 +1,26 @@
+classes:
+- system.collectd.client.remote
+- system.elasticsearch.server.cluster
+- system.influxdb.server.cluster
+- system.kibana.server.single
+- system.grafana.server.single
+- cluster.mk22_lab_advanced
+parameters:
+  _param:
+    kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    keepalived_vip_interface: ens4
+    cluster_vip_address: ${_param:stacklight_monitor_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: 172.16.10.107
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: 172.16.10.108
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: 172.16.10.109
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: dhcp

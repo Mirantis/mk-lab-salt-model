@@ -1,0 +1,4 @@
+classes:
+- system.collectd.client.output.heka
+- system.heka.log_collector.single
+- system.heka.metric_collector.single

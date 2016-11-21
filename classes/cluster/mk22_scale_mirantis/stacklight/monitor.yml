@@ -1,0 +1,26 @@
+classes:
+- system.linux.system.repo.saltstack_2016_3
+- system.linux.system.repo.tcp_elastic
+- system.collectd.client.remote
+- system.heka.remote_collector.single
+- system.heka.aggregator.single
+- system.kibana.server.single
+- system.grafana.server.single
+- system.nagios.server.single
+- cluster.mk22_scale_mirantis
+parameters:
+  _param:
+    keepalived_vip_interface: ens4
+    keepalived_vip_virtual_router_id: 100
+    cluster_vip_address: ${_param:stacklight_monitor_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: mon01
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_hostname: mon02
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_hostname: mon03
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
+  linux:
+    network:
+      interface:
+        ens4: ${_param:linux_single_interface}

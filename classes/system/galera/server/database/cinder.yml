@@ -1,0 +1,15 @@
+parameters:
+  mysql:
+    server:
+      database:
+        cinder:
+          encoding: utf8
+          users:
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: '%'
+            rights: all
+          - name: cinder
+            password: ${_param:mysql_cinder_password}
+            host: ${_param:cluster_local_address}
+            rights: all

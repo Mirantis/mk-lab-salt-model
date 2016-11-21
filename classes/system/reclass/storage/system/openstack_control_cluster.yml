@@ -1,0 +1,40 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        openstack_control_node01:
+          name: ctl01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.control
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_control_node01_address}
+            keepalived_vip_priority: 103
+            opencontrail_database_id: 1
+            rabbitmq_cluster_role: master
+        openstack_control_node02:
+          name: ctl02
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.control
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_control_node02_address}
+            keepalived_vip_priority: 102
+            opencontrail_database_id: 2
+            rabbitmq_cluster_role: slave
+        openstack_control_node03:
+          name: ctl03
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.control
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_control_node03_address}
+            keepalived_vip_priority: 101
+            opencontrail_database_id: 3
+            rabbitmq_cluster_role: slave

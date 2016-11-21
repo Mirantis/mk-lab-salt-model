@@ -1,0 +1,40 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        openstack_database_node01:
+          name: dbs01
+          domain: ${_param:cluster_domain}
+          classes:
+          - service.galera.master.cluster
+          - cluster.${_param:cluster_name}.openstack.database
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_database_node01_address}
+            keepalived_vip_priority: 103
+            mysql_cluster_role: master
+        openstack_database_node02:
+          name: dbs02
+          domain: ${_param:cluster_domain}
+          classes:  
+          - service.galera.slave.cluster
+          - cluster.${_param:cluster_name}.openstack.database
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_database_node02_address}
+            keepalived_vip_priority: 102
+            mysql_cluster_role: slave
+        openstack_database_node03:
+          name: dbs03
+          domain: ${_param:cluster_domain}
+          classes:
+          - service.galera.slave.cluster
+          - cluster.${_param:cluster_name}.openstack.database
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_database_node03_address}
+            keepalived_vip_priority: 101
+            mysql_cluster_role: slave

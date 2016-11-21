@@ -2,8 +2,8 @@ parameters:
   salt:
     minion:
       ca:
-        mk20_lab_ca:
-          common_name: mk20_lab_ca
+        mk_lab_ca:
+          common_name: mk_lab_ca
           country: cz
           locality: Prague
           organization: Mirantis

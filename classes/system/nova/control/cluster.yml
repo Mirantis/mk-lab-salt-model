@@ -1,32 +1,13 @@
 classes:
 - service.haproxy.proxy.single
 - service.nova.control.cluster
+- service.keepalived.cluster.single
 parameters:
-  mysql:
-    server:
-      database:
-        nova:
-          encoding: utf8
-          users:
-          - name: nova
-            password: ${_param:mysql_nova_password}
-            host: '%'
-            rights: all
-          - name: nova
-            password: ${_param:mysql_nova_password}
-            host: ${_param:cluster_local_address}
-            rights: all
-        nova_api:
-          encoding: utf8
-          users:
-          - name: nova
-            password: ${_param:mysql_nova_password}
-            host: '%'
-            rights: all
-          - name: nova
-            password: ${_param:mysql_nova_password}
-            host: ${_param:cluster_local_address}
-            rights: all
+  nova:
+    controller:
+      cpu_allocation_ratio: 1.0
+      ram_allocation_ratio: 1.0
+      disk_allocation_ratio: 1.0
   haproxy:
     proxy:
       listen:

@@ -21,8 +21,10 @@ parameters:
               address: '${_param:salt_master_environment_repository}/salt-formula-grafana.git'
               revision: stacklight
               state:
-                grafana3_datasource.py: # only key is used
-                grafana3_dashboard.py: # only key is used
+                grafana3_datasource.py:
+                  enabled: true
+                grafana3_dashboard.py:
+                  enabled: true
             graphite:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-graphite.git'
@@ -30,9 +32,10 @@ parameters:
             heka:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-heka.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
               module:
                 heka_alarming.py:
+                  enabled: true
             influxdb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-influxdb.git'
@@ -44,7 +47,14 @@ parameters:
             kibana:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-kibana.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
+            nagios:
+              source: git
+              module:
+                nagios_alarming.py:
+                  enabled: true
+              address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
+              revision: ${_param:salt_master_environment_revision}
             postgresql:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-postgresql.git'
@@ -52,7 +62,7 @@ parameters:
             rabbitmq:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-rabbitmq.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             redis:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-redis.git'

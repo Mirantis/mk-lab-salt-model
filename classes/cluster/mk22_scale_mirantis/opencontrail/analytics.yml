@@ -1,0 +1,34 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.opencontrail.control.analytics
+- cluster.mk22_scale_mirantis
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 70
+    cluster_vip_address: ${_param:opencontrail_analytics_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: nal01
+    cluster_node01_address: ${_param:opencontrail_analytics_node01_address}
+    cluster_node02_hostname: nal02
+    cluster_node02_address: ${_param:opencontrail_analytics_node02_address}
+    cluster_node03_hostname: nal03
+    cluster_node03_address: ${_param:opencontrail_analytics_node03_address}
+  linux:
+    network:
+      interface:
+        eth1: ${_param:linux_single_interface}
+  opencontrail:
+    common:
+      identity:
+        host: ${_param:openstack_control_address}
+    collector:
+      discovery:
+        host: ${_param:opencontrail_control_address}
+    database:
+      discovery:
+        host: ${_param:opencontrail_control_address}
+    common:
+      network:
+        host: ${_param:opencontrail_control_address}

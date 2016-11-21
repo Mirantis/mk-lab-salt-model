@@ -1,0 +1,189 @@
+parameters:
+  linux:
+    system:
+      user:
+        root:
+          enabled: true
+          name: root
+          home: /root
+        askotnicky:
+          enabled: true
+          name: askotnicky
+          sudo: true
+          full_name: Adam Skotnicky
+          home: /home/askotnicky
+        alholanova:
+          enabled: true
+          name: alholanova
+          sudo: true
+          full_name: Alenka Aja Sfinga Holanova
+          home: /home/alholanova
+        vmikes:
+          enabled: true
+          name: vmikes
+          sudo: true
+          full_name: Vlasta Mikes
+          home: /home/vmikes
+        newt:
+          enabled: true
+          name: newt
+          sudo: true
+          full_name: Ales Komarek
+          home: /home/newt
+          email: mail@newt.cz
+        jpavlik:
+          enabled: true
+          name: jpavlik
+          sudo: true
+          full_name: Jakub Pavlik
+          home: /home/jpavlik
+        tux:
+          enabled: true
+          name: tux
+          sudo: true
+          full_name: Adam Tengler
+          home: /home/tux
+        marco:
+          enabled: true
+          name: marco
+          sudo: true
+          full_name: Marek Celoud
+          home: /home/marco
+        filip:
+          enabled: true
+          name: filip
+          sudo: true
+          full_name: Filip Pytloun
+          home: /home/filip
+          email: filip@pytloun.cz
+        vzach:
+          enabled: true
+          name: vzach
+          sudo: true
+          full_name: Vlastimil Zach
+          home: /home/vzach
+        osmola:
+          enabled: true
+          name: osmola
+          sudo: true
+          full_name: Ondrej Smola
+          home: /home/osmola
+        jkonecny:
+          enabled: true
+          name: jkonecny
+          sudo: true
+          full_name: Jiri Konecny
+          home: /home/jkonecny
+        pcizinsky:
+          enabled: true
+          name: pcizinsky
+          sudo: true
+          full_name: Pavel Cizinsky
+          home: /home/pcizinsky
+        pmichalec:
+          enabled: true
+          name: pmichalec
+          sudo: true
+          full_name: Petr Michalec
+          home: /home/pmichalec
+      group:
+        libvirtd:
+          enabled: true
+          name: libvirtd
+  openssh:
+    server:
+      enabled: true
+      user:
+        askotnicky:
+          enabled: true
+          public_keys:
+          - ${public_keys:askotnicky}
+          user: ${linux:system:user:askotnicky}
+        alholanova:
+          enabled: true
+          public_keys:
+          - ${public_keys:alholanova}
+          user: ${linux:system:user:alholanova}
+        vmikes:
+          enabled: true
+          public_keys:
+          - ${public_keys:vmikes}
+          user: ${linux:system:user:vmikes}
+        newt:
+          enabled: true
+          public_keys:
+          - ${public_keys:newt}
+          user: ${linux:system:user:newt}
+        jpavlik:
+          enabled: true
+          public_keys:
+          - ${public_keys:jpavlik}
+          user: ${linux:system:user:jpavlik}
+        tux:
+          enabled: true
+          public_keys:
+          - ${public_keys:tux}
+          user: ${linux:system:user:tux}
+        marco:
+          enabled: true
+          public_keys:
+          - ${public_keys:marco}
+          user: ${linux:system:user:marco}
+        filip:
+          enabled: true
+          public_keys:
+          - ${public_keys:filip}
+          user: ${linux:system:user:filip}
+        vzach:
+          enabled: true
+          public_keys:
+          - ${public_keys:vzach}
+          user: ${linux:system:user:vzach}
+        osmola:
+          enabled: true
+          public_keys:
+          - ${public_keys:osmola}
+          user: ${linux:system:user:osmola}
+        jkonecny:
+          enabled: true
+          public_keys:
+          - ${public_keys:jkonecny}
+          user: ${linux:system:user:jkonecny}
+        pcizinsky:
+          enabled: true
+          public_keys:
+          - ${public_keys:pcizinsky}
+          user: ${linux:system:user:pcizinsky}
+        pmichalec:
+          enabled: true
+          public_keys:
+          - ${public_keys:pmichalec}
+          user: ${linux:system:user:pmichalec}
+  public_keys:
+    askotnicky:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO6EnDYaGdF/Nn6lntxDNnKanCsheZRdh8kA/6ImyeRSjT2cgepm1Fsgv7wXBYoy0OxhB5wgCp5Az/Pj4oLkG3g+G05sUPUxxGCGRiwjcnyQ/FTz4TzHglAVqgbdgWoQYf9Hg6EKZovvPcH3STbEwcl+MhLqvxz0wm5+StE+wvp6I9dEfRV+2/e1uepauOTZ1+Ui1DMNXiMefTlbiIBHzUk7RiwJWgqzQXBndgunmbJWSed8zC0Ug97waDOFIX/oKZmAmsv0NLJ2e/kC3oUTuziGT74F9sh7Pqiw/9HZxvP45hJwEvytfUjfuiikIBbmYdF7Je93czaG/qjXGN8YvP== a.skotnicky@tcpisek.cz
+    alholanova:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqBL5wlpl0HgT6ekRc9IGxMSCylAU1oZTqBl7h9+1g7EnJjhxq8/KR+6jmWl9wn0c2jvd2pPeMnqm3DKe0793RKW6b730QTyckwDpfoIkUtoukiuTgIXg0g6dNlWSPqhiYM1tretBhfEhZrvUfweZZfpOdZ5DxlDP/34cmwXxJRMNHSLK/SPpXthhp+2j/H/U6I6B/YUZkKABwSyJ/AuXfU9NvVXct5W2+i44FuB7ske7vRXJgbfTwRd5HgzF7JQTVBDLezN/am2dR0mCnuDkDRmYW0tOwF0NzwswBwMGfqFlQhNW/5HmanEfU1gBL/sv/M6QiN0MkrzY1fA6DiCER alena.holanova@tcpcloud.eu
+    vmikes:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCXng0oUbSGMlZCamlSWuc4jzgTym+p9u0ukbQvaWW2cneOhLw6QbVkOgRETBIfXitiIB+5nNqTYy7lrYqc3wofjZJzonR07oFoNcyhITLnKjLHV9eZ8aRhwKL2PONyp8d61cdm5zqeth1tMP8uBB+SOn+aD12Hu5tfTJjQeH286p+Xt75Llo/bHybfYmt2HaV9Ts6qb/Kw3Eom0Jkjh8837navek/PnFF7WAkM8GvP5Taqzp4Tmu2UfLeMv4459q+ZiS56WRbcixBQGb7uUUy4jkuis0batBNoY0pwMaaTj8KzSwrQ8shc/LuU2QhR7xwXVIgZR/Yqa/Ojw/U36N4t v.mikes@tcpisek.cz
+    newt:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3odU+3V2uDA2ptAFL9hrJRPNEEdAyztWOZFQ5Oyd9oerTGOU3p4xmrgWWjfKFKbYGhiiIUcYAol5PkTfKukGEkkjCHYA1t023soCaaAj85wCZCnw2zQNAziwxTYmAzTqgxiSvtZNMMrtJvFHRIRDzJ3M1lV0prWNWkMM1/3FAd4W49y6VT3fkMCo8uqG7CfGdgR2DgBCxf9KaNPfW5eDEPOgmE5lK8tVSEI6T+Cg7hbcTf4lFYnlFBnlQgp/0JstsM4Vbwb4B34LOpOsf2S8rrWk2xQMjwaMHXkc2s/E8iW3F5nVFuyEXYISFQIiAHw8dzC6CHgLcyHUVWwznKawZ newt@newt-dev1
+    jpavlik:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAylDZDzgMuEsJQpwFHDW+QivCVhryxXd1/HWqq1TVhJmT9oNAYdhUBnf/9kVtgmP0EWpDJtGSEaSugCmx8KE76I64RhpOTlm7wO0FFUVnzhFtTPx38WHfMjMdk1HF8twZU4svi72Xbg1KyBimwvaxTTd4zxq8Mskp3uwtkqPcQJDSQaZYv+wtuB6m6vHBCOTZwAognDGEvvCg0dgTU4hch1zoHSaxedS1UFHjUAM598iuI3+hMos/5hjG/vuay4cPLBJX5x1YF6blbFALwrQw8ZmTPaimqDUA9WD6KSmS1qg4rOkk4cszIfJ5vyymMrG+G3qk5LeT4VrgIgWQTAHyXw== pavlk.jakub@gmail.com
+    tux:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXEN5qmte4oMYFCMZtuNzWiu5M32Dp0OsfR1pSz5gMMQF1Sw3xEDXEATEWhyvJTuVtFQasWVcMCYzEPev8H54UK97dLlxHxEDD9PQYY2O+xu/Rq+p/jryJ/T3mO7LDjUUXtHkUnsDZ51G+sFAWktE+FifwrEDmAEnRucLqOzVhehelG73S3uqfxVsPTsW2CcVIZICKtvdODbgAVyCf1LRR0LJv4fXqcyebCbzIrk4NWJhc474TH88niC7PH5VfxSfXZdKoi3yKVMgqdGSUxGhkx3D5CwCR9K+kUnP0rE5GNIqoCiS8iNbWl6POfMPSxH/ckqZN1h8El6SEoPJzVNp9 tux@tux-workbook
+    marco:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmrJJsRR1dIqaomk83+sn5OnRLvVqrxtROT2uO83W0C4036t3OfJEBL2COJ4Z1iQmyoQUcIpRdJns+Ft8GpVEEQ+mW4eo33jhVEkfLBzRTE7f/WqDmMeDbdxO7LdUNlIIc40KBPcnJWvEorqV2z2UF0+xqittTE34A3CgF82BI2Nx6vCNhgnJJnCyYisD+wT4f+Ovor3Rm2s6zdnJRqcLgx5lkNx6fM2ffkD36MjyPyVYWvFqw68kEsBPcpB0EmiINKQRg3A/iPvUgRWMl9nSvSMVopkbTOBpSK3H9hzGCLiQJvE8pGjHhb7SOix0p0sFdNrNRiC5ayaGQUDQgWH8h marco@marco-MS-7699
+    filip:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcuHTjJ3CoWdkmvtag07bIWeyAMqFLAN+QApat7TXUcDYmm/neK4Asg3m/UicofZnB80cI4tjnB84Z8WazLHMxVTLwHbEqTVbXVeKebiZ5yn0yo4ndRzmppUfSvs0xcMysBwu+hYAnIDXTedctbciMSYKbuQ+b9XZ4mFZ/2RHG4QBA/dPUxJdCwvkBu7AOV+6zaRSR99UETr5nxICQUGVJBTy6VkCsch4mK3/K2SrujODUhytcROg+6ejV/aZHWH9xIFRBLfhmSFeOC6oneBWo4QBQ2tTZgb7Go744JpkhkoMfWQnR2s6cCgUN60BJ6j5snqmbv9/2CmgbI4UprC+E6lL04K/Jbgjv+fi3KqnCIpRiQzahmjSeeYdPducWme3BVDceUSb5EzF/RjSDi4yHcTWJS0TcPf195p42O1G6tLw5zfmIu2+PWUq1L4pLualboUbaDtwqg0WaLWKONi9tJkOS1OMz4hxqEbWBAtFNJLHC5K+OXcV8Yt6C7iB2dEZ4c26MAi1pdMqhFjxYiCGYKZ4lyV9xo8tWcs5fiUIi2PKyLQ9SMRQbhXIcb9ENby2D/ijh5AVpbBew8iaUQQKg83Yo0z2PwTWyNFuXECAl667XaTNZEMVUjo5yU/OtktVZiH6ZfvEFwj+7OpLBiZ3sFgp/7EHcGXa0FL6BcXuwfQ== filip@pytloun.cz
+    vzach:
+      key: AAAAB3NzaC1yc2EAAAABJQAAAQEAn4MJUkXbiZPPEcdKijB4MqnjPGk80x5W+8XsMvZuUqElmuLgB30kdCnSCBgipYPor3m8wakdJTTwiY6P50yhtp/tD2b4t1TC1djPwiNS/6JwjZawj30bS5ZrVKeTHtOq6E0tf927svXgEE21/ADgWpMoDeQ/pKlbt0m/U8YGBCmJ7cBa8ggGHhvJIwCNhpELn02vKV8Qfx44rk+DoxLBwQUHQ8PsEwtoSCLMIulpLflptak1pgvN6ggA5p15i36OyJkobI1yR9YEgtb+8yQqofu2DZ+v+9Qhbb+C0446RnyGzfvk/DreCeI4rJh5/6QZjwv3XfYDER5LbNCnoOQAsQ== v.zach@tcpcloud.eu
+    osmola:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDGcF8AI/8hOeKlda4vniFVBbD3wOK4D2+/z+pB7kK0JyxfVC3XccYbpqQioWjt96JwDX8dSio07OUAFqOWQH2cTp6wjqNmpIaAODo44kQgKDXrjEq61fYW+L6JYZHxsFUPLvlNlwQwND2F5HU8oWbsneGu+Psb/COQebcGDdT1v/f2G9r5br2O43P/XPx8+YGKd+OiHPIN4Fk8fZzCGX7oJ7GGGr8YTL/Y8ULF3WiTXbQEWusU52Sf7/Is0A6BQOH+OuBGrVCT+j2XI9QBMyVSYtaKCnRDlEGessnGIGRGrNza/xYivWBw8IsVziDC8x7zZByAwmctWoWED6wWs4YU7SqoonEaYEog32J6Uw9tGtTgvkRC1mpMtgR2eenjNax8Fpoc6uTb/l0gevaRE6IqNMS0FBIIbkCYcoxfj7zIsYms/9IhsXGk1lW5ZrouCFICGEVa7zJ2F+3DvyQDCSuqsk/bfUQZEFw1FdAYIsZYQR+LIOSVQplapGVyqhlbkeUEVdILzgdMAfkPa80ZnGvTO729G/8uP78k1QhZUHAypkeWQ/aJfOKrxXyAxtMZiuyK31zf4OZdKSDS9bAWlmyKkohp7cEjLU0ex4AYDS231Y6JywL+RnucMJ4gFqSfSYfkM6+23gFbYfP7NcEKrkCaim/9RMU1RsunBk8As2K5gw== ondrej.smola@tcpcloud.eu
+    jkonecny:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDIYO4/Nwrs5PJTPJabVOVWW47RvErdCG7U3Gabi8xffdA5uN1YTZbiqHt4SNPRmto60+YX35YjFH3giJotf+q5Ct5GN5m90VVRRtppAK+TAHtMgisIa6j5re6egHoi++9L1NwwTLDr/lzD4Gf7MBtU+q3scJJFmrTpLKUqC2ptL8wnCMlXbnjF1zfHqFbaMxXss7ZU/puHlY7Oc6pPzf+30XTQaq+0ZbshEJMDD0iGH3ijk7V2CCnpShZpQYF8FaLhSRkLzqn4xwrcK1dtENPL9qFBME+XYeC5vvBEMU7MBgs4jLX2KDyx/ZFbk+i79pd37hxNPs7Aj105ppVAaiqWsUgZxdfbC3GaW/U0jqJCDtlftnq1FLCRfO8O2sIJsfA78qWOP5ylD+dnGvYzcexQFpfgu49ZqoJYIt0EgSElH27MHF+hmwE6MHHKyBhELn3iN2uY6IWZTEVG7JROuDPOD6zAAaEw90M2xs1O4kUusArqNnL+AyYNlKGvkMy6ztf2a7+YH9u8zpZCMJUBq3gPTGnFGAeiynoaoSxeN83VYv64durJ439SmRZGMQMHJh3/H0TIAJPO4VwzPwhnn+fg/zaT93Ofg/BNZ4EG+panVCdtNa+sLvZTy01pfwtgX2bDrhpPTiotTea9/8PcEi+DM3CVeIOOZigOEFk+oAo5sw== jiri.konecny@tcpcloud.eu
+    pcizinsky:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCt9HA2bUwCVGGdUjyFzdPFp0j2z9XanLW9gHZ3BhB6Wc4ficU6zmbqYxrHUvdmUrRJbLMEAo9JDlzAIw4CPGhRkD3d7HfnmlEYcEeizLnnC+CmKo3+mrwkQIzWIz6PJOh1kvp5uaNp4ztjRGXXmPzcR0nk4jRD89gLHvH9EYStxZI6nsi3mmWR/LhgIhijb8p63duhE4HuK/RRRjeDQaUsbTG9TMEskY5ZI3p/QM55wlml9F8QJrtwxpaIPI5Fl8lflq+4YcoqgDIBFc6nwubIuiNY4gPJ8s1SQfsfxHSOJpFPZDwi76dxUpthtJrU46fqRvXPzTKoS29WZ5pSAY6p pavel.cizinsky@tcpcloud.eu
+    pmichalec:
+      key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGwsfObHWHqBv6UQBjvm0nkgnAGc5MZPuQXJ3ln4sM1P pmichalec@dontpanic
+

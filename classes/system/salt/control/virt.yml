@@ -1,0 +1,47 @@
+classes:
+  - service.libvirt.server.kvm
+parameters:
+  salt:
+    control:
+      enabled: True
+      virt_enabled: True
+  virt:
+    nic:
+      default:
+        eth1:
+          bridge: br0
+          model: virtio
+        eth0:
+          bridge: br1
+          model: virtio
+    disk:
+      default:
+        - system:
+            size: 50000
+      xxxsmall:
+        - system:
+            size: 8000
+      xxsmall:
+        - system:
+            size: 15000
+      xsmall:
+        - system:
+            size: 30000
+      small:
+        - system:
+            size: 50000
+      medium:
+        - system:
+            size: 80000
+      large:
+        - system:
+            size: 100000
+      xlarge:
+        - system:
+            size: 150000
+      xxlarge:
+        - system:
+            size: 300000
+      xxxlarge:
+        - system:
+            size: 500000

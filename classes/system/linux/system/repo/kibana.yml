@@ -3,5 +3,5 @@ parameters:
     system:
       repo:
         kibana:
-          source: "deb https://packages.elastic.co/kibana/4.6/debian stable mai"
+          source: "deb https://packages.elastic.co/kibana/4.6/debian stable main"
           key_url: "https://packages.elastic.co/GPG-KEY-elasticsearch"

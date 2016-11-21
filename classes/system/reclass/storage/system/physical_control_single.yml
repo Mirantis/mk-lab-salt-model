@@ -1,0 +1,14 @@
+parameters:
+  reclass:
+    storage:
+      node:
+        fuel_compute_node01:
+          name: kvm01
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.fuel.compute
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:fuel_compute_node01_address}
+

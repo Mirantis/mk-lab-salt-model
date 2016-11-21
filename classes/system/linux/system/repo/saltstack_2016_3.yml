@@ -1,0 +1,9 @@
+parameters:
+  linux:
+    system:
+      repo:
+        salt:
+          source: "deb http://repo.saltstack.com/apt/ubuntu/ubuntu14/2016.3/ trusty main"
+          architectures: amd64
+          key_id: DE57BFBE
+          key_server: keyserver.ubuntu.com

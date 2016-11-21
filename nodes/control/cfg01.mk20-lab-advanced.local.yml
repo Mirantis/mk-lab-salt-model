@@ -1,32 +1,10 @@
 classes:
-- service.git.client
-- system.linux.system.xenial
-- system.linux.system.repo.salt
-- system.openssh.client.lab
-- system.salt.master.pkg
-- system.reclass.storage.salt
-- system.reclass.storage.system.mk20_lab_advanced
-- system.openstack.proxy.mk20
-- system.monitoring.proxy.mk20
-- system.salt.minion.pki.authority
-- system.salt.minion.pki.certificate
-- system.sphinx.server.doc.reclass
-- system.keystone.client.single
-- system.mysql.client.single
-- system.openstack.common.mk20_lab_advanced
+- cluster.mk20_lab_advanced.fuel.config
+- cluster.mk20_lab_advanced.openstack.proxy
 parameters:
   _param:
-    reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
+    linux_system_codename: xenial
     reclass_data_revision: master
-    reclass_config_master: 192.168.10.100
-    single_address: 172.16.10.100
-    salt_master_host: 127.0.0.1
-    salt_master_base_environment: prd
-    salt_minion_ca_host: cfg01.mk20-lab-advanced.local
-    rabbitmq_monitor_password: password
-    sensu_message_queue_host: 172.16.10.107
-    collectd_backend_carbon_host: 172.16.10.107
-    collectd_backend_carbon_port: 2013
   linux:
     system:
       name: cfg01
