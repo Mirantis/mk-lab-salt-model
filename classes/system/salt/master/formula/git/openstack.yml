@@ -90,5 +90,5 @@ parameters:
               revision: ${_param:salt_master_environment_revision}
             swift:
               source: git
-              address: '${_param:salt_master_environment_repository}/salt-formula-swift.git'
-              revision: ${_param:salt_master_environment_revision}
+              address: 'https://github.com/openstack/salt-formula-swift.git'
+              revision: stacklight
