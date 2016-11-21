@@ -3,6 +3,7 @@ classes:
 parameters:
   _param:
     postgresql_grafana_password: password
+    grafana_port: 3000
     grafana_user: admin
     grafana_password: admin
   linux:
@@ -17,7 +18,7 @@ parameters:
       enabled: true
       bind:
         address: ${_param:single_address}
-        port: 3000
+        port: ${_param:grafana_port}
       database:
         engine: sqlite3
       auth:
@@ -33,7 +34,7 @@ parameters:
       server:
         protocol: http
         host: ${_param:single_address}
-        port: 3000
+        port: ${_param:grafana_port}
         user: ${_param:grafana_user}
         password: ${_param:grafana_password}
       remote_data:
