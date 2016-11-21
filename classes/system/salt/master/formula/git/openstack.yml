@@ -6,7 +6,7 @@ parameters:
           formula:
             ceilometer:
               source: git
-              address: 'https://github.com/openstack/salt-formula-ceilometer.git'
+              address: 'https://github.com/ityaptin/salt-formula-ceilometer.git'
               revision: ${_param:salt_master_environment_revision}
             cinder:
               source: git

@@ -1,0 +1,41 @@
+classes:
+- service.ceilometer.server.cluster
+- service.haproxy.proxy.single
+- service.keepalived.cluster.single
+parameters:
+  _param:
+    ceilometer_influxdb_user: ceilometer
+    ceilometer_influxdb_password: ${_param:stacklight_influxdb_password}
+    ceilometer_influxdb_database: ceilometer
+    ceilometer_influxdb_host: ${_param:monitoring_service_address}
+    ceilometer_influxdb_port: 8086
+    ceilometer_elasticsearch_enable: false
+    ceilometer_elasticsearch_port: 9200
+    ceilometer_elasticsearch_host: localhost
+  haproxy:
+    proxy:
+      listen:
+        ceilometer-api:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8777
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8777
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8777
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8777
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+  ceilometer:
+    server:
+      logging:
+        heka:
+          enabled: true
+

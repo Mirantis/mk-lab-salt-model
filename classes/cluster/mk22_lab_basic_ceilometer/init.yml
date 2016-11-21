@@ -1,8 +1,8 @@
 classes:
 - system.linux.system.single
-- cluster.mk22_lab_basic.fuel
-- cluster.mk22_lab_basic.monitoring
-- cluster.mk22_lab_basic.openstack
+- cluster.mk22_lab_basic_ceilometer.fuel
+- cluster.mk22_lab_basic_ceilometer.monitoring
+- cluster.mk22_lab_basic_ceilometer.openstack
 parameters:
   _param:
     cluster_domain: mk22-lab-basic-ceilometer.local
@@ -20,6 +20,7 @@ parameters:
     # monitoring service addresses
     monitoring_service_address: 172.16.10.107
     monitoring_service_node01_address: 172.16.10.107
+    stacklight_influxdb_password: r00tme
   linux:
     network:
       host:

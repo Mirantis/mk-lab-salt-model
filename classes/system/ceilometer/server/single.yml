@@ -1,0 +1,19 @@
+classes:
+- service.ceilometer.server.single
+parameters:
+  _param:
+    ceilometer_influxdb_user: ceilometer
+    ceilometer_influxdb_password: ${_param:stacklight_influxdb_password}
+    ceilometer_influxdb_database: ceilometer
+    ceilometer_influxdb_host: ${_param:monitoring_service_address}
+    ceilometer_influxdb_port: 8086
+    ceilometer_elasticsearch_enable: false
+    ceilometer_elasticsearch_port: 9200
+    ceilometer_elasticsearch_host: localhost
+  ceilometer:
+    server:
+      notification: true
+      stack_domain_admin:
+        name: heat_domain_admin
+        password: ${_param:heat_domain_admin_password}
+        domain: heat
