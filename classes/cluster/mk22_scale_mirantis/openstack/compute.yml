@@ -71,3 +71,10 @@ parameters:
         user: neutron
         password: ${_param:keystone_neutron_password}
         tenant: service
+  opencontrail:
+    common:
+      network:
+        host: ${_param:opencontrail_control_address}
+    compute:
+      discovery:
+        host: ${_param:opencontrail_control_address}
