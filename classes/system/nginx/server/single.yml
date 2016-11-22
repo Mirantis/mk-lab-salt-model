@@ -1,5 +1,6 @@
 classes:
 - service.nginx.server.single
+- service.nginx.server.stats
 parameters:
   nginx:
     server:
