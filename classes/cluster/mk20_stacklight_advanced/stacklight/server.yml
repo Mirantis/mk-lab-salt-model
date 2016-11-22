@@ -1,9 +1,13 @@
+applications:
+- keepalived
 classes:
 - system.collectd.client.remote
 - system.elasticsearch.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
 - cluster.mk20_stacklight_advanced
+- service.haproxy.proxy.single
+- service.keepalived.support
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
@@ -14,3 +18,52 @@ parameters:
           enabled: true
           type: eth
           proto: dhcp
+  haproxy:
+    proxy:
+      listen:
+        elasticsearch_server:
+          type: 'http'
+          binds:
+          - address: ${_param:stacklight_monitor_address}
+            port: ${_param:elasticsearch_port}
+          servers:
+          - name: mon01
+            host: ${_param:stacklight_monitor_node01_address}
+            port: ${_param:elasticsearch_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+          - name: mon02
+            host: ${_param:stacklight_monitor_node02_address}
+            port: ${_param:elasticsearch_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+          - name: mon03
+            host: ${_param:stacklight_monitor_node03_address}
+            port: ${_param:elasticsearch_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+        kibana_server:
+          type: 'http'
+          binds:
+          - address: ${_param:stacklight_monitor_address}
+            port: ${_param:kibana_port}
+          servers:
+          - name: mon01
+            host: ${_param:stacklight_monitor_node01_address}
+            port: ${_param:kibana_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+          - name: mon02
+            host: ${_param:stacklight_monitor_node02_address}
+            port: ${_param:kibana_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+          - name: mon03
+            host: ${_param:stacklight_monitor_node03_address}
+            port: ${_param:kibana_port}
+            params: 'check inter 10s fastinter 2s downinter 3s rise 3 fall 3'
+  keepalived:
+    cluster:
+      enabled: true
+      instance:
+        stacklight_monitor_vip:
+          address: ${_param:stacklight_monitor_address}
+          password: 'password'
+          interface: ens4
+          virtual_router_id: 100
+          priority: 101
