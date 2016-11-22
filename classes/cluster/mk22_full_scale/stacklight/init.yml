@@ -14,7 +14,7 @@ parameters:
     influxdb_database: lma
     influxdb_user: lma
     influxdb_password: lmapass
-    nagios_host: mon
+    nagios_host: ${_param:stacklight_monitor_address}
     nagios_status_port: 8001
     nagios_username: nagiosadmin
     nagios_password: secret
