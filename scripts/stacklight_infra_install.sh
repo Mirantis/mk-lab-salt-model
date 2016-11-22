@@ -14,3 +14,6 @@ sleep 5
 
 # Update monitoring node with mine metadata
 salt -C 'I@heka:aggregator' state.sls collectd,heka
+
+# Install Nagios once alarms are stored in Salt Mine
+salt -C 'I@nagios:server' state.sls nagios
