@@ -50,6 +50,3 @@ parameters:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-        stacklight_server_node01:
-          classes:
-            - system.elasticsearch.client.single
