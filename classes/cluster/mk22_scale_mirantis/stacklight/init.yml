@@ -15,6 +15,13 @@ parameters:
     influxdb_database: lma
     influxdb_user: lma
     influxdb_password: lmapass
+    nagios_host: ${_param:stacklight_monitor_address}
+    nagios_status_port: 8001
+    nagios_username: nagiosadmin
+    nagios_password: secret
+    nagios_notification_smtp_server: 127.0.0.1
+    nagios_notification_from: 'nagios@localhost'
+    nagios_notification_email: 'root@localhost'
   linux:
     network:
       host:
