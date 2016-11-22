@@ -11,6 +11,8 @@ parameters:
           version: 0.9.0-0contrail0
         python-kafka:
           version: 1.0.1-0contrail1
+        contrail-api-cli:
+          version: latest
   haproxy:
     proxy:
       listen:
