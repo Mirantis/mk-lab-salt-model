@@ -1,12 +1,12 @@
 parameters:
   _param:
-    heka_elasticsearch_host: mon
-    heka_influxdb_host: mon
-    heka_aggregator_host: mon
+    heka_elasticsearch_host: ${_param:stacklight_monitor_address}
+    heka_influxdb_host: ${_param:stacklight_monitor_address}
+    heka_aggregator_host: ${_param:stacklight_monitor_address}
     aggregator_port: 5565
     grafana_user: admin
     grafana_password: password
-    grafana_influxdb_host: mon
+    grafana_influxdb_host: ${_param:stacklight_monitor_address}
     elasticsearch_port: 9200
     influxdb_stacklight_password: lmapass
     influxdb_port: 8086
