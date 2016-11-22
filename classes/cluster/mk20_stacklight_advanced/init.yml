@@ -3,6 +3,7 @@ classes:
 - cluster.mk20_stacklight_advanced.fuel
 - cluster.mk20_stacklight_advanced.openstack
 - cluster.mk20_stacklight_advanced.stacklight
+- cluster.mk20_stacklight_advanced.stacklight.client
 parameters:
   _param:
     cluster_domain: mk20-stacklight-advanced.local

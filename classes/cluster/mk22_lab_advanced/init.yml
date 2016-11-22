@@ -3,6 +3,7 @@ classes:
 - cluster.mk22_lab_advanced.fuel
 - cluster.mk22_lab_advanced.openstack
 - cluster.mk22_lab_advanced.stacklight
+- cluster.mk22_lab_advanced.stacklight.client
 parameters:
   _param:
     cluster_domain: mk22-lab-advanced.local
