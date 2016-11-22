@@ -3,11 +3,12 @@ classes:
 - service.influxdb.server.single
 parameters:
   linux:
-    repo:
-      influxdb:
-        enabled: true
-        source: 'deb https://repos.influxdata.com/ubuntu xenial stable'
-        key_url: 'https://repos.influxdata.com/influxdb.key'
+    system:
+      repo:
+        influxdb:
+          enabled: true
+          source: 'deb https://repos.influxdata.com/ubuntu xenial stable'
+          key_url: 'https://repos.influxdata.com/influxdb.key'
   influxdb:
     server:
       enabled: true
