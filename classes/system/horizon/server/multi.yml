@@ -2,6 +2,7 @@ classes:
 - service.git.client
 - service.horizon.server.multi
 - service.nginx.server.single
+- service.nginx.server.stats
 - service.memcached.server.local
 - service.python.environment
 - service.supervisor.server.single

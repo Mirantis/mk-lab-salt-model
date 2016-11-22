@@ -2,3 +2,4 @@ classes:
 - service.git.client
 - service.sphinx.server.multi
 - service.nginx.server.single
+- service.nginx.server.stats
