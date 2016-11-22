@@ -9,7 +9,7 @@ parameters:
         influxdb:
           enabled: true
           system: true
-          groups: influxdb
+          group: influxdb
           home: ${_param:influxdb_home_directory}
     storage:
       mount:
