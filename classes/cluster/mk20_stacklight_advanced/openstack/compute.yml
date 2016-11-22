@@ -4,8 +4,6 @@ classes:
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
 - service.opencontrail.compute.cluster
-- service.ceilometer.agent.cluster
-- service.ceilometer.agent.publisher.graphite
 - cluster.mk20_stacklight_advanced
 parameters:
   _param:
@@ -32,8 +30,6 @@ parameters:
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
-      notification:
-        driver: messagingv2
       message_queue:
         members:
           - host: ${_param:openstack_control_node01_address}
