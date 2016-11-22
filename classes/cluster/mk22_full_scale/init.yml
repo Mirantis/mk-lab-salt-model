@@ -4,6 +4,7 @@ classes:
 - cluster.mk22_full_scale.openstack
 - cluster.mk22_full_scale.opencontrail
 - cluster.mk22_full_scale.stacklight
+- cluster.mk22_full_scale.stacklight.client
 parameters:
   _param:
     cluster_domain: mk22-full-scale.local
