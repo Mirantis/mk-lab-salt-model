@@ -11,15 +11,15 @@ parameters:
             cinder:
               source: git
               address: 'https://github.com/openstack/salt-formula-cinder.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             galera:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-galera.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             glance:
               source: git
               address: 'https://github.com/openstack/salt-formula-glance.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             glusterfs:
               source: git
               address: 'https://github.com/tcpcloud/salt-formula-glusterfs.git'
@@ -27,11 +27,11 @@ parameters:
             haproxy:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-haproxy.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             heat:
               source: git
               address: 'https://github.com/openstack/salt-formula-heat.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             horizon:
               source: git
               address: 'https://github.com/openstack/salt-formula-horizon.git'
@@ -39,15 +39,15 @@ parameters:
             keepalived:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-keepalived.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             keystone:
               source: git
               address: 'https://github.com/openstack/salt-formula-keystone.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             memcached:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-memcached.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             mongodb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-mongodb.git'
@@ -63,15 +63,15 @@ parameters:
             neutron:
               source: git
               address: 'https://github.com/openstack/salt-formula-neutron.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             nginx:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-nginx.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             nova:
               source: git
               address: 'https://github.com/openstack/salt-formula-nova.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             opencontrail:
               source: git
               address: 'https://github.com/openstack/salt-formula-opencontrail.git'
@@ -91,4 +91,4 @@ parameters:
             swift:
               source: git
               address: 'https://github.com/openstack/salt-formula-swift.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
