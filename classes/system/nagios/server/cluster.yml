@@ -1,0 +1,7 @@
+classes:
+- service.nagios.server.cluster
+- system.nagios.server
+parameters:
+  _param:
+    nagios_ui_bind: ${_param:single_address}
+    nagios_status_bind: ${_param:single_address}

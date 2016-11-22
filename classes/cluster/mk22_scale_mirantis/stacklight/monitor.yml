@@ -6,7 +6,7 @@ classes:
 - system.heka.aggregator.single
 - system.kibana.server.single
 - system.grafana.server.single
-- system.nagios.server.single
+- system.nagios.server.cluster
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
