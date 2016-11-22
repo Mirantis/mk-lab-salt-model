@@ -1,5 +1,7 @@
 classes:
 - system.collectd.remote_client.cluster
+- system.heka.remote_collector.cluster
+- system.heka.aggregator.cluster
 - system.elasticsearch.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single

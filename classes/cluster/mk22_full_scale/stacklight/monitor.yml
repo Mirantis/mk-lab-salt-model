@@ -2,8 +2,8 @@ classes:
 - system.linux.system.repo.saltstack_2016_3
 - system.linux.system.repo.tcp_elastic
 - system.collectd.remote_client.cluster
-- system.heka.remote_collector.single
-- system.heka.aggregator.single
+- system.heka.remote_collector.cluster
+- system.heka.aggregator.cluster
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.single
