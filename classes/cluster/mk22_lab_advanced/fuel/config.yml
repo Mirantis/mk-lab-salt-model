@@ -50,3 +50,67 @@ parameters:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            cinder:
+              revision: stacklight
+            collectd:
+              revision: stacklight
+            elasticsearch:
+              revision: stacklight
+            galera:
+              revision: stacklight
+            glance:
+              revision: stacklight
+            glusterfs:
+              revision: stacklight
+            grafana:
+              revision: stacklight
+              state:
+                grafana3_datasource.py:
+                  enabled: true
+                grafana3_dashboard.py:
+                  enabled: true
+            haproxy:
+              revision: stacklight
+            heat:
+              revision: stacklight
+            heka:
+              revision: stacklight
+              module:
+                heka_alarming.py:
+                  enabled: true
+            influxdb:
+              revision: stacklight
+            keystone:
+              revision: stacklight
+            kibana:
+              revision: stacklight
+            linux:
+              revision: stacklight
+              module:
+                linux_netlink.py:
+                  enabled: true
+            memcached:
+              revision: stacklight
+            nagios:
+              module:
+                nagios_alarming.py:
+                  enabled: true
+            neutron:
+              revision: stacklight
+            nginx:
+              revision: stacklight
+            nova:
+              revision: stacklight
+            ntp:
+              revision: stacklight
+            opencontrail:
+              revision: stacklight
+            rabbitmq:
+              revision: stacklight
+            swift:
+              revision: stacklight

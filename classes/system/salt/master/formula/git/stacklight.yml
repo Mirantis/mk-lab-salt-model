@@ -11,20 +11,15 @@ parameters:
             collectd:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-collectd.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             elasticsearch:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-elasticsearch.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             grafana:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-grafana.git'
-              revision: stacklight
-              state:
-                grafana3_datasource.py:
-                  enabled: true
-                grafana3_dashboard.py:
-                  enabled: true
+              revision: ${_param:salt_master_environment_revision}
             graphite:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-graphite.git'
@@ -33,13 +28,10 @@ parameters:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-heka.git'
               revision: ${_param:salt_master_environment_revision}
-              module:
-                heka_alarming.py:
-                  enabled: true
             influxdb:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-influxdb.git'
-              revision: stacklight
+              revision: ${_param:salt_master_environment_revision}
             java:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-java.git'
@@ -50,9 +42,6 @@ parameters:
               revision: ${_param:salt_master_environment_revision}
             nagios:
               source: git
-              module:
-                nagios_alarming.py:
-                  enabled: true
               address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
               revision: ${_param:salt_master_environment_revision}
             postgresql:
@@ -74,8 +63,4 @@ parameters:
             sensu:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-sensu.git'
-              revision: ${_param:salt_master_environment_revision}
-            nagios:
-              source: git
-              address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
               revision: ${_param:salt_master_environment_revision}
