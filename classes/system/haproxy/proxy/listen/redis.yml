@@ -4,6 +4,7 @@ parameters:
       listen:
         redis:
           mode: tcp
+          service_name: redis
           balance: source
           binds:
             - address: ${_param:cluster_vip_address}

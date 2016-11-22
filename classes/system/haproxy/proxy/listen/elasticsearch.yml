@@ -4,6 +4,7 @@ parameters:
       listen:
         elasticsearch:
           mode: http
+          service_name: elasticsearch
           options:
             - forwardfor
             - httpchk

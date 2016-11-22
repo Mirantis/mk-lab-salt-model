@@ -13,6 +13,7 @@ parameters:
       listen:
         nova_ec2_api:
           type: general-service
+          service_name: nova
           check: false
           binds:
           - address: ${_param:cluster_vip_address}
@@ -30,8 +31,9 @@ parameters:
             host: ${_param:cluster_node03_address}
             port: 8773
             params: check
-        nova_openstack_api:
+        nova_api:
           type: openstack-service
+          service_name: nova
           binds:
           - address: ${_param:cluster_vip_address}
             port: 8774
@@ -48,7 +50,7 @@ parameters:
             host: ${_param:cluster_node03_address}
             port: 8774
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        nova_metadata:
+        nova_metadata_api:
           type: openstack-service
           binds:
           - address: ${_param:cluster_vip_address}
