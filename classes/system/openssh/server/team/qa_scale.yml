@@ -10,8 +10,6 @@ parameters:
           home: /home/dburnazyan
           email: dburnazyan@mirantis.com
   openssh:
-    client:
-      enabled: true
     server:
       enabled: true
       user:
