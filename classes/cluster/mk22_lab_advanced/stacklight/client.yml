@@ -2,5 +2,5 @@ classes:
 - system.collectd.client.output.heka
 - system.heka.log_collector.single
 - system.heka.metric_collector.single
-- cluster.mk22_lab_advanced
+- cluster.mk22_lab_advanced.stacklight
 - service.grafana.collector
