@@ -1,5 +1,6 @@
 classes:
 - service.influxdb.server.single
+- system.influxdb.server.tmpfs_wal
 parameters:
   linux:
     system:
