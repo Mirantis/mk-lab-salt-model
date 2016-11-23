@@ -1,8 +1,9 @@
 parameters:
   _param:
+    kibana_elasticsearch_host: ${_param:stacklight_log_address}
     heka_elasticsearch_host: ${_param:stacklight_log_address}
     heka_influxdb_host: ${_param:stacklight_telemetry_address}
-    heka_aggregator_host: ${_param:stacklight_monitor_address}
+    heka_aggregator_host: ${_param:stacklight_monitor_address}}
     aggregator_port: 5565
     grafana_user: admin
     grafana_password: password

@@ -1,10 +1,12 @@
 classes:
-- system.elasticsearch.server.single
-- cluster.mk22_scale_mirantis
+- system.elasticsearch.server.cluster
+- system.linux.system.repo.saltstack_2016_3
+- system.haproxy.proxy.listen.elasticsearch
+- cluster.mk22_full_scale
 parameters:
   _param:
     keepalived_vip_interface: ens4
-    keepalived_vip_virtual_router_id: 850
+    keepalived_vip_virtual_router_id: 110
     cluster_vip_address: ${_param:stacklight_log_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: log01
@@ -17,3 +19,7 @@ parameters:
     network:
       interface:
         ens4: ${_param:linux_static_interface}
+  elasticsearch:
+    server:
+      master: true
+      data: true

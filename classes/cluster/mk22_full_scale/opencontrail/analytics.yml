@@ -1,11 +1,12 @@
 classes:
 - system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
 - system.opencontrail.control.analytics
 - cluster.mk22_full_scale
 parameters:
   _param:
     keepalived_vip_interface: eth1
-    keepalived_vip_virtual_router_id: 290
+    keepalived_vip_virtual_router_id: 70
     cluster_vip_address: ${_param:opencontrail_analytics_address}
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: nal01
