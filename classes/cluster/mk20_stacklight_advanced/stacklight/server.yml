@@ -3,7 +3,7 @@ classes:
 - system.elasticsearch.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
-- system.nagios.server.single
+- system.nagios.server.cluster
 - cluster.mk20_stacklight_advanced
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
