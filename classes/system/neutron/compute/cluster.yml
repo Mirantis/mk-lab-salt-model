@@ -1,0 +1,10 @@
+classes:
+- service.neutron.compute.single
+parameters:
+  neutron:
+    compute:
+      dvr: ${_param:neutron_compute_dvr}
+      agent_mode: ${_param:neutron_compute_agent_mode}
+      external_access: ${_param:neutron_compute_external_access}
+      backend:
+        tenant_network_types: ${_param:neutron_tenant_network_types}"

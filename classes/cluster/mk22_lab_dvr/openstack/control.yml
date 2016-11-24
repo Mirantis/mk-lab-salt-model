@@ -9,7 +9,7 @@ classes:
 - system.keystone.server.cluster
 - system.glance.control.cluster
 - system.nova.control.cluster
-- system.neutron.control.cluster
+- system.neutron.control.openvswitch.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.galera.server.cluster
@@ -52,21 +52,14 @@ parameters:
     controller:
       networking: dvr
       cpu_allocation: 54
+      metadata:
+        password: ${_param:metadata_password}
       bind:
         private_address: ${_param:cluster_local_address}
         public_address: ${_param:cluster_vip_address}
         novncproxy_port: 6080
       vncproxy_url: http://${_param:cluster_vip_address}:6080
-      cache:
-        engine: memcached
-        prefix: CACHE_NOVA
-        members:
-        - host: 127.0.0.1
-          port: 11211
       workers: 1
-  neutron:
-    server:
-      plugin: dvr
   cinder:
     volume:
       notification: true

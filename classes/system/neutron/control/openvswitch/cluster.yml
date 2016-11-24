@@ -1,0 +1,60 @@
+classes:
+- service.keepalived.cluster.single
+- service.haproxy.proxy.single
+- service.neutron.control.cluster
+parameters:
+  _param:
+    neutron_control_dvr: True
+    neutron_l3_ha: False
+    neutron_global_physnet_mtu: 1500
+    neutron_external_mtu: 1500
+    neutron_tenant_network_types: "flat,vxlan"
+  neutron:
+    server:
+      plugin: ml2
+      global_physnet_mtu: ${_param:neutron_global_physnet_mtu}
+      l3_ha: ${_param:neutron_l3_ha}
+      dvr: ${_param:neutron_control_dvr}
+      backend:
+        engine: ml2
+        tenant_network_types: "${_param:neutron_tenant_network_types}"
+        external_mtu: ${_param:neutron_external_mtu}
+        mechanism:
+          ovs:
+            driver: openvswitch
+  mysql:
+    server:
+      database:
+        neutron:
+          encoding: utf8
+          users:
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: '%'
+            rights: all
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+  haproxy:
+    proxy:
+      listen:
+        neutron_api:
+          type: openstack-service
+          service_name: neutron
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9696
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 9696
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 9696
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 9696
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3

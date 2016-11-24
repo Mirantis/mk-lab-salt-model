@@ -56,6 +56,8 @@ parameters:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
+      network:
+        host: ${_param:openstack_control_address}
       message_queue:
         members:
           - host: ${_param:openstack_message_queue_node01_address}

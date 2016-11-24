@@ -32,12 +32,6 @@ parameters:
   nova:
     compute:
       networking: contrail
-      network:
-        engine: keystone
-        host: ${_param:openstack_control_address}
-        user: neutron
-        password: ${_param:keystone_neutron_password}
-        tenant: service
   neutron:
     switch:
       enabled: false

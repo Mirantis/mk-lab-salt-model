@@ -1,0 +1,9 @@
+classes:
+- service.neutron.gateway.single
+parameters:
+  neutron:
+    gateway:
+      dvr: ${_param:neutron_gateway_dvr}
+      agent_mode: ${_param:neutron_gateway_agent_mode}
+      backend:
+        tenant_network_types: ${_param:neutron_tenant_network_types}"
