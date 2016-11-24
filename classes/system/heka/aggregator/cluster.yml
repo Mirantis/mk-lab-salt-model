@@ -15,3 +15,14 @@ parameters:
       nagios_password: ${_param:nagios_password}
       nagios_port: ${_param:nagios_status_port}
       nagios_default_host_alarm_clusters: ${_param:nagios_default_host_alarm_clusters}
+  keepalived:
+    cluster:
+      instance:
+        stacklight_monitor_vip:
+          notify_action:
+            master:
+              - service aggregator start
+            backup:
+              - service aggregator stop
+            fault:
+              - service aggregator stop
