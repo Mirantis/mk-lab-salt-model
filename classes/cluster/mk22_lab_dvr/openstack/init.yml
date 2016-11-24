@@ -10,6 +10,16 @@ parameters:
     opencontrail_compute_address: ${_param:single_address}
     opencontrail_compute_iface: eth1
     opencontrail_stats_password: contrail123
+    neutron_control_dvr: True
+    neutron_tenant_network_types: "flat,vxlan"
+    neutron_l3_ha: False
+    neutron_global_physnet_mtu: 1500
+    neutron_external_mtu: 1500
+    neutron_gateway_dvr: True
+    neutron_gateway_agent_mode: dvr_snat
+    neutron_compute_dvr: True
+    neutron_compute_agent_mode: dvr
+    neutron_compute_external_access: True
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop
@@ -44,6 +54,7 @@ parameters:
     neutron_version: ${_param:openstack_version}
     neutron_service_host: ${_param:cluster_vip_address}
     glusterfs_service_host: ${_param:cluster_vip_address}
+    metadata_password: password
     mysql_admin_user: root
     mysql_admin_password: workshop
     mysql_cinder_password: workshop
@@ -105,3 +116,8 @@ parameters:
           names:
           - ctl03
           - ctl03.${_param:cluster_domain}
+        gtw01:
+          address: ${_param:openstack_gateway_address}
+          names:
+          - gtw01
+          - gtw01.${_param:cluster_domain}

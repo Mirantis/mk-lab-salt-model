@@ -41,6 +41,9 @@ parameters:
         engine: neutron
         host: ${_param:cluster_vip_address}
         port: 9696
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        tenant: service
       cache:
         engine: memcached
         members:

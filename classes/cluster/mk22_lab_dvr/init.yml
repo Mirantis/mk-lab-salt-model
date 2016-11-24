@@ -15,6 +15,7 @@ parameters:
     openstack_control_node01_address: 172.16.10.101
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
+    openstack_gateway_address: 172.16.10.110
   linux:
     network:
       host:
