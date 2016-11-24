@@ -17,8 +17,6 @@ classes:
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
-    salt_master_environment_repository: "https://github.com/tcpcloud"
-    salt_master_environment_revision: master
     salt_master_base_environment: dev
     reclass_data_repository: "https://github.com/Mirantis/mk-lab-salt-model.git"
     reclass_data_revision: master
