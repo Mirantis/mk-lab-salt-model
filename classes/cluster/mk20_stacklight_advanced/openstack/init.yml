@@ -46,6 +46,7 @@ parameters:
     mysql_cinder_password: workshop
     mysql_ceilometer_password: workshop
     mysql_glance_password: workshop
+    mysql_grafana_password: workshop
     mysql_heat_password: workshop
     mysql_keystone_password: workshop
     mysql_neutron_password: workshop

@@ -17,6 +17,7 @@ classes:
 - system.galera.server.database.ceilometer
 - system.galera.server.database.cinder
 - system.galera.server.database.glance
+- system.galera.server.database.grafana
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
