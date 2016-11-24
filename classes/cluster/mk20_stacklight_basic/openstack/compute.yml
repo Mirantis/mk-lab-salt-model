@@ -3,6 +3,7 @@ classes:
 - system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
+- service.opencontrail.compute.cluster
 - service.ceilometer.agent.cluster
 - service.ceilometer.agent.publisher.graphite
 - cluster.mk20_stacklight_basic
