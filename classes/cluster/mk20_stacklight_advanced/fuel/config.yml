@@ -91,6 +91,9 @@ parameters:
               revision: stacklight
             kibana:
               revision: stacklight
+              state:
+                kibana_object.py:
+                  enabled: true
             linux:
               revision: stacklight
               module:

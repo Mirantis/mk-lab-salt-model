@@ -1,0 +1,9 @@
+classes:
+- service.kibana.client
+parameters:
+  kibana:
+    client:
+      enabled: true
+      server:
+        host: ${_param:stacklight_monitor_address}
+        port: 9200
