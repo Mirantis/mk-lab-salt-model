@@ -52,7 +52,7 @@ parameters:
     stacklight_telemetry_node01_address: 172.16.10.197
     stacklight_telemetry_node02_address: 172.16.10.198
     stacklight_telemetry_node03_address: 172.16.10.199
-    
+
     # openstack compute nodes
     openstack_compute_node01_address: 172.16.10.105
     openstack_compute_node02_address: 172.16.10.106
