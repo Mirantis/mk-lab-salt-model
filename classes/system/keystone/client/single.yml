@@ -1,5 +1,4 @@
 classes:
-- system.keystone.client.service.ceilometer
 - system.keystone.client.service.cinder
 - system.keystone.client.service.cinder2
 - system.keystone.client.service.glance
