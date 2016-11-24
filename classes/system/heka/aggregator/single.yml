@@ -3,6 +3,7 @@ classes:
 parameters:
   _param:
     nagios_default_host_alarm_clusters: 00-clusters
+    nagios_host_dimension_key: nagios_host
   heka:
     aggregator:
       influxdb_host: ${_param:heka_influxdb_host}
@@ -15,3 +16,4 @@ parameters:
       nagios_password: ${_param:nagios_password}
       nagios_port: ${_param:nagios_status_port}
       nagios_default_host_alarm_clusters: ${_param:nagios_default_host_alarm_clusters}
+      nagios_host_dimension_key: ${_param:nagios_host_dimension_key}
