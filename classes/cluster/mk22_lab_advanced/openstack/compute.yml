@@ -2,6 +2,7 @@ classes:
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
+- system.cinder.volume.lvm
 - system.opencontrail.compute.cluster
 - system.heka.alarm.openstack_compute
 - service.opencontrail.compute.cluster

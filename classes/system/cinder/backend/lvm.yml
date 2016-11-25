@@ -1,0 +1,16 @@
+parameters:
+  _param:
+    cinder_lvm_type_name: lvm-driver
+    cinder_lvm_vg_name: cinder-volume
+    cinder_lvm_driver:
+      lvm-driver:
+        engine: lvm
+        type_name: ${_param:cinder_lvm_type_name}
+        volume_group: ${_param:cinder_lvm_vg_name}
+  cinder:
+    controller:
+      default_volume_type: ${_param:cinder_lvm_type_name}
+      backend: ${_param:cinder_lvm_driver}
+    volume:
+      default_volume_type: ${_param:cinder_lvm_type_name}
+      backend: ${_param:cinder_lvm_driver}

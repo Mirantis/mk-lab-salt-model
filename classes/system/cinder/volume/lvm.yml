@@ -1,0 +1,20 @@
+classes:
+- service.cinder.volume.single
+- system.cinder.backend.lvm
+parameters:
+  _param:
+    cinder_lvm_device: "/dev/loop0"
+    cinder_lvm_local_file: "/srv/cinder-volume"
+  linux:
+    storage:
+      lvm:
+        cinder-vg:
+          enabled: true
+          name: ${_param:cinder_lvm_vg_name}
+          devices: [ "${_param:cinder_lvm_device}" ]
+  cinder:
+    volume:
+      loopback_device:
+        device_name: ${_param:cinder_lvm_device}
+        local_file: ${_param:cinder_lvm_local_file}
+        size: "10G"
