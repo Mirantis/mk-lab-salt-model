@@ -1,0 +1,7 @@
+classes:
+- system.collectd.remote_client.output.heka
+- service.collectd.remote_client.single
+parameters:
+  collectd:
+    remote_client:
+      automatic_starting: true

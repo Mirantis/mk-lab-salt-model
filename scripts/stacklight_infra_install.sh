@@ -14,6 +14,11 @@ sleep 5
 
 # Update monitoring node with mine metadata
 salt -C 'I@heka:aggregator' state.sls collectd,heka
+# Start manually the services that are bound to the monitoring VIP
+salt -G 'ipv4:172.16.10.253' service.start remote_collectd
+salt -G 'ipv4:172.16.10.253' service.start remote_collector
+salt -G 'ipv4:172.16.10.253' service.start aggregator
+
 
 # Install Nagios once alarms are stored in Salt Mine
 salt -C 'I@nagios:server' state.sls nagios

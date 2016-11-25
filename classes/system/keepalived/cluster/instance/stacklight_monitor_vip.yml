@@ -13,4 +13,3 @@ parameters:
           interface: ${_param:keepalived_stacklight_monitor_vip_interface}
           virtual_router_id: 100
           priority: 101
-

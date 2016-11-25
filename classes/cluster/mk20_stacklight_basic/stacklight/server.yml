@@ -1,5 +1,5 @@
 classes:
-- system.collectd.client.remote
+- system.collectd.remote_client.single
 - system.heka.remote_collector.single
 - system.heka.aggregator.single
 - system.elasticsearch.server.single
@@ -11,6 +11,7 @@ classes:
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    collectd_remote_collector_host: localhost
   linux:
     network:
       interface:

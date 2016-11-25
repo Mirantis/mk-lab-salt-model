@@ -1,15 +1,16 @@
 classes:
 - system.linux.system.repo.saltstack_2016_3
 - system.linux.system.repo.tcp_elastic
-- system.collectd.client.remote
-- system.heka.remote_collector.single
-- system.heka.aggregator.single
+- system.collectd.remote_client.cluster
+- system.heka.remote_collector.cluster
+- system.heka.aggregator.cluster
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.cluster
 - cluster.mk22_scale_mirantis
 parameters:
   _param:
+    collectd_remote_collector_host: ${_param:stacklight_monitor_address}
     keepalived_vip_interface: ens4
     keepalived_vip_virtual_router_id: 100
     cluster_vip_address: ${_param:stacklight_monitor_address}

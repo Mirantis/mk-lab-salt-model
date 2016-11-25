@@ -1,0 +1,23 @@
+classes:
+- service.heka.remote_collector.cluster
+parameters:
+  heka:
+    remote_collector:
+      influxdb_host: ${_param:heka_influxdb_host}
+      influxdb_port: ${_param:influxdb_port}
+      influxdb_database: ${_param:influxdb_database}
+      influxdb_username: ${_param:influxdb_user}
+      influxdb_password: ${_param:influxdb_password}
+      aggregator_host: ${_param:heka_aggregator_host}
+      aggregator_port: ${_param:aggregator_port}
+  keepalived:
+    cluster:
+      instance:
+        stacklight_monitor_vip:
+          notify_action:
+            master:
+              - service remote_collector start
+            backup:
+              - service remote_collector stop
+            fault:
+              - service remote_collector stop
