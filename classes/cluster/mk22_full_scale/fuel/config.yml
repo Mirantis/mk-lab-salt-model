@@ -57,6 +57,8 @@ parameters:
               revision: stacklight
             heka:
               revision: stacklight
+            keepalived:
+              revision: stacklight
             keystone:
               revision: stacklight
             linux:

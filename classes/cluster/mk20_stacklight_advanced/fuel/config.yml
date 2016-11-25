@@ -87,6 +87,8 @@ parameters:
               revision: stacklight
             keystone:
               revision: stacklight
+            keepalived:
+              revision: stacklight
             kibana:
               revision: stacklight
               state:
