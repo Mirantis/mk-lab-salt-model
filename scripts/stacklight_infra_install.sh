@@ -22,3 +22,4 @@ salt -G 'ipv4:172.16.10.253' service.start aggregator
 
 # Install Nagios once alarms are stored in Salt Mine
 salt -C 'I@nagios:server' state.sls nagios
+salt -G 'ipv4:172.16.10.253' service.start nagios3
