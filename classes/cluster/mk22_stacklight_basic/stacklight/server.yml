@@ -1,0 +1,21 @@
+classes:
+- system.collectd.remote_client.single
+- system.heka.remote_collector.single
+- system.heka.aggregator.single
+- system.elasticsearch.server.single
+- system.influxdb.server.single
+- system.kibana.server.single
+- system.grafana.server.single
+- system.nagios.server.single
+- cluster.mk22_stacklight_basic
+parameters:
+  _param:
+    kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    collectd_remote_collector_host: localhost
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: dhcp
