@@ -1,0 +1,16 @@
+parameters:
+  mysql:
+    server:
+      database:
+        grafana:
+          encoding: utf8
+          users:
+          - name: grafana
+            password: ${_param:mysql_grafana_password}
+            host: '%'
+            rights: all
+          - name: grafana
+            password: ${_param:mysql_grafana_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+
