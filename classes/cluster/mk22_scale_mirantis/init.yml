@@ -14,7 +14,7 @@ parameters:
   _param:
     cluster_domain: mk22-scale.mirantis.local
     cluster_name: mk22_scale_mirantis
-    cluster_public_host: 10.26.247.6
+    cluster_public_host: 172.20.10.41
     # fuel service addresses
     fuel_config_address: 172.20.10.71
     fuel_config_deploy_address: 172.20.2.71
@@ -77,6 +77,16 @@ parameters:
     stacklight_telemetry_node01_address: 172.20.10.51
     stacklight_telemetry_node02_address: 172.20.10.52
     stacklight_telemetry_node03_address: 172.20.10.53
+    # openstack compute
+    openstack_compute_node01_single_address: 172.20.129.1
+    openstack_compute_node02_single_address: 172.20.129.2
+    openstack_compute_node03_single_address: 172.20.129.3
+    openstack_compute_node04_single_address: 172.20.129.4
+    openstack_compute_node01_control_address: 172.20.10.91
+    openstack_compute_node02_control_address: 172.20.10.92
+    openstack_compute_node03_control_address: 172.20.10.93
+    openstack_compute_node04_control_address: 172.20.10.94
+
     # Interface definitions
     linux_dhcp_interface:
       enabled: true

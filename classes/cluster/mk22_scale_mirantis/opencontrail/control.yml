@@ -53,8 +53,6 @@ parameters:
       identity:
         region: ${_param:openstack_region}
         host: ${_param:openstack_control_address}
-      message_queue:
-        host: ${_param:openstack_message_queue_address}
       compute:
         region: ${_param:openstack_region}
         host: ${_param:openstack_control_address}

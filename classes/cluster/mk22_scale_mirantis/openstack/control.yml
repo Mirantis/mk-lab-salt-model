@@ -19,7 +19,7 @@ parameters:
     cluster_node02_hostname: ctl02
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
-    cluster_node03_address: ${_param:openstack_control_node03_address}
+    cluster_node03_address: ${_param:openstack_control_node03_address} 
   linux:
     network:
       interface:

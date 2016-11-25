@@ -128,3 +128,23 @@ parameters:
           names:
           - dbs03
           - dbs03.${_param:cluster_domain}
+        cmp01:
+          address: ${_param:openstack_compute_node04_control_address}
+          names:
+          - cmp01
+          - cmp01.${_param:cluster_domain}
+        cmp02:
+          address: ${_param:openstack_compute_node04_control_address}
+          names:
+          - cmp02
+          - cmp02.${_param:cluster_domain}
+        cmp03:
+          address: ${_param:openstack_compute_node04_control_address}
+          names:
+          - cmp03
+          - cmp03.${_param:cluster_domain}
+        cmp04:
+          address: ${_param:openstack_compute_node04_control_address}
+          names:
+          - cmp04
+          - cmp04.${_param:cluster_domain}
