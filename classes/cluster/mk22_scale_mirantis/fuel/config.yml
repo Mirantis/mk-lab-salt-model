@@ -33,41 +33,6 @@ parameters:
         openstack_database_node01:
           classes:
           - cluster.${_param:cluster_name}.openstack.database_init
-  salt:
-    master:
-      environment:
-        dev:
-          formula:
-            cinder:
-              revision: stacklight
-            collectd:
-              revision: stacklight
-            galera:
-              revision: stacklight
-            glance:
-              revision: stacklight
-            haproxy:
-              revision: stacklight
-            heat:
-              revision: stacklight
-            heka:
-              revision: stacklight
-            keepalived:
-              revision: stacklight
-            keystone:
-              revision: stacklight
-            linux:
-              revision: stacklight
-            memcached:
-              revision: stacklight
-            neutron:
-              revision: stacklight
-            nova:
-              revision: stacklight
-            ntp:
-              revision: stacklight
-            rabbitmq:
-              revision: stacklight
   reclass:
     storage:
       node:
