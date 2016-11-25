@@ -1,0 +1,4 @@
+classes:
+- service.aodh.server.cluster
+- service.haproxy.proxy.single
+- service.keepalived.cluster.single

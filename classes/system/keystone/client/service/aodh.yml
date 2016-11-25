@@ -1,0 +1,27 @@
+parameters:
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                aodh:
+                  is_admin: true
+                  password: ${_param:keystone_aodh_password}
+                  email: ${_param:admin_email}
+          service:
+            aodh:
+              type: alarming
+              description: OpenStack Alarming Service
+              endpoints:
+              - region: ${_param:openstack_region}
+                public_address: ${_param:aodh_service_host}
+                public_port: 8042
+                public_path: '/'
+                internal_address: ${_param:aodh_service_host}
+                internal_port: 8042
+                internal_path: '/'
+                admin_address: ${_param:aodh_service_host}
+                admin_port: 8042
+                admin_path: '/'

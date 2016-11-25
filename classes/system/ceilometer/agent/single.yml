@@ -1,0 +1,2 @@
+classes:
+- service.ceilometer.agent.single
