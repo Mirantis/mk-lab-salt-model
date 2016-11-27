@@ -21,6 +21,9 @@ parameters:
               address: '${_param:salt_master_environment_repository}/salt-formula-libvirt.git'
               revision: ${_param:salt_master_environment_revision}
             linux:
+              module:
+                linux_netlink.py:
+                  enabled: true
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-linux.git'
               revision: ${_param:salt_master_environment_revision}

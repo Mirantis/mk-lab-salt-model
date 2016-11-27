@@ -1,0 +1,9 @@
+parameters:
+  linux:
+    network:
+      interface:
+        primary_interface:
+          enabled: true
+          name: ${_param:primary_interface}
+          type: eth
+          proto: dhcp
