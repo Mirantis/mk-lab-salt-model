@@ -20,11 +20,19 @@ parameters:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-grafana.git'
               revision: ${_param:salt_master_environment_revision}
+              state:
+                grafana3_datasource.py:
+                  enabled: true
+                grafana3_dashboard.py:
+                  enabled: true
             graphite:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-graphite.git'
               revision: ${_param:salt_master_environment_revision}
             heka:
+              module:
+                heka_alarming.py:
+                  enabled: true
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-heka.git'
               revision: ${_param:salt_master_environment_revision}
@@ -37,10 +45,16 @@ parameters:
               address: '${_param:salt_master_environment_repository}/salt-formula-java.git'
               revision: ${_param:salt_master_environment_revision}
             kibana:
+              module:
+                kibana_object.py:
+                  enabled: true
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-kibana.git'
               revision: ${_param:salt_master_environment_revision}
             nagios:
+              module:
+                nagios_alarming.py:
+                  enabled: true
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-nagios.git'
               revision: ${_param:salt_master_environment_revision}

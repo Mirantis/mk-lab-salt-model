@@ -1,0 +1,10 @@
+parameters:
+  linux:
+    network:
+      interface:
+        primary_interface:
+          enabled: true
+          name: ${_param:primary_interface}
+          type: eth
+          proto: manual
+          address: ${_param:single_address}
