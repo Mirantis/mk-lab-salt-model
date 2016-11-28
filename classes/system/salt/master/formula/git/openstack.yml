@@ -75,7 +75,7 @@ parameters:
             opencontrail:
               source: git
               address: 'https://github.com/openstack/salt-formula-opencontrail.git'
-              revision: ${_param:salt_master_environment_revision}
+              revision: stacklight
             python:
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-python.git'
