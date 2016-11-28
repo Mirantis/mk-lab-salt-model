@@ -11,13 +11,13 @@ parameters:
     # fuel service addresses
     fuel_config_address: 172.16.178.100
     # openstack service addresses
-    openstack_proxy_address: 172.16.178.121
+    openstack_proxy_address: 172.16.178.120
     openstack_proxy_node01_address: 172.16.178.121
     openstack_control_address: 172.16.178.121
     openstack_control_node01_address: 172.16.178.101
     openstack_control_node02_address: 172.16.178.102
     openstack_control_node03_address: 172.16.178.103
-    openstack_database_address: 172.16.178.121
+    openstack_database_address: 172.16.178.180
     openstack_database_node01_address: 172.16.178.181
     openstack_database_node02_address: 172.16.178.182
     openstack_database_node03_address: 172.16.178.183
