@@ -1,4 +1,5 @@
 #!/bin/bash -x
+exec > >(tee -i /tmp/$(basename $0 .sh)_$(date '+%Y-%m-%d_%H-%M-%S').log) 2>&1
 
 # Install keepaliveds
 salt -C 'I@keepalived:cluster' state.sls keepalived -b 1

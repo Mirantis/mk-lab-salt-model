@@ -1,4 +1,5 @@
 #!/bin/bash -x
+exec > >(tee -i /tmp/$(basename $0 .sh)_$(date '+%Y-%m-%d_%H-%M-%S').log) 2>&1
 
 # Install StackLight collectors
 salt "*" state.sls collectd
@@ -22,4 +23,9 @@ salt -G 'ipv4:172.16.10.253' service.start aggregator
 
 # Install Nagios once alarms are stored in Salt Mine
 salt -C 'I@nagios:server' state.sls nagios
+
+# The following is only applied when Nagios is deployed in cluster:
+# stop Nagios on monitoring nodes (b/c package starts it by default),
+# then start Nagios where the VIP is running
+salt -C 'I@nagios:server:automatic_starting:False' service.stop nagios3
 salt -G 'ipv4:172.16.10.253' service.start nagios3
