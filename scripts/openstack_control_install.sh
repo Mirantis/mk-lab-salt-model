@@ -1,4 +1,5 @@
 #!/bin/bash -x
+exec > >(tee -i /tmp/$(basename $0 .sh)_$(date '+%Y-%m-%d_%H-%M-%S').log) 2>&1
 
 # setup keystone service
 salt -C 'I@keystone:server' state.sls keystone.server -b 1

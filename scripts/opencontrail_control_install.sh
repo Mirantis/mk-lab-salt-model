@@ -1,4 +1,5 @@
 #!/bin/bash -x
+exec > >(tee -i /tmp/$(basename $0 .sh)_$(date '+%Y-%m-%d_%H-%M-%S').log) 2>&1
 
 # Install opencontrail database services
 salt -C 'I@opencontrail:database' state.sls opencontrail.database -b 1

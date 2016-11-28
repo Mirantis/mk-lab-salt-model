@@ -1,4 +1,5 @@
 #!/bin/bash -x
+exec > >(tee -i /tmp/$(basename $0 .sh)_$(date '+%Y-%m-%d_%H-%M-%S').log) 2>&1
 
 # Refresh salt master config
 salt -C 'I@salt:master' state.sls salt.master,reclass
