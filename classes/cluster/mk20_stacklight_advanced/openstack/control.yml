@@ -20,6 +20,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
+- system.heka.alarm.openstack_control
 - cluster.mk20_stacklight_advanced
 parameters:
   _param:
