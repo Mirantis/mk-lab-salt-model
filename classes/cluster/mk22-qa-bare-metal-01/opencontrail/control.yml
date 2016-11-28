@@ -1,0 +1,40 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.neutron.control.cluster
+- system.opencontrail.control.control
+- cluster.mk22-qa-bare-metal-01
+parameters:
+  _param:
+    keepalived_vip_interface: eth0
+    keepalived_vip_virtual_router_id: 202
+    cluster_vip_address: ${_param:opencontrail_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: ${_param:opencontrail_control_node01_address}
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: ${_param:opencontrail_control_node02_address}
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: ${_param:opencontrail_control_node03_address}
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_static_interface}
+  opencontrail:
+    common:
+      identity:
+        host: ${_param:openstack_control_address}
+    config:
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+      identity:
+        host: ${_param:openstack_control_address}
+      analytics:
+        host: ${_param:opencontrail_analytics_address}
+    web:
+      identity:
+        host: ${_param:openstack_control_address}
+      analytics:
+        host: ${_param:opencontrail_analytics_address}
+      cache:
+        host: 127.0.0.1

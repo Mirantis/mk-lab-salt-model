@@ -1,0 +1,21 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.opencontrail_web
+- system.nginx.server.proxy.openstack_api
+- system.nginx.server.proxy.openstack_vnc
+- system.nginx.server.proxy.openstack_web
+- system.salt.minion.pki.certificate
+- cluster.mk22-qa-bare-metal-01
+parameters:
+  _param:
+    nginx_proxy_ssl:
+      enabled: true
+      authority: mk_lab_ca
+      engine: salt
+      mode: secure
+    cluster_vip_address: ${_param:openstack_control_address}
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_static_interface}

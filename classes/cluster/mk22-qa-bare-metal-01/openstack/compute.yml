@@ -1,0 +1,32 @@
+classes:
+- system.linux.system.repo.mos9
+- system.linux.system.repo.contrail
+- system.nova.compute.cluster
+- system.opencontrail.compute.cluster
+- service.ceilometer.agent.cluster
+- service.ceilometer.agent.publisher.graphite
+- cluster.mk22-qa-bare-metal-01
+parameters:
+  _param:
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+  linux:
+    network:
+      interface:
+        eth0: ${_param:linux_static_interface}
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}

@@ -1,0 +1,8 @@
+parameters:
+  _param:
+    opencontrail_version: 3.0
+    opencontrail_stats_password: contrail123
+    opencontrail_compute_dns: 8.8.8.8
+    opencontrail_compute_gateway: 172.16.178.1
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_iface: eth0
