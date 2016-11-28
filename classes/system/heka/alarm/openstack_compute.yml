@@ -1,30 +1,4 @@
-classes:
-- system.linux.system.repo.contrail
-- system.linux.system.repo.mos9
-- system.nova.compute.cluster
-- system.opencontrail.compute.cluster
-- system.heka.alarm.openstack_compute
-- service.ceilometer.agent.cluster
-- service.ceilometer.agent.publisher.graphite
-- cluster.mk22_lab_advanced
 parameters:
-  linux:
-    network:
-      interface:
-        eth1:
-          enabled: true
-          type: eth
-          proto: manual
-        vhost0:
-          enabled: true
-          type: eth
-          mtu: 1500
-          address: ${_param:single_address}
-          netmask: '255.255.255.0'
-          pre_up_cmds:
-          - /usr/lib/contrail/if-vhost0
-          use_interfaces:
-          - eth1
   heka:
     metric_collector:
       trigger:
@@ -114,13 +88,3 @@ parameters:
           dimension:
             cluster_name: compute
             nagios_host: 01-node-clusters
-  nova:
-    compute:
-      vncproxy_url: http://${_param:cluster_vip_address}:6080
-      notification:
-        driver: messagingv2
-      message_queue:
-        members:
-          - host: ${_param:openstack_control_node01_address}
-          - host: ${_param:openstack_control_node02_address}
-          - host: ${_param:openstack_control_node03_address}

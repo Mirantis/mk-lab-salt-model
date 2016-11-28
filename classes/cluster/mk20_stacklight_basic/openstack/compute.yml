@@ -3,6 +3,7 @@ classes:
 - system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
+- system.heka.alarm.openstack_compute
 - service.opencontrail.compute.cluster
 - cluster.mk20_stacklight_basic
 parameters:
