@@ -1,5 +1,3 @@
-applications:
-- opencontrail
 parameters:
   _param:
     opencontrail_compute_iface_mask: 24
@@ -14,14 +12,14 @@ parameters:
         password: ${_param:keystone_admin_password}
       network:
         engine: neutron
-        host: ${_param:openstack_control_address}
+        host: ${_param:opencontrail_control_address}
         port: 9696
     compute:
       version: ${_param:opencontrail_version}
       disable_flow_collection: true
       enabled: True
       discovery:
-        host: ${_param:openstack_control_address}
+        host: ${_param:opencontrail_control_address}
       interface:
         address: ${_param:opencontrail_compute_address}
         dev: ${_param:opencontrail_compute_iface}
@@ -32,13 +30,3 @@ parameters:
   nova:
     compute:
       networking: contrail
-  neutron:
-    switch:
-      enabled: false
-      identity:
-        engine: keystone
-        host: ${_param:openstack_control_address}
-        port: 35357
-        user: neutron
-        password: ${_param:keystone_neutron_password}
-        tenant: service

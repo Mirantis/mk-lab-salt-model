@@ -1,6 +1,8 @@
 classes:
 - service.kibana.server.single
 parameters:
+  _param:
+    kibana_port: 5601
   kibana:
     server:
       enabled: true

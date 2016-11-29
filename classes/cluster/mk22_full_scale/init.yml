@@ -1,6 +1,5 @@
 classes:
 - system.linux.system.single
-- system.linux.system.repo.saltstack_2016_3
 - system.openssh.server.team.tcpcloud
 - cluster.mk22_full_scale.fuel
 - cluster.mk22_full_scale.openstack

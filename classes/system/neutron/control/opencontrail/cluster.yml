@@ -1,0 +1,66 @@
+classes:
+- service.keepalived.cluster.single
+- service.haproxy.proxy.single
+- service.neutron.control.cluster
+- system.haproxy.proxy.listen.openstack.neutron
+parameters:
+  mysql:
+    server:
+      database:
+        neutron:
+          encoding: utf8
+          users:
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: '%'
+            rights: all
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+  neutron:
+    server:
+      enabled: true
+      dns_domain: ${_param:cluster_domain}
+      version: ${_param:neutron_version}
+      bind:
+        address: ${_param:cluster_local_address}
+        port: 9696
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: neutron
+        user: neutron
+        password: ${_param:mysql_neutron_password}
+      identity:
+        engine: keystone
+        region: RegionOne
+        host: ${_param:openstack_control_address}
+        port: 35357
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      compute:
+        host: ${_param:openstack_control_address}
+        region: ${_param:openstack_region}
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service
+      plugin: contrail
+      tunnel_type: vxlan
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+
+      

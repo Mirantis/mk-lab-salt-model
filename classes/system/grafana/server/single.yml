@@ -20,7 +20,7 @@ parameters:
         port: ${_param:grafana_port}
       database:
         engine: mysql
-        host: ${_param:openstack_control_address}
+        host: ${_param:openstack_database_address}
         port: 3306
         name: grafana
         user: grafana

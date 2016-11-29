@@ -2,33 +2,9 @@ classes:
 - service.cinder.control.cluster_control
 - service.haproxy.proxy.single
 - service.keepalived.cluster.single
+- system.haproxy.proxy.listen.openstack.cinder
 parameters:
-  haproxy:
-    proxy:
-      listen:
-        cinder_api:
-          type: openstack-service
-          service_name: cinder
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8776
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8776
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8776
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8776
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-  cinder:
-    controller:
-      default_volume_type: ""
-      backend: {}
+  cinder:      
     volume:
       enabled: false
       default_volume_type: ""
@@ -36,4 +12,46 @@ parameters:
       logging:
         heka:
           enabled: true
+  cinder:
+    controller:
+      enabled: true
+      default_volume_type: ""
+      backend: {}
+      version: ${_param:cinder_version}
+      osapi:
+        host: ${_param:cluster_local_address}
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: cinder
+        user: cinder
+        password: ${_param:mysql_cinder_password}
+      identity:
+        engine: keystone
+        region: ${_param:openstack_region}
+        host: ${_param:cluster_vip_address}
+        port: 35357
+        tenant: service
+        user: cinder
+        password: ${_param:keystone_cinder_password}
+      glance:
+        host: ${_param:cluster_vip_address}
+        port: 9292
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:openstack_message_queue_address}
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+      cache:
+        engine: memcached
+        members:
+        - host: ${_param:cluster_node01_address}
+          port: 11211
+        - host: ${_param:cluster_node02_address}
+          port: 11211
+        - host: ${_param:cluster_node03_address}
+          port: 11211
 

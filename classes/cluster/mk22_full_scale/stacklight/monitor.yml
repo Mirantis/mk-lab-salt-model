@@ -1,5 +1,5 @@
 classes:
-- system.linux.system.repo.saltstack_2016_3
+- system.linux.system.repo.saltstack_2016_3_xenial
 - system.linux.system.repo.tcp_elastic
 - system.collectd.remote_client.cluster
 - system.heka.remote_collector.cluster

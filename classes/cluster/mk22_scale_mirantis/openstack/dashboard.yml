@@ -4,11 +4,9 @@ classes:
 - system.horizon.server.single
 - cluster.mk22_scale_mirantis
 parameters:
+  _param:
+    openstack_version: liberty
   linux:
-    system:
-      repo:
-        tcpcloud_openstack:
-          source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty
     network:
       interface:
         eth1: ${_param:linux_single_interface}

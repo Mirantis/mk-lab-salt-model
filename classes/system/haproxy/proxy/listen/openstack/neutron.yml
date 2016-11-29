@@ -1,23 +1,4 @@
-classes:
-- service.keepalived.cluster.single
-- service.haproxy.proxy.single
-- service.neutron.control.cluster
-- system.haproxy.proxy.listen.openstack.neutron
 parameters:
-  mysql:
-    server:
-      database:
-        neutron:
-          encoding: utf8
-          users:
-          - name: neutron
-            password: ${_param:mysql_neutron_password}
-            host: '%'
-            rights: all
-          - name: neutron
-            password: ${_param:mysql_neutron_password}
-            host: ${_param:cluster_local_address}
-            rights: all
   haproxy:
     proxy:
       listen:
@@ -40,6 +21,3 @@ parameters:
             host: ${_param:cluster_node03_address}
             port: 9696
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-  neutron:
-    server:
-      plugin: contrail

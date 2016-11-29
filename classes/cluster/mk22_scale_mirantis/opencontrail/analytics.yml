@@ -19,16 +19,3 @@ parameters:
     network:
       interface:
         eth1: ${_param:linux_single_interface}
-  opencontrail:
-    common:
-      identity:
-        host: ${_param:openstack_control_address}
-    collector:
-      discovery:
-        host: ${_param:opencontrail_control_address}
-    database:
-      discovery:
-        host: ${_param:opencontrail_control_address}
-    common:
-      network:
-        host: ${_param:opencontrail_control_address}

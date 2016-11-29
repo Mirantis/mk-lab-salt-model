@@ -57,6 +57,7 @@ parameters:
             interface:
             - eth0
             - ens3
+            - p4p1.602
         services:
           - target: 'G@roles:openssh.server'
             name: SSH

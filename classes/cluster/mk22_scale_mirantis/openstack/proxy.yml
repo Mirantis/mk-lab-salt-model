@@ -7,6 +7,7 @@ classes:
 - system.nginx.server.proxy.openstack_web
 - system.horizon.server.single
 - system.salt.minion.pki.certificate
+- system.sphinx.server.doc.reclass
 - cluster.mk22_scale_mirantis
 parameters:
   _param:

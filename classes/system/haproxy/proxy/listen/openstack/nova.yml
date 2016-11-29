@@ -1,0 +1,61 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        nova_ec2_api:
+          type: general-service
+          service_name: nova
+          check: false
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8773
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8773
+            params: check
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8773
+            params: check
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8773
+            params: check
+        nova_api:
+          type: openstack-service
+          service_name: nova
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8774
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8774
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8774
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8774
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        nova_metadata_api:
+          type: openstack-service
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8775
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8775
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8775
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8775
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
