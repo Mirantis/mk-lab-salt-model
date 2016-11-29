@@ -2,51 +2,41 @@ classes:
 - service.keystone.server.cluster
 - service.keepalived.cluster.single
 - system.keystone.server.storage.glusterfs
+- system.haproxy.proxy.listen.openstack.keystone
 parameters:
   keystone:
     server:
+      enabled: true
+      version: ${_param:keystone_version}
+      service_token: ${_param:keystone_service_token}
+      service_tenant: service
+      admin_tenant: admin
+      admin_name: admin
+      admin_password: ${_param:keystone_admin_password}
+      admin_email: ${_param:admin_email}
+      bind:
+        address: ${_param:cluster_local_address}
+        private_address: ${_param:cluster_vip_address}
+        private_port: 35357
+        public_address: ${_param:cluster_vip_address}
+        public_port: 5000
+      region: ${_param:openstack_region}
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        name: keystone
+        password: ${_param:mysql_keystone_password}
+        user: keystone
       tokens:
         engine: fernet
         expiration: 3600
         max_active_keys: 3
-  haproxy:
-    proxy:
-      listen:
-        keystone_public_api:
-          type: openstack-service
-          service_name: keystone
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 5000
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 5000
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 5000
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 5000
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        keystone_admin_api:
-          type: openstack-service
-          service_name: keystone
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 35357
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 35357
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 35357
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 35357
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        location: /var/lib/keystone/fernet-keys
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:openstack_message_queue_address}
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        ha_queues: true

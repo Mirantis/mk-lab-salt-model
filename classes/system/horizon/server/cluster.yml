@@ -2,29 +2,8 @@ classes:
 - service.keepalived.cluster.single
 - service.horizon.server.single
 - service.haproxy.proxy.single
+- system.haproxy.proxy.listen.openstack.horizon
 parameters:
-  haproxy:
-    proxy:
-      listen:
-        horizon_web:
-          type: general-service
-          check: false
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8078
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8078
-            params: check
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8078
-            params: check
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8078
-            params: check
   horizon:
     server:
       branding: "OpenStack Dashboard"

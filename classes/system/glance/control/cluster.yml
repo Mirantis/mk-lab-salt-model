@@ -3,54 +3,44 @@ classes:
 - service.keepalived.cluster.single
 - service.haproxy.proxy.single
 - system.glance.control.storage.glusterfs
+- system.haproxy.proxy.listen.openstack.glance
 parameters:
   glance:
     server:
+      enabled: true
+      version: ${_param:glance_version}
+      workers: 8
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: glance
+        user: glance
+        password: ${_param:mysql_glance_password}
+      registry:
+        host: ${_param:cluster_vip_address}
+        port: 9191
+      bind:
+        address: ${_param:cluster_local_address}
+        port: 9292
       identity:
+        engine: keystone
+        host: ${_param:cluster_vip_address}
+        port: 35357
+        user: glance
+        password: ${_param:keystone_glance_password}
         region: ${_param:openstack_region}
-      notification: true
-      logging:
-        heka:
-          enabled: true
-  haproxy:
-    proxy:
-      listen:
-        glance_api:
-          type: openstack-service
-          service_name: glance
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 9292
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 9292
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 9292
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 9292
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        glance_registry_api:
-          type: general-service
-          service_name: glance
-          check: false
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 9191
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 9191
-            params: check
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 9191
-            params: check
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 9191
-            params: check
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      storage:
+        engine: file
+      images: []

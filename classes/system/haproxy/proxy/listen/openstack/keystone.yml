@@ -1,0 +1,42 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        keystone_public_api:
+          type: openstack-service
+          service_name: keystone
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 5000
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 5000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 5000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 5000
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        keystone_admin_api:
+          type: openstack-service
+          service_name: keystone
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 35357
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 35357
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 35357
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 35357
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3

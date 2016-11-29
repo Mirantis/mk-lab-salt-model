@@ -6,7 +6,10 @@ parameters:
     heka_aggregator_host: ${_param:stacklight_monitor_node01_address}
     aggregator_port: 5565
     grafana_user: admin
-    grafana_password: password
+    cluster_elasticsearch_port: 9200
+    cluster_kibana_port: 5601
+    cluster_grafana_port: 3000
+    mysql_grafana_password: password
     grafana_influxdb_host: ${_param:stacklight_telemetry_node01_address}
     elasticsearch_port: 9200
     influxdb_stacklight_password: lmapass
