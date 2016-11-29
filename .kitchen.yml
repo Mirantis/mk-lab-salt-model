@@ -1,0 +1,66 @@
+---
+driver:
+  name: docker
+  use_sudo: true
+  #hostname: cfg01.mirantis.local
+  #<#%= ENV['SALT_MODEL_DOMAIN'] || `grep domain_name cookiecutter.json |awk -F'"' '{print $4}'` %>
+  volume:
+    - <%= ENV['PWD'] %>:/tmp/reclass
+
+platforms:
+  <% `ls nodes/control|xargs -I{} basename {} .yml`.split().each do |cfg| %>
+  <% model=cfg.split('.')[1] %>
+  - name: <%= model %>
+    driver_config:
+      image: ubuntu:16.04
+      platform: ubuntu
+      hostname: <%= cfg %>
+      provision_command:
+        - echo "
+            export MASTER_HOSTNAME=<%= cfg %>;\n
+            export MASTER_INIT_STATES=0;\n
+            export FORMULA_SOURCE=git;\n
+            export FORMULA_BRANCH=master;\n
+            export APT_REPOSITORY_TAGS='main tcp tcp-salt';\n
+          " > kitchen.env
+        - ln -s /tmp/reclass /tmp/kitchen
+  <% end %>
+
+provisioner:
+  name: shell
+  script: .provisioner.sh
+
+suites:
+  - name: reclass
+
+
+## DOC
+#
+# http://Kitchen.ci for install & usage
+#
+# Example usage:
+#
+#  ➜ kitchen list
+#  Instance                          Driver  Provisioner  Verifier  Transport  Last Action
+#  reclass-mk20-lab-advanced         Docker  Shell        Busser    Ssh        Created
+#  reclass-mk20-lab-basic            Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk20-lab-expert           Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk20-stacklight-advanced  Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk20-stacklight-basic     Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk22-full-scale           Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk22-lab-advanced         Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk22-lab-basic            Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk22-qa-lab01             Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk22-qa-lab02             Docker  Shell        Busser    Ssh        <Not Created>
+#  reclass-mk22-scale                Docker  Shell        Busser    Ssh        Verified
+#
+#  ➜  kitchen converge reclass-mk22-scale
+#  ➜  kitchen converge
+#  ➜  kitchen verify
+#  ➜  kitchen test
+#  ➜  kitchen login # pass: kitchen
+#
+# Edit kitchen.env to modify bootstrap.sh or .provisioner.sh behavior (initialized afer first converge)
+# - MASTER_INIT_STATES=1 will stage functional salt master in container, executing states "salt,reclass"
+# - MASTER_INIT_STATES=1  && FORMULA_SOURCE=git will stage dev configuration saltmaster in container
+#
