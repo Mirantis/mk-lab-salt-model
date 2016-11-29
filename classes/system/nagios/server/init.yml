@@ -62,10 +62,6 @@ parameters:
             name: SSH
             use: generic_service_tpl
             check_command: check_ssh
-          - target: 'G@roles:nagios.server'
-            name: HTTP Nagios
-            use: generic_service_tpl
-            check_command: check_http_basic_auth!localhost!${_param:nagios_ui_port}
         stacklight_alarms:
           enabled: true
           service_template: generic_service_tpl
@@ -76,9 +72,6 @@ parameters:
           dimension_key: ${_param:nagios_host_dimension_key}
           default_host: ${_param:nagios_default_host_alarm_clusters}
       objects:
-        commands:
-          check_http_basic_auth:
-            command_line: "check_http -4 -I '$ARG1$' -w 2 -c 3 -t 5 -p $ARG2$ -u '/' -e '401 Unauthorized'"
         contactgroups:
           operator:
             contactgroup_name: Operator
