@@ -12,7 +12,7 @@ parameters:
           balance: roundrobin
           binds:
             - address: ${_param:cluster_vip_address}
-              port: ${_param:cluster_elasticsearch_port}
+              port: 9200
           servers:
             - name: ${_param:cluster_node01_hostname}
               host: ${_param:cluster_node01_address}

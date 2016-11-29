@@ -4,4 +4,4 @@ parameters:
   heka:
     log_collector:
       elasticsearch_host: ${_param:heka_elasticsearch_host}
-      elasticsearch_port: ${_param:elasticsearch_port}
+      elasticsearch_port: 9200

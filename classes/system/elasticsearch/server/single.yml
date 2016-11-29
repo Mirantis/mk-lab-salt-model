@@ -20,7 +20,7 @@ parameters:
       enabled: true
       bind:
         address: ${_param:single_address}
-        port: ${_param:elasticsearch_port}
+        port: 9200
       mlockall: true
       threadpool:
         bulk:
