@@ -34,7 +34,7 @@ parameters:
         lma:
           enabled: true
           name: lma
-          password: ${_param:influxdb_stacklight_password}
+          password: ${_param:influxdb_password}
       grant:
         grant_lma_all:
           enabled: true

@@ -8,7 +8,7 @@ parameters:
     grafana_password: password
     grafana_influxdb_host: ${_param:stacklight_monitor_address}
     elasticsearch_port: 9200
-    influxdb_stacklight_password: lmapass
+    influxdb_password: lmapass
     influxdb_admin_password: password
     influxdb_port: 8086
     influxdb_database: lma
