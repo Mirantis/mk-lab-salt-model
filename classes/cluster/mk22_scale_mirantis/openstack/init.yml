@@ -36,6 +36,7 @@ parameters:
     mysql_keystone_password: workshop
     mysql_neutron_password: workshop
     mysql_nova_password: workshop
+    mysql_grafana_password: workshop
     keystone_service_token: workshop
     keystone_admin_password: workshop
     keystone_ceilometer_password: workshop
