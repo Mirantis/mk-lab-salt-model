@@ -9,5 +9,6 @@ parameters:
           engine: http
           host: ${_param:collectd_remote_collector_host}
           port: ${_param:collectd_remote_collector_port}
+          timeout: 5
       read_interval: 10
       use_fqdn: false
