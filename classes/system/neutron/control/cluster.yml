@@ -39,3 +39,6 @@ parameters:
             host: ${_param:cluster_node03_address}
             port: 9696
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+  neutron:
+    server:
+      plugin: contrail
