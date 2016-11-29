@@ -37,7 +37,6 @@ parameters:
         glance_registry_api:
           type: general-service
           service_name: glance
-          check: false
           binds:
           - address: ${_param:cluster_vip_address}
             port: 9191
