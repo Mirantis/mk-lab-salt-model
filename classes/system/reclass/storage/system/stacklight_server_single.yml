@@ -7,8 +7,6 @@ parameters:
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.server
-          - system.elasticsearch.client.single
-          - system.grafana.client.single
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
