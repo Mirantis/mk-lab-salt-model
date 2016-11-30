@@ -3,6 +3,41 @@ applications:
 classes:
 - service.nova.compute.kvm
 parameters:
+  _param:
+    nova_compute_ssh_public: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCltIn93BcTMzNK/n2eBze6PyTkmIgdDkeXNR9X4DqE48Va80ojv2pq8xuaBxiNITJzyl+4p4UvTTXo+HmuX8qbHvqgMGXvuPUCpndEfb2r67f6vpMqPwMgBrUg2ZKgN4OsSDHU+H0dia0cEaTjz5pvbUy9lIsSyhrqOUVF9reJq+boAvVEedm8fUqiZuiejAw2D27+rRtdEPgsKMnh3626YEsr963q4rjU/JssV/iKMNu7mk2a+koOrJ+aHvcVU8zJjfA0YghoeVT/I3GLU/MB/4tD/RyR8GM+UYbI4sgAC7ZOCdQyHdJgnEzx3SJIwcS65U0T2XYvn2qXHXqJ9iGZ root@mirantis.com
+    nova_compute_ssh_private: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEApbSJ/dwXEzMzSv59ngc3uj8k5JiIHQ5HlzUfV+A6hOPFWvNK
+      I79qavMbmgcYjSEyc8pfuKeFL0016Ph5rl/Kmx76oDBl77j1AqZ3RH29q+u3+r6T
+      Kj8DIAa1INmSoDeDrEgx1Ph9HYmtHBGk48+ab21MvZSLEsoa6jlFRfa3iavm6AL1
+      RHnZvH1KombonowMNg9u/q0bXRD4LCjJ4d+tumBLK/et6uK41PybLFf4ijDbu5pN
+      mvpKDqyfmh73FVPMyY3wNGIIaHlU/yNxi1PzAf+LQ/0ckfBjPlGGyOLIAAu2TgnU
+      Mh3SYJxM8d0iSMHEuuVNE9l2L59qlx16ifYhmQIDAQABAoIBAQCYpqbwvE5tm59H
+      GQb0C8Ykx4LfLD1INx1wiLmlJKYEQihPTw0fvXj1qZvl21+cs9ZcoTRpUbn6B3EA
+      e9bs8sYc/P75j1x46LSdimkZKZUPygkk72d3ZbElUciOyKCxBDNDBQcTIQ9xpKFa
+      2E5Ep72npNMrWqp71r/Qwo20lEIkikIgAFPBgraxn5xIEdo59vzXNZsvyoIRi5p4
+      ayH9nWSAXdF1YU3p3ljtHD8o2G/0d2TWGmjrd9vztc6tgXjp0PF60vDNgcJiudBg
+      oNLDK/e5a44GJxlVDdJ84ESb7GprRStYmddl22xnI1SXlg87+t0QQwzR0CCtWXrz
+      neXkicHhAoGBANkG9tOZfErhSL/jmsElQTNPcMNQkPiJzEmOIpr6jgSzCusPT/QD
+      PnVwB42GC5+Zhd4e88BsTzECxPXmKk7r1cBKeJTg/ejgsrSfVAZqMsfhbp3mGOiH
+      jymF+zC6Urj5q/Zkof8pEFICtyA5zlHvZmsQL9PDiqXIWALki2JvIDPdAoGBAMN2
+      O+LWOM9qqwgSMaFY8VUdDdbmLx/ZMGWQ//Tx42WM8SU+cCpGTLDHHR0qC0gnRsV7
+      V63DySEwiHn4I1cQ/AMijRxuw4Dkgk2YMRlgsAbVWO7aIlECWjSg+pRjNeA7If4D
+      5L/gu6wZIv1vu8/fvOwRpPUzhWjGN5Z0RyvYc7btAoGALNnrmL9XmIIGbuGy0cfJ
+      OblpLHQyAas4tNrS/ARb5Uy7LOj1NRCWj96fMPhK3qjzqXvsFBBOLWrNGaR/id/j
+      ROIfGWWGE+KcDAgBbXH1HKnSGn+7FhMt2v79coyPG/s9NqaFdB4gaVJ2VgqcQQKg
+      v++QcssulCRbS/2/cJBWr2ECgYAJFCDL9G9HEwlGorGzcNIkxeiyppZhwFDDJuz8
+      j4+kU9uPg0rqa8F8JINxq1ZCz7A10/jKlWFuLTbpk2Dw1lUeQCiVvX9PKU30FLGT
+      IC6M4rPyxCb75EQUVbXN1p3WAGkfx0aEsweEgtZhNyNeEGJSBK/Iw8/agfpq/pOf
+      sboOMQKBgQClKmrAYKWnwdPPka3msyjl/AXDruR4XFvMlOPKbs3nYstolE7eR94F
+      7xDyBz85icFU0rceYQetwFH2p5tRL0GcUQhJmJFgIL0OXdCQvRNJrT3iS00N1aUo
+      SG9MrLHCd5l60aCUQg0UA5ed7Hd6SA314k+HwxJno9/wJ+voBeacMg==
+      -----END RSA PRIVATE KEY-----
+  openssh:
+    client:
+      enabled: True
+      user: {}
+      stricthostkeychecking: False
   nova:
     compute:
       version: ${_param:nova_version}
@@ -48,4 +83,6 @@ parameters:
         members:
         - host: 127.0.0.1
           port: 11211
-
+      user:
+        public_key: ${_param:nova_compute_ssh_public}
+        private_key: ${_param:nova_compute_ssh_private}
