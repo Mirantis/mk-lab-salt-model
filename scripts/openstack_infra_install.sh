@@ -27,6 +27,7 @@ salt -C 'I@galera:slave' mysql.status | grep -A1 wsrep_cluster_size
 # Install haproxy
 salt -C 'I@haproxy:proxy' state.sls haproxy
 salt -C 'I@haproxy:proxy' service.status haproxy
+salt -I 'haproxy:proxy' service.restart rsyslog
 
 # Install memcached
 salt -C 'I@memcached:server' state.sls memcached
