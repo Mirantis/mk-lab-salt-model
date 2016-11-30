@@ -8,8 +8,8 @@ parameters:
           type: nginx_proxy
           name: nagios
           proxy:
-            host: mon01
-            port: 8001
+            host: ${_param:stacklight_monitor_address}
+            port: 80
             protocol: http
           host:
             name: ${_param:cluster_public_host}
