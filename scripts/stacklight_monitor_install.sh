@@ -18,3 +18,4 @@ sleep 5
 
 salt -C 'I@kibana:client' state.sls kibana.client
 salt -C 'I@grafana:client' state.sls grafana.client
+salt -C 'I@elasticsearch:client' state.sls elasticsearch.client
