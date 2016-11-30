@@ -8,7 +8,7 @@ parameters:
           type: nginx_proxy
           name: kibana
           proxy:
-            host: mon01
+            host: ${_param:stacklight_monitor_address}
             port: 5601
             protocol: http
           host:
