@@ -1,0 +1,11 @@
+classes:
+- cluster.mk22_ceilometer_basic.fuel.config
+- cluster.mk22_ceilometer_basic.openstack.proxy
+parameters:
+  _param:
+    linux_system_codename: xenial
+    reclass_data_revision: dash
+  linux:
+    system:
+      name: cfg01
+      domain: mk22-ceilometer-basic.local
