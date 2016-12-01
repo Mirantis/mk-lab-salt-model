@@ -11,7 +11,6 @@ classes:
 - system.keystone.client.single
 - system.keystone.client.service.ceilometer
 - system.keystone.client.service.nova21
-- system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_database_cluster
 - system.reclass.storage.system.openstack_compute_multi
