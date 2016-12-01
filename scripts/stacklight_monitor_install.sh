@@ -30,8 +30,10 @@ salt -C 'I@nagios:server' state.sls nagios
 # The following is only applied when Nagios is deployed in cluster: stop Nagios
 # on monitoring nodes (b/c package starts it by default), then start Nagios
 # where the VIP is running
+vip=$(salt-call pillar.data _param:stacklight_monitor_address --out key|grep _param: |awk '{print $2}')
+vip=${vip:=172.16.10.253}
 salt -C 'I@nagios:server:automatic_starting:False' service.stop nagios3
-salt -G 'ipv4:172.16.10.253' service.start nagios3
+salt -G "ipv4:$vip" service.start nagios3
 
 # Finalize the configuration of Grafana (add the dashboards...)
 salt -C 'I@grafana:client' state.sls grafana.client
