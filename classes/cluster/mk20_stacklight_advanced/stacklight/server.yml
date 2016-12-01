@@ -15,6 +15,7 @@ classes:
 parameters:
   _param:
     collectd_remote_collector_host: ${_param:stacklight_monitor_address}
+    heka_amqp_host: ${_param:openstack_control_address}
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
     keepalived_stacklight_monitor_vip_address: ${_param:stacklight_monitor_address}
     keepalived_stacklight_monitor_vip_password: 'password'
