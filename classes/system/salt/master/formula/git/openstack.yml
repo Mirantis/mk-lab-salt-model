@@ -4,6 +4,10 @@ parameters:
       environment:
         dev:
           formula:
+            aodh:
+              source: git
+              address: 'https://github.com/tcpcloud/salt-formula-aodh.git'
+              revision: ${_param:salt_master_environment_revision}
             ceilometer:
               source: git
               address: 'https://github.com/openstack/salt-formula-ceilometer.git'

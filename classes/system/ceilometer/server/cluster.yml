@@ -1,0 +1,18 @@
+classes:
+- service.ceilometer.server.cluster
+- service.haproxy.proxy.single
+- service.keepalived.cluster.single
+parameters:
+  ceilometer:
+    server:
+      database:
+        influxdb:
+          host: ${_param:monitoring_service_address}
+          port: 8086
+          user: ceilometer
+          password: ${_param:stacklight_influxdb_password}
+          database: ceilometer
+        elasticsearch:
+          enabled: true
+          host: ${_param:monitoring_service_address}
+          port: 9200
