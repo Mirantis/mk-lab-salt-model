@@ -4,7 +4,6 @@ classes:
 - system.heka.aggregator.cluster
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator
-- system.influxdb.server.cluster
 - system.kibana.server.single
 - system.grafana.server.single
 - cluster.mk22_lab_advanced
