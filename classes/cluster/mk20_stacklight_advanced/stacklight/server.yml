@@ -3,6 +3,7 @@ classes:
 - system.heka.remote_collector.cluster
 - system.heka.aggregator.cluster
 - system.elasticsearch.server.cluster
+- system.elasticsearch.server.curator
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.cluster

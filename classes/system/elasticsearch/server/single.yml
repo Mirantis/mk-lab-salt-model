@@ -34,26 +34,3 @@ parameters:
         minimum_master_nodes: 1
         members:
         - host: ${_param:cluster_node01_address}
-      curator:
-        timeout: 30
-        logfile: /var/log/elasticsearch/curator.log
-        logformat: default
-        loglevel: INFO
-        actions:
-        - action: delete_indices
-          description: >-
-            Delete indices older than 31 days (based on index name).
-          options:
-            ignore_empty_list: True
-            continue_if_exception: False
-            disable_action: False
-          filters:
-          - filtertype: pattern
-            kind: regex
-            value: "^log|notification-.*$"
-          - filtertype: age
-            source: name
-            direction: older
-            timestring: '%Y.%m.%d'
-            unit: days
-            unit_count: 31
