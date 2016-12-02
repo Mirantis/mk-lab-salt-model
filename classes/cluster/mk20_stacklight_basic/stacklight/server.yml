@@ -13,6 +13,7 @@ parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
     collectd_remote_collector_host: localhost
+    heka_amqp_host: ${_param:openstack_control_address}
   linux:
     network:
       interface:

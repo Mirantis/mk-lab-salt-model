@@ -32,6 +32,7 @@ parameters:
       admin_email: ${_param:admin_email}
       database:
         host: ${_param:openstack_database_address}
+      notification: true
     message_queue:
       host: ${_param:openstack_message_queue_address}
   glance:
@@ -48,6 +49,7 @@ parameters:
           - host: ${_param:openstack_message_queue_node01_address}
           - host: ${_param:openstack_message_queue_node02_address}
           - host: ${_param:openstack_message_queue_node03_address}
+      notification: true
   nova:
     controller:
       workers: 32
@@ -78,6 +80,7 @@ parameters:
           - host: ${_param:openstack_message_queue_node01_address}
           - host: ${_param:openstack_message_queue_node02_address}
           - host: ${_param:openstack_message_queue_node03_address}
+      notification: true
   cinder:
     volume:
       identity:
@@ -104,5 +107,3 @@ parameters:
           - host: ${_param:openstack_message_queue_node01_address}
           - host: ${_param:openstack_message_queue_node02_address}
           - host: ${_param:openstack_message_queue_node03_address}
-
-
