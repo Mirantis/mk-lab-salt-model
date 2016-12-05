@@ -14,3 +14,4 @@ parameters:
           port: ${_param:collectd_metric_collector_port}
       read_interval: 10
       use_fqdn: false
+      syslog_logging: false
