@@ -12,3 +12,4 @@ parameters:
           timeout: 5
       read_interval: 10
       use_fqdn: false
+      syslog_logging: false
