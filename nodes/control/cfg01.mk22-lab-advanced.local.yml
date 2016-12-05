@@ -1,6 +1,7 @@
 classes:
 - cluster.mk22_lab_advanced.fuel.config
 - cluster.mk22_lab_advanced.openstack.proxy
+- cluster.mk22_lab_advanced.stacklight.proxy
 parameters:
   _param:
     linux_system_codename: xenial

@@ -8,6 +8,7 @@ parameters:
   _param:
     cluster_domain: mk22-lab-advanced.local
     cluster_name: mk22_lab_advanced
+    cluster_public_host: _
     # fuel service addresses
     fuel_config_address: 172.16.10.100
     # openstack service addresses
@@ -30,3 +31,8 @@ parameters:
           names:
           - cmp01
           - cmp01.${_param:cluster_domain}
+        cmp02:
+          address: 172.16.10.106
+          names:
+          - cmp02
+          - cmp02.${_param:cluster_domain}
