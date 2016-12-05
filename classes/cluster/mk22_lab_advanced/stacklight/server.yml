@@ -6,21 +6,31 @@ classes:
 - system.elasticsearch.server.curator
 - system.kibana.server.single
 - system.grafana.server.single
+- system.nagios.server.cluster
 - cluster.mk22_lab_advanced
+- system.haproxy.proxy.listen.stacklight.elasticsearch
+- system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.grafana
+- service.haproxy.proxy.single
+- system.keepalived.cluster.instance.stacklight_monitor_vip
 parameters:
   _param:
-    kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
     collectd_remote_collector_host: ${_param:stacklight_monitor_address}
     heka_amqp_host: ${_param:openstack_control_address}
-    keepalived_vip_interface: ens4
+    kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    keepalived_stacklight_monitor_vip_address: ${_param:stacklight_monitor_address}
+    keepalived_stacklight_monitor_vip_password: 'password'
+    keepalived_stacklight_monitor_vip_interface: ens4
     cluster_vip_address: ${_param:stacklight_monitor_address}
-    cluster_local_address: ${_param:single_address}
-    cluster_node01_hostname: ntw01
-    cluster_node01_address: 172.16.10.107
-    cluster_node02_hostname: ntw02
-    cluster_node02_address: 172.16.10.108
-    cluster_node03_hostname: ntw03
-    cluster_node03_address: 172.16.10.109
+    cluster_elasticsearch_port: 9200
+    cluster_kibana_port: 5601
+    cluster_grafana_port: 3000
+    cluster_node01_name: mon01
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_name: mon02
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_name: mon03
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
   linux:
     network:
       interface:
