@@ -28,6 +28,8 @@ salt -C 'I@collectd:remote_client:enabled:True' state.sls collectd
 salt -C 'I@nagios:server' state.sls nagios
 
 # Finalize the configuration of Grafana (add the dashboards...)
+salt -C 'I@grafana:client' state.sls grafana.client.service
+salt -C 'I@grafana:client' --async service.restart salt-minion; sleep 10
 salt -C 'I@grafana:client' state.sls grafana.client
 
 # The following is only applied when StackLight is deployed in cluster
