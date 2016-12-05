@@ -30,6 +30,11 @@ parameters:
         lma:
           enabled: true
           name: lma
+          retention_policy:
+          - name: lma
+            is_default: true
+            duration: 30d
+            replication: 1
       user:
         lma:
           enabled: true
