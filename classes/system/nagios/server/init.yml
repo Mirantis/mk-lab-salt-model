@@ -20,6 +20,9 @@ parameters:
       check_service_freshness: 1
       check_host_freshness: 0
       purge_distribution_config: true
+      log_external_commands: 0
+      log_passive_checks: 0
+      log_initial_states: 1
       ui:
         enabled: true
         port: ${_param:nagios_ui_port}
