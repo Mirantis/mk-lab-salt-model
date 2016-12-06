@@ -8,7 +8,6 @@ parameters:
         contrail_api:
           type: contrail-api
           service_name: contrail
-          check: false
           binds:
           - address: ${_param:cluster_vip_address}
             port: 8082
