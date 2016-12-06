@@ -3,6 +3,8 @@ classes:
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
+- system.heka.alarm.openstack_compute
+- service.opencontrail.compute.cluster
 - cluster.mk22_lab_basic
 parameters:
   _param:
@@ -31,6 +33,9 @@ parameters:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
+        topics: notifications
+        notify_on:
+          state_change: vm_and_task_state
       message_queue:
         members:
           - host: ${_param:openstack_control_node01_address}

@@ -1,8 +1,9 @@
 classes:
 - system.linux.system.single
 - cluster.mk22_lab_basic.fuel
-- cluster.mk22_lab_basic.monitoring
 - cluster.mk22_lab_basic.openstack
+- cluster.mk22_lab_basic.stacklight
+- cluster.mk22_lab_basic.stacklight.client
 parameters:
   _param:
     cluster_domain: mk22-lab-basic.local
@@ -17,9 +18,9 @@ parameters:
     openstack_control_node01_address: 172.16.10.101
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
-    # monitoring service addresses
-    monitoring_service_address: 172.16.10.107
-    monitoring_service_node01_address: 172.16.10.107
+    # stacklight service addresses
+    stacklight_monitor_address: 172.16.10.107
+    stacklight_monitor_node01_address: 172.16.10.107
   linux:
     network:
       host:
