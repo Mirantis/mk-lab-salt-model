@@ -11,5 +11,5 @@ parameters:
             rights: all
           - name: aodh
             password: ${_param:mysql_aodh_password}
-            host: ${_param:cluster_local_address}
+            host: ${_param:cluster_vip_address}
             rights: all
