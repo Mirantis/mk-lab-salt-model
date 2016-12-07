@@ -71,10 +71,8 @@ main() {
     #test -e /srv/salt/reclass/.git && git pull -r || git clone /tmp/reclass /srv/salt/reclass
   #} || {
     log_info ".. as static folders"
-    cp -fa /tmp/reclass/scripts /srv/salt/reclass || echo "X"
-    cp -fa /tmp/reclass/classes /srv/salt/reclass || echo "X"
-    cp -fa /tmp/reclass/nodes /srv/salt/reclass || echo "X"
-    cp -fa /tmp/reclass/.git /srv/salt/reclass || echo "X"
+    rsync -avh --exclude workspace --exclude tmp --exclude temp \
+      /tmp/reclass /srv/salt/
   #}
 
 
@@ -94,7 +92,7 @@ main() {
   log_info "Clean up generated"
   cd /srv/salt/reclass
   rm -rf /srv/salt/reclass/nodes/_generated/*
-  rm  -f /srv/salt/reclass/nodes/${MASTER_HOSTNAME}.yml # new model uses ./control/cfg*.yml
+  #rm  -f /srv/salt/reclass/nodes/${MASTER_HOSTNAME}.yml # new model uses ./control/cfg*.yml
 
 
   log_info "Re/starting salt services"
