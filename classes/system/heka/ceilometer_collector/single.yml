@@ -10,9 +10,9 @@ parameters:
       influxdb_port: 8086
       influxdb_username: ceilometer
       resource_decoding: false
-      rabbit_host: ${_param:cluster_vip_address}
-      rabbit_port: 5672
-      rabbit_user: openstack
-      rabbit_password: ${_param:rabbitmq_openstack_password}
-      rabbit_vhost: '/openstack'
-      rabbit_queue: metering.sample
+      amqp_host: ${_param:cluster_vip_address}
+      amqp_port: 5672
+      amqp_user: openstack
+      amqp_password: ${_param:rabbitmq_openstack_password}
+      amqp_vhost: '/openstack'
+      amqp_queue: metering.sample
