@@ -5,12 +5,12 @@ parameters:
     server:
       database:
         influxdb:
-          host: ${_param:monitoring_service_address}
+          host: ${_param:stacklight_monitor_node01_address}
           port: 8086
           user: ceilometer
           password: ${_param:stacklight_influxdb_password}
           database: ceilometer
         elasticsearch:
           enabled: true
-          host: ${_param:monitoring_service_address}
+          host: ${_param:stacklight_monitor_address}
           port: 9200
