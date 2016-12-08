@@ -26,7 +26,8 @@ parameters:
         user: grafana
         password: ${_param:mysql_grafana_password}
       auth:
-        engine: basic
+        basic:
+          enabled: true
       admin:
         user: ${_param:grafana_user}
         password: ${_param:grafana_password}
