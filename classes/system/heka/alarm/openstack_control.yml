@@ -85,7 +85,7 @@ parameters:
     aggregator:
       alarm_cluster:
         control_nodes:
-          policy: majority_of_members
+          policy: status_of_members
           alerting: enabled_with_notification
           group_by: hostname
           match:
