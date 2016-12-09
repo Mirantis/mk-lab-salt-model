@@ -3,7 +3,6 @@ classes:
 - system.linux.system.repo.mos8
 - system.nova.compute.cluster
 - system.opencontrail.compute.cluster
-- system.ceilometer.compute.cluster
 - cluster.mk20_lab_advanced
 parameters:
   linux:
