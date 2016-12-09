@@ -13,7 +13,7 @@ classes:
 - system.keystone.client.service.nova
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
-- system.reclass.storage.system.openstack_compute_single
+- system.reclass.storage.system.openstack_compute_multi
 - system.reclass.storage.system.openstack_dashboard_single
 - system.reclass.storage.system.monitoring_service_single
 - cluster.mk20_lab_advanced
