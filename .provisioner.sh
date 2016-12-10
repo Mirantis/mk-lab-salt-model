@@ -7,12 +7,18 @@ if [[ $DEBUG =~ ^(True|true|1|yes)$ ]]; then
     set -x
 fi
 
-# source .kitchen.env and possibly others
-# shopt -u dotglob
-test -e /*.env && {
-  source /*.env
-}
+## Env Options
+options() {
+  export LC_ALL=C
+  SALT_OPTS="${SALT_OPTS:- --state-output=changes --state-verbose=false --retcode-passthrough --force-color -lerror}"
+  RECLASS_ROOT=${RECLASS_ROOT:-$(pwd)}
 
+  # source .kitchen.env and possibly others
+  # shopt -u dotglob
+  test -e /*.env && {
+    source /*.env
+  }
+}
 
 ## Functions
 log_info() {
@@ -23,26 +29,24 @@ log_err() {
     echo "[ERROR] $*" >&2
 }
 
-#_atexit() {
-#    RETVAL=$?
-#    trap true INT TERM EXIT
-#
-#    if [ $RETVAL -ne 0 ]; then
-#        log_err "Execution failed"
-#    else
-#        log_info "Execution successful"
-#    fi
-#
-#    return $RETVAL
-#}
+_atexit() {
+    RETVAL=$?
+    trap true INT TERM EXIT
+
+    if [ $RETVAL -ne 0 ]; then
+        log_err "Execution failed"
+    else
+        log_info "Execution successful"
+    fi
+
+    return $RETVAL
+}
 
 
 ## Main
-#trap _atexit INT TERM EXIT
-main() {
 
-  export LC_ALL=C
-
+# Kitchen provisioner bootstrap script
+kitchen_bootstrap() {
   set -e
 
   which salt-minion salt-master || {
@@ -50,10 +54,6 @@ main() {
     apt-get clean
     apt-get -qqq install --allow-change-held-packages --allow-unauthenticated -y salt-master salt-minion python-psutil
   }
-
-  ## Options
-  RECLASS_ROOT=${RECLASS_ROOT:-$(pwd)}
-  SALT_OPTS="${SALT_OPTS:- --state-output=changes --state-verbose=false --retcode-passthrough --force-color -lerror}"
 
 
   log_info "System configuration"
@@ -74,15 +74,23 @@ main() {
     rsync -avh --exclude workspace --exclude tmp --exclude temp \
       /tmp/reclass /srv/salt/
   #}
+}
 
+saltmaster_bootstrap() {
 
   log_info "Setting up Salt master, minion"
   pgrep salt-master | xargs -i{} sudo kill -9 {}
   pgrep salt-minion | xargs -i{} sudo kill -9 {}
   cd /srv/salt/reclass;
+
   export RECLASS_ADDRESS=${RECLASS_ADDRESS:-$(git remote get-url origin)}
   #HOSTNAME=$(${MASTER_HOSTNAME} | awk -F. '{print $1}')
   #DOMAIN=$(${MASTER_HOSTNAME}   | awk -F. '{print $ARGV[1..]}')
+
+
+  # ########################################
+  # TODO: bootstrap script to merge here
+  # ########################################
   test -e bootstrap.sh || \
     curl -skL "https://raw.githubusercontent.com/tcpcloud/salt-bootstrap-test/master/bootstrap.sh" > bootstrap.sh; chmod +x *.sh;
   test -e bootstrap.sh.lock || \
@@ -92,7 +100,10 @@ main() {
   log_info "Clean up generated"
   cd /srv/salt/reclass
   rm -rf /srv/salt/reclass/nodes/_generated/*
-  #rm  -f /srv/salt/reclass/nodes/${MASTER_HOSTNAME}.yml # new model uses ./control/cfg*.yml
+  test -e nodes/control && {
+    # if "cluster" setup is found, delete the duplicities
+    rm  -f /srv/salt/reclass/nodes/${MASTER_HOSTNAME}.yml
+  }
 
 
   log_info "Re/starting salt services"
@@ -103,6 +114,7 @@ main() {
 
 # Init salt master
 init_salt_master() {
+
   log_info "Runing saltmaster states"
   salt-call saltutil.sync_all
   if [[ $MASTER_INIT_STATES =~ ^(True|true|1|yes)$ ]]; then
@@ -128,6 +140,7 @@ init_salt_master() {
 
 
 function verify_salt_master() {
+
   log_info "Verify Salt master"
   reclass-salt -p ${MASTER_HOSTNAME}
   salt-call ${SALT_OPTS} --id=${MASTER_HOSTNAME} state.show_lowstate
@@ -138,22 +151,26 @@ function verify_salt_master() {
 
 
 function verify_salt_minions() {
+
   log_info "Verify nodes"
   NODES=$(ls /srv/salt/reclass/nodes/_generated)
   for node in ${NODES}; do
       node=$(basename $node .yml)
       log_info "\n\n-------------------------------------------------------------------------------------------------------"
       log_info "Verifying node ${node}"
-      reclass-salt -p ${node}
-      salt-call ${SALT_OPTS} --id=${node} state.show_lowstate
-      salt-call ${SALT_OPTS} --id=${node} grains.item roles
+      reclass-salt -p ${node} || break
+      salt-call ${SALT_OPTS} --id=${node} state.show_lowstate || break
+      salt-call ${SALT_OPTS} --id=${node} grains.item roles || break
   done
 }
 
 
 # detect if file is being sourced
 [[ "$0" != "$BASH_SOURCE"  ]] || {
-  main
+  #trap _atexit INT TERM EXIT
+  options
+  kitchen_bootstrap
+  saltmaster_bootstrap
   init_salt_master
   verify_salt_master
   verify_salt_minions
