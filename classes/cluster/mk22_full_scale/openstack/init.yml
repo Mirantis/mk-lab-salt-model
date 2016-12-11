@@ -9,6 +9,7 @@ parameters:
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
+    rabbitmq_openstack_catalog_password: workshop
     glance_version: ${_param:openstack_version}
     glance_service_host: ${_param:openstack_control_address}
     keystone_version: ${_param:openstack_version}
@@ -22,29 +23,40 @@ parameters:
     cinder_service_host: ${_param:openstack_control_address}
     ceilometer_graphite_publisher_host: 172.16.10.107
     ceilometer_graphite_publisher_port: 2013
+    murano_version: ${_param:openstack_version}
+    murano_service_host: ${_param:openstack_control_address}
     nova_version: ${_param:openstack_version}
     nova_service_host: ${_param:openstack_control_address}
     neutron_version: ${_param:openstack_version}
     neutron_service_host: ${_param:openstack_control_address}
+    sahara_version: ${_param:openstack_version}
+    sahara_service_host: ${_param:openstack_control_address}
     glusterfs_service_host: ${_param:openstack_control_address}
     mysql_admin_user: root
     mysql_admin_password: workshop
     mysql_cinder_password: workshop
+    mysql_designate_password: workshop
     mysql_ceilometer_password: workshop
     mysql_glance_password: workshop
     mysql_heat_password: workshop
     mysql_keystone_password: workshop
+    mysql_murano_password: workshop
     mysql_neutron_password: workshop
     mysql_nova_password: workshop
+    mysql_sahara_password: workshop
     keystone_service_token: workshop
     keystone_admin_password: workshop
     keystone_ceilometer_password: workshop
     keystone_cinder_password: workshop
+    keystone_designate_password: workshop
     keystone_glance_password: workshop
     keystone_heat_password: workshop
     keystone_keystone_password: workshop
+    keystone_murano_password: workshop
     keystone_neutron_password: workshop
     keystone_nova_password: workshop
+    keystone_sahara_password: workshop
+
     ceilometer_secret_key: workshop
     horizon_version: ${_param:openstack_version}
     horizon_secret_key: opaesee8Que2yahJoh9fo0eefo1Aeyo6ahyei8zeiboh3aeth5loth7ieNa5xi5e
