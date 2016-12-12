@@ -1,5 +1,6 @@
 classes:
 - service.heka.log_collector.single
+- system.heka.server
 parameters:
   heka:
     log_collector:

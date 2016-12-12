@@ -1,5 +1,6 @@
 classes:
 - service.heka.ceilometer_collector.single
+- system.heka.server
 parameters:
   heka:
     ceilometer_collector:
