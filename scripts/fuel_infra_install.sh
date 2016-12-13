@@ -13,4 +13,4 @@ salt '*' saltutil.sync_all
 sleep 5
 
 # Bootstrap all nodes
-salt "*" state.sls linux,openssh,salt.minion,ntp
+salt "*" state.sls linux,openssh,salt.minion,ntp,rsyslog
