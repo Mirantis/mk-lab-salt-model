@@ -11,4 +11,12 @@ salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provisi
 # Reboot compute nodes
 salt "cmp*" system.reboot
 
-sleep 30
+while true; do
+	salt '*' test.ping | grep -q Minion
+	if [ $? -ne 0 ]; then
+		break
+	fi
+	echo -n "Waiting for compute nodes to answer salt pings ..."
+	sleep 10
+	echo
+done
