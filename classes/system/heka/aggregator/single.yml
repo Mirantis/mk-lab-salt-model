@@ -1,5 +1,6 @@
 classes:
 - service.heka.aggregator.single
+- system.heka.server
 parameters:
   _param:
     nagios_default_host_alarm_clusters: 00-clusters

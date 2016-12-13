@@ -1,5 +1,6 @@
 classes:
 - service.heka.remote_collector.single
+- system.heka.server
 parameters:
   heka:
     remote_collector:

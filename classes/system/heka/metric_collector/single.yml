@@ -1,5 +1,6 @@
 classes:
 - service.heka.metric_collector.single
+- system.heka.server
 parameters:
   heka:
     metric_collector:
