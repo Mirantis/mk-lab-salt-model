@@ -20,4 +20,4 @@ salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provisi
 salt "cmp*" system.reboot
 
 # Wait for all compute nodes in current deployment to be available
-wait_for $(salt-call pillar.get linux:network:host --out key | sed 's/:.*//' | grep 'cmp[0-9]' | wc -l) "cmp*"
+wait_for $(get_nodes_names "cmp[0-9]" | wc -l) "cmp*"
