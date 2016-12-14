@@ -37,6 +37,10 @@ parameters:
         smtp:
           host: ${_param:nagios_notification_smtp_server}
           from: ${_param:nagios_notification_from}
+          service_subject: >-
+                ** $NOTIFICATIONTYPE$ Env:$_HOSTENV$ Service: $HOSTDISPLAYNAME$/$SERVICEDESC$ is $SERVICESTATE$ **
+          host_subject: >-
+                ** $NOTIFICATIONTYPE$ Env:$_HOSTENV$ Host: $HOSTDISPLAYNAME$ is $HOSTSTATE$ **
       dynamic:
         enabled: true
         grain_hostname: 'host'
@@ -110,6 +114,7 @@ parameters:
             notification_period: 24x7
             notification_options: d,u,r
             contact_groups: Operator
+            _env: ${_param:stacklight_environment}
             register: 0
         services:
           generic_service_tpl:
