@@ -1,0 +1,36 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.linux.system.repo.tcp_extra
+- system.linux.network.interface.ovs_lab_dvr
+- system.neutron.gateway.cluster
+- cluster.mk24-qa-bare-metal-01
+parameters:
+  _param:
+    primary_interface: eth1
+    tenant_interface: eth2
+    external_interface: eth3
+    interface_mtu: 9000
+    neutron_gateway_dvr: True
+    neutron_gateway_agent_mode: dvr_snat
+  neutron:
+    gateway:
+      enabled: True
+      version: mitaka
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      local_ip: 192.168.20.20 # br-mesh ip address
+      dvr: True
+      agent_mode: dvr_snat
+      metadata:
+        host: 127.0.0.1
+        password: pass
+      backend:
+        engine: ml2
+        tenant_network_types: "flat,vxlan"
+        mechanism:
+          ovs:
+            driver: openvswitch
