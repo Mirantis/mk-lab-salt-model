@@ -7,6 +7,7 @@ classes:
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.cluster
+- system.influxdb.database.ceilometer
 - cluster.mk22_lab_advanced
 - system.haproxy.proxy.listen.stacklight.elasticsearch
 - system.haproxy.proxy.listen.stacklight.kibana
