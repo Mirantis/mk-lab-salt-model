@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Function used to return list of node names according
+# to given string parameter match criteria
+function get_nodes_names {
+	# Enforce 1st parameter availability
+	if [ -z "$1" ]; then
+		match="[0-9]"
+	else
+		match="$1"
+	fi
+	salt-call pillar.get linux:network:host --out key | sed 's/:.*//' | grep "$match"
+}
+
 # Function used to wait for node availability
 # (aka answering to salt pings)
 # 1st parameter (mandatory) is number of nodes to wait for

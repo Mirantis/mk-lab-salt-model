@@ -18,4 +18,4 @@ salt-call --version
 salt '*' test.version
 
 # Wait for all nodes in current deployment to be available
-wait_for $(salt-call pillar.get linux:network:host --out key | sed 's/:.*//' | grep '[0-9]' | wc -l)
+wait_for $(get_nodes_names | wc -l)
