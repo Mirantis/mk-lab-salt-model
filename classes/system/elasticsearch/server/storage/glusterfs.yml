@@ -1,0 +1,37 @@
+classes:
+- service.glusterfs.server
+- service.glusterfs.client
+parameters:
+  elasticsearch:
+    server:
+      snapshot:
+        repo:
+          path: /var/lib/elasticsearch/repo
+  glusterfs:
+    server:
+      peers:
+        - ${_param:cluster_node01_address}
+        - ${_param:cluster_node02_address}
+        - ${_param:cluster_node03_address}
+      volumes:
+        elasticrepo:
+          storage: /srv/glusterfs/elasticrepo
+          replica: 3
+          bricks:
+            - ${_param:cluster_node01_address}:/srv/glusterfs/elasticrepo
+            - ${_param:cluster_node02_address}:/srv/glusterfs/elasticrepo
+            - ${_param:cluster_node03_address}:/srv/glusterfs/elasticrepo
+          options:
+            cluster.readdir-optimize: On
+            cluster.lookup-optimize: On
+            nfs.disable: On
+            network.remote-dio: On
+            diagnostics.client-log-level: WARNING
+            diagnostics.brick-log-level: WARNING
+    client:
+      volumes:
+        elasticrepo:
+          path: /var/lib/elasticsearch/repo
+          server: ${_param:cluster_node01_address}
+          user: elasticsearch
+          group: elasticsearch
