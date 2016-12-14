@@ -2,7 +2,6 @@
 # https://docs.google.com/spreadsheets/d/17jhct4awbaoXVKp7_SdCbS-DBlikB6oEMb3gzLI4By8/edit#gid=0
 classes:
 - system.linux.system.single
-- system.linux.system.repo.saltstack_2016_3
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.qa_scale
 - cluster.mk22_scale_mirantis.fuel
