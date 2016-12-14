@@ -1,6 +1,4 @@
 parameters:
-  _param:
-    stacklight_environment: ${_param:cluster_domain}
   heka:
     server:
       extra_fields:

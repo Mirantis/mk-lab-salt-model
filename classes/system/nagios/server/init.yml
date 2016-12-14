@@ -3,7 +3,6 @@ parameters:
     nagios_notification_email: root@localhost
     nagios_host_dimension_key: nagios_host
     nagios_default_host_alarm_clusters: 00-clusters
-    stacklight_environment: ${_param:cluster_domain}
   nagios :
     server:
       enabled: true
