@@ -1,6 +1,0 @@
-classes:
-- service.cinder.volume.single
-parameters:
-  cinder:
-    controller:
-      enabled: false

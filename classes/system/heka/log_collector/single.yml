@@ -1,8 +1,0 @@
-classes:
-- service.heka.log_collector.single
-- system.heka.server
-parameters:
-  heka:
-    log_collector:
-      elasticsearch_host: ${_param:heka_elasticsearch_host}
-      elasticsearch_port: 9200

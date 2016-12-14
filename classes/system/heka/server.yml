@@ -1,6 +1,0 @@
-parameters:
-  heka:
-    server:
-      extra_fields:
-        environment_label: ${_param:stacklight_environment}
-
