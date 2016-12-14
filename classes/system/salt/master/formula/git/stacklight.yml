@@ -71,6 +71,9 @@ parameters:
               address: '${_param:salt_master_environment_repository}/salt-formula-redis.git'
               revision: ${_param:salt_master_environment_revision}
             rsyslog:
+              module:
+                rsyslog_util.py:
+                  enabled: true
               source: git
               address: '${_param:salt_master_environment_repository}/salt-formula-rsyslog.git'
               revision: ${_param:salt_master_environment_revision}

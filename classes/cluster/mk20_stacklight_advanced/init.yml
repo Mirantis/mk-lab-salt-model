@@ -1,5 +1,6 @@
 classes:
 - system.linux.system.single
+- system.rsyslog.client.single
 - cluster.mk20_stacklight_advanced.fuel
 - cluster.mk20_stacklight_advanced.openstack
 - cluster.mk20_stacklight_advanced.stacklight
