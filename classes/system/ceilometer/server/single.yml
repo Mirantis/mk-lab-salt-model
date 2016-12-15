@@ -8,7 +8,7 @@ parameters:
           host: ${_param:stacklight_monitor_node01_address}
           port: 8086
           user: ceilometer
-          password: ${_param:stacklight_influxdb_password}
+          password: ${_param:ceilometer_influxdb_password}
           database: ceilometer
         elasticsearch:
           enabled: true

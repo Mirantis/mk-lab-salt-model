@@ -7,7 +7,7 @@ parameters:
       enabled: true
       influxdb_database: ceilometer
       influxdb_host: ${_param:stacklight_monitor_node01_address}
-      influxdb_password: ${_param:_param:influxdb_password}
+      influxdb_password: ${_param:ceilometer_influxdb_password}
       influxdb_port: 8086
       influxdb_username: ceilometer
       resource_decoding: false

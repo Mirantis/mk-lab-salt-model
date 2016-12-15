@@ -14,7 +14,7 @@ parameters:
         ceilometer:
           enabled: true
           name: ceilometer
-          password: ${_param:influxdb_stacklight_password}
+          password: ${_param:ceilometer_influxdb_password}
       grant:
         grant_ceilometer_all:
           enabled: true
