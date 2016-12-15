@@ -4,12 +4,6 @@ parameters:
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_host: _
-    opencontrail_version: 3.0
-    opencontrail_compute_dns: 8.8.8.8
-    opencontrail_compute_gateway: 172.16.10.1
-    opencontrail_compute_address: ${_param:single_address}
-    opencontrail_compute_iface: eth1
-    opencontrail_stats_password: contrail123
     neutron_control_dvr: True
     neutron_tenant_network_types: "flat,vxlan"
     neutron_l3_ha: False
