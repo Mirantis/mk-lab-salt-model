@@ -2,6 +2,8 @@ classes:
 - system.linux.system.single
 - cluster.mk22_lab_dvr.fuel
 - cluster.mk22_lab_dvr.openstack
+- cluster.mk22_lab_dvr.stacklight
+- cluster.mk22_lab_dvr.stacklight.client
 parameters:
   _param:
     cluster_domain: mk22-lab-dvr.local
@@ -16,6 +18,11 @@ parameters:
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
     openstack_gateway_address: 172.16.10.110
+    # stacklight service addresses
+    stacklight_monitor_address: 172.16.10.253
+    stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_monitor_node02_address: 172.16.10.108
+    stacklight_monitor_node03_address: 172.16.10.109
   linux:
     network:
       host:

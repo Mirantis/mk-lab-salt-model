@@ -1,0 +1,14 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.grafana_web
+- system.nginx.server.proxy.kibana_web
+- system.nginx.server.proxy.nagios_web
+- system.salt.minion.pki.certificate
+- cluster.mk22_lab_dvr
+parameters:
+  _param:
+    nginx_proxy_ssl:
+      enabled: true
+      authority: mk_lab_ca
+      engine: salt
+      mode: secure
