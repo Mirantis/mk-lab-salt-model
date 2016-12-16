@@ -14,7 +14,14 @@ salt "cmp*" state.apply
 salt "cmp*" state.apply
 
 # Provision opencontrail virtual routers
-salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provision_vrouter.py --host_name cmp01 --host_ip 172.16.10.105 --api_server_ip 172.16.10.254 --oper add --admin_user admin --admin_password workshop --admin_tenant_name admin"
+hosts=(`salt-call pillar.get linux:network:host | egrep 'cmp0.*:' | sed -e 's/  *//' -e 's/://'`)
+vip=`salt-call pillar.get _param:cluster_vip_address | grep '^ ' | sed -e 's/  *//'`
+nb=`expr ${#hosts[@]} - 1`
+for i in $(seq 0 $nb); do
+	h=${hosts[$i]}
+	ip=`salt-call pillar.get linux:network:host:${h}:address | grep '^ ' | sed -e 's/  *//'`
+	salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provision_vrouter.py --host_name $h --host_ip $ip --api_server_ip $vip --oper add --admin_user admin --admin_password workshop --admin_tenant_name admin"
+done
 
 # Reboot compute nodes
 salt "cmp*" system.reboot
