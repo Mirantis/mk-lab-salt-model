@@ -57,17 +57,26 @@ parameters:
   keystone:
     server:
       admin_email: ${_param:admin_email}
-      notification: true
+      notification:
+        topics:
+          - notifications
+          - ceilometer_notifications
   glance:
     server:
       storage:
         engine: file
       images: []
       workers: 1
-      notification: true
+      notification:
+        topics:
+          - notifications
+          - ceilometer_notifications
   heat:
     server:
-      notification: true
+      notification:
+        topics:
+          - notifications
+          - ceilometer_notifications
   nova:
     controller:
       networking: contrail
@@ -84,7 +93,10 @@ parameters:
         - host: 127.0.0.1
           port: 11211
       workers: 1
-      notification: true
+      notification:
+        topics:
+          - notifications
+          - ceilometer_notifications
   neutron:
     server:
       plugin: contrail
@@ -95,6 +107,17 @@ parameters:
       notification: true
   cinder:
     volume:
-      notification: true
+      notification:
+        topics:
+          - notifications
+          - ceilometer_notifications
     controller:
-      notification: true
+      notification:
+        topics:
+          - notifications
+          - ceilometer_notifications
+  ceilometer:
+    server:
+      notification:
+        topics:
+          - ceilometer_notifications
