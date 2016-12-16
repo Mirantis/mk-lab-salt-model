@@ -1,3 +1,5 @@
+classes:
+- system.linux.system.repo.saltstack_2016_3_xenial
 parameters:
   _param:
     salt_control_trusty_image: http://apt.tcpcloud.eu/images/ubuntu-14-04-x64-201608231134.qcow2

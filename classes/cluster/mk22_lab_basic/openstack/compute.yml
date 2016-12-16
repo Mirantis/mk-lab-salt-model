@@ -9,8 +9,16 @@ classes:
 - cluster.mk22_lab_basic
 parameters:
   _param:
-    opencontrail_compute_gateway: 172.16.10.1
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
     opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_gateway: 172.16.10.1
     opencontrail_compute_iface: eth1
   linux:
     network:
