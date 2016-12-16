@@ -5,6 +5,7 @@ classes:
 - system.elasticsearch.server.single
 - system.elasticsearch.server.curator
 - system.influxdb.server.single
+- system.influxdb.database.ceilometer
 - system.kibana.server.single
 - system.grafana.server.single
 - system.nagios.server.single

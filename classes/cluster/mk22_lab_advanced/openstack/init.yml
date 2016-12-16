@@ -30,7 +30,9 @@ parameters:
     heat_service_host: ${_param:cluster_vip_address}
     heat_domain_admin_password: workshop
     ceilometer_version: ${_param:openstack_version}
-    ceilometer_service_host: 172.16.10.108
+    ceilometer_service_host: ${_param:cluster_vip_address}
+    aodh_version: ${_param:openstack_version}
+    aodh_service_host: ${_param:cluster_vip_address}
     cinder_version: ${_param:openstack_version}
     cinder_service_host: ${_param:cluster_vip_address}
     ceilometer_graphite_publisher_host: 172.16.10.107
@@ -43,6 +45,7 @@ parameters:
     glusterfs_service_host: ${_param:cluster_vip_address}
     mysql_admin_user: root
     mysql_admin_password: workshop
+    mysql_aodh_password: workshop
     mysql_cinder_password: workshop
     mysql_ceilometer_password: workshop
     mysql_glance_password: workshop
@@ -53,6 +56,7 @@ parameters:
     mysql_nova_password: workshop
     keystone_service_token: workshop
     keystone_admin_password: workshop
+    keystone_aodh_password: workshop
     keystone_ceilometer_password: workshop
     keystone_cinder_password: workshop
     keystone_glance_password: workshop
@@ -70,6 +74,7 @@ parameters:
     mongodb_ceilometer_password: cloudlab
     mongodb_admin_password: cloudlab
     mongodb_shared_key: eoTh1AwahlahqueingeejooLughah4tei9feing0eeVaephooDi2li1TaeV1ooth
+    ceilometer_influxdb_password: lmapass
   linux:
     network:
       host:

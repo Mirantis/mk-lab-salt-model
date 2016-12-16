@@ -1,0 +1,23 @@
+parameters:
+  influxdb:
+    server:
+      database:
+        ceilometer:
+          enabled: true
+          name: ceilometer
+          retention_policy:
+            - name: ceilometer
+              is_default: true
+              duration: 30d
+              replication: 1
+      user:
+        ceilometer:
+          enabled: true
+          name: ceilometer
+          password: ${_param:ceilometer_influxdb_password}
+      grant:
+        grant_ceilometer_all:
+          enabled: true
+          user: ceilometer
+          database: ceilometer
+          privilege: all
