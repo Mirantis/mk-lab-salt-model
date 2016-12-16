@@ -4,6 +4,9 @@ parameters:
       environment:
         prd:
           formula:
+            aodh:
+              source: pkg
+              name: salt-formula-aodh
             ceilometer:
               source: pkg
               name: salt-formula-ceilometer
