@@ -16,9 +16,6 @@ fi
 salt-key
 reclass-salt --top
 
-# Verify that Salt minions are responding and the same version as master
+# Verify that Salt minions are responding and have the same version as the master
 salt-call --version
 salt '*' test.version
-
-# Wait for all nodes in current deployment to be available
-wait_for $(get_nodes_names | wc -l)
