@@ -1,0 +1,54 @@
+#language: ruby
+
+#rvm:
+#  - 2.2.4
+
+dist: trusty
+sudo: required
+
+#bundler_args: --without='vagrant'
+
+
+# disable the default submodule logic
+git:
+  submodules: false
+
+before_install:
+  - sed -i 's,https://\([.a-z0-9_-]*\)/\(.*\),git@\1:\2,' .gitmodules
+  - git submodule update --init --recursive
+
+
+install:
+  - shopt -u dotglob
+  - source ${TRAVIS_BRANCH}.env || source *.env || echo "No .env was found"
+# DEFAULTS
+  - export MASTER_INIT_STATES=0
+  - export CONFIG=$(basename $(find nodes -name "*.yml" -type f -printf "\n%AD %AT %p" | awk '/nodes/{print $3}'| grep mk22-scale |head -n1) .yml)
+  - export MINION_ID=${MINION_ID:-$CONFIG}
+  - export MASTER_HOSTNAME=${MASTER_HOSTNAME:-$CONFIG}
+  - export FORMULA_SOURCE=git
+  - export FORMULA_BRANCH=master
+  - export SUDO="sudo -E"
+  - export DEBUG=False
+# CI WORKAROUNDS...
+  - export RECLASS_BRANCH=$TRAVIS_BRANCH
+  - export RECLASS_ADRESS=file://$PWD
+  - sed -ie "s#\(reclass_data_revision.\).*#\1 $RECLASS_BRANCH#" $(find nodes -name ${MASTER_HOSTNAME}.yml|tail -n1)
+  - git commit -am "Fake branch update"
+  - sudo mkdir /srv/salt; sudo cp -a $PWD /srv/salt/reclass
+# BOOTSTRAP
+# - sudo ./provisioner.sh
+# or:
+  - source .provisioner.sh
+  - options
+  - system_config
+  - saltmaster_bootstrap
+  - init_salt_master
+
+script:
+  - set +x
+  - verify_salt_master
+  - verify_salt_minions || exit 1
+
+after_failure:
+  - for i in ls -lta /srv/salt/reclass/*.out; do echo -e "\n\n$i:";tail -n20 $i; done

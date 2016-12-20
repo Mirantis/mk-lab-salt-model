@@ -6,9 +6,10 @@ driver:
   #<#%= ENV['SALT_MODEL_DOMAIN'] || `grep domain_name cookiecutter.json |awk -F'"' '{print $4}'` %>
   volume:
     - <%= ENV['PWD'] %>:/tmp/reclass
+  log_level: info
 
 platforms:
-  <% `ls nodes/control|xargs -I{} basename {} .yml`.split().each do |cfg| %>
+  <% `find nodes -type f | xargs -I{} basename {} .yml`.split().each do |cfg| %>
   <% model=cfg.split('.')[1] %>
   - name: <%= model %>
     driver_config:
@@ -21,7 +22,6 @@ platforms:
             export MASTER_INIT_STATES=0;\n
             export FORMULA_SOURCE=git;\n
             export FORMULA_BRANCH=master;\n
-            export APT_REPOSITORY_TAGS='main tcp tcp-salt';\n
           " > kitchen.env
         - ln -s /tmp/reclass /tmp/kitchen
   <% end %>
@@ -29,6 +29,7 @@ platforms:
 provisioner:
   name: shell
   script: .provisioner.sh
+  log_level: info
 
 suites:
   - name: reclass
