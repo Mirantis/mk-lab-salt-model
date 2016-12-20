@@ -26,6 +26,7 @@ salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; cinder list"
 
 # Install neutron service
 salt -C 'I@neutron:server' state.sls neutron -b 1
+salt -C 'I@neutron:gateway' state.sls neutron
 salt -C 'I@keystone:server' cmd.run ". /root/keystonerc; neutron agent-list"
 
 # Install heat service
