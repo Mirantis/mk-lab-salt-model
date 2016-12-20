@@ -23,7 +23,7 @@ install:
   - source ${TRAVIS_BRANCH}.env || source *.env || echo "No .env was found"
 # DEFAULTS
   - export MASTER_INIT_STATES=0
-  - export CONFIG=$(basename $(find nodes -name "*.yml" -type f -printf "\n%AD %AT %p" | awk '/nodes/{print $3}'| grep mk22-scale |head -n1) .yml)
+  - export CONFIG=$(basename $(find nodes -name "*.yml" -type f -printf "\n%AD %AT %p" | awk '/nodes/{print $3}'| grep mk22-scale | head -n1) .yml)
   - export MINION_ID=${MINION_ID:-$CONFIG}
   - export MASTER_HOSTNAME=${MASTER_HOSTNAME:-$CONFIG}
   - export FORMULA_SOURCE=git
