@@ -1,5 +1,5 @@
 #!/bin/bash -x
-exec > >(tee -i /tmp/$(basename $0 .sh)_$(date '+%Y-%m-%d_%H-%M-%S').log) 2>&1
+exec > >(tee -i /tmp/"$(basename "$0" .sh)"_"$(date '+%Y-%m-%d_%H-%M-%S')".log) 2>&1
 
 # Install the StackLight backends
 salt -C 'I@elasticsearch:server' state.sls elasticsearch.server -b 1

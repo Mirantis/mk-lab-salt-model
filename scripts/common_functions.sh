@@ -23,7 +23,7 @@ function wait_for {
 		echo "wait_for function requires at least 1 parameter"
 		return 1
 	fi
-	if [ -n "$(echo $1 | sed -e 's/[1-9][0-9]*//')" ]; then
+	if [ -n "${1/[1-9][0-9]*/}" ]; then
 		echo "wait_for function requires 1st parameter to be number greater than 0 ($1 invalid)"
 		return 1
 	fi
@@ -31,13 +31,13 @@ function wait_for {
 	nodes=${2:-"*"}
 	# Default max waiting time is 5mn
 	MAX_WAIT=${MAX_WAIT:-300}
-	while [ true ]; do
-		nb_nodes=$(salt "$nodes" test.ping --out txt | grep True | wc -l)
-		if [ -n "$nb_nodes" ] && [ $nb_nodes -eq $wanted ]; then
+	while true; do
+        nb_nodes=$(salt "$nodes" test.ping --out txt | grep -c True)
+		if [ -n "$nb_nodes" ] && [ "$nb_nodes" -eq "$wanted" ]; then
 			echo "All nodes are now answering to salt pings"
 			break
 		fi
-		MAX_WAIT=$(( $MAX_WAIT - 15 ))
+		MAX_WAIT=$(( MAX_WAIT - 15 ))
 		if [ $MAX_WAIT -le 0 ]; then
 			echo "Only $nb_nodes answering to salt pings out of $wanted after maximum timeout"
 			return 2
