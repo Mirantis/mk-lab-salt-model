@@ -14,8 +14,8 @@ git:
   submodules: false
 
 before_install:
-  - test -e .gitmodules && sed -i 's,https://\([.a-z0-9_-]*\)/\(.*\),git@\1:\2,' .gitmodules
-  - test -e .gitmodules && git submodule update --init --recursive
+  - test ! -e .gitmodules || sed -i 's,https://\([.a-z0-9_-]*\)/\(.*\),git@\1:\2,' .gitmodules
+  - test ! -e .gitmodules || git submodule update --init --recursive
 
 
 install:
