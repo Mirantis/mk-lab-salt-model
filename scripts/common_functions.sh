@@ -23,7 +23,7 @@ function wait_for {
 		echo "wait_for function requires at least 1 parameter"
 		return 1
 	fi
-	if [ -n "${1/[1-9][0-9]*/}" ]; then
+	if [ "$1" -lt "1" ]; then
 		echo "wait_for function requires 1st parameter to be number greater than 0 ($1 invalid)"
 		return 1
 	fi
