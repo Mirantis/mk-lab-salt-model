@@ -65,7 +65,6 @@ parameters:
             params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
   heat:
     server:
-      notification: true
       stack_domain_admin:
         name: heat_domain_admin
         password: ${_param:heat_domain_admin_password}
