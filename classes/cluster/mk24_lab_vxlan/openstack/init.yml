@@ -10,7 +10,9 @@ parameters:
     neutron_global_physnet_mtu: 1500
     neutron_external_mtu: 1500
     neutron_gateway_dvr: False
-    neutron_compute_dvr: True
+    neutron_compute_dvr: False
+    neutron_compute_agent_mode: legacy
+    neutron_gateway_agent_mode: legacy
     neutron_compute_external_access: True
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
