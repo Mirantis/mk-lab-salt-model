@@ -19,8 +19,8 @@ classes:
 - cluster.mk24_lab_vxlan
 parameters:
   _param:
-    reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
-    reclass_data_revision: vxlan
+    reclass_data_repository: "git@github.com:TatyankaLeontovich/mk-lab-salt-model.git"
+    reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
     reclass_config_master: 192.168.10.100

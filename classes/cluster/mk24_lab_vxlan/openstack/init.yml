@@ -4,7 +4,7 @@ parameters:
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_host: _
-    neutron_control_dvr: True
+    neutron_control_dvr: False
     neutron_tenant_network_types: "flat,vxlan"
     neutron_l3_ha: False
     neutron_global_physnet_mtu: 1500
