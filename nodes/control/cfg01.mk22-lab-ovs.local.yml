@@ -1,0 +1,11 @@
+classes:
+- cluster.mk22_lab_ovs.fuel.config
+- cluster.mk22_lab_ovs.openstack.proxy
+parameters:
+  _param:
+    linux_system_codename: xenial
+    reclass_data_revision: master
+  linux:
+    system:
+      name: cfg01
+      domain: mk22-lab-ovs.local
