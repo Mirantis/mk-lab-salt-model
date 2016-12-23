@@ -56,13 +56,13 @@ parameters:
           params:
             single_address: 172.16.10.105
             tenant_address: 10.1.0.105
-            external_address: 100.16.0.105
-        openstack_compute_node02: 
+            external_address: 10.16.0.105
+        openstack_compute_node02:
           params:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
-            external_address: 100.16.0.106
+            external_address: 10.16.0.106
         openstack_gateway_node01:
           params:
             tenant_address: 10.1.0.110
-            external_address: 100.16.0.110
+            external_address: 10.16.0.110
