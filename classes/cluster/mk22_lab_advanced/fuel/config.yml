@@ -3,7 +3,7 @@ classes:
 - system.linux.system.single
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
-- system.salt.master.pkg
+- system.salt.master.git
 - system.reclass.storage.salt
 - system.salt.minion.pki.authority
 - system.salt.minion.pki.certificate
