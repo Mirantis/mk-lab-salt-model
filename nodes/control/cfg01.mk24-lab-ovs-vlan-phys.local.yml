@@ -1,0 +1,19 @@
+classes:
+- cluster.mk24-lab-ovs-vlan-phys.fuel.config
+parameters:
+  _param:
+    salt_master_base_environment: prd
+    linux_system_codename: xenial
+  linux:
+    system:
+      #name: cfg01
+      name: kvm01
+      domain: mk24-lab-ovs-vlan-phys.local
+salt:
+  master:
+    accept_policy: open_mode
+    source:
+      engine: pkg
+  minion:
+    source:
+      engine: pkg

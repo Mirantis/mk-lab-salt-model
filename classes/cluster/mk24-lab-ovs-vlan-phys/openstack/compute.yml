@@ -1,0 +1,45 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.linux.system.repo.saltstack_2016_3_trusty
+- system.nova.compute.cluster
+- system.neutron.compute.cluster
+- cluster.mk24-lab-ovs-vlan-phys
+parameters:
+  _param:
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:control_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+    primary_interface: eth1
+    external_interface: eth3
+    interface_mtu: 9000
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}
+  linux:
+    network:
+      interface:
+        p4p2:
+          enabled: true
+          type: slave
+          mtu: 9000
+          master: bond0
+        bond0:
+          enabled: true
+          type: bond
+          use_interfaces:
+          - p4p2
+          slaves: p4p2
+          mode: active-backup
