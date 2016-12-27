@@ -23,6 +23,12 @@ parameters:
     nagios_notification_from: 'nagios@localhost'
     nagios_notification_email: 'root@localhost'
     stacklight_environment: ${_param:cluster_domain}
+  elasticsearch:
+    server:
+      script:
+        engine:
+          groovy:
+            update: true
   linux:
     network:
       host:
