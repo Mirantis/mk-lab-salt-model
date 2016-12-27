@@ -1,5 +1,6 @@
 classes:
 - system.influxdb.server.single
+- system.linux.system.repo.saltstack_2016_3_xenial
 - cluster.mk24-lab-ovs-vlan-phys
 parameters:
   _param:

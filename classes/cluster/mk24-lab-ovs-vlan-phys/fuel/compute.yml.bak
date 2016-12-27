@@ -1,6 +1,7 @@
 classes:
 - system.salt.control.virt
 - system.salt.control.cluster.openstack_control_cluster
+- system.salt.control.cluster.openstack_gateway_single
 - system.salt.control.cluster.openstack_proxy_cluster
 - system.salt.control.cluster.openstack_database_cluster
 - system.salt.control.cluster.openstack_message_queue_cluster

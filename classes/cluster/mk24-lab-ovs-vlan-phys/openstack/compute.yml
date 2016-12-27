@@ -15,8 +15,8 @@ parameters:
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
-    primary_interface: eth1
-    external_interface: eth3
+    #primary_interface: eth1
+    #external_interface: eth3
     interface_mtu: 9000
   nova:
     compute:
@@ -25,9 +25,9 @@ parameters:
         driver: messagingv2
       message_queue:
         members:
-          - host: ${_param:openstack_control_node01_address}
-          - host: ${_param:openstack_control_node02_address}
-          - host: ${_param:openstack_control_node03_address}
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
   linux:
     network:
       interface:

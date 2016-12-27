@@ -10,3 +10,7 @@ parameters:
     network:
       interface:
         eth1: ${_param:linux_single_interface}
+    system:
+      repo:
+        tcpcloud_openstack:
+          source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty

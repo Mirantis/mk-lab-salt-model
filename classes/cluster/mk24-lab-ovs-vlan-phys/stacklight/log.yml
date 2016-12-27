@@ -23,3 +23,6 @@ parameters:
     server:
       master: true
       data: true
+  haproxy:
+    proxy:
+      enabled: true
