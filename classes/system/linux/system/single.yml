@@ -10,8 +10,8 @@ parameters:
       package:
         python-msgpack:
           version: latest
-        cloud-init:
-          version: purged
+#        cloud-init:
+#          version: purged
       kernel:
         sysctl:
           net.ipv4.tcp_keepalive_intvl: 3
