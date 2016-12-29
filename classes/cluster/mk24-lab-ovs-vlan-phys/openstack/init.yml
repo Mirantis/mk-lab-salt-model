@@ -36,7 +36,7 @@ parameters:
     nova_version: ${_param:openstack_version}
     nova_service_host: ${_param:openstack_control_address}
     neutron_version: ${_param:openstack_version}
-    neutron_service_host: ${_param:opencontrail_control_address}
+    neutron_service_host: ${_param:openstack_control_address}
     glusterfs_service_host: ${_param:openstack_control_address}
     metadata_password: password
     mysql_admin_user: root

@@ -19,8 +19,6 @@ parameters:
     fuel_config_address: 10.167.4.90
     fuel_config_deploy_address: 172.18.173.112
 
-    openstack_gateway_address: 172.18.173.97
-
     fuel_compute_node01_deploy_address: 172.18.173.112
     fuel_compute_node02_deploy_address: 172.18.173.113
     fuel_compute_node03_deploy_address: 172.18.173.114
@@ -67,15 +65,6 @@ parameters:
     openstack_message_queue_node01_address: 10.167.4.41
     openstack_message_queue_node02_address: 10.167.4.42
     openstack_message_queue_node03_address: 10.167.4.43
-    # opencontrail service addresses
-    opencontrail_analytics_address: 10.167.4.30
-    opencontrail_analytics_node01_address: 10.167.4.31
-    opencontrail_analytics_node02_address: 10.167.4.32
-    opencontrail_analytics_node03_address: 10.167.4.33
-    opencontrail_control_address: 10.167.4.31
-    opencontrail_control_node01_address: 10.167.4.21
-    opencontrail_control_node02_address: 10.167.4.22
-    opencontrail_control_node03_address: 10.167.4.23
     # stacklight service addresses
     stacklight_monitor_address: 10.167.4.70
     stacklight_monitor_node01_address: 10.167.4.71
@@ -95,6 +84,8 @@ parameters:
     #openstack_compute_node03_single_address: 10.167.4.103
     #openstack_compute_node04_single_address: 10.167.4.104
     #openstack_compute_node05_single_address: 10.167.4.105
+
+    openstack_gateway_address: 10.167.4.253
 
     # Interface definitions
     linux_dhcp_interface:

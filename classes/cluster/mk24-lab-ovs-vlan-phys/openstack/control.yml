@@ -61,6 +61,10 @@ parameters:
     server:
       backend:
         tenant_vlan_range: "110:150"
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
   nova:
     controller:
       networking: dvr
@@ -91,12 +95,23 @@ parameters:
       notification: true
   cinder:
     volume:
-      notification: true
-    controller:
+      enabled: false
+      identity:
+        region: ${_param:openstack_region}
       notification: true
       database:
         host: ${_param:openstack_database_address}
-
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+    controller:
+      enabled: true
+      identity:
+        region: ${_param:openstack_region}
+      notification: true
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
   heat:
     server:
       database:

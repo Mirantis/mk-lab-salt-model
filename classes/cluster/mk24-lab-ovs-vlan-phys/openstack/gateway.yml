@@ -10,3 +10,28 @@ parameters:
     neutron_gateway_dvr: True
     neutron_gateway_agent_mode: dvr_snat
     cluster_vip_address: ${_param:openstack_control_address}
+
+  neutron:
+    gateway:
+      local_ip: ${_param:single_address}
+      backend:
+        tenant_vlan_range: "110:150"
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+  linux:
+    network:
+      interface:
+        p4p2:
+          enabled: true
+          type: slave
+          mtu: 9000
+          master: bond0
+        bond0:
+          enabled: true
+          type: bond
+          use_interfaces:
+          - p4p2
+          slaves: p4p2
+          mode: active-backup

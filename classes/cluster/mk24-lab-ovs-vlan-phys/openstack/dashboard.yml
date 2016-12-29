@@ -2,6 +2,7 @@ classes:
 - system.linux.system.repo.mos9
 - system.linux.system.repo.tcp_mk20
 - system.horizon.server.single
+- system.linux.system.repo.saltstack_2016_3_trusty
 - cluster.mk24-lab-ovs-vlan-phys
 parameters:
   _param:

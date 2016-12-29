@@ -3,10 +3,10 @@ classes:
 - system.linux.system.repo.tcp_extra
 - system.linux.system.repo.saltstack_2016_3_trusty
 - system.nginx.server.single
-- system.nginx.server.proxy.opencontrail_web
 - system.nginx.server.proxy.openstack_api
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
+- service.apache.server.single  # apache is required for horizon
 - system.horizon.server.single
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
@@ -28,3 +28,11 @@ parameters:
     network:
       interface:
         eth1: ${_param:linux_single_interface}
+    system:
+      repo:
+        tcpcloud_openstack:
+          source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty
+  apache:
+    server:
+      modules:
+      - wsgi

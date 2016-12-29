@@ -10,6 +10,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
+- system.galera.server.database.neutron
 - cluster.mk24-lab-ovs-vlan-phys
 parameters:
   _param:

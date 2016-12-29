@@ -6,6 +6,7 @@ classes:
 - system.reclass.storage.salt
 - system.reclass.storage.system.physical_control_cluster
 - system.reclass.storage.system.openstack_control_cluster
+- system.reclass.storage.system.openstack_gateway_single
 - system.reclass.storage.system.openstack_proxy_cluster
 - system.reclass.storage.system.openstack_database_cluster
 - system.reclass.storage.system.openstack_message_queue_cluster
