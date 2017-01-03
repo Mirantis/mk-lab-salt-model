@@ -3,6 +3,7 @@ classes:
 - system.linux.system.single
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
+- system.salt.master.api
 - system.salt.master.git
 - system.reclass.storage.salt
 - system.salt.minion.pki.authority
@@ -24,6 +25,7 @@ parameters:
     reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
+    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
     reclass_config_master: 192.168.10.100
     single_address: 172.16.10.100
     salt_master_host: 127.0.0.1

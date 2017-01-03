@@ -1,0 +1,27 @@
+parameters:
+  salt:
+    api:
+      enabled: true
+      bind:
+        address: 0.0.0.0
+        port: 8000
+    master:
+      user:
+        salt:
+          permissions:
+          - '.*'
+          - '@local'
+          - '@wheel'   # to allow access to all wheel modules
+          - '@runner'  # to allow access to all runner modules
+          - '@jobs'    # to allow access to the jobs runner and/or wheel mo
+  linux:
+    system:
+      user:
+        salt:
+          enabled: true
+          name: salt
+          password: ${_param:salt_api_password_hash}
+          home: /var/tmp/salt
+          sudo: false
+          system: true
+          shell: /bin/false
