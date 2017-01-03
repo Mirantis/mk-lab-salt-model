@@ -1,11 +1,22 @@
 classes:
 - system.linux.system.repo.tcp_mk20
-- system.horizon.server.single
+- service.horizon.server.single
 - cluster.mk22_qa_lab01
 parameters:
   horizon:
     server:
       version: liberty
+      branding: "OpenStack Dashboard"
+      bind:
+        address: 0.0.0.0
+        port: 8078
+      plugin:
+        horizon_theme:
+          app: horizon_theme
+          theme_name: mirantis-theme
+          source:
+            engine: pkg
+            name: openstack-dashboard-mirantis-theme
   linux:
     system:
       repo:
