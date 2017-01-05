@@ -1,0 +1,8 @@
+parameters:
+  glusterfs:
+    client:
+      volumes:
+        postgresql:
+          path: /srv/volumes/postgresql
+          server: ${_param:cluster_node01_address}
+          opts: 'defaults'

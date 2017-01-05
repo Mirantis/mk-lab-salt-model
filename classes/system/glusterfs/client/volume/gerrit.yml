@@ -1,0 +1,10 @@
+parameters:
+  glusterfs:
+    client:
+      volumes:
+        gerrit:
+          path: /srv/volumes/gerrit
+          server: ${_param:cluster_node01_address}
+          opts: 'defaults'
+          user: 1000
+          group: 1000

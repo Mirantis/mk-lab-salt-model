@@ -1,0 +1,13 @@
+classes:
+- service.glusterfs.server
+- service.keepalived.cluster.single
+parameters:
+  glusterfs:
+    _support:
+      iptables:
+        enabled: false
+    server:
+      peers:
+      - ${_param:cluster_node01_address}
+      - ${_param:cluster_node02_address}
+      - ${_param:cluster_node03_address}
