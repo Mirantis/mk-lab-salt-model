@@ -1,8 +1,0 @@
-parameters:
-  glusterfs:
-    client:
-      volumes:
-        saltmaster:
-          path: /etc/salt/pki/master
-          server: ${_param:cluster_node01_address}
-          opts: 'defaults'
