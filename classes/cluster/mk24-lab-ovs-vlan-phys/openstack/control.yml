@@ -2,6 +2,12 @@ classes:
 - system.linux.system.repo.mos9
 - system.linux.system.repo.tcp_extra
 - system.linux.system.repo.saltstack_2016_3_trusty
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.glance
+- system.glusterfs.client.volume.keystone
+- system.glusterfs.server.volume.glance
+- system.glusterfs.server.volume.keystone
+- system.glusterfs.server.cluster
 - system.memcached.server.single
 - system.keystone.server.cluster
 - system.glance.control.cluster
@@ -60,7 +66,7 @@ parameters:
   neutron:
     server:
       backend:
-        tenant_vlan_range: "110:150"
+        tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
       database:
         host: ${_param:openstack_database_address}
       message_queue:
@@ -68,7 +74,6 @@ parameters:
   nova:
     controller:
       networking: dvr
-      cpu_allocation: 54
       metadata:
         password: ${_param:metadata_password}
       bind:
@@ -76,7 +81,7 @@ parameters:
         public_address: ${_param:cluster_vip_address}
         novncproxy_port: 6080
       vncproxy_url: http://${_param:cluster_vip_address}:6080
-      workers: 1
+      workers: 4
       database:
         host: ${_param:openstack_database_address}
       identity:

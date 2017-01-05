@@ -78,13 +78,12 @@ parameters:
     stacklight_telemetry_node01_address: 10.167.4.86
     stacklight_telemetry_node02_address: 10.167.4.87
     stacklight_telemetry_node03_address: 10.167.4.88
+
     # openstack compute
     openstack_compute_node01_single_address: 10.167.4.101
     openstack_compute_node02_single_address: 10.167.4.102
-    #openstack_compute_node03_single_address: 10.167.4.103
-    #openstack_compute_node04_single_address: 10.167.4.104
-    #openstack_compute_node05_single_address: 10.167.4.105
 
+    # openstack gateway
     openstack_gateway_address: 10.167.4.253
 
     # Interface definitions

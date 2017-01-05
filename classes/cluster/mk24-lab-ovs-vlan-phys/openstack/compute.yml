@@ -32,7 +32,7 @@ parameters:
     compute:
       local_ip: ${_param:single_address}
       backend:
-        tenant_vlan_range: "110:150"
+        tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
       database:
         host: ${_param:openstack_database_address}
       message_queue:

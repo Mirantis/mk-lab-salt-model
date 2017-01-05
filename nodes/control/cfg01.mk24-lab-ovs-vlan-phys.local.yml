@@ -4,6 +4,7 @@ parameters:
   _param:
     salt_master_base_environment: prd
     linux_system_codename: xenial
+    salt_minion_ca_host: kvm01.${_param:cluster_domain}
   linux:
     system:
       #name: cfg01

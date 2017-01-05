@@ -14,6 +14,7 @@ parameters:
     neutron_compute_dvr: True
     neutron_compute_agent_mode: dvr
     neutron_compute_external_access: True
+    neutron_tenant_vlan_range: "110:150"
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: F2yEhgwPxyG6ExMl
     galera_server_admin_password: sJI8rf5YGypAnuf4

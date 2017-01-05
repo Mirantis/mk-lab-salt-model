@@ -1,12 +1,12 @@
 classes:
 - system.linux.system.repo.mos9
+- system.linux.system.repo.tcp_mk20
 - system.linux.system.repo.tcp_extra
 - system.linux.system.repo.saltstack_2016_3_trusty
 - system.nginx.server.single
 - system.nginx.server.proxy.openstack_api
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
-- service.apache.server.single  # apache is required for horizon
 - system.horizon.server.single
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
@@ -22,8 +22,11 @@ parameters:
       engine: salt
       mode: secure
     cluster_vip_address: ${_param:openstack_control_address}
-    #salt_minion_ca_host: cfg01.${_param:cluster_domain}
-    salt_minion_ca_host: kvm01.${_param:cluster_domain}
+
+  horizon:
+    server:
+      version: liberty
+
   linux:
     network:
       interface:
@@ -32,7 +35,3 @@ parameters:
       repo:
         tcpcloud_openstack:
           source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty
-  apache:
-    server:
-      modules:
-      - wsgi
