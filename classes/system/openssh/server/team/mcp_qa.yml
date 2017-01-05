@@ -1,0 +1,52 @@
+parameters:
+  linux:
+    system:
+      user:
+        ddmitriev:
+          enabled: true
+          name: ddmitriev
+          sudo: true
+          full_name: Denys Dmytriiev
+          home: /home/ddmitriev
+        dtyzhnenko:
+          enabled: true
+          name: dtyzhnenko
+          sudo: true
+          full_name: Dmitry Tyzhnenko
+          home: /home/dtyzhnenko
+        tleontovich:
+          enabled: true
+          name: tleontovich
+          sudo: true
+          full_name: Tatyanka Leontovich
+          home: /home/tleontovich
+      group:
+        libvirtd:
+          enabled: true
+          name: libvirtd
+  openssh:
+    server:
+      enabled: true
+      user:
+        ddmitriev:
+          enabled: true
+          public_keys:
+          - ${public_keys:ddmitriev}
+          user: ${linux:system:user:ddmitriev}
+        dtyzhnenko:
+          enabled: true
+          public_keys:
+          - ${public_keys:dtyzhnenko}
+          user: ${linux:system:user:dtyzhnenko}
+        tleontovich:
+          enabled: true
+          public_keys:
+          - ${public_keys:tleontovich}
+          user: ${linux:system:user:tleontovich}
+  public_keys:
+    ddmitriev:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDuD4wJ8hzkchQ0pfgdwWukQyps1xYRfHOsjosmDu/mmgaXVud5mnpwb2q35E2YYTox2mx+ulJqyS+099gz6MPg4P8D5qdMuRbAsJqbceLaaIGQhdT8qgSo7ESrl5pwvYnfWzKLKF0z5s7nrW0nvArC40zhV9o9XpvzzzSFByepWfkwA8ReldGUYVvTKp8YXaCrqEdMZrU42adPM2nl+fYBbGF+h4/Ka247aVjPeER0blV3znFXbv2Kf38G+i/TEGaktgpBdtGGDi1tX2loMypmTJeqZRJnM0Eoly0BnynB7CSxn11eoIXBUe1mVYNqmQd1hw6uh59iymhK5j939v9J ddmitriev@dis_xcom
+    dtyzhnenko:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDhf5ysfuTmOO1975vUCag59tL+lQwfmWSQglZvKnMLnhO1P39VXDHCMla0Uh2IXI5abSrsq4xVXNfD3R5cnzPW8rG1h3528tSpszwZp28LSMkMfEZReEWVq2XoseRfzd7b3AaWN283NbQGPL6NRwyg9hLRG5dipdRxnDSutvDg/J4gbzeuS+QjXP6ymIs9vBhrpvHlQ6POI7Zedp2FOmqbGf3OK9wuBkD1Dhf+hTXvFSq1PFxmKB7w5CWvAOGGuapb+IYspPlDwd8lVWbvp+D3DchkhyL36gQyl2In/NKG2NR4z6dETX8JON5OMe0UipeKAsXInoVbyZfs3uZgdKDB dtyzhnenko
+    tleontovich:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLtOIkzqNA3wdLQyQxLRaRwi4oXnRCPCsrn8oaAyxDXHhU3+ATGvXBdbkA6xU3d4hAohru5DwxGzyikzAAtrv79GWA9/ryXPcplmxBiJcN36GyfW6eX89hI1VIJMKMG3cUs0ONf2D+hENhbaO0pu4hNAb5HFcHAuqecQNOFFrJ3RqnWM8RWgJPY3iF1A9JnXwVrUgME962VPlydYvlL5mLk+h+4DgHuPipw/Qana5a2JfdErsPYeAdDwG8frCdA9wvMzVVZv78s0lA6BritQdd0SyZejbOlT9KVHhSOhqnWdCtd8+nZXzXgjV7GAiv7H9yE4Ee6QYSHUQHwJxZs3ZT tleontovich@tleontovich-pc

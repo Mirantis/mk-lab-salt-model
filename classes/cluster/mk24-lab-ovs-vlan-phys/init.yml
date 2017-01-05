@@ -4,6 +4,7 @@ classes:
 - system.linux.system.single
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.qa_scale
+- system.openssh.server.team.mcp_qa
 - cluster.mk24-lab-ovs-vlan-phys.fuel
 - cluster.mk24-lab-ovs-vlan-phys.openstack
 - cluster.mk24-lab-ovs-vlan-phys.stacklight
