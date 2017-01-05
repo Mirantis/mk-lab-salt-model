@@ -21,6 +21,8 @@ parameters:
     reclass_data_repository: "https://github.com/dis-xcom/mk-lab-salt-model.git"
     reclass_data_revision: master
     reclass_config_master: ${_param:fuel_config_deploy_address}
+    single_address: ${_param:fuel_config_deploy_address}
+    salt_master_host: ${_param:fuel_config_deploy_address}
   reclass:
     storage:
       data_source:
