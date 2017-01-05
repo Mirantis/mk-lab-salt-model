@@ -69,7 +69,7 @@ parameters:
           type: ovs_port
           bridge: br-floating
           proto: static
-          ovs_options: tag=1800
+          ovs_options: tag=100
           address: ${_param:single_address}
           netmask: 255.255.255.0
         floating-to-prv:
