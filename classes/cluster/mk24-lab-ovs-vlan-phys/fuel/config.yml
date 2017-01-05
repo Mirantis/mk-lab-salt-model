@@ -35,8 +35,10 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.openstack.database_init
         openstack_compute_node01:
+          params:
             single_address: ${_param:openstack_compute_node01_single_address}
         openstack_compute_node02:
+          params:
             single_address: ${_param:openstack_compute_node02_single_address}
 
         fuel_compute_node01:
