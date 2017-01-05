@@ -81,6 +81,11 @@ parameters:
           names:
           - prx01
           - prx01.${_param:cluster_domain}
+        prx02:
+          address: ${_param:openstack_proxy_node02_address}
+          names:
+          - prx02
+          - prx02.${_param:cluster_domain}
         ctl:
           address: ${_param:openstack_control_address}
           names:
