@@ -22,6 +22,7 @@ parameters:
       engine: salt
       mode: secure
     cluster_vip_address: ${_param:openstack_control_address}
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
 
   horizon:
     server:

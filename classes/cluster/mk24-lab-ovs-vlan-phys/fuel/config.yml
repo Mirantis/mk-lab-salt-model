@@ -6,6 +6,7 @@ classes:
 - system.reclass.storage.salt
 - system.reclass.storage.system.physical_control_cluster
 - system.reclass.storage.system.openstack_control_cluster
+- system.reclass.storage.system.openstack_compute_multi
 - system.reclass.storage.system.openstack_gateway_single
 - system.reclass.storage.system.openstack_proxy_cluster
 - system.reclass.storage.system.openstack_database_cluster
@@ -20,9 +21,6 @@ parameters:
     reclass_data_repository: "https://github.com/dis-xcom/mk-lab-salt-model.git"
     reclass_data_revision: master
     reclass_config_master: ${_param:fuel_config_deploy_address}
-    single_address: ${_param:fuel_config_address}
-    deploy_address: ${_param:fuel_config_deploy_address}
-    salt_master_host: ${_param:fuel_config_address}
   reclass:
     storage:
       data_source:
@@ -35,22 +33,8 @@ parameters:
           classes:
           - cluster.${_param:cluster_name}.openstack.database_init
         openstack_compute_node01:
-          name: cmp01
-          domain: ${_param:cluster_domain}
-          classes:
-          - cluster.${_param:cluster_name}.openstack.compute
-          params:
-            salt_master_host: ${_param:reclass_config_master}
-            linux_system_codename: trusty
             single_address: ${_param:openstack_compute_node01_single_address}
         openstack_compute_node02:
-          name: cmp02
-          domain: ${_param:cluster_domain}
-          classes:
-          - cluster.${_param:cluster_name}.openstack.compute
-          params:
-            salt_master_host: ${_param:reclass_config_master}
-            linux_system_codename: trusty
             single_address: ${_param:openstack_compute_node02_single_address}
 
         fuel_compute_node01:
@@ -62,7 +46,6 @@ parameters:
             fuel_libvirt_control_dhcp_pool_end: ${_param:fuel_libvirt_control_dhcp_pool_end_kvm01}
             linux_system_codename: xenial
 
-
         fuel_compute_node02:
           params:
             deploy_address: ${_param:fuel_compute_node02_deploy_address}
@@ -71,7 +54,6 @@ parameters:
             fuel_libvirt_control_dhcp_pool_start: ${_param:fuel_libvirt_control_dhcp_pool_start_kvm02}
             fuel_libvirt_control_dhcp_pool_end: ${_param:fuel_libvirt_control_dhcp_pool_end_kvm02}
             linux_system_codename: xenial
-
 
         fuel_compute_node03:
           params:

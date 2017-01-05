@@ -7,12 +7,12 @@ parameters:
     network:
       host:
         cfg01:
-          address: ${_param:fuel_config_address}
+          address: ${_param:fuel_config_deploy_address}
           names:
           - cfg01
           - cfg01.${_param:cluster_domain}
         cfg:
-          address: ${_param:fuel_config_address}
+          address: ${_param:fuel_config_deploy_address}
           names:
           - cfg
           - cfg.${_param:cluster_domain}
