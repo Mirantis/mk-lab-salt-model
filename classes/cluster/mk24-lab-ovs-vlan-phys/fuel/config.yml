@@ -65,3 +65,11 @@ parameters:
             fuel_libvirt_control_dhcp_pool_start: ${_param:fuel_libvirt_control_dhcp_pool_start_kvm03}
             fuel_libvirt_control_dhcp_pool_end: ${_param:fuel_libvirt_control_dhcp_pool_end_kvm03}
             linux_system_codename: xenial
+
+        openstack_proxy_node01:
+          params:
+            keepalived_vip_priority: 101
+
+        openstack_proxy_node02:
+          params:
+            keepalived_vip_priority: 102
