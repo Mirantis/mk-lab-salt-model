@@ -14,6 +14,7 @@ parameters:
     cluster_node02_address: ${_param:openstack_control_node02_address}
     cluster_node03_hostname: ctl03
     cluster_node03_address: ${_param:openstack_control_node03_address}
+    primary_second_nic: p4p2
     #primary_interface: eth1
     #external_interface: eth3
     interface_mtu: 9000
@@ -38,16 +39,48 @@ parameters:
         host: ${_param:openstack_message_queue_address}
   linux:
     network:
+      bridge: openvswitch
       interface:
-        p4p2:
+        primary_second_nic:
+          name: ${_param:primary_second_nic}
           enabled: true
           type: slave
           mtu: 9000
           master: bond0
         bond0:
           enabled: true
+          proto: manual
+          ovs_bridge: br-floating
+          ovs_type: OVSPort
           type: bond
           use_interfaces:
-          - p4p2
-          slaves: p4p2
+          - ${_param:primary_second_nic}
+          slaves: ${_param:primary_second_nic}
           mode: active-backup
+          mtu: 9000
+        br-floating:
+          enabled: true
+          type: ovs_bridge
+        br-prv:
+          enabled: true
+          type: ovs_bridge
+        br-mgmt:
+          enabled: true
+          type: ovs_port
+          bridge: br-floating
+          proto: static
+          ovs_options: tag=1800
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+        floating-to-prv:
+          enabled: true
+          type: ovs_port
+          port_type: patch
+          bridge: br-floating
+          peer: prv-to-floating
+        prv-to-floating:
+          enabled: true
+          type: ovs_port
+          port_type: patch
+          bridge: br-prv
+          peer: floating-to-prv
