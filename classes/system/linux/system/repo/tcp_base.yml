@@ -1,9 +1,0 @@
-parameters:
-  linux:
-    system:
-      repo:
-        tcpcloud:
-          source: "deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ ${_param:linux_system_codename} main security tcp"
-          architectures: amd64
-          default: true
-          key_url: "http://apt.tcpcloud.eu/public.gpg"

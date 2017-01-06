@@ -8,6 +8,7 @@ classes:
 - cluster.mk20_lab_basic
 parameters:
   _param:
+    cluster_vip_address: ${_param:openstack_proxy_address}
     nginx_proxy_ssl:
       enabled: true
       authority: mk_lab_ca

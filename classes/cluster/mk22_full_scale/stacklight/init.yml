@@ -1,3 +1,5 @@
+classes:
+- system.linux.system.repo.saltstack_2016_3_xenial
 parameters:
   _param:
     kibana_elasticsearch_host: ${_param:stacklight_log_address}
