@@ -6,6 +6,7 @@ parameters:
         address: 0.0.0.0
         port: 8000
     master:
+      command_timeout: 600
       user:
         salt:
           permissions:
