@@ -8,7 +8,6 @@ parameters:
     server:
       identity:
         region: ${_param:openstack_region}
-      notification: true
       logging:
         heka:
           enabled: true
