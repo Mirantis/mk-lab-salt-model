@@ -30,3 +30,4 @@ parameters:
         driver: messagingv2
         topics: "notifications,${_param:stacklight_notification_topic}"
         notify_on:
+          state_change: vm_and_task_state
