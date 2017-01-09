@@ -1,0 +1,52 @@
+classes:
+- service.designate.server.cluster
+- service.haproxy.proxy.single
+parameters:
+  mysql:
+    server:
+      identity:
+        region: ${_param:keystone_region}
+      database:
+        designate:
+          encoding: utf8
+          users:
+          - name: designate
+            password: ${_param:mysql_designate_password}
+            host: '%'
+            rights: all
+          - name: designate
+            password: ${_param:mysql_designate_password}
+            host: ${_param:single_address}
+            rights: all
+  designate:
+## FIXME, remove, once formulas implement
+###########################################
+    _support:
+      sensu:
+        enabled: false
+    server:
+      database:
+        host: ${_param:openstack_database_address}
+      notification: true
+      bind:
+        api:
+          address: ${_param:single_address}
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      pool:
+        pool_id: 794ccc2c-d751-44fe-b57f-8894c9f5c842
+        nameservers:
+          - uuid: 690d7bc8-811b-404c-abcc-9cec54d87092
+            host: ${_param:cluster_node01_address}
+            port: 53
+          - uuid: bc5ddcf0-8d95-4f87-b435-9ff831a4a14c
+            host: ${_param:cluster_node02_address}
+            port: 53
+        targets:
+          uuid: f26e0b32-736f-4f0a-831b-039a415c481e
+          options: 'port: 53, host: 127.0.0.1'
+          masters: 127.0.0.1:5354
+          type:  bind9
