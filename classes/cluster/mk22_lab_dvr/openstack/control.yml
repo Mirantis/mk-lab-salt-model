@@ -21,6 +21,7 @@ classes:
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
 - cluster.mk22_lab_dvr
+- system.heka.alarm.openstack_control
 parameters:
   _param:
     keepalived_vip_interface: eth1
