@@ -75,6 +75,8 @@ parameters:
         topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     controller:
+      network:
+        host: ${_param:cluster_vip_address}
       networking: dvr
       metadata:
         password: ${_param:metadata_password}

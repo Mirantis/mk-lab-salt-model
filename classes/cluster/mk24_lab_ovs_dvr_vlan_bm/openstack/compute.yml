@@ -19,6 +19,8 @@ parameters:
     interface_mtu: 9000
   nova:
     compute:
+      network:
+        host: ${_param:cluster_vip_address}
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
