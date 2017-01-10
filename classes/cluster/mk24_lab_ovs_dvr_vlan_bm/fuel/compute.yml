@@ -7,7 +7,7 @@ classes:
 - system.salt.control.cluster.stacklight_server_cluster
 - system.salt.control.cluster.stacklight_log_cluster
 - system.salt.control.cluster.stacklight_telemetry_cluster
-- cluster.mk24-lab-ovs-vlan-phys
+- cluster.mk24_lab_ovs_dvr_vlan_bm
 parameters:
   salt:
     control:

@@ -5,15 +5,15 @@ classes:
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.qa_scale
 - system.openssh.server.team.mcp_qa
-- cluster.mk24-lab-ovs-vlan-phys.fuel
-- cluster.mk24-lab-ovs-vlan-phys.openstack
-- cluster.mk24-lab-ovs-vlan-phys.stacklight
-- cluster.mk24-lab-ovs-vlan-phys.stacklight.client
+- cluster.mk24_lab_ovs_dvr_vlan_bm.fuel
+- cluster.mk24_lab_ovs_dvr_vlan_bm.openstack
+- cluster.mk24_lab_ovs_dvr_vlan_bm.stacklight
+- cluster.mk24_lab_ovs_dvr_vlan_bm.stacklight.client
 parameters: 
   _param:
-    cluster_domain: mk24-lab-ovs-vlan-phys.local
+    cluster_domain: mk24_lab_ovs_dvr_vlan_bm.local
     reclass_data_revision: master
-    cluster_name: mk24-lab-ovs-vlan-phys
+    cluster_name: mk24_lab_ovs_dvr_vlan_bm
     cluster_public_host: 10.167.4.80
     # fuel service addresses
 

@@ -1,7 +1,5 @@
 classes:
-- system.linux.system.repo.mos9
 - system.linux.system.repo.tcp_mk20
-- system.linux.system.repo.tcp_extra
 - system.linux.system.repo.saltstack_2016_3_trusty
 - system.nginx.server.single
 - system.nginx.server.proxy.openstack_api
@@ -11,7 +9,7 @@ classes:
 - system.salt.minion.pki.certificate
 - system.sphinx.server.doc.reclass
 - service.keepalived.cluster.single
-- cluster.mk24-lab-ovs-vlan-phys
+- cluster.mk24_lab_ovs_dvr_vlan_bm
 parameters:
   _param:
     keepalived_vip_interface: eth1

@@ -1,18 +1,37 @@
 classes:
 - system.linux.system.repo.mos9
 - system.linux.system.repo.saltstack_2016_3_trusty
-- system.linux.system.repo.tcp_extra
-- system.neutron.gateway.cluster
-- cluster.mk24-lab-ovs-vlan-phys
+- system.nova.compute.cluster
+- system.neutron.compute.cluster
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+- system.heka.alarm.openstack_compute
 parameters:
   _param:
-    interface_mtu: 9000
-    neutron_gateway_dvr: True
-    neutron_gateway_agent_mode: dvr_snat
     cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
     primary_second_nic: p4p2
+    interface_mtu: 9000
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+        notify_on:
+          state_change: vm_and_task_state
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
   neutron:
-    gateway:
+    compute:
       local_ip: ${_param:single_address}
       backend:
         tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"

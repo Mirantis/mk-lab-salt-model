@@ -10,7 +10,8 @@ classes:
 - system.cinder.control.cluster
 - system.cinder.volume.single
 - system.heat.server.cluster
-- cluster.mk24-lab-ovs-vlan-phys
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+- system.heka.alarm.openstack_control
 parameters:
   _param:
     keepalived_vip_interface: eth1
@@ -39,7 +40,9 @@ parameters:
       admin_email: ${_param:admin_email}
       database:
         host: ${_param:openstack_database_address}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
       message_queue:
         host: ${_param:openstack_message_queue_address}
   glance:
@@ -56,7 +59,9 @@ parameters:
           - host: ${_param:openstack_message_queue_node01_address}
           - host: ${_param:openstack_message_queue_node02_address}
           - host: ${_param:openstack_message_queue_node03_address}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   neutron:
     server:
       backend:
@@ -65,6 +70,9 @@ parameters:
         host: ${_param:openstack_database_address}
       message_queue:
         host: ${_param:openstack_message_queue_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     controller:
       networking: dvr
@@ -91,13 +99,17 @@ parameters:
           - host: ${_param:openstack_message_queue_node01_address}
           - host: ${_param:openstack_message_queue_node02_address}
           - host: ${_param:openstack_message_queue_node03_address}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   cinder:
     volume:
       enabled: false
       identity:
         region: ${_param:openstack_region}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
       database:
         host: ${_param:openstack_database_address}
       message_queue:
@@ -106,7 +118,9 @@ parameters:
       enabled: true
       identity:
         region: ${_param:openstack_region}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
       database:
         host: ${_param:openstack_database_address}
       message_queue:
@@ -115,7 +129,9 @@ parameters:
     server:
       database:
         host: ${_param:openstack_database_address}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
       stack_domain_admin:
         name: heat_domain_admin
         password: ${_param:heat_domain_admin_password}

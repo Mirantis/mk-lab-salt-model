@@ -1,5 +1,5 @@
 classes:
-- cluster.mk24-lab-ovs-vlan-phys.fuel.config
+- cluster.mk24_lab_ovs_dvr_vlan_bm.fuel.config
 parameters:
   _param:
     salt_master_base_environment: prd
@@ -7,7 +7,7 @@ parameters:
   linux:
     system:
       name: cfg01
-      domain: mk24-lab-ovs-vlan-phys.local
+      domain: mk24_lab_ovs_dvr_vlan_bm.local
 salt:
   master:
     accept_policy: open_mode

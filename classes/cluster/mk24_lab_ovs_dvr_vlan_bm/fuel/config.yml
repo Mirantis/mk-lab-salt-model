@@ -14,7 +14,7 @@ classes:
 - system.reclass.storage.system.stacklight_log_cluster
 - system.reclass.storage.system.stacklight_monitor_cluster
 - system.reclass.storage.system.stacklight_telemetry_cluster
-- cluster.mk24-lab-ovs-vlan-phys
+- cluster.mk24_lab_ovs_dvr_vlan_bm
 parameters:
   _param:
     salt_master_base_environment: prd

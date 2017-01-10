@@ -2,7 +2,7 @@ classes:
 - system.linux.system.repo.mos9
 - system.linux.system.repo.tcp_extra
 - system.linux.system.repo.saltstack_2016_3_trusty
-- cluster.mk24-lab-ovs-vlan-phys
+- cluster.mk24_lab_ovs_dvr_vlan_bm
 parameters:
   linux:
     network:
