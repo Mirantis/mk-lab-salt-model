@@ -5,6 +5,7 @@ classes:
 - system.neutron.compute.cluster
 - system.linux.network.interface.ovs_lab_dvr
 - cluster.mk22_lab_dvr
+- system.heka.alarm.openstack_compute
 parameters:
   _param:
     primary_interface: eth1
