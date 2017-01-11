@@ -8,7 +8,6 @@ classes:
 - system.neutron.control.openvswitch.cluster
 - system.nova.control.cluster
 - system.cinder.control.cluster
-- system.cinder.volume.single
 - system.heat.server.cluster
 - cluster.mk24_lab_ovs_dvr_vlan_bm
 - system.heka.alarm.openstack_control
@@ -105,17 +104,6 @@ parameters:
         driver: messagingv2
         topics: "notifications,${_param:stacklight_notification_topic}"
   cinder:
-    volume:
-      enabled: false
-      identity:
-        region: ${_param:openstack_region}
-      notification:
-        driver: messagingv2
-        topics: "notifications,${_param:stacklight_notification_topic}"
-      database:
-        host: ${_param:openstack_database_address}
-      message_queue:
-        host: ${_param:openstack_message_queue_address}
     controller:
       enabled: true
       identity:

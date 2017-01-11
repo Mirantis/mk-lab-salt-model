@@ -3,6 +3,7 @@ classes:
 - system.linux.system.repo.saltstack_2016_3_trusty
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
+- system.cinder.volume.single
 - cluster.mk24_lab_ovs_dvr_vlan_bm
 - system.heka.alarm.openstack_compute
 parameters:
@@ -17,6 +18,19 @@ parameters:
     cluster_node03_address: ${_param:openstack_control_node03_address}
     primary_second_nic: p4p2
     interface_mtu: 9000
+
+  cinder:
+    volume:
+      enabled: true
+      identity:
+        region: ${_param:openstack_region}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
   nova:
     compute:
       network:
@@ -88,3 +102,13 @@ parameters:
           port_type: patch
           bridge: br-prv
           peer: floating-to-prv
+
+    storage:
+      lvm:
+        cinder-volumes:
+          enabled: true
+          devices:
+            - /dev/sdb
+          volume:
+            data:
+              size: 400G
