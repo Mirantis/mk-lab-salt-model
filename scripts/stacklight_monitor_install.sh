@@ -5,6 +5,7 @@ exec > >(tee -i /tmp/"$(basename "$0" .sh)"_"$(date '+%Y-%m-%d_%H-%M-%S')".log) 
 # Also clean-up the grains files to make sure that we start from a clean state
 salt "*" mine.flush
 salt "*" file.remove /etc/salt/grains.d/collectd
+salt "*" file.remove /etc/salt/grains.d/grafana
 salt "*" file.remove /etc/salt/grains.d/heka
 salt "*" file.remove /etc/salt/grains
 
