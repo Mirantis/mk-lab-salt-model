@@ -1,5 +1,6 @@
 classes:
 - system.linux.system.single
+- system.rsyslog.client.single
 - cluster.mk22_lab_dvr.fuel
 - cluster.mk22_lab_dvr.openstack
 - cluster.mk22_lab_dvr.stacklight
