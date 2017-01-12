@@ -19,6 +19,8 @@ parameters:
     openstack_database_node01_address: 172.16.10.181
     openstack_database_node02_address: 172.16.10.182
     openstack_database_node03_address: 172.16.10.183
+    # opencontrail service addresses
+    opencontrail_control_address: ${_param:openstack_control_address}
   linux:
     network:
       host:

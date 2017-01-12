@@ -19,6 +19,8 @@ parameters:
     # monitoring service addresses
     monitoring_service_address: 172.16.10.107
     monitoring_service_node01_address: 172.16.10.107
+    # opencontrail service addresses
+    opencontrail_control_address: ${_param:openstack_control_address}
   linux:
     network:
       host:
