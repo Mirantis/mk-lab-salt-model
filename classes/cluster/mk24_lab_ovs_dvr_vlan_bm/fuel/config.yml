@@ -1,0 +1,77 @@
+classes:
+- system.linux.system.repo.tcp_salt
+- system.openssh.client.lab
+- system.salt.master.pkg
+- system.salt.minion.pki.authority
+- system.reclass.storage.salt
+- system.reclass.storage.system.physical_control_cluster
+- system.reclass.storage.system.openstack_control_cluster
+- system.reclass.storage.system.openstack_compute_multi
+- system.reclass.storage.system.openstack_gateway_single
+- system.reclass.storage.system.openstack_proxy_cluster
+- system.reclass.storage.system.openstack_database_cluster
+- system.reclass.storage.system.openstack_message_queue_cluster
+- system.reclass.storage.system.stacklight_log_cluster
+- system.reclass.storage.system.stacklight_monitor_cluster
+- system.reclass.storage.system.stacklight_telemetry_cluster
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+parameters:
+  _param:
+    salt_master_base_environment: prd
+    reclass_data_repository: "https://github.com/dis-xcom/mk-lab-salt-model.git"
+    reclass_data_revision: master
+    reclass_config_master: ${_param:fuel_config_deploy_address}
+    single_address: ${_param:fuel_config_deploy_address}
+    salt_master_host: ${_param:fuel_config_deploy_address}
+  reclass:
+    storage:
+      data_source:
+        engine: local
+      node:
+        openstack_control_node01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.control_init
+        openstack_database_node01:
+          classes:
+          - cluster.${_param:cluster_name}.openstack.database_init
+        openstack_compute_node01:
+          params:
+            single_address: ${_param:openstack_compute_node01_single_address}
+        openstack_compute_node02:
+          params:
+            single_address: ${_param:openstack_compute_node02_single_address}
+
+        fuel_compute_node01:
+          params:
+            deploy_address: ${_param:fuel_compute_node01_deploy_address}
+            fuel_libvirt_control_dhcp_pool_gw: ${_param:fuel_libvirt_control_gw_kvm01}
+            fuel_libvirt_control_dhcp_pool_netmask: ${_param:fuel_libvirt_control_dhcp_pool_netmask_kvm01}
+            fuel_libvirt_control_dhcp_pool_start: ${_param:fuel_libvirt_control_dhcp_pool_start_kvm01}
+            fuel_libvirt_control_dhcp_pool_end: ${_param:fuel_libvirt_control_dhcp_pool_end_kvm01}
+            linux_system_codename: xenial
+
+        fuel_compute_node02:
+          params:
+            deploy_address: ${_param:fuel_compute_node02_deploy_address}
+            fuel_libvirt_control_dhcp_pool_gw: ${_param:fuel_libvirt_control_gw_kvm02}
+            fuel_libvirt_control_dhcp_pool_netmask: ${_param:fuel_libvirt_control_dhcp_pool_netmask_kvm02}
+            fuel_libvirt_control_dhcp_pool_start: ${_param:fuel_libvirt_control_dhcp_pool_start_kvm02}
+            fuel_libvirt_control_dhcp_pool_end: ${_param:fuel_libvirt_control_dhcp_pool_end_kvm02}
+            linux_system_codename: xenial
+
+        fuel_compute_node03:
+          params:
+            deploy_address: ${_param:fuel_compute_node03_deploy_address}
+            fuel_libvirt_control_dhcp_pool_gw: ${_param:fuel_libvirt_control_gw_kvm03}
+            fuel_libvirt_control_dhcp_pool_netmask: ${_param:fuel_libvirt_control_dhcp_pool_netmask_kvm03}
+            fuel_libvirt_control_dhcp_pool_start: ${_param:fuel_libvirt_control_dhcp_pool_start_kvm03}
+            fuel_libvirt_control_dhcp_pool_end: ${_param:fuel_libvirt_control_dhcp_pool_end_kvm03}
+            linux_system_codename: xenial
+
+        openstack_proxy_node01:
+          params:
+            keepalived_vip_priority: 101
+
+        openstack_proxy_node02:
+          params:
+            keepalived_vip_priority: 102

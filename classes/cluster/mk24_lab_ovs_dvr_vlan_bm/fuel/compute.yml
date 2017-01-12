@@ -1,0 +1,127 @@
+classes:
+- system.salt.control.virt
+- system.salt.control.cluster.openstack_control_cluster
+- system.salt.control.cluster.openstack_proxy_cluster
+- system.salt.control.cluster.openstack_database_cluster
+- system.salt.control.cluster.openstack_message_queue_cluster
+- system.salt.control.cluster.stacklight_server_cluster
+- system.salt.control.cluster.stacklight_log_cluster
+- system.salt.control.cluster.stacklight_telemetry_cluster
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+parameters:
+  salt:
+    control:
+      size: #RAM 4096,8192,16384,32768,65536
+        openstack.control:
+          cpu: 8
+          ram: 32768
+          disk_profile: small
+          net_profile: default
+        openstack.database:
+          cpu: 8
+          ram: 16384
+          disk_profile: large
+          net_profile: default
+        openstack.message_queue:
+          cpu: 8
+          ram: 32768
+          disk_profile: small
+          net_profile: default
+        openstack.proxy:
+          cpu: 4
+          ram: 8192
+          disk_profile: small
+          net_profile: default
+        openstack.gateway:
+          cpu: 4
+          ram: 8192
+          disk_profile: small
+          net_profile: default
+        opencontrail.control:
+          cpu: 8
+          ram: 32768
+          disk_profile: small
+          net_profile: default
+        opencontrail.analytics:
+          cpu: 8
+          ram: 32768
+          disk_profile: large
+          net_profile: default
+        stacklight.log:
+          cpu: 4
+          ram: 8192
+          disk_profile: xxlarge
+          net_profile: default
+        stacklight.server:
+          cpu: 4
+          ram: 8192
+          disk_profile: small
+          net_profile: default
+        stacklight.telemetry:
+          cpu: 4
+          ram: 8192
+          disk_profile: xxlarge
+          net_profile: default
+  linux:
+    network:
+      interface:
+
+        enp8s0f0:
+          enabled: true
+          type: eth
+          mtu: 9000
+        enp8s0f1:
+          enabled: true
+          type: slave
+          mtu: 9000
+          master: bond0
+
+        bond0:
+          enabled: true
+          type: bond
+          use_interfaces:
+          - enp8s0f1
+          slaves: enp8s0f1
+          mode: active-backup
+        bond0.100:
+          enabled: true
+          type: vlan
+          proto: manual
+          mtu: 9000
+          use_interfaces:
+          - bond0
+        br100:
+          enabled: true
+          type: bridge
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+          mtu: 9000
+          use_interfaces:
+          - bond0.100
+  libvirt:
+    server:
+      enabled: true
+      kvm_pkgs: ['qemu','qemu-utils']
+      network:
+        control:
+          xml: |
+            <network>
+              <name>control</name>
+              <bridge name="br0" stp="off"/>
+              <forward mode="nat"/>
+              <ip address="${_param:fuel_libvirt_control_dhcp_pool_gw}" netmask="${_param:fuel_libvirt_control_dhcp_pool_netmask}">
+                <dhcp>
+                  <range start="${_param:fuel_libvirt_control_dhcp_pool_start}" end="${_param:fuel_libvirt_control_dhcp_pool_end}"/>
+                </dhcp>
+              </ip>
+            </network>
+
+  virt:
+    nic:
+      default:
+        eth1:
+          bridge: br0
+          model: virtio
+        eth0:
+          bridge: br100
+          model: virtio

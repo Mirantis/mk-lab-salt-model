@@ -1,0 +1,24 @@
+classes:
+- system.influxdb.server.single
+- system.linux.system.repo.saltstack_2016_3_xenial
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+parameters:
+  _param:
+    keepalived_vip_interface: ens3
+    keepalived_vip_virtual_router_id: 120
+    cluster_vip_address: ${_param:stacklight_telemetry_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: mtr01
+    cluster_node01_address: ${_param:stacklight_telemetry_node01_address}
+    cluster_node02_hostname: mtr02
+    cluster_node02_address: ${_param:stacklight_telemetry_node02_address}
+    cluster_node03_hostname: mtr03
+    cluster_node03_address: ${_param:stacklight_telemetry_node03_address}
+  linux:
+    network:
+      interface:
+        ens3: ${_param:linux_single_interface}
+    system:
+      package:
+        apt-transport-https:
+          version: latest

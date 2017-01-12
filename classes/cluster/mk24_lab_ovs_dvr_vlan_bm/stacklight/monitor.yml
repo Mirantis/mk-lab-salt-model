@@ -1,0 +1,36 @@
+classes:
+- system.linux.system.repo.saltstack_2016_3_xenial
+- system.linux.system.repo.tcp_elastic
+- system.collectd.remote_client.cluster
+- system.heka.remote_collector.cluster
+- system.heka.remote_collector.input.amqp
+- system.heka.aggregator.cluster
+- system.kibana.server.single
+- system.grafana.server.single
+- system.grafana.client.single
+- system.nagios.server.cluster
+- system.haproxy.proxy.listen.stacklight.elasticsearch
+- system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.grafana
+- service.haproxy.proxy.single
+- system.keepalived.cluster.instance.stacklight_monitor_vip
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+parameters:
+  _param:
+    collectd_remote_collector_host: ${_param:stacklight_monitor_address}
+    heka_amqp_host: ${_param:openstack_message_queue_address}
+    keepalived_stacklight_monitor_vip_address: ${_param:stacklight_monitor_address}
+    keepalived_stacklight_monitor_vip_password: 'password'
+    keepalived_stacklight_monitor_vip_interface: ens3
+    cluster_vip_address: ${_param:stacklight_monitor_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: mon01
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_hostname: mon02
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_hostname: mon03
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
+  linux:
+    network:
+      interface:
+        ens3: ${_param:linux_single_interface}
