@@ -3,7 +3,6 @@ classes:
 - system.linux.system.single
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
-- system.salt.master.api
 - system.salt.master.git
 - system.reclass.storage.salt
 - system.salt.minion.pki.authority
@@ -16,17 +15,14 @@ classes:
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_compute_multi
 - system.reclass.storage.system.openstack_gateway_single
-- system.reclass.storage.system.openstack_dashboard_single
 - system.reclass.storage.system.stacklight_server_cluster
-- system.reclass.storage.system.openstack_dashboard_single
-- cluster.mk22_lab_dvr
+- cluster.mk24_lab_vxlan
 parameters:
   _param:
-    reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
+    reclass_data_repository: "git@github.com:TatyankaLeontovich/mk-lab-salt-model.git"
     reclass_data_revision: master
     salt_master_environment_repository: "https://github.com/tcpcloud"
     salt_master_environment_revision: master
-    salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
     reclass_config_master: 192.168.10.100
     single_address: 172.16.10.100
     salt_master_host: 127.0.0.1
@@ -61,13 +57,13 @@ parameters:
           params:
             single_address: 172.16.10.105
             tenant_address: 10.1.0.105
-            external_address: 10.16.0.105
-        openstack_compute_node02:
+            external_address: 100.16.0.105
+        openstack_compute_node02: 
           params:
             single_address: 172.16.10.106
             tenant_address: 10.1.0.106
-            external_address: 10.16.0.106
+            external_address: 100.16.0.106
         openstack_gateway_node01:
           params:
             tenant_address: 10.1.0.110
-            external_address: 10.16.0.110
+            external_address: 100.16.0.110
