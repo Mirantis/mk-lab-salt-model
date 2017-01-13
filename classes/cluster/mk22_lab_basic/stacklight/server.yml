@@ -1,6 +1,7 @@
 classes:
 - system.collectd.remote_client.single
 - system.heka.remote_collector.single
+- system.heka.remote_collector.input.amqp
 - system.heka.aggregator.single
 - system.elasticsearch.server.single
 - system.elasticsearch.server.curator
