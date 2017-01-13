@@ -1,0 +1,133 @@
+classes:
+- system.linux.system.repo.mos9
+- system.linux.system.repo.tcp_extra
+- system.linux.system.repo.saltstack_2016_3_trusty
+- system.memcached.server.single
+- system.keystone.server.cluster
+- system.glance.control.cluster
+- system.neutron.control.openvswitch.cluster
+- system.nova.control.cluster
+- system.cinder.control.cluster
+- system.heat.server.cluster
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+- system.heka.alarm.openstack_control
+parameters:
+  _param:
+    keepalived_vip_interface: eth1
+    keepalived_vip_virtual_router_id: 50
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address} 
+  linux:
+    network:
+      interface:
+        eth1: ${_param:linux_single_interface}
+    system:
+      package:
+        python-msgpack:
+          version: latest
+  keystone:
+    server:
+      region: ${_param:openstack_region}
+      tokens:
+        engine: fernet
+      admin_email: ${_param:admin_email}
+      database:
+        host: ${_param:openstack_database_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+  glance:
+    server:
+      identity:
+        region: ${_param:openstack_region}
+      storage:
+        engine: file
+      images: []
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  neutron:
+    server:
+      backend:
+        tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  nova:
+    controller:
+      network:
+        host: ${_param:cluster_vip_address}
+      networking: dvr
+      metadata:
+        password: ${_param:metadata_password}
+      bind:
+        private_address: ${_param:cluster_local_address}
+        public_address: ${_param:cluster_vip_address}
+        novncproxy_port: 6080
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      workers: 4
+      database:
+        host: ${_param:openstack_database_address}
+      identity:
+        engine: keystone
+        region: ${_param:openstack_region}
+        host: ${_param:openstack_control_address}
+        port: 35357
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  cinder:
+    controller:
+      enabled: true
+      identity:
+        region: ${_param:openstack_region}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+  heat:
+    server:
+      database:
+        host: ${_param:openstack_database_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+      stack_domain_admin:
+        name: heat_domain_admin
+        password: ${_param:heat_domain_admin_password}
+        domain: heat
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}

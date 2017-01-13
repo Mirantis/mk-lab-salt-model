@@ -4,16 +4,16 @@ parameters:
     openstack_region: RegionOne
     admin_email: root@localhost
     cluster_public_host: _
-    neutron_control_dvr: True
+    neutron_control_dvr: False
     neutron_tenant_network_types: "flat,vxlan"
     neutron_l3_ha: False
     neutron_global_physnet_mtu: 1500
     neutron_external_mtu: 1500
-    neutron_gateway_dvr: True
-    neutron_gateway_agent_mode: dvr_snat
-    neutron_compute_dvr: True
-    neutron_compute_agent_mode: dvr
-    neutron_compute_external_access: True
+    neutron_gateway_dvr: False
+    neutron_gateway_agent_mode: legacy
+    neutron_compute_dvr: False
+    neutron_compute_agent_mode: legacy
+    neutron_compute_external_access: False
     galera_server_cluster_name: openstack_cluster
     galera_server_maintenance_password: workshop
     galera_server_admin_password: workshop

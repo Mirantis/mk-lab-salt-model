@@ -1,0 +1,33 @@
+
+parameters:
+  _param:
+    salt_control_trusty_image: http://apt.tcpcloud.eu/images/ubuntu-14-04-x64-201608231134.qcow2
+    salt_control_xenial_image: http://apt.tcpcloud.eu/images/ubuntu-16-04-x64-201608231004.qcow2
+  linux:
+    network:
+      host:
+        cfg01:
+          address: ${_param:fuel_config_deploy_address}
+          names:
+          - cfg01
+          - cfg01.${_param:cluster_domain}
+        cfg:
+          address: ${_param:fuel_config_deploy_address}
+          names:
+          - cfg
+          - cfg.${_param:cluster_domain}
+        kvm01:
+          address: ${_param:fuel_compute_node01_address}
+          names:
+          - kvm01
+          - kvm01.${_param:cluster_domain}
+        kvm02:
+          address: ${_param:fuel_compute_node02_address}
+          names:
+          - kvm02
+          - kvm02.${_param:cluster_domain}
+        kvm03:
+          address: ${_param:fuel_compute_node03_address}
+          names:
+          - kvm03
+          - kvm03.${_param:cluster_domain}

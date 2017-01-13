@@ -1,0 +1,72 @@
+classes:
+- system.linux.system.repo.mos9
+- system.linux.system.repo.saltstack_2016_3_trusty
+- system.linux.system.repo.tcp_extra
+- system.neutron.gateway.cluster
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+parameters:
+  _param:
+    interface_mtu: 9000
+    neutron_gateway_dvr: True
+    neutron_gateway_agent_mode: dvr_snat
+    cluster_vip_address: ${_param:openstack_control_address}
+    primary_second_nic: p4p2
+  neutron:
+    gateway:
+      local_ip: ${_param:single_address}
+      backend:
+        tenant_vlan_range: "${_param:neutron_tenant_vlan_range}"
+      database:
+        host: ${_param:openstack_database_address}
+      message_queue:
+        host: ${_param:openstack_message_queue_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  linux:
+    network:
+      bridge: openvswitch
+      interface:
+        primary_second_nic:
+          name: ${_param:primary_second_nic}
+          enabled: true
+          type: slave
+          mtu: 9000
+          master: bond0
+        bond0:
+          enabled: true
+          proto: manual
+          ovs_bridge: br-floating
+          ovs_type: OVSPort
+          type: bond
+          use_interfaces:
+          - ${_param:primary_second_nic}
+          slaves: ${_param:primary_second_nic}
+          mode: active-backup
+          mtu: 9000
+        br-floating:
+          enabled: true
+          type: ovs_bridge
+        br-prv:
+          enabled: true
+          type: ovs_bridge
+        br-mgmt:
+          enabled: true
+          type: ovs_port
+          bridge: br-floating
+          proto: static
+          ovs_options: tag=100
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+        floating-to-prv:
+          enabled: true
+          type: ovs_port
+          port_type: patch
+          bridge: br-floating
+          peer: prv-to-floating
+        prv-to-floating:
+          enabled: true
+          type: ovs_port
+          port_type: patch
+          bridge: br-prv
+          peer: floating-to-prv

@@ -23,6 +23,7 @@ classes:
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
 - cluster.mk22_lab_dvr
+- system.heka.alarm.openstack_control
 parameters:
   _param:
     keepalived_vip_interface: eth1
@@ -45,12 +46,28 @@ parameters:
   keystone:
     server:
       admin_email: ${_param:admin_email}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   glance:
     server:
       storage:
         engine: file
       images: []
       workers: 1
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  heat:
+    server:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  neutron:
+    server:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     controller:
       networking: dvr
@@ -63,8 +80,15 @@ parameters:
         novncproxy_port: 6080
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       workers: 1
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   cinder:
     volume:
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
     controller:
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"

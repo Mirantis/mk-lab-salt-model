@@ -1,0 +1,101 @@
+# Address plan covered at:
+# https://docs.google.com/spreadsheets/d/17jhct4awbaoXVKp7_SdCbS-DBlikB6oEMb3gzLI4By8/edit#gid=0
+classes:
+- system.linux.system.single
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.qa_scale
+- system.openssh.server.team.mcp_qa
+- cluster.mk24_lab_ovs_dvr_vlan_bm.fuel
+- cluster.mk24_lab_ovs_dvr_vlan_bm.openstack
+- cluster.mk24_lab_ovs_dvr_vlan_bm.stacklight
+- cluster.mk24_lab_ovs_dvr_vlan_bm.stacklight.client
+parameters: 
+  _param:
+    cluster_domain: mk24_lab_ovs_dvr_vlan_bm.local
+    reclass_data_revision: master
+    cluster_name: mk24_lab_ovs_dvr_vlan_bm
+    cluster_public_host: 10.167.4.80
+    # fuel service addresses
+
+    fuel_config_deploy_address: 172.18.173.118  # cz8132.bud.mirantis.net
+
+    fuel_compute_node01_deploy_address: 172.18.173.112
+    fuel_compute_node02_deploy_address: 172.18.173.113
+    fuel_compute_node03_deploy_address: 172.18.173.114
+
+    # Libvirt networks for Fuel virtualized control plane
+    fuel_libvirt_control_net_kvm01: 192.168.199.0
+    fuel_libvirt_control_net_kvm02: 192.168.199.32
+    fuel_libvirt_control_net_kvm03: 192.168.199.64
+
+    fuel_libvirt_control_gw_kvm01: 192.168.199.1
+    fuel_libvirt_control_gw_kvm02: 192.168.199.33
+    fuel_libvirt_control_gw_kvm03: 192.168.199.65
+    fuel_libvirt_control_dhcp_pool_netmask_kvm01: 255.255.255.224
+    fuel_libvirt_control_dhcp_pool_netmask_kvm02: 255.255.255.224
+    fuel_libvirt_control_dhcp_pool_netmask_kvm03: 255.255.255.224
+    fuel_libvirt_control_net_prefix_kvm01: 27
+    fuel_libvirt_control_net_prefix_kvm02: 27
+    fuel_libvirt_control_net_prefix_kvm03: 27
+
+    fuel_libvirt_control_dhcp_pool_start_kvm01: 192.168.199.2
+    fuel_libvirt_control_dhcp_pool_end_kvm01: 192.168.199.30
+    fuel_libvirt_control_dhcp_pool_start_kvm02: 192.168.199.34
+    fuel_libvirt_control_dhcp_pool_end_kvm02: 192.168.199.62
+    fuel_libvirt_control_dhcp_pool_start_kvm03: 192.168.199.66
+    fuel_libvirt_control_dhcp_pool_end_kvm03: 192.168.199.90
+
+    fuel_compute_node01_address: 10.167.4.241
+    fuel_compute_node02_address: 10.167.4.242
+    fuel_compute_node03_address: 10.167.4.243
+
+    # openstack service addresses
+    openstack_proxy_address: 10.167.4.80
+    openstack_proxy_node01_address: 10.167.4.81
+    openstack_proxy_node02_address: 10.167.4.82
+    openstack_control_address: 10.167.4.10
+    openstack_control_node01_address: 10.167.4.11
+    openstack_control_node02_address: 10.167.4.12
+    openstack_control_node03_address: 10.167.4.13
+    openstack_database_address: 10.167.4.50
+    openstack_database_node01_address: 10.167.4.51
+    openstack_database_node02_address: 10.167.4.52
+    openstack_database_node03_address: 10.167.4.53
+    openstack_message_queue_address: 10.167.4.40
+    openstack_message_queue_node01_address: 10.167.4.41
+    openstack_message_queue_node02_address: 10.167.4.42
+    openstack_message_queue_node03_address: 10.167.4.43
+    # stacklight service addresses
+    stacklight_monitor_address: 10.167.4.70
+    stacklight_monitor_node01_address: 10.167.4.71
+    stacklight_monitor_node02_address: 10.167.4.72
+    stacklight_monitor_node03_address: 10.167.4.73
+    stacklight_log_address: 10.167.4.60
+    stacklight_log_node01_address: 10.167.4.61
+    stacklight_log_node02_address: 10.167.4.62
+    stacklight_log_node03_address: 10.167.4.63
+    stacklight_telemetry_address: 10.167.4.85
+    stacklight_telemetry_node01_address: 10.167.4.86
+    stacklight_telemetry_node02_address: 10.167.4.87
+    stacklight_telemetry_node03_address: 10.167.4.88
+
+    # openstack compute
+    openstack_compute_node01_single_address: 10.167.4.101
+    openstack_compute_node02_single_address: 10.167.4.102
+
+    # openstack gateway
+    openstack_gateway_address: 10.167.4.253
+
+    # Interface definitions
+    linux_dhcp_interface:
+      enabled: true
+      type: eth
+      proto: dhcp
+    linux_single_interface:
+      enabled: true
+      type: eth
+      proto: static
+      address: ${_param:single_address}
+      netmask: 255.255.255.0
+      name_servers:
+        - 8.8.8.8
