@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.tcp_elastic
 - system.collectd.remote_client.cluster
 - system.heka.remote_collector.cluster
+- system.heka.remote_collector.input.amqp
 - system.heka.aggregator.cluster
 - system.elasticsearch.server.cluster
 - system.elasticsearch.server.curator

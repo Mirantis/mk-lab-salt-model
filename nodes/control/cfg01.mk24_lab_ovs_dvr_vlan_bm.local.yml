@@ -1,0 +1,18 @@
+classes:
+- cluster.mk24_lab_ovs_dvr_vlan_bm.fuel.config
+parameters:
+  _param:
+    salt_master_base_environment: prd
+    linux_system_codename: xenial
+  linux:
+    system:
+      name: cfg01
+      domain: mk24_lab_ovs_dvr_vlan_bm.local
+salt:
+  master:
+    accept_policy: open_mode
+    source:
+      engine: pkg
+  minion:
+    source:
+      engine: pkg

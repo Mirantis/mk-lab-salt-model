@@ -37,6 +37,7 @@ parameters:
     nagios_notification_email: 'root@localhost'
 
     stacklight_environment: ${_param:cluster_domain}_prd
+    stacklight_notification_topic: stacklight_notifications
   linux:
     network:
       host:

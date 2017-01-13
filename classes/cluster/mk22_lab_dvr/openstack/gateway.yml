@@ -13,3 +13,8 @@ parameters:
     interface_mtu: 9000
     neutron_gateway_dvr: True
     neutron_gateway_agent_mode: dvr_snat
+  neutron:
+    gateway:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"

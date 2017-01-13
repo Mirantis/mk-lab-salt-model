@@ -5,12 +5,18 @@ classes:
 - system.neutron.compute.cluster
 - system.linux.network.interface.ovs_lab_dvr
 - cluster.mk22_lab_dvr
+- system.heka.alarm.openstack_compute
 parameters:
   _param:
     primary_interface: eth1
     tenant_interface: eth2
     external_interface: eth3
     interface_mtu: 9000
+  neutron:
+    compute:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     compute:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
@@ -21,3 +27,8 @@ parameters:
           - host: ${_param:openstack_control_node01_address}
           - host: ${_param:openstack_control_node02_address}
           - host: ${_param:openstack_control_node03_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+        notify_on:
+          state_change: vm_and_task_state

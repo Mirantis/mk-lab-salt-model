@@ -60,17 +60,23 @@ parameters:
   keystone:
     server:
       admin_email: ${_param:admin_email}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   glance:
     server:
       storage:
         engine: file
       images: []
       workers: 1
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   heat:
     server:
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   nova:
     controller:
       networking: contrail
@@ -87,7 +93,9 @@ parameters:
         - host: 127.0.0.1
           port: 11211
       workers: 1
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   neutron:
     server:
       plugin: contrail
@@ -95,9 +103,15 @@ parameters:
       public_networks: []
       contrail:
         version: ${_param:opencontrail_version}
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
   cinder:
     volume:
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
     controller:
-      notification: true
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"

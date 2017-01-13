@@ -1,0 +1,28 @@
+classes:
+- system.elasticsearch.server.cluster
+- system.linux.system.repo.saltstack_2016_3_xenial
+- system.haproxy.proxy.listen.elasticsearch
+- cluster.mk24_lab_ovs_dvr_vlan_bm
+parameters:
+  _param:
+    keepalived_vip_interface: ens3
+    keepalived_vip_virtual_router_id: 110
+    cluster_vip_address: ${_param:stacklight_log_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: log01
+    cluster_node01_address: ${_param:stacklight_log_node01_address}
+    cluster_node02_hostname: log02
+    cluster_node02_address: ${_param:stacklight_log_node02_address}
+    cluster_node03_hostname: log03
+    cluster_node03_address: ${_param:stacklight_log_node03_address}
+  linux:
+    network:
+      interface:
+        ens3: ${_param:linux_single_interface}
+  elasticsearch:
+    server:
+      master: true
+      data: true
+  haproxy:
+    proxy:
+      enabled: true
