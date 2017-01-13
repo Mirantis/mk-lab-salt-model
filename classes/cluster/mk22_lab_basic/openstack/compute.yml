@@ -34,7 +34,7 @@ parameters:
       vncproxy_url: http://${_param:cluster_vip_address}:6080
       notification:
         driver: messagingv2
-        topics: notifications
+        topics: "notifications,${_param:stacklight_notification_topic}"
         notify_on:
           state_change: vm_and_task_state
       message_queue:
