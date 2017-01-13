@@ -3,7 +3,9 @@ classes:
 - system.linux.system.repo.tcp_extra
 - system.memcached.server.single
 - system.keystone.server.cluster
+- system.keystone.server.storage.glusterfs
 - system.glance.control.cluster
+- system.glance.control.storage.glusterfs
 - system.nova.control.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster

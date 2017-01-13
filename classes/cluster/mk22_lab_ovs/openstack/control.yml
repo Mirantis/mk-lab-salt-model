@@ -7,7 +7,9 @@ classes:
 - system.rabbitmq.server.cluster
 - system.rabbitmq.server.vhost.openstack
 - system.keystone.server.cluster
+- system.keystone.server.storage.glusterfs
 - system.glance.control.cluster
+- system.glance.control.storage.glusterfs
 - system.nova.control.cluster
 - system.neutron.control.openvswitch.cluster
 - system.cinder.control.cluster
