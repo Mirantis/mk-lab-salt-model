@@ -1,4 +1,7 @@
 classes:
+- system.linux.system.repo.grafana
+- system.linux.system.repo.influxdb
+- system.linux.system.repo.tcp_elastic
 - system.collectd.remote_client.single
 - system.heka.remote_collector.single
 - system.heka.aggregator.single
