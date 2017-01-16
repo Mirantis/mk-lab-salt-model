@@ -18,6 +18,8 @@ parameters:
     openstack_control_node01_address: 172.16.10.101
     openstack_control_node02_address: 172.16.10.102
     openstack_control_node03_address: 172.16.10.103
+    # FIXME: to be replaced by openstack_network_address eventually
+    opencontrail_control_address: ${_param:openstack_control_address}
 
     openstack_database_address: ${_param:openstack_control_address}
     openstack_database_node01_address: ${_param:openstack_control_node01_address}
