@@ -124,6 +124,10 @@ init_salt_master() {
   log_info "Runing saltmaster states"
   set -x
   $SUDO salt-call saltutil.sync_all >/dev/null
+
+  log_info "Reclass-salt SaltMaster node check, prior salt-master is fully initialized"
+  $SUDO reclass-salt -p ${MASTER_HOSTNAME} &> ${MASTER_HOSTNAME}_pre.out || cat ${MASTER_HOSTNAME}_pre.out
+
   #$SUDO reclass-salt -p ${MASTER_HOSTNAME} >  ${MASTER_HOSTNAME}.tmp  || (tail -n 50 ${MASTER_HOSTNAME}.tmp; false)
   if [[ $MASTER_INIT_STATES =~ ^(True|true|1|yes)$ ]]; then
     $SUDO salt-call ${SALT_OPTS} state.sls salt.master || log_warn "Friendly errors may pass"
