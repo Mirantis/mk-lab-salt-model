@@ -3,7 +3,7 @@ classes:
 - system.linux.system.repo.mos9
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
-- system.linux.network.interface.ovs_lab_dvr
+- system.linux.network.interface.single_ovs_dvr
 - cluster.mk22_lab_ovs
 parameters:
   _param:
