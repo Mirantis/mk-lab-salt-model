@@ -16,6 +16,7 @@ classes:
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.ceilometer.server.cluster
+- system.ceilometer.server.backend.influxdb
 - system.aodh.server.cluster
 - system.opencontrail.control.cluster
 - system.heka.ceilometer_collector.single

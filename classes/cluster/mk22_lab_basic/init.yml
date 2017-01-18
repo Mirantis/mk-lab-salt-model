@@ -47,3 +47,4 @@ parameters:
     # stacklight service addresses
     stacklight_monitor_address: 172.16.10.107
     stacklight_monitor_node01_address: 172.16.10.107
+    stacklight_telemetry_node01_address: ${_param:stacklight_monitor_node01_address}
