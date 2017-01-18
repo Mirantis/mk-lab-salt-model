@@ -13,6 +13,13 @@ parameters:
     interface_mtu: 9000
     neutron_gateway_dvr: True
     neutron_gateway_agent_mode: dvr_snat
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
   neutron:
     gateway:
       notification:
