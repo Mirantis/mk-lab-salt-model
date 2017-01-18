@@ -18,6 +18,7 @@ classes:
 - system.reclass.storage.system.openstack_gateway_single
 - system.reclass.storage.system.openstack_dashboard_single
 - system.reclass.storage.system.stacklight_server_cluster
+- system.reclass.storage.system.openstack_proxy_single
 - cluster.mk22_lab_dvr
 parameters:
   _param:
@@ -70,3 +71,6 @@ parameters:
           params:
             tenant_address: 10.1.0.110
             external_address: 10.16.0.110
+        openstack_proxy_node01:
+          classes:
+          - cluster.mk22_lab_dvr.stacklight.proxy

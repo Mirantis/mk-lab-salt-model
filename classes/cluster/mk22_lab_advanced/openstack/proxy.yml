@@ -14,3 +14,4 @@ parameters:
       authority: mk_lab_ca
       engine: salt
       mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
