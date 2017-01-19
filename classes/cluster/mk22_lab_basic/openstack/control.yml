@@ -12,7 +12,7 @@ classes:
 - system.glance.control.cluster
 - system.glance.control.storage.glusterfs
 - system.nova.control.cluster
-- system.neutron.control.cluster
+- system.neutron.control.opencontrail.cluster
 - system.cinder.control.cluster
 - system.heat.server.cluster
 - system.ceilometer.server.cluster
