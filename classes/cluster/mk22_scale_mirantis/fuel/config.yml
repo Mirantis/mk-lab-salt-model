@@ -2,7 +2,7 @@ classes:
 - system.linux.system.repo.tcp_salt
 - system.openssh.client.lab
 - system.salt.master.git
-- system.salt.minion.pki.authority
+- system.salt.minion.ca.salt_master
 - system.reclass.storage.salt
 - system.reclass.storage.system.physical_control_full
 - system.reclass.storage.system.opencontrail_analytics_cluster

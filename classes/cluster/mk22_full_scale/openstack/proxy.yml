@@ -6,7 +6,7 @@ classes:
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
 - system.horizon.server.single
-- system.salt.minion.pki.certificate
+- system.salt.minion.cert.proxy
 - cluster.mk22_full_scale
 parameters:
   _param:

@@ -4,7 +4,7 @@ classes:
 - system.nginx.server.proxy.openstack_api
 - system.nginx.server.proxy.openstack_vnc
 - system.nginx.server.proxy.openstack_web
-- system.salt.minion.pki.certificate
+- system.salt.minion.cert.proxy
 - cluster.mk20_lab_basic
 parameters:
   _param:

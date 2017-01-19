@@ -3,7 +3,7 @@ classes:
 - system.nginx.server.proxy.grafana_web
 - system.nginx.server.proxy.kibana_web
 - system.nginx.server.proxy.nagios_web
-- system.salt.minion.pki.certificate
+- system.salt.minion.cert.proxy
 - cluster.mk20_stacklight_advanced
 parameters:
   _param:
