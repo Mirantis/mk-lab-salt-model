@@ -5,12 +5,12 @@ classes:
 parameters:
   horizon:
     server:
-      version: mitaka
+      version: liberty
   linux:
     system:
       repo:
         tcpcloud_openstack:
-          source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty mitaka
+          source: deb [arch=amd64] http://apt.tcpcloud.eu/nightly/ trusty liberty
     network:
       interface:
         eth1:
