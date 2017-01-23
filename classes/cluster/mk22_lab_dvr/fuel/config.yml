@@ -32,6 +32,7 @@ parameters:
     salt_master_host: 127.0.0.1
     salt_master_base_environment: dev
     salt_minion_ca_host: ${linux:network:fqdn}
+    salt_master_api_port: 8088
   linux:
     network:
       interface:

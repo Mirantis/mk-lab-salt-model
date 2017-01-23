@@ -30,6 +30,7 @@ parameters:
     salt_master_base_environment: prd
     salt_minion_ca_host: ${linux:network:fqdn}
     salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
+    salt_master_api_port: 8088
   linux:
     network:
       interface:
