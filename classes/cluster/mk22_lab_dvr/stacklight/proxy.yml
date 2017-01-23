@@ -9,6 +9,6 @@ parameters:
   _param:
     nginx_proxy_ssl:
       enabled: true
-      authority: mk_lab_ca
+      authority: ${_param:salt_minion_ca_authority}
       engine: salt
       mode: secure

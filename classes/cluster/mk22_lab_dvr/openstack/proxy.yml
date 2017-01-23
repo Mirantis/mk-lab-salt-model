@@ -10,6 +10,7 @@ parameters:
     cluster_vip_address: ${_param:openstack_proxy_address}
     nginx_proxy_ssl:
       enabled: true
-      authority: mk_lab_ca
+      authority: ${_param:salt_minion_ca_authority}
       engine: salt
       mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}
