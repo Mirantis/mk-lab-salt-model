@@ -1,6 +1,7 @@
 classes:
 - system.linux.system.single
 - system.rsyslog.client.single
+- system.openssh.server.team.lab
 - cluster.mk22_lab_basic.fuel
 - cluster.mk22_lab_basic.openstack
 - cluster.mk22_lab_basic.stacklight
