@@ -1,6 +1,6 @@
 classes:
 - system.linux.system.single
-- cluster.mk20_lab_expert.fuel
+- cluster.mk20_lab_expert.infra
 - cluster.mk20_lab_expert.openstack
 - cluster.mk20_lab_expert.monitoring
 parameters:
@@ -8,8 +8,8 @@ parameters:
     cluster_domain: mk20-stacklight-expert.local
     cluster_name: mk20_lab_expert
     cluster_public_host: _
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121

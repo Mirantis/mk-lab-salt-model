@@ -1,14 +1,14 @@
 classes:
 - system.linux.system.single
-- cluster.mk20_lab_basic.fuel
+- cluster.mk20_lab_basic.infra
 - cluster.mk20_lab_basic.openstack
 parameters:
   _param:
     cluster_domain: mk20-lab-basic.local
     cluster_name: mk20_lab_basic
     cluster_public_host: _
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121

@@ -1,5 +1,5 @@
 classes:
-- cluster.mk20_stacklight_advanced.fuel.config
+- cluster.mk20_stacklight_advanced.infra.config
 - cluster.mk20_stacklight_advanced.openstack.proxy
 - cluster.mk20_stacklight_advanced.stacklight.proxy
 parameters:

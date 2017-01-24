@@ -3,7 +3,7 @@ classes:
 - system.linux.system.repo.saltstack_2016_3
 - system.openssh.server.team.tcpcloud
 - system.rsyslog.client.single
-- cluster.mk22_full_scale.fuel
+- cluster.mk22_full_scale.infra
 - cluster.mk22_full_scale.openstack
 - cluster.mk22_full_scale.opencontrail
 - cluster.mk22_full_scale.stacklight
@@ -13,8 +13,8 @@ parameters:
     cluster_domain: mk22-full-scale.local
     cluster_name: mk22_full_scale
     cluster_public_host: _
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121

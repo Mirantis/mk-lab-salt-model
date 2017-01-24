@@ -1,6 +1,6 @@
 classes:
-- cluster.mk22_scale_mirantis.fuel.config
-- cluster.mk22_scale_mirantis.fuel.compute
+- cluster.mk22_scale_mirantis.infra.config
+- cluster.mk22_scale_mirantis.infra.kvm
 parameters:
   _param:
     linux_system_codename: trusty

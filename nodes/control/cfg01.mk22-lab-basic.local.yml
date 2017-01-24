@@ -1,5 +1,5 @@
 classes:
-- cluster.mk22_lab_basic.fuel.config
+- cluster.mk22_lab_basic.infra.config
 - cluster.mk22_lab_basic.openstack.proxy
 - cluster.mk22_lab_basic.stacklight.proxy
 parameters:

@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.single
 - system.rsyslog.client.single
-- cluster.mk20_stacklight_advanced.fuel
+- cluster.mk20_stacklight_advanced.infra
 - cluster.mk20_stacklight_advanced.openstack
 - cluster.mk20_stacklight_advanced.stacklight
 - cluster.mk20_stacklight_advanced.stacklight.client
@@ -10,8 +10,8 @@ parameters:
     cluster_domain: mk20-stacklight-advanced.local
     cluster_name: mk20_stacklight_advanced
     cluster_public_host: _
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121

@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.single
 - system.rsyslog.client.single
-- cluster.mk22_lab_basic.fuel
+- cluster.mk22_lab_basic.infra
 - cluster.mk22_lab_basic.openstack
 - cluster.mk22_lab_basic.stacklight
 - cluster.mk22_lab_basic.stacklight.client
@@ -10,8 +10,8 @@ parameters:
     cluster_domain: mk22-lab-basic.local
     cluster_name: mk22_lab_basic
     cluster_public_host: _
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121
