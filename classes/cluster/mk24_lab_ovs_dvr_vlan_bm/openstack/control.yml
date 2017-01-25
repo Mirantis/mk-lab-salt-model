@@ -4,6 +4,7 @@ classes:
 - system.linux.system.repo.saltstack_2016_3_trusty
 - system.memcached.server.single
 - system.keystone.server.cluster
+- system.keystone.server.storage.glusterfs
 - system.glance.control.cluster
 - system.neutron.control.openvswitch.cluster
 - system.nova.control.cluster
