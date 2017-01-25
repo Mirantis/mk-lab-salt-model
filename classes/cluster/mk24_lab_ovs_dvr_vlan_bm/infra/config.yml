@@ -75,3 +75,40 @@ parameters:
         openstack_proxy_node02:
           params:
             keepalived_vip_priority: 102
+
+  linux:
+    network:
+      interface:
+
+        enp8s0f0:
+          enabled: true
+          type: eth
+          mtu: 9000
+        enp8s0f1:
+          enabled: true
+          type: slave
+          mtu: 9000
+          master: bond0
+
+        bond0:
+          enabled: true
+          type: bond
+          use_interfaces:
+          - enp8s0f1
+          slaves: enp8s0f1
+          mode: active-backup
+        bond0.100:
+          enabled: true
+          type: vlan
+          proto: manual
+          mtu: 9000
+          use_interfaces:
+          - bond0
+        br100:
+          enabled: true
+          type: bridge
+          address: ${_param:infra_config_control_address}
+          netmask: 255.255.255.0
+          mtu: 9000
+          use_interfaces:
+          - bond0.100

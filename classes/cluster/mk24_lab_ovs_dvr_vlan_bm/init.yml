@@ -18,6 +18,7 @@ parameters:
     # infra service addresses
 
     infra_config_deploy_address: 172.18.173.118  # cz8132.bud.mirantis.net
+    infra_config_control_address: 10.167.4.90
 
     infra_compute_node01_deploy_address: 172.18.173.112
     infra_compute_node02_deploy_address: 172.18.173.113
