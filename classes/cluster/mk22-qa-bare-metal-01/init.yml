@@ -1,6 +1,6 @@
 classes:
 - system.linux.system.single
-- cluster.mk22-qa-bare-metal-01.fuel
+- cluster.mk22-qa-bare-metal-01.infra
 - cluster.mk22-qa-bare-metal-01.openstack
 - cluster.mk22-qa-bare-metal-01.opencontrail
 parameters:
@@ -8,8 +8,8 @@ parameters:
     cluster_domain: mk22-qa-bare-metal-01.local
     cluster_name: mk22-qa-bare-metal-01
     cluster_public_host: _
-    # fuel service addresses
-    fuel_config_address: 172.16.178.100
+    # infra service addresses
+    infra_config_address: 172.16.178.100
     # openstack service addresses
     openstack_proxy_address: 172.16.178.125
     openstack_proxy_node01_address: 172.16.178.125

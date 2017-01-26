@@ -1,13 +1,13 @@
 classes:
 - system.linux.system.single
-- cluster.mk22_qa_lab01.fuel
+- cluster.mk22_qa_lab01.infra
 - cluster.mk22_qa_lab01.openstack
 parameters:
   _param:
     cluster_domain: mk22-qa-lab01.local
     cluster_name: mk22_qa_lab01
-    # fuel service addresses
-    fuel_config_address: 172.16.10.100
+    # infra service addresses
+    infra_config_address: 172.16.10.100
     # openstack service addresses
     openstack_proxy_address: 172.16.10.121
     openstack_proxy_node01_address: 172.16.10.121

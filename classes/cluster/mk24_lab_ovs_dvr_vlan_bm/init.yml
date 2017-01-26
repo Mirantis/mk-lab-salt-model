@@ -6,7 +6,7 @@ classes:
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.qa_scale
 - system.openssh.server.team.mcp_qa
-- cluster.mk24_lab_ovs_dvr_vlan_bm.fuel
+- cluster.mk24_lab_ovs_dvr_vlan_bm.infra
 - cluster.mk24_lab_ovs_dvr_vlan_bm.openstack
 - cluster.mk24_lab_ovs_dvr_vlan_bm.stacklight
 - cluster.mk24_lab_ovs_dvr_vlan_bm.stacklight.client
@@ -16,39 +16,40 @@ parameters:
     reclass_data_revision: master
     cluster_name: mk24_lab_ovs_dvr_vlan_bm
     cluster_public_host: 10.167.4.80
-    # fuel service addresses
+    # infra service addresses
 
-    fuel_config_deploy_address: 172.18.173.118  # cz8132.bud.mirantis.net
+    infra_config_deploy_address: 172.18.173.118  # cz8132.bud.mirantis.net
+    infra_config_control_address: 10.167.4.90
 
-    fuel_compute_node01_deploy_address: 172.18.173.112
-    fuel_compute_node02_deploy_address: 172.18.173.113
-    fuel_compute_node03_deploy_address: 172.18.173.114
+    infra_compute_node01_deploy_address: 172.18.173.112
+    infra_compute_node02_deploy_address: 172.18.173.113
+    infra_compute_node03_deploy_address: 172.18.173.114
 
-    # Libvirt networks for Fuel virtualized control plane
-    fuel_libvirt_control_net_kvm01: 192.168.199.0
-    fuel_libvirt_control_net_kvm02: 192.168.199.32
-    fuel_libvirt_control_net_kvm03: 192.168.199.64
+    # Libvirt networks for infra virtualized control plane
+    infra_libvirt_control_net_kvm01: 192.168.199.0
+    infra_libvirt_control_net_kvm02: 192.168.199.32
+    infra_libvirt_control_net_kvm03: 192.168.199.64
 
-    fuel_libvirt_control_gw_kvm01: 192.168.199.1
-    fuel_libvirt_control_gw_kvm02: 192.168.199.33
-    fuel_libvirt_control_gw_kvm03: 192.168.199.65
-    fuel_libvirt_control_dhcp_pool_netmask_kvm01: 255.255.255.224
-    fuel_libvirt_control_dhcp_pool_netmask_kvm02: 255.255.255.224
-    fuel_libvirt_control_dhcp_pool_netmask_kvm03: 255.255.255.224
-    fuel_libvirt_control_net_prefix_kvm01: 27
-    fuel_libvirt_control_net_prefix_kvm02: 27
-    fuel_libvirt_control_net_prefix_kvm03: 27
+    infra_libvirt_control_gw_kvm01: 192.168.199.1
+    infra_libvirt_control_gw_kvm02: 192.168.199.33
+    infra_libvirt_control_gw_kvm03: 192.168.199.65
+    infra_libvirt_control_dhcp_pool_netmask_kvm01: 255.255.255.224
+    infra_libvirt_control_dhcp_pool_netmask_kvm02: 255.255.255.224
+    infra_libvirt_control_dhcp_pool_netmask_kvm03: 255.255.255.224
+    infra_libvirt_control_net_prefix_kvm01: 27
+    infra_libvirt_control_net_prefix_kvm02: 27
+    infra_libvirt_control_net_prefix_kvm03: 27
 
-    fuel_libvirt_control_dhcp_pool_start_kvm01: 192.168.199.2
-    fuel_libvirt_control_dhcp_pool_end_kvm01: 192.168.199.30
-    fuel_libvirt_control_dhcp_pool_start_kvm02: 192.168.199.34
-    fuel_libvirt_control_dhcp_pool_end_kvm02: 192.168.199.62
-    fuel_libvirt_control_dhcp_pool_start_kvm03: 192.168.199.66
-    fuel_libvirt_control_dhcp_pool_end_kvm03: 192.168.199.90
+    infra_libvirt_control_dhcp_pool_start_kvm01: 192.168.199.2
+    infra_libvirt_control_dhcp_pool_end_kvm01: 192.168.199.30
+    infra_libvirt_control_dhcp_pool_start_kvm02: 192.168.199.34
+    infra_libvirt_control_dhcp_pool_end_kvm02: 192.168.199.62
+    infra_libvirt_control_dhcp_pool_start_kvm03: 192.168.199.66
+    infra_libvirt_control_dhcp_pool_end_kvm03: 192.168.199.90
 
-    fuel_compute_node01_address: 10.167.4.241
-    fuel_compute_node02_address: 10.167.4.242
-    fuel_compute_node03_address: 10.167.4.243
+    infra_compute_node01_address: 10.167.4.241
+    infra_compute_node02_address: 10.167.4.242
+    infra_compute_node03_address: 10.167.4.243
 
     # openstack service addresses
     openstack_proxy_address: 10.167.4.80

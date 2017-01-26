@@ -1,5 +1,5 @@
 classes:
-- cluster.mk22-qa-bare-metal-01.fuel.config
+- cluster.mk22-qa-bare-metal-01.infra.config
 - cluster.mk22-qa-bare-metal-01.openstack.proxy
 parameters:
   _param:

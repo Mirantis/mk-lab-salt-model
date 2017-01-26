@@ -5,7 +5,7 @@ classes:
 - system.linux.system.repo.saltstack_2016_3
 - system.openssh.server.team.tcpcloud
 - system.openssh.server.team.qa_scale
-- cluster.mk22_scale_mirantis.fuel
+- cluster.mk22_scale_mirantis.infra
 - cluster.mk22_scale_mirantis.openstack
 - cluster.mk22_scale_mirantis.opencontrail
 - cluster.mk22_scale_mirantis.stacklight
@@ -15,29 +15,29 @@ parameters:
     cluster_domain: mk22-scale.mirantis.local
     cluster_name: mk22_scale_mirantis
     cluster_public_host: 172.20.10.41
-    # fuel service addresses
-    fuel_config_address: 172.20.10.71
-    fuel_config_deploy_address: 172.20.2.71
+    # infra service addresses
+    infra_config_address: 172.20.10.71
+    infra_config_deploy_address: 172.20.2.71
 
-    fuel_compute_node01_address: 172.20.10.71
-    fuel_compute_node02_address: 172.20.10.72
-    fuel_compute_node03_address: 172.20.10.73
-    fuel_compute_node04_address: 172.20.10.74
-    fuel_compute_node05_address: 172.20.10.75
-    fuel_compute_node06_address: 172.20.10.76
-    fuel_compute_node07_address: 172.20.10.77
-    fuel_compute_node08_address: 172.20.10.78
-    fuel_compute_node09_address: 172.20.10.79
+    infra_compute_node01_address: 172.20.10.71
+    infra_compute_node02_address: 172.20.10.72
+    infra_compute_node03_address: 172.20.10.73
+    infra_compute_node04_address: 172.20.10.74
+    infra_compute_node05_address: 172.20.10.75
+    infra_compute_node06_address: 172.20.10.76
+    infra_compute_node07_address: 172.20.10.77
+    infra_compute_node08_address: 172.20.10.78
+    infra_compute_node09_address: 172.20.10.79
 
-    fuel_compute_node01_deploy_address: 172.20.2.71
-    fuel_compute_node02_deploy_address: 172.20.2.72
-    fuel_compute_node03_deploy_address: 172.20.2.73
-    fuel_compute_node04_deploy_address: 172.20.2.74
-    fuel_compute_node05_deploy_address: 172.20.2.75
-    fuel_compute_node06_deploy_address: 172.20.2.76
-    fuel_compute_node07_deploy_address: 172.20.2.77
-    fuel_compute_node08_deploy_address: 172.20.2.78
-    fuel_compute_node09_deploy_address: 172.20.2.79
+    infra_compute_node01_deploy_address: 172.20.2.71
+    infra_compute_node02_deploy_address: 172.20.2.72
+    infra_compute_node03_deploy_address: 172.20.2.73
+    infra_compute_node04_deploy_address: 172.20.2.74
+    infra_compute_node05_deploy_address: 172.20.2.75
+    infra_compute_node06_deploy_address: 172.20.2.76
+    infra_compute_node07_deploy_address: 172.20.2.77
+    infra_compute_node08_deploy_address: 172.20.2.78
+    infra_compute_node09_deploy_address: 172.20.2.79
 
     # openstack service addresses
     openstack_proxy_address: 172.20.10.40

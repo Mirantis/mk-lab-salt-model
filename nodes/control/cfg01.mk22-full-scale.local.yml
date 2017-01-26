@@ -1,5 +1,5 @@
 classes:
-- cluster.mk22_full_scale.fuel.config
+- cluster.mk22_full_scale.infra.config
 - cluster.mk22_full_scale.openstack.proxy
 parameters:
   _param:

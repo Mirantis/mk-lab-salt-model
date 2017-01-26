@@ -2,13 +2,13 @@ parameters:
   reclass:
     storage:
       node:
-        fuel_compute_node01:
+        infra_compute_node01:
           name: kvm01
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node01_address}
+            single_address: ${_param:infra_compute_node01_address}
 

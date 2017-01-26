@@ -1,5 +1,5 @@
 classes:
-- cluster.mk20_lab_expert.fuel.config
+- cluster.mk20_lab_expert.infra.config
 - cluster.mk20_lab_expert.openstack.proxy
 parameters:
   _param:

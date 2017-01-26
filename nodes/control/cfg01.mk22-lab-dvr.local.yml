@@ -1,5 +1,5 @@
 classes:
-- cluster.mk22_lab_dvr.fuel.config
+- cluster.mk22_lab_dvr.infra.config
 - cluster.mk22_lab_dvr.openstack.proxy
 - cluster.mk22_lab_dvr.stacklight.proxy
 parameters:
