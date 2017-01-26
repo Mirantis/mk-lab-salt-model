@@ -12,6 +12,7 @@ classes:
 - system.nova.control.cluster
 - system.neutron.control.cluster
 - system.cinder.control.cluster
+- system.cinder.backend.lvm
 - system.heat.server.cluster
 - system.ceilometer.server.cluster
 - system.aodh.server.cluster
