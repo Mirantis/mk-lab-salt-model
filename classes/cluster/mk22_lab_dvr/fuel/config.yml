@@ -24,7 +24,7 @@ parameters:
   _param:
     reclass_data_repository: "git@github.com:Mirantis/mk-lab-salt-model.git"
     reclass_data_revision: master
-    salt_master_environment_repository: "https://github.com/tcpcloud"
+    salt_master_environment_repository: "https://github.com/salt-formulas"
     salt_master_environment_revision: master
     salt_api_password_hash: "$6$sGnRlxGf$al5jMCetLP.vfI/fTl3Z0N7Za1aeiexL487jAtyRABVfT3NlwZxQGVhO7S1N8OwS/34VHYwZQA8lkXwKMN/GS1"
     reclass_config_master: 192.168.10.100

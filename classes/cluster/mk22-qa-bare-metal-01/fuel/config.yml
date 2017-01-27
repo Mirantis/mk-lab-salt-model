@@ -14,7 +14,7 @@ classes:
 - cluster.mk22-qa-bare-metal-01
 parameters:
   _param:
-    salt_master_environment_repository: "https://github.com/tcpcloud"
+    salt_master_environment_repository: "https://github.com/salt-formulas"
     salt_master_environment_revision: master
     salt_master_base_environment: dev
     reclass_data_repository: "git@github.com:TimurNurlygayanov/mk-lab-salt-model.git"
