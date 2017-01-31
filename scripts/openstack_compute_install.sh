@@ -25,6 +25,9 @@ for i in $(seq 0 $nb); do
 	salt -C 'I@opencontrail:control:id:1' cmd.run "/usr/share/contrail-utils/provision_vrouter.py --host_name $h --host_ip $ip --api_server_ip $vip --oper add --admin_user admin --admin_password workshop --admin_tenant_name admin"
 done
 
+# Enables eth1 interface on compute nodes
+salt 'cmp*' cmd.run "ip link set up eth1"﻿⁠⁠⁠⁠
+
 # Reboot compute nodes
 salt "cmp*" system.reboot
 
