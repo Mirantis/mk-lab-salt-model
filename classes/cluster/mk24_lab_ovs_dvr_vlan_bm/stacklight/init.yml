@@ -71,4 +71,24 @@ parameters:
           names:
           - log
           - log.${_param:cluster_domain}
+        mtr01:
+          address: ${_param:stacklight_telemetry_node01_address}
+          names:
+          - mtr01
+          - mtr01.${_param:cluster_domain}
+        mtr02:
+          address: ${_param:stacklight_telemetry_node02_address}
+          names:
+          - mtr02
+          - mtr02.${_param:cluster_domain}
+        mtr03:
+          address: ${_param:stacklight_telemetry_node03_address}
+          names:
+          - mtr03
+          - mtr03.${_param:cluster_domain}
+        mtr:
+          address: ${_param:stacklight_telemetry_address}
+          names:
+          - mtr
+          - mtr.${_param:cluster_domain}
 
