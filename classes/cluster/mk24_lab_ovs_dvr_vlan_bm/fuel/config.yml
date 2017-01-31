@@ -11,6 +11,7 @@ classes:
 - system.reclass.storage.system.openstack_proxy_cluster
 - system.reclass.storage.system.openstack_database_cluster
 - system.reclass.storage.system.openstack_message_queue_cluster
+- system.reclass.storage.system.openstack_dashboard_cluster
 - system.reclass.storage.system.stacklight_log_cluster
 - system.reclass.storage.system.stacklight_monitor_cluster
 - system.reclass.storage.system.stacklight_telemetry_cluster
