@@ -1,0 +1,12 @@
+classes:
+- cluster.mk24_lab_vxlan.fuel.config
+- cluster.mk24_lab_vxlan.openstack.proxy
+- cluster.mk24_lab_vxlan.stacklight.proxy
+parameters:
+  _param:
+    linux_system_codename: xenial
+    reclass_data_revision: master
+  linux:
+    system:
+      name: cfg01
+      domain: mk24-lab-vxlan.local

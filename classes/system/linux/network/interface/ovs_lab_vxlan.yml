@@ -1,0 +1,67 @@
+parameters:
+  _param:
+    primary_interface: eth1
+    tenant_interface: eth2
+    external_interface: eth3
+    interface_mtu: 9000
+  linux:
+    network:
+      bridge: openvswitch
+      interface:
+        primary_interface:
+          enabled: true
+          name: ${_param:primary_interface}
+          type: eth
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        tenant_interface:
+          enabled: true
+          name: ${_param:tenant_interface}
+          type: eth
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        external_interface:
+          enabled: true
+          name: ${_param:external_interface}
+          type: eth
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        br-int:
+          enabled: true
+          mtu: ${_param:interface_mtu}
+          type: ovs_bridge
+        br-floating:
+          enabled: true
+          mtu: ${_param:interface_mtu}
+          type: ovs_bridge
+        float-to-ex:
+          enabled: true
+          type: ovs_port
+          mtu: 65000
+          bridge: br-floating
+        br-mgmt:
+          enabled: true
+          type: bridge
+          mtu: ${_param:interface_mtu}
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - ${_param:primary_interface}
+        br-mesh:
+          enabled: true
+          type: bridge
+          mtu: ${_param:interface_mtu}
+          address: ${_param:tenant_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - ${_param:tenant_interface}
+        br-ex:
+          enabled: true
+          type: bridge
+          mtu: ${_param:interface_mtu}
+          address: ${_param:external_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - ${_param:external_interface}
+          use_ovs_ports:
+          - float-to-ex
