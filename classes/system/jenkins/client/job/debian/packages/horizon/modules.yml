@@ -1,0 +1,157 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-debian-horizon-module:
+          name: build-debian-horizon-module-{{name}}-{{os_version}}-{{os}}-{{dist}}
+          jobs:
+            # Trusty
+            - name: horizon-overrides-plugin
+              os: ubuntu
+              dist: trusty
+              os_version: mitaka
+              branch: master
+            # Xenial
+            - name: horizon-overrides-plugin
+              os: ubuntu
+              dist: xenial
+              os_version: mitaka
+              branch: master
+            # Trusty
+            - name: horizon-contrail-panels
+              os: ubuntu
+              dist: trusty
+              os_version: mitaka
+              branch: stable/mitaka
+            # Xenial
+            - name: horizon-contrail-panels
+              os: ubuntu
+              dist: xenial
+              os_version: mitaka
+              branch: stable/mitaka
+            # Trusty
+            - name: horizon-contrail-panels
+              os: ubuntu
+              dist: trusty
+              os_version: newton
+              branch: stable/newton
+            # Xenial
+            - name: horizon-contrail-panels
+              os: ubuntu
+              dist: xenial
+              os_version: newton
+              branch: stable/newton
+            # Trusty
+            - name: horizon-contrail-panels
+              os: ubuntu
+              dist: trusty
+              os_version: ocata
+              branch: stable/ocata
+            # Xenial
+            - name: horizon-contrail-panels
+              os: ubuntu
+              dist: xenial
+              os_version: ocata
+              branch: stable/ocata
+            # Trusty
+            - name: horizon-jenkins-dashboard
+              os: ubuntu
+              dist: trusty
+              os_version: liberty
+              branch: stable/liberty
+            # Xenial
+            - name: horizon-jenkins-dashboard
+              os: ubuntu
+              dist: xenial
+              os_version: liberty
+              branch: stable/liberty
+            # Trusty
+            - name: horizon-telemetry-dashboard
+              os: ubuntu
+              dist: trusty
+              os_version: liberty
+              branch: stable/liberty
+            # Xenial
+            - name: horizon-telemetry-dashboard
+              os: ubuntu
+              dist: xenial
+              os_version: liberty
+              branch: stable/liberty
+            # Trusty
+            - name: horizon-telemetry-dashboard
+              os: ubuntu
+              dist: trusty
+              os_version: mitaka
+              branch: stable/mitaka
+            # Xenial
+            - name: horizon-telemetry-dashboard
+              os: ubuntu
+              dist: xenial
+              os_version: mitaka
+              branch: stable/mitaka
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-debian-packages-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  horizon-modules/{{name}}:
+                    branches:
+                      - "{{branch}}"
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/horizon-modules/{{name}}.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              DEBIAN_SNAPSHOT:
+                type: boolean
+                default: 'true'
+              REVISION_POSTFIX:
+                type: string
+                default: '~{{os_version}}1{{dist}}1'
+              EXTRA_REPO_URL:
+                type: string
+                default: "deb ${_param:jenkins_aptly_url}/{{dist}}/ testing extra {{os_version}}"
+              EXTRA_REPO_KEY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_url}/public.gpg"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "{{os}}-{{dist}}-{{os_version}}"
+              OS:
+                type: string
+                default: "{{os}}"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              UPLOAD_APTLY:
+                type: boolean
+                default: 'true'

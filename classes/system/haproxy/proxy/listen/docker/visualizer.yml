@@ -1,0 +1,30 @@
+parameters:
+  _param:
+    haproxy_docker_visualizer_listen_port: 8091
+  haproxy:
+    proxy:
+      listen:
+        visualizer:
+          mode: http
+          options:
+            - forwardfor
+            - httpchk
+            - httpclose
+            - httplog
+          balance: source
+          binds:
+            - address: ${_param:haproxy_bind_address}
+              port: ${_param:haproxy_docker_visualizer_listen_port}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 18090
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 18090
+              params: check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 18090
+              params: check

@@ -1,0 +1,16 @@
+classes:
+  - service.maas.region.single
+  - service.maas.region.vendor_repo
+parameters:
+  maas:
+    region:
+      theme: mirantis
+      enable_iframe: True
+      bind:
+        host: ${_param:cluster_vip_address}
+      database:
+        engine: postgresql
+        host: 10.0.175.10
+        name: maasdb
+        password: password
+        username: maas

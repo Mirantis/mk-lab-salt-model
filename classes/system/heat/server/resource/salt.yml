@@ -1,0 +1,11 @@
+parameters:
+  linux:
+    system:
+      package:
+        python-heat-salt:
+          version: latest
+  heat:
+    server:
+      dir:
+        plugins:
+        - /usr/lib/python2.7/dist-packages/heat_salt/resources

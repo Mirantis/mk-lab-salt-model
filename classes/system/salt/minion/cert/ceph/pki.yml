@@ -1,0 +1,8 @@
+parameters:
+  salt:
+    minion:
+      cert:
+        ceph:
+          key_file:  /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:ceph:common_name}.key
+          cert_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:ceph:common_name}.crt
+          all_file:  /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:ceph:common_name}-chain-with-key.pem

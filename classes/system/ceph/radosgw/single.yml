@@ -1,0 +1,20 @@
+parameters:
+  _param:
+    radosgw_keyring_path: /etc/ceph/ceph.client.radosgw.keyring
+  ceph:
+    radosgw:
+      enabled: true
+    client:
+      config:
+        client.radosgw.gateway:
+          rgw_keystone_accepted_roles: "_member_, Member, admin, swiftoperator"
+          keyring: /etc/ceph/ceph.client.radosgw.keyring
+          rgw_socket_path: /tmp/radosgw.sock
+          rgw_keystone_revocation_interval: 60
+          rgw_keystone_url: ${_param:keystone_service_host}:5000
+          rgw_keystone_admin_token: ${_param:keystone_service_token}
+          host: ${linux:system:name}
+          rgw_dns_name : ${_param:cluster_domain}
+          rgw_print_continue: True
+          rgw_content_length_compat: true
+          user: www-data

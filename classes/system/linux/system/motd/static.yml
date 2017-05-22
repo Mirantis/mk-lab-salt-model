@@ -1,0 +1,12 @@
+parameters:
+  linux:
+    system:
+      motd: |
+        WARNING: This is private network
+        Unauthorized access is strictly prohibited
+
+        ------------------------------------------------------
+         Hostname     |  ${linux:system:name}
+         Domain       |  ${linux:system:domain}
+        ------------------------------------------------------
+        

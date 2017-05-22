@@ -1,9 +1,13 @@
 parameters:
+  _param:
+    monitor_node01_hostname: mon01
+    monitor_node02_hostname: mon02
+    monitor_node03_hostname: mon03
   reclass:
     storage:
       node:
         monitoring_service_node01:
-          name: mon01
+          name: ${_param:monitor_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.monitoring.server
@@ -12,7 +16,7 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:monitoring_service_node01_address}
         monitoring_service_node02:
-          name: mon02
+          name: ${_param:monitor_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.monitoring.server
@@ -21,7 +25,7 @@ parameters:
             linux_system_codename: xenial
             single_address: ${_param:monitoring_service_node02_address}
         monitoring_service_node03:
-          name: mon03
+          name: ${_param:monitor_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.monitoring.server

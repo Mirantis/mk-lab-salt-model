@@ -1,0 +1,51 @@
+parameters:
+  linux:
+    system:
+      user:
+        rkamaldinov:
+          enabled: true
+          name: rkamaldinov
+          sudo: true
+          full_name: Ruslan Kamaldinov
+          home: /home/rkamaldinov
+          email: rkamaldinov@mirantis.com
+        dburmistrov:
+          enabled: true
+          name: dburmistrov
+          sudo: true
+          full_name: Dmitrii Burmistrov
+          home: /home/dburmistrov
+          email: dburmistrov@mirantis.com
+        dkaiharodsev:
+          enabled: true
+          name: dkaiharodsev
+          sudo: true
+          full_name: Dmytro Kaiharodtsev
+          home: /home/dkaiharodsev
+          email: dkaiharodsev@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        rkamaldinov:
+          enabled: true
+          public_keys:
+          - ${public_keys:rkamaldinov}
+          user: ${linux:system:user:rkamaldinov}
+        dburmistrov:
+          enabled: true
+          public_keys:
+          - ${public_keys:dburmistrov}
+          user: ${linux:system:user:dburmistrov}
+        dkaiharodsev:
+          enabled: true
+          public_keys:
+          - ${public_keys:dkaiharodsev}
+          user: ${linux:system:user:dkaiharodsev}
+  public_keys:
+    rkamaldinov:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCzeIFxatNuXWuaTomcGDTMlpqiF6KlK47BSO5yIpfWHTL7o0OFsQArB4UeZ9AC7JHQg1bpxzscJxz8Xj3tA1f8yOCrepR8LbWh7L6a1hMhSCJPK9QLUHPCLV4PW0ghq46Um8ekxMbEqGM/rrKP+GeYxNFUxJMHCkKbZAsV+BV8amuJHQkYt29GP/hgYyZEoWKErqoQ/uGQ0qWEMVQsnus6M3p3c/v1J4JtbbrmRBjyrPx/Tjinw6K2sgocgBZT7vVb4PYwbONi1IAclkPJIyrSNEavZ4MbK93ZXNQCV7rkUbKmHT71Qle34/ks9zyERJ3RgB+pWgQqCjtmJeV51V1 rkamaldinov@mirantis.com
+    dburmistrov:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPKldN0BL6C/pmjkKyaSUw9OTUQAumWLCgNPyLVGZIuYPyFs9GqvKgHVm0QChm1OLhnQuA1wxGW5piBtqaDCTyLbKb/ANR3nhO1rqX5LTwZS2W2I0ImP47HUpnxqsBl15/y9hY2JDHZ7qrd7zNqCD+uCkf9l9qA9BmN1aMSKm07fqaaUfhnl3AocxsPX4X4eHfzy7hPJdzrHEcHbGoLLEd8ahJLkHKieWF1lAI++fIhETPF41+ZbH7MBBG4qw/UhhYAgLP3YAEWwvm/J3DtRqGkpSvH2U21hmAlgJHwxtoCD9Q1jKpH5+BDTvqJIXu0K7Gcl00xbeNYyHrwTVsldFX dburmistrov@mirantis.com
+    dkaiharodsev:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSz9eH08GDUOSEDReJAIdjDCoYaoTwg1SSzYNwPRO/evJBeqYwRvZmxzITKq+1qy4jXnpa3ZpuBdaUebqKri2VtvMGmBrWtP8Ojbg3kNPjKOfvrW4cCyJE0yrnW03TULnRgrnf4/WXLK0dnHxL39AmlVjQTVS4pbx73XjyPoVjJbk4PXq37F5cLyyLj4aeWmCcPWn7MLsEC4RUkDwHy3DsDNdgKOlUSHmmOfVy9GBwVbXwVyYbq732Qm0Qqf/2zlJi84LgXOH2irv5HRTMDQ2Wey5Amcl7VpK8OMvtN4R8Sb7c3mgsmM/b/h+gefl0Y/vQfsSSi8GCPhmBoNT4FBgZ dkaiharodsev@dkaiharodsev-pc

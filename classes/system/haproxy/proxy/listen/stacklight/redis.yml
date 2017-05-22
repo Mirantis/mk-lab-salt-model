@@ -1,0 +1,32 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        redis:
+          mode: tcp
+          check: False
+          health-check:
+            tcp:
+              options:
+                - send PING\r\n
+                - expect string +PONG
+                - send info\ replication\r\n
+                - expect string role:master
+                - send QUIT\r\n
+                - expect string +OK
+          binds:
+            - address: ${_param:cluster_vip_address}
+              port: ${_param:cluster_redis_port}
+          servers:
+            - name: ${_param:cluster_node01_hostname}
+              host: ${_param:cluster_node01_address}
+              port: 6379
+              params: 'check'
+            - name: ${_param:cluster_node02_hostname}
+              host: ${_param:cluster_node02_address}
+              port: 6379
+              params: 'check'
+            - name: ${_param:cluster_node03_hostname}
+              host: ${_param:cluster_node03_address}
+              port: 6379
+              params: 'check'

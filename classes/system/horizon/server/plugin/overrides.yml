@@ -1,0 +1,10 @@
+parameters:
+  horizon:
+    server:
+      plugin:
+        horizon_overrides:
+          override: true
+          app: horizon_overrides
+          source:
+            engine: pkg
+            name: python-horizon-overrides-plugin

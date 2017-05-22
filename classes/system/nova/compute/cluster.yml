@@ -1,9 +1,11 @@
-applications:
-- nova
 classes:
 - service.nova.compute.kvm
 parameters:
   _param:
+    nova_vncproxy_url: https://${_param:cluster_public_host}:6080
+    nova_compute_virtualization: kvm
+    nova_compute_avail_zone:
+    nova_aggregates: []
     nova_compute_ssh_public: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCltIn93BcTMzNK/n2eBze6PyTkmIgdDkeXNR9X4DqE48Va80ojv2pq8xuaBxiNITJzyl+4p4UvTTXo+HmuX8qbHvqgMGXvuPUCpndEfb2r67f6vpMqPwMgBrUg2ZKgN4OsSDHU+H0dia0cEaTjz5pvbUy9lIsSyhrqOUVF9reJq+boAvVEedm8fUqiZuiejAw2D27+rRtdEPgsKMnh3626YEsr963q4rjU/JssV/iKMNu7mk2a+koOrJ+aHvcVU8zJjfA0YghoeVT/I3GLU/MB/4tD/RyR8GM+UYbI4sgAC7ZOCdQyHdJgnEzx3SJIwcS65U0T2XYvn2qXHXqJ9iGZ root@mirantis.com
     nova_compute_ssh_private: |
       -----BEGIN RSA PRIVATE KEY-----
@@ -42,21 +44,25 @@ parameters:
     compute:
       version: ${_param:nova_version}
       enabled: true
-      virtualization: kvm
-      vncproxy_url: http://${_param:cluster_vip_address}:6080      
+      virtualization: ${_param:nova_compute_virtualization}
+      availability_zone: ${_param:nova_compute_avail_zone}
+      aggregates: ${_param:nova_aggregates}
+      heal_instance_info_cache_interval: 60
+      vncproxy_url: ${_param:nova_vncproxy_url}
       bind:
         vnc_address: ${_param:cluster_local_address}
         vnc_port: 6080
         vnc_name: 0.0.0.0
       database:
         engine: mysql
-        host: ${_param:cluster_vip_address}
+        host: ${_param:openstack_database_address}
         port: 3306
         name: nova
         user: nova
         password: ${_param:mysql_nova_password}
       identity:
         engine: keystone
+        region: ${_param:openstack_region}
         host: ${_param:cluster_vip_address}
         port: 35357
         user: nova
@@ -68,29 +74,22 @@ parameters:
         user: openstack
         password: ${_param:rabbitmq_openstack_password}
         virtual_host: '/openstack'
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
       image:
         engine: glance
         host: ${_param:cluster_vip_address}
         port: 9292
       network:
         engine: neutron
-        host: ${_param:cluster_vip_address}
+        region: ${_param:openstack_region}
+        host: ${_param:neutron_service_host}
         port: 9696
         user: neutron
-        password: ${_param:keystone_neutron_password}
         tenant: service
-      cache:
-        engine: memcached
-        members:
-        - host: ${_param:cluster_node01_address}
-          port: 11211
-        - host: ${_param:cluster_node02_address}
-          port: 11211
-        - host: ${_param:cluster_node03_address}
-          port: 11211
-      logging:
-        heka:
-          enabled: true
+        password: ${_param:keystone_neutron_password}
       user:
         public_key: ${_param:nova_compute_ssh_public}
         private_key: ${_param:nova_compute_ssh_private}

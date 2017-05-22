@@ -1,0 +1,32 @@
+parameters:
+  _param:
+    haproxy_postgresql_bind_host: ${_param:haproxy_bind_address}
+    haproxy_postgresql_bind_port: 5432
+    haproxy_postgresql_exposed_port: 15432
+    haproxy_postgresql_ssl:
+      enabled: false
+  haproxy:
+    proxy:
+      listen:
+        postgresql:
+          mode: tcp
+          balance: source
+          options:
+          - tcp-check
+          binds:
+            - address: ${_param:haproxy_postgresql_bind_host}
+              port: ${_param:haproxy_postgresql_bind_port}
+              ssl: ${_param:haproxy_postgresql_ssl}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: ${_param:haproxy_postgresql_exposed_port}
+              params: check port ${_param:haproxy_postgresql_exposed_port}
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: ${_param:haproxy_postgresql_exposed_port}
+              params: backup check port ${_param:haproxy_postgresql_exposed_port}
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: ${_param:haproxy_postgresql_exposed_port}
+              params: backup check port ${_param:haproxy_postgresql_exposed_port}

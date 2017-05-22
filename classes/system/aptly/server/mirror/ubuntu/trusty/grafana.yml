@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        grafana-trusty:
+          source: https://packagecloud.io/grafana/stable/debian/
+          distribution: wheezy
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - D59097AB
+          publisher:
+            component: grafana
+            distributions:
+              - ubuntu-trusty/nightly

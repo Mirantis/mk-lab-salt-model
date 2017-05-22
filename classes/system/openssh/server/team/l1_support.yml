@@ -1,0 +1,56 @@
+classes:
+- system.linux.system.sudo
+# L1
+- system.openssh.server.team.members.aleksandrdobdin
+- system.openssh.server.team.members.aleksandrrubtsov
+- system.openssh.server.team.members.anatoliineliubin
+- system.openssh.server.team.members.antonrodionov
+- system.openssh.server.team.members.collinmay
+- system.openssh.server.team.members.daniillapshin
+- system.openssh.server.team.members.danilakhmetov
+- system.openssh.server.team.members.deniskostriukov
+- system.openssh.server.team.members.dmitrygoloshubov
+- system.openssh.server.team.members.javierdiaz
+- system.openssh.server.team.members.josuepalmerin
+- system.openssh.server.team.members.krzysztoffranckowski
+- system.openssh.server.team.members.matthewroark
+- system.openssh.server.team.members.maximefimov
+- system.openssh.server.team.members.michaelpetersen
+- system.openssh.server.team.members.mikhailkraynov
+- system.openssh.server.team.members.nadezhdakabanova
+- system.openssh.server.team.members.renesoto
+- system.openssh.server.team.members.scottmachtmes
+- system.openssh.server.team.members.zahedkhurasani
+parameters:
+  linux:
+    system:
+      group:
+        support:
+          enabled: true
+          name: support
+      sudo:
+        enabled: true
+        aliases:
+          command:
+            L1_SUPPORT_SALT: ${_param:sudo_salt_safe}
+            L1_SUPPORT_COREUTILS: ${_param:sudo_coreutils_safe}
+            L1_SUPPORT_RABBITMQ: ${_param:sudo_rabbitmq_safe}
+            L1_SUPPORT_SALT_TRUSTED: ${_param:sudo_salt_trusted}
+            L1_SUPPORT_RESTRICTED_SHELLS: ${_param:sudo_shells}
+            L1_SUPPORT_RESTRICTED: ${_param:sudo_restricted_su}
+            L1_SUPPORT_NETWORKING: ${_param:sudo_networking}
+            L1_SUPPORT_CONTRAIL: ${_param:sudo_contrail_utilities}
+            L1_SUPPORT_STORAGE: ${_param:sudo_storage_utilities}
+            L1_SUPPORT_OPENSTACK_CLIENTS: ${_param:sudo_openstack_clients}
+        groups:
+          support:
+            commands:
+                - L1_SUPPORT_SALT
+                - L1_SUPPORT_COREUTILS
+                - L1_SUPPORT_RABBITMQ
+                - L1_SUPPORT_NETWORKING
+                - L1_SUPPORT_CONTRAIL
+                - L1_SUPPORT_STORAGE
+                - L1_SUPPORT_OPENSTACK_CLIENTS
+                - '!L1_SUPPORT_RESTRICTED_SHELLS'
+                - '!L1_SUPPORT_RESTRICTED'

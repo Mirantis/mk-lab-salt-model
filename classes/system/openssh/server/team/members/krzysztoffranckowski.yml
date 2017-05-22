@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        kfranckowski:
+          enabled: true
+          name: kfranckowski
+          sudo: false
+          full_name: Krzysztof Franckowski
+          home: /home/kfranckowski
+          email: kfranckowski@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        kfranckowski:
+          enabled: true
+          public_keys: ${public_keys:kfranckowski}
+          user: ${linux:system:user:kfranckowski}
+  public_keys:
+    kfranckowski:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVoTlgIijwEHGDbkKD3IBQHjHOjaM3z9VtIPxFZx0uTzyQ2qgeCS1Nd4VTFM1u677SspcAeZkgoMhuKqPcD+JypApA9bfmELu7QrDdnzro2bW/Sj5fMbfCR5V2KfqCj4nQmzcBLlx0Lj+JRQgzx4NThveOZHRQfO1tFSRNJMM/DmxCZsUCs3tl3WYyWEZkKYx/vPWoGe+Hf7VU/tsH/Yp1syhfJBNwyuCmfsobrUrvcVL+troX7hefXNJOuum6KvTDAPM9XzJvR0TU63bkGpOpACPr7axXOjJ0Y3X2qrXRRXc+IGaWY1O+MQ55jxOJX7SD74lbdy8WRxdmHt6V6QRL
+

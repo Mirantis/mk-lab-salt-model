@@ -1,0 +1,18 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_uchiwa:
+          enabled: true
+          type: nginx_proxy
+          name: uchiwa
+          proxy:
+            host: ${_param:stacklight_monitor_address}
+            port: 3001
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 3001
+            protocol: https
+          ssl: ${_param:nginx_proxy_ssl}

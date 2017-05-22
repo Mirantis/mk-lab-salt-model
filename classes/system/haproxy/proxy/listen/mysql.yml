@@ -1,0 +1,26 @@
+parameters:
+  _param:
+    haproxy_mysql_bind_port: 3306
+    haproxy_mysql_source_port: 3306
+  haproxy:
+    proxy:
+      listen:
+        mysql:
+          mode: tcp
+          balance: source
+          binds:
+            - address: ${_param:haproxy_bind_address}
+              port: ${_param:haproxy_mysql_bind_port}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: ${_param:haproxy_mysql_source_port}
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: ${_param:haproxy_mysql_source_port}
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: ${_param:haproxy_mysql_source_port}
+              params: backup check

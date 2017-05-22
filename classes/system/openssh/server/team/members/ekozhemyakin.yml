@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        ekozhemyakin:
+          enabled: true
+          name: ekozhemyakin
+          sudo: false
+          full_name: Evgeny Kozhemyakin
+          home: /home/ekozhemyakin
+          email: ekozhemyakin@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        ekozhemyakin:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAnQ3OD1g35wYDnHwnNKuA/daYMJ7YmMsGoucOG8Y4HFXv9JXMd7MgqpfgyRc22y3VqV6G7ddGgjI0TDzENAzxUAd6pjIhl8GPtwBRY0q5LDPZwatkX8KH1T/da5EDM3iwekftd50s8hsUKRhmCfuFlgC9R0eVAVbzLMsB+OgtasLygoCrfWa5chZ6exbIkDnQRN+SDxBEHjpAK22OGeDuW4Vuf8DS74cNgX2zZBkcQEwxfzGBi3AsJhUEm91d1JJqYtD4nwcRSIUEEiKLroW/AKACko8GihHXCRxmgLSFNhMLwV9g5LE4E9O/MMN8E7ik2JnmAVuhjttsa4tzj62raAlrUBvA/4KBwwocXgR6lLZ/dLBcCdbSZ8UQJy3IM9rwa/r9v/T6qGWm1GwTqL7MWAp4XKPpUbHvykSh9XqQm0Zs2/eTsa387Oxo40IuLcJk8tOlZwYiu2wdnrhnex90dMweMEHTe9lBi0JOqz48uFDYa3NsNQ6ZhkZGYgGblH1Ip3Z75K69HDZJUrM++4bDRuN2y5BL3K1M2GKZVnSwVvkcw7wCL7KyEMzX5uyHc1IiBtpZjPGorIQvJvmUzNe/IDSwVwu2Lm8YsYyMmboyiQ+NZex9+9ZW7htyREYGKNJZHAB+YIgvXRKJOjw0JyCXDqkNOeMDOlkfwYEcrhsN7A8= evg@ThinkPad
+          user: ${linux:system:user:ekozhemyakin}

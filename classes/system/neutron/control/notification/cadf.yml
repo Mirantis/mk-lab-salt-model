@@ -1,0 +1,5 @@
+parameters:
+  neutron:
+    server:
+      audit:
+        enabled: true

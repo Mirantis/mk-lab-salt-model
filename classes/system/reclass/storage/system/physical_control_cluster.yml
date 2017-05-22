@@ -1,32 +1,57 @@
 parameters:
+  _param:
+    infra_kvm_node01_hostname: kvm01
+    infra_kvm_node02_hostname: kvm02
+    infra_kvm_node03_hostname: kvm03
+
+    infra_kvm_node01_deploy_address: ${_param:infra_kvm_node01_address}
+    infra_kvm_node02_deploy_address: ${_param:infra_kvm_node02_address}
+    infra_kvm_node03_deploy_address: ${_param:infra_kvm_node03_address}
+
+    infra_kvm_node01_storage_address: ${_param:infra_kvm_node01_address}
+    infra_kvm_node02_storage_address: ${_param:infra_kvm_node02_address}
+    infra_kvm_node03_storage_address: ${_param:infra_kvm_node03_address}
+
+    infra_kvm_node01_public_address: ${_param:infra_kvm_node01_address}
+    infra_kvm_node02_public_address: ${_param:infra_kvm_node02_address}
+    infra_kvm_node03_public_address: ${_param:infra_kvm_node03_address}
+
   reclass:
     storage:
       node:
-        fuel_compute_node01:
-          name: kvm01
+        infra_kvm_node01:
+          name: ${_param:infra_kvm_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node01_address}
-        fuel_compute_node02:
-          name: kvm02
+            single_address: ${_param:infra_kvm_node01_address}
+            deploy_address: ${_param:infra_kvm_node01_deploy_address}
+            public_address: ${_param:infra_kvm_node01_public_address}
+            storage_address: ${_param:infra_kvm_node01_storage_address}
+        infra_kvm_node02:
+          name: ${_param:infra_kvm_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node02_address}
-            deploy_address: 192.168.10.152
-        fuel_compute_node03:
-          name: kvm03
+            single_address: ${_param:infra_kvm_node02_address}
+            deploy_address: ${_param:infra_kvm_node02_deploy_address}
+            public_address: ${_param:infra_kvm_node02_public_address}
+            storage_address: ${_param:infra_kvm_node02_storage_address}
+        infra_kvm_node03:
+          name: ${_param:infra_kvm_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node03_address}
+            single_address: ${_param:infra_kvm_node03_address}
+            deploy_address: ${_param:infra_kvm_node03_deploy_address}
+            public_address: ${_param:infra_kvm_node03_public_address}
+            storage_address: ${_param:infra_kvm_node03_storage_address}

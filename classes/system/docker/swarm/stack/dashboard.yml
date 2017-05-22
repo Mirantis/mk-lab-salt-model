@@ -1,0 +1,27 @@
+parameters:
+  _param:
+    docker_grafana_replicas: 1
+    grafana_database_type: sqlite3
+    grafana_database_host: localhost
+    grafana_database_port: 3306
+    grafana_database_password: password
+  docker:
+    client:
+      stack:
+        dashboard:
+          service:
+            grafana:
+              deploy:
+                replicas: ${_param:docker_grafana_replicas}
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_grafana}
+              ports:
+                - 15013:3000
+              environment:
+                GF_DATABASE_TYPE: ${_param:grafana_database_type}
+                GF_DATABASE_NAME: grafana
+                GF_DATABASE_USER: grafana
+                GF_DATABASE_PASSWORD: ${_param:grafana_database_password}
+                GF_DATABASE_HOST: "${_param:grafana_database_host}:${_param:grafana_database_port}"
+                GF_SECURITY_ADMIN_PASSWORD: ${_param:grafana_admin_password}

@@ -1,0 +1,16 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        sensu:
+          source: http://sensu.global.ssl.fastly.net/apt
+          distribution: sensu
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - EB9C94BB
+          publisher:
+            component: extra
+            distributions:
+              - trusty/nightly
+              - xenial/nightly

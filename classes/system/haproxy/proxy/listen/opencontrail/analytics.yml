@@ -1,0 +1,53 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        contrail_analytics:
+          type: contrail-analytics
+          service_name: contrail
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8081
+          servers:
+          - name: nal01
+            host: ${_param:cluster_node01_address}
+            port: 9081
+            params: check inter 2000 rise 2 fall 3
+          - name: nal02
+            host: ${_param:cluster_node02_address}
+            port: 9081
+            params: check inter 2000 rise 2 fall 3
+          - name: nal03
+            host: ${_param:cluster_node03_address}
+            port: 9081
+            params: check inter 2000 rise 2 fall 3
+        contrail_config_stats:
+          type: contrail-config
+          service_name: contrail
+          check: false
+          format: listen
+          binds:
+          - address: '*'
+            port: 5937
+          user: haproxy
+          password: ${_param:opencontrail_stats_password}
+        contrail_openstack_stats:
+          type: contrail-config
+          service_name: contrail
+          check: false
+          format: listen
+          binds:
+          - address: '*'
+            port: 5936
+          user: haproxy
+          password: ${_param:opencontrail_stats_password}
+        contrail_collector_stats:
+          type: contrail-config
+          service_name: contrail
+          check: false
+          format: listen
+          binds:
+          - address: '*'
+            port: 5938
+          user: haproxy
+          password: ${_param:opencontrail_stats_password}

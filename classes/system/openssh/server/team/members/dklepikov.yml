@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        dklepikov:
+          enabled: true
+          name: dklepikov
+          sudo: false
+          full_name: Denys Klepikov
+          home: /home/dklepikov
+          email: dklepikov@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        dklepikov:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7yxcnhYEf/Gjbxp9T7NiA00UQsl13K8dGDjcc38HAQ0tdFs4SIMpsfAXHO4aOuo6fHH0fZ+f+tpWfmgzPVG8zblRxD6hhydvWMDUCUy/1ASAZaXeWeeikOXSIammoZHQ7oASK1tYpDkfByMyN0vvLJ2bBZlZWqz7H/07EF2eOTqvKhPkdTKX0pei9ezE4F7lrV5AxDfPR1lhuZRkZkVlKz/dEotbwnTTSNvwzVIDMpOi8ufG7kMszUO+QIUd1FwJLvtu8ccSiqzhAG/UfKfe+j4oJbgdNW9Yrg6GyuYshdKUJi5XlVmsmWC3ZuXozMmZXvitCdXOZBZ7muT/xpPnr dklepikov@dlkepikov-ws
+          user: ${linux:system:user:dklepikov}

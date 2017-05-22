@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        rsoto:
+          enabled: true
+          name: rsoto
+          sudo: false
+          full_name: Rene Soto
+          home: /home/rsoto
+          email: rsoto@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        rsoto:
+          enabled: true
+          public_keys: ${public_keys:rsoto}
+          user: ${linux:system:user:rsoto}
+  public_keys:
+    rsoto:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCSmved/uNo6pkce9z52wiapxXXQ6nRadSzQhcYqegltYRbvDbAPe5oh/LGUoxybyIP6OAormVJlb85JojG1s7Aom6YtiFNTlddORWXZ1fuxqg7ue2++wQW3Zf2uJMFGKPAByucF8Oqix5WmLd8X8wpTEhX0x4aP9AwDNg2AdPqCGwb0ulwJ6Q6E8UBtHgFq/xF5mNX6NkefemhdxguQDiC2nGedSBuxXzSs7W6DIgL29N3IP2M9N5SjoFsY9cB/kbESchxnbKi7lQOmF0SsTxsshBjO3quHzYVvbSfeAmGb1stF5QHw1fMDGpBpM+yBLAIByQalpz6nkIT5ZgtlML
+

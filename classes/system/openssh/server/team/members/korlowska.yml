@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        korlowska:
+          enabled: true
+          name: korlowska
+          sudo: true
+          full_name: Katarzyna Orlowska
+          home: /home/korlowska
+          email: korlowska@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        korlowska:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCqsNuEIZr8XobFca4uN3KDAQzyd//NaZQrEMfJZNm8Gj5ym4NWX8cUjf3TQvV6eMGsNe/mxwIxmpyIANQeWUUlnelXG4rRjkBt94J1bg1YeB6F76R6yPuMrP8x/4s5nTy1OVr7jo1xwwL9aHZZcxQFExMBRMM2HrZDJNoXSdwqi7vuW8uUkCSwd8lsZ4iftI4TIafehZTHWroPP3kVMI+JvbdKyAR8xT2DsPHCIb42lEfCPMEYopKRI///L3KkZkbaVdshz/4zCvx3fAyKCHLH44Qgjs3eoAuz1ZFjAec/j6jwNEWGIrlk0g5nIfEXHR5e6qZRwa+nW60xHpIwMfGWtHscyTXR95OVXlEMLqAmycSXVLwyu47attnE/CLLUH4am38ET6w8Oxkzis0gHs3NOEhoNAf2OVhV3gP3aPzoDBRGemNdYZgGNnq6VI9dNhItkxN1QIYKI1d1Dwt8sz1PJM0W9JJjZDNFZAh5Q5QAsg3nxNudk4bxyjCnYbYbRj/dbKOKLJTEsqelsvlKT/+picEwqB/xmcwalHoKtR9QsNw2XuENBQk3OCfAC4SOhm+U1zq7XHpoVxjjn/J4p5ChkH7bhNGNMAE9aefekXGWNjpQFRszd/0SlEkzhUDsUIGKFEP8wlsjb9eOzatYf65fRbE1/YGODuwubj7WrZxy3w== korlowska@mirantis.com
+          user: ${linux:system:user:korlowska}

@@ -1,0 +1,17 @@
+parameters:
+  _param:
+    glusterfs_version: 3.8
+  aptly:
+    server:
+      mirror:
+        glusterfs_upstream_trusty:
+          source: http://ppa.launchpad.net/gluster/glusterfs-${_param:glusterfs_version}/ubuntu
+          distribution: trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 3FE869A9
+          publisher:
+            component: glusterfs
+            distributions:
+              - ubuntu-trusty/nightly

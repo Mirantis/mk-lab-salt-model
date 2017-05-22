@@ -1,0 +1,26 @@
+parameters:
+  _param:
+    salt_master_oss_repository: https://gerrit.mcp.mirantis.net/salt-formulas
+    salt_master_oss_revision: master
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            devops_portal:
+              module:
+                devops_utils.py:
+                  enabled: true
+              source: git
+              address: '${_param:salt_master_oss_repository}/devops-portal.git'
+              revision: ${_param:salt_master_oss_revision}
+            rundeck:
+              module:
+                rundeck.py:
+                  enabled: true
+              state:
+                rundeck_project.py:
+                  enabled: true
+              source: git
+              address: '${_param:salt_master_oss_repository}/rundeck.git'
+              revision: ${_param:salt_master_oss_revision}

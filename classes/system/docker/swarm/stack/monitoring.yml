@@ -1,0 +1,68 @@
+classes:
+- service.prometheus.server.container
+- service.prometheus.alertmanager.container
+- service.prometheus.pushgateway.container
+parameters:
+  docker:
+    client:
+      stack:
+        monitoring:
+          network:
+            monitoring:
+              driver: overlay
+              driver_opts:
+                encrypted: 1
+          service:
+            alertmanager:
+              networks:
+                - monitoring
+              deploy:
+                replicas: 2
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_alertmanager}
+              ports:
+                - 15011:${prometheus:alertmanager:bind:port}
+              volumes:
+                - /srv/volumes/prometheus:/opt/alertmanager/config
+              environment:
+                config_dir: /opt/alertmanager/config
+                bind_port: ${prometheus:alertmanager:bind:port}
+                bind_address: ${prometheus:alertmanager:bind:address}
+                discovery_domain: 'monitoring_alertmanager'
+            pushgateway:
+              networks:
+                - monitoring
+              deploy:
+                replicas: 2
+                restart_policy:
+                  condition: any
+              environment:
+                bind_port: ${prometheus:pushgateway:bind:port}
+                bind_address: ${prometheus:pushgateway:bind:address}
+              image: ${_param:docker_image_pushgateway}
+              ports:
+                - 15012:${prometheus:pushgateway:bind:port}
+            server:
+              networks:
+                - monitoring
+              deploy:
+                replicas: 1
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_prometheus}
+              ports:
+                - 15010:${prometheus:server:bind:port}
+              volumes:
+                - /srv/volumes/prometheus:/opt/prometheus/config
+              environment:
+                config_dir: /opt/prometheus/config
+                bind_port: ${prometheus:server:bind:port}
+                bind_address: ${prometheus:server:bind:address}
+                alertmanager_port: ${prometheus:alertmanager:bind:port}
+                storage_local_engine: ${prometheus:server:storage:local:engine}
+                storage_local_retention: ${prometheus:server:storage:local:retention}
+                storage_local_memory_chunks: ${prometheus:server:storage:local:memory_chunks}
+                storage_local_max_chunks_to_persist: ${prometheus:server:storage:local:max_chunks_to_persist}
+                storage_local_num_fingerprint_mutexes: ${prometheus:server:storage:local:num_fingerprint_mutexes}
+                discovery_domain: 'monitoring_alertmanager'

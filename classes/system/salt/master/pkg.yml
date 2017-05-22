@@ -1,6 +1,11 @@
 classes:
 - system.salt.master.single
+- system.salt.master.formula.pkg.ccp
+- system.salt.master.formula.pkg.foundation
+- system.salt.master.formula.pkg.kubernetes
 - system.salt.master.formula.pkg.openstack
+- system.salt.master.formula.pkg.oss
 - system.salt.master.formula.pkg.saltstack
 - system.salt.master.formula.pkg.stacklight
-- system.linux.system.repo.tcp_salt
+- system.salt.master.formula.pkg.monitoring
+- system.linux.system.repo.mcp.salt

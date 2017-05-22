@@ -1,4 +1,6 @@
 parameters:
+  _param:
+    cluster_public_protocol: https
   keystone:
     client:
       server:
@@ -9,7 +11,8 @@ parameters:
               description: OpenStack CloudFormation Service
               endpoints:
               - region: ${_param:openstack_region}
-                public_address: ${_param:heat_service_host}
+                public_address: ${_param:cluster_public_host}
+                public_protocol: ${_param:cluster_public_protocol}
                 public_port: 8000
                 public_path: '/v1'
                 internal_address: ${_param:heat_service_host}

@@ -1,0 +1,5 @@
+parameters:
+  heat:
+    server:
+      audit:
+        enabled: true

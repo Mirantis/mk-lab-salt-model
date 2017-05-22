@@ -1,0 +1,58 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        docker-build-images-devops-portal:
+          name: docker-build-images-devops-portal
+          discard:
+            build:
+              keep_num: 25
+            artifact:
+              keep_num: 25
+          type: workflow-scm
+          concurrent: false
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: docker-build-to-jfrog.groovy
+          trigger:
+            gerrit:
+              project:
+                "oss/devops-portal":
+                  branches:
+                    - master
+              skip_vote:
+                - successful
+                - failed
+                - unstable
+                - not_built
+              event:
+                patchset:
+                  - created:
+                      excludeDrafts: false
+                      excludeNoCodeChange: false
+                change:
+                  - merged
+                comment:
+                  - addedContains:
+                      commentAddedCommentContains: 'rebuild'
+          param:
+            IMAGE_NAME:
+              type: string
+              default: "devops_portal"
+            IMAGE_TAGS:
+              type: string
+              default: ""
+            CREDENTIALS_ID:
+              type: string
+              default: "gerrit"
+            DOCKERFILE_PATH:
+              type: string
+              default: "docker/devops-portal"
+            DOCKER_REGISTRY:
+              type: string
+              default: "docker-dev-virtual.docker.mirantis.net"
+            PROJECT_NAMESPACE:
+              type: string
+              default: "oss"

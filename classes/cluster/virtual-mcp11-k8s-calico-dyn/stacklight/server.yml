@@ -1,0 +1,59 @@
+classes:
+- system.docker.host
+- system.linux.system.repo.tcp_elastic
+# Needed to install Galera packages
+- system.linux.system.repo.mcp.openstack
+- system.elasticsearch.server.cluster
+- system.elasticsearch.server.curator
+- system.kibana.server.single
+- system.haproxy.proxy.listen.stacklight.elasticsearch
+- system.haproxy.proxy.listen.stacklight.kibana
+- service.haproxy.proxy.single
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.prometheus
+- system.glusterfs.server.cluster
+- system.glusterfs.server.volume.prometheus
+- system.galera.server.cluster
+- system.galera.server.database.grafana
+- system.salt.minion.cert.prometheus_server
+- system.keepalived.cluster.instance.prometheus_server_vip
+- system.prometheus.server.target.etcd
+- system.prometheus.server.target.kubernetes
+- system.prometheus.server.target.dns
+- system.docker.swarm.stack.monitoring
+- system.docker.swarm.service.dashboard.grafana_server
+- cluster.virtual-mcp11-k8s-calico-dyn
+parameters:
+  _param:
+    cluster_vip_address: ${_param:stacklight_address}
+    cluster_public_host: mon
+    docker_image_alertmanager: alertmanager:latest
+    docker_image_pushgateway: pushgateway:latest
+    docker_image_prometheus: prometheus:latest
+    docker_image_grafana: grafana/grafana:latest
+    grafana_admin_password: admin
+    keepalived_prometheus_vip_address: ${_param:cluster_vip_address}
+    keepalived_prometheus_vip_password: password
+    keepalived_prometheus_vip_interface: ens4
+    # Docker/Elasticsearch
+    cluster_node01_hostname: ${_param:stacklight_node01_hostname}
+    cluster_node01_address: ${_param:stacklight_node01_address}
+    cluster_node02_hostname: ${_param:stacklight_node02_hostname}
+    cluster_node02_address: ${_param:stacklight_node02_address}
+    cluster_node03_hostname: ${_param:stacklight_node03_hostname}
+    cluster_node03_address: ${_param:stacklight_node03_address}
+    # Kibana
+    kibana_elasticsearch_host: ${_param:cluster_vip_address}
+    # Galera
+    openstack_version: newton
+    # Grafana
+    docker_grafana_replicas: 1
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:cluster_vip_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
+    grafana_database_type: mysql
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          enabled: false

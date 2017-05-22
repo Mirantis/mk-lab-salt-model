@@ -1,0 +1,30 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        jenkins:
+          source: http://pkg.jenkins-ci.org/debian/
+          distribution: binary/
+          components: ""
+          architectures: amd64
+          gpgkeys:
+            - D50582E6
+          publisher:
+            component: extra
+            distributions:
+              - trusty/nightly
+              - xenial/nightly
+        jenkins-debian-glue:
+          source: http://jenkins.grml.org/debian/
+          distribution: jenkins-debian-glue
+          components: main
+          architectures: amd64
+          # TODO: this key is not uploaded to keyserver, workaround:
+          # su aptly -c 'curl http://jenkins.grml.org/debian/C525F56752D4A654.asc|gpg --no-default-keyring --keyring trustedkeys.gpg --import'
+          gpgkeys:
+            - 52D4A654
+          publisher:
+            component: extra
+            distributions:
+              - trusty/nightly
+              - xenial/nightly

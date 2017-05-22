@@ -1,0 +1,8 @@
+parameters:
+  jenkins:
+    client:
+      view:
+        Images:
+          enabled: true
+          type: ListView
+          include_regex: "build-image-.*"

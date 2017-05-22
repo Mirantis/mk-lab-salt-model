@@ -1,0 +1,42 @@
+applications:
+- openssh
+parameters:
+  _param:
+    root_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpQIBAAKCAQEAsy1IhygI3xV4md37IMd+blxelYr3wuVhWn7uEDGpcZo+lvrN
+      u+6An3VgPA7uX9cLUFzO91UOZx5F4TNlCH1DGq7MoVyvgcSla3IBATR3SpQ8rWnn
+      FD8rjsUw3RloTfwz7+f7y/DWFsHhGAWzWy4FNE3e0b5udk1Fyk4SA43he1w8V+Eo
+      V1oqQUsFOG6DlAbUfCln4GvH7KngTfnmnLgEBUdzK6zn1bwLllugbH9OO3Jnflek
+      L9K2qFu9zbuDP2QHU7GkeZOtmtHB7EkaIt4QpjUasPgmWkIvKa0FOrdunljxLc54
+      6eRJDxfiy4fC8VKAn1qlk/i8XvEEME9Z8fywjQIDAQABAoIBAQCdMsuBGNS/tDy8
+      8g5TsfLwrEWneebprQl+tgHzXz7EFol3OM+rZBKg0//8cTUeDLM2bFaAlLUwL1Ur
+      wUWQ7yUikd2ibIjmlzpyS/Ept3g5jFi35EQCdXGnrsWyFYp3cR+4CZXWVZPfH3Z2
+      9vlms7eJLhChgCu1yxHB7kDLsXz0Fn5jaWPd2TDY+3Y3t3LCFxNgfIQ+Mljzj/6f
+      +MG7bp/5UuEA76oZnPfp2fj1vqWYCI6ftk4Wam1AkHVUNP3jjl48cao7EKeH5v4E
+      0PL+AY3av4SoUQWf1ZlkkJrhIyRRdVDavX86t17NXmrQvaz3brz8yI2Hh08ho413
+      AH8C0zyZAoGBANcea55n9vBoA4FQRX2HEA9ljdPWIFdvkKXvxb7R/UxhzublicBm
+      3JwcDCwbiGhEzYhMlDmt0hZ4YPA3fL7WwP2EXkrYyqn1tSGSS2CkfhpuB2xgPTSr
+      cxbJj5iuKM0eS9GdPqae2k4ME3sC5pi+eiiWuUuvzhqid8EMAGFvYdcXAoGBANU6
+      R4OLghz2FaTSeFFHfHCoAym03qMe9pRCugnM2Np0vEZ650G2xez8OtYim8nttkTE
+      xCWppxBtHIjN6mm4pOHsGxr0LqrKtHgMxkawyBx9hZTZSNudAMupPXBRHlPm/+hL
+      EXt4xUiBd4GVkWw2esEKINi83dXHnECugknJN7v7AoGBAJHy4bEneDLDXx1tCLiR
+      2iOYExGWRXsNBmaOtuswLVqVQXsGYN9Y6nQ/00JZq8KSa5/91NMNS2xTX/Gas9gG
+      fAmEtTSywU1uluWgC+QVtjjYTdEJunzxlbPwLKy5/JSt6WLd/JOvUw2Aw/bBkRIw
+      qVDAchcXwA3yDK29JsT0fL0hAoGBAMqu0zufaNbOtFQwHF5mbUtI6XjDjL3RuOHF
+      a8HVDmzZef4k5Z35drqGKAdUbnHLm+5Se4CxezSKAw2nbqN/+HsoS7ubUKDYfiN/
+      QRoBALbUOh37TN40p4TwIo6ZDRMECU1tzfhoHF+HcWmkGs+aGaVVU1Oyc8u6KjTx
+      rLcmpevxAoGAFz4bvKyBt/wq8TPTVzU/iJtwBLq8WdZpKJcuVkF7/DWY3A3maOFs
+      P9IMHeDD+tlfIu0Y3qmPmEaLzXsMfRh+3Eb6itrgDRFEuE/HyPIWxHvDt1jjfIFu
+      O87TLcnZIoW99nyY0RixwuK6ZeCmmyktX0iO7dNDIOyBReCs6ZwXSSc=
+      -----END RSA PRIVATE KEY-----
+  openssh:
+    client:
+      enabled: true
+      user:
+        root:
+          enabled: true
+          private_key:
+            type: rsa
+            key: ${_param:root_private_key}
+          user: ${linux:system:user:root}

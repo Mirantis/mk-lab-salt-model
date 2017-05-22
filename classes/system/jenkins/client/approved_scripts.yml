@@ -1,0 +1,110 @@
+parameters:
+  jenkins:
+    client:
+      approved_scripts:
+        - field java.lang.String value
+        - field java.util.ArrayList size
+        - method com.cloudbees.jenkins.plugins.sshcredentials.SSHUserPrivateKey getPrivateKey
+        - method com.cloudbees.plugins.credentials.common.IdCredentials getId
+        - method com.cloudbees.plugins.credentials.common.PasswordCredentials getPassword
+        - method com.cloudbees.plugins.credentials.common.UsernameCredentials getUsername
+        - method groovy.json.JsonBuilder toPrettyString
+        - method groovy.json.JsonSlurperClassic parseText java.lang.String
+        - method groovy.lang.GString getBytes
+        - method groovy.lang.GroovyObject getProperty java.lang.String
+        - method hudson.PluginManager getPlugins
+        - method hudson.PluginWrapper getShortName
+        - method hudson.model.Item getName
+        - method hudson.model.ItemGroup getItem java.lang.String
+        - method hudson.model.ItemGroup getItems
+        - method hudson.model.Job getBuilds
+        - method hudson.model.Job getLastBuild
+        - method hudson.model.Run getEnvironment
+        - method hudson.model.Run getResult
+        - method hudson.model.Run getTimeInMillis
+        - method hudson.model.Run isBuilding
+        - method java.io.File getAbsolutePath
+        - method java.io.File getName
+        - method java.io.File getParent
+        - method java.io.Writer write java.lang.String
+        - method java.lang.AutoCloseable close
+        - method java.lang.Class isInstance java.lang.Object
+        - method java.lang.Iterable iterator
+        - method java.net.HttpURLConnection getResponseCode
+        - method java.net.HttpURLConnection setRequestMethod java.lang.String
+        - method java.net.URI getHost
+        - method java.net.URI getPort
+        - method java.net.URL openConnection
+        - method java.net.URLConnection getHeaderField java.lang.String
+        - method java.net.URLConnection getInputStream
+        - method java.net.URLConnection getOutputStream
+        - method java.net.URLConnection setDoOutput boolean
+        - method java.net.URLConnection setRequestProperty java.lang.String java.lang.String
+        - method java.util.Collection remove java.lang.Object
+        - method java.util.LinkedHashMap$LinkedHashIterator hasNext
+        - method java.util.List subList int int
+        - method java.util.Map remove java.lang.Object
+        - method java.util.Map size
+        - method java.util.regex.MatchResult group int
+        - method java.util.regex.Matcher matches
+        - method java.util.regex.Pattern matcher java.lang.CharSequence
+        - method jenkins.model.Jenkins getPluginManager
+        - method org.jenkinsci.plugins.workflow.job.WorkflowRun doStop
+        - method org.jenkinsci.plugins.workflow.support.steps.build.RunWrapper build
+        - new groovy.json.JsonBuilder java.lang.Object
+        - new groovy.json.JsonSlurperClassic
+        - new java.io.File java.lang.String
+        - new java.io.OutputStreamWriter java.io.OutputStream
+        - new java.lang.Exception java.lang.String
+        - new java.lang.InterruptedException
+        - new java.net.URI java.lang.String
+        - new java.util.Date
+        - staticField groovy.io.FileType FILES
+        - staticMethod com.cloudbees.plugins.credentials.CredentialsProvider lookupCredentials java.lang.Class hudson.model.ItemGroup
+        - staticMethod java.lang.Integer valueOf java.lang.String
+        - staticMethod java.lang.String format java.lang.String java.lang.Object[]
+        - staticMethod java.lang.System exit int
+        - staticMethod java.lang.System getProperty java.lang.String
+        - staticMethod java.lang.System getenv java.lang.String
+        - staticMethod java.util.regex.Pattern quote java.lang.String
+        - staticMethod jenkins.model.Jenkins getInstance
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods collect java.util.Map groovy.lang.Closure
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods eachFile java.io.File groovy.io.FileType groovy.lang.Closure
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods find java.util.Collection groovy.lang.Closure
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods findAll java.util.List groovy.lang.Closure
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods get java.util.Map java.lang.Object java.lang.Object
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods getAt java.lang.Iterable int
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods getAt java.lang.String int
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods getBytes java.io.File
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods getText java.io.InputStream
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods hasProperty java.lang.Object java.lang.String
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods iterator java.lang.Object
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods iterator java.lang.Object[]
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods plus java.util.List java.lang.Iterable
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods plus java.util.List java.lang.Object
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods plus java.util.List java.util.Collection
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods println java.lang.Object java.lang.Object
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods putAt java.lang.Object java.lang.String java.lang.Object
+        - staticMethod org.codehaus.groovy.runtime.EncodingGroovyMethods encodeBase64 byte[]
+        - staticMethod org.codehaus.groovy.runtime.ScriptBytecodeAdapter bitwiseNegate java.lang.Object
+        - method java.util.Collection stream
+        - staticMethod java.util.stream.Collectors joining java.lang.CharSequence
+        - method java.util.stream.Stream collect java.util.stream.Collector
+        - staticMethod java.util.regex.Pattern compile java.lang.String
+        - method java.util.regex.Matcher find
+        - method hudson.model.Run getId
+        - method java.util.regex.MatchResult groupCount
+        - method java.lang.Throwable printStackTrace
+        - method hudson.model.Run getNumber
+        - staticMethod java.lang.String valueOf int
+        - method jenkins.model.Jenkins getItemByFullName java.lang.String
+        - new java.util.ArrayList
+        - new java.util.HashMap
+        - staticMethod java.lang.Math min int int
+        - method hudson.model.Job getBuildByNumber int
+        - new java.io.IOException java.lang.String
+        - method org.jenkinsci.plugins.workflow.job.WorkflowRun finish hudson.model.Result java.lang.Throwable
+        - new groovy.json.JsonBuilder
+        - new java.lang.RuntimeException java.lang.String
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods takeRight java.util.List int
+        - staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods getAt java.util.List groovy.lang.Range

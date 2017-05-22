@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        dsutyagin:
+          enabled: true
+          name: dsutyagin
+          sudo: false
+          full_name: Dmitry Sutyagin
+          home: /home/dsutyagin
+          email: dsutyagin@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        dsutyagin:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDdI8HkSB2RUOpkgBhn00UX0Vm78e2JXpMbyi1Qbh2c3dMcXdtY0kIFio/jfuR9rxKmN/oeV+E92YZviq7kg3/2qWfAR5fxlOCe7tDxR5lbkYUye9Y/SGzU5dLPMs4GjLWNk8hX9Wyf49TWC0lEIR05g/aIo7ZrH9sZwdQ9kte9GpID282O0KsJvy/UR3pBKECh/QZ4et4mgzZOFWldJrfs62Y6R4ZUaCxWbHpi+56AqwRSW4+FxepcJDUBC3+o8Xe1Jgcq7bHpHz1StWJmMi4U/b7dtANvp9m1VMe21a5bdt91EkyjL5ArhO7jMB49v7Pm5/EAN7BDtmqs9m/9CQ7vfVrM8XLTH4Ob0MIBwuo1JJR1NqSgWAkxLQWe2KIN6kCwi1z2pZ4iSB78/5RX/ZPBN7I1OHkbO50aFqJO3/2keYpTG5f1eFwDOsslrSzzcrNvQiYo3n75m+Skdv/ziBW504cCgwdAwxSrd+urUuk9KdNAckzR/S8/qrO0Vh4ZDkJ93TtxqDghyvtdqH4VNaWf8BJmVFCoM5jPpEQYsLBdvLRUtKP2CTtxXoZQap6pvl5N84o1zcnDZW74JeOXrpjClgx0KhKJjPjbtl0EtPOB2rsz+92XtU3aocqChwzR2IGrXfdSzXAvHc3PpYWunzRlFO7eJCdOE7vgCSo18iIlAw== dsutyagin@mirantis.com - office laptop
+          user: ${linux:system:user:dsutyagin}

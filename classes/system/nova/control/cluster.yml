@@ -2,69 +2,74 @@ classes:
 - service.haproxy.proxy.single
 - service.nova.control.cluster
 - service.keepalived.cluster.single
+- system.haproxy.proxy.listen.openstack.nova
+- system.haproxy.proxy.listen.openstack.novnc
 parameters:
+  _param:
+    nova_vncproxy_url: http://${_param:cluster_vip_address}:6080
+    nova_cpu_allocation_ratio: 16.0
+    nova_ram_allocation_ratio: 1.5
+    nova_disk_allocation_ratio: 1.0
+    metadata_password: metadataPass
   nova:
     controller:
-      cpu_allocation_ratio: 1.0
-      ram_allocation_ratio: 1.0
-      disk_allocation_ratio: 1.0
-  haproxy:
-    proxy:
-      listen:
-        nova_ec2_api:
-          type: general-service
-          service_name: nova
-          check: false
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8773
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8773
-            params: check
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8773
-            params: check
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8773
-            params: check
-        nova_api:
-          type: openstack-service
-          service_name: nova
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8774
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8774
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8774
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8774
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        nova_metadata_api:
-          type: openstack-service
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8775
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8775
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8775
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8775
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+      enabled: true
+      version: ${_param:nova_version}
+      vncproxy_url: ${_param:nova_vncproxy_url}
+      security_group: false
+      dhcp_domain: novalocal
+      scheduler_default_filters: "DifferentHostFilter,RetryFilter,AvailabilityZoneFilter,RamFilter,CoreFilter,DiskFilter,ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,ServerGroupAntiAffinityFilter,ServerGroupAffinityFilter,PciPassthroughFilter,NUMATopologyFilter,AggregateInstanceExtraSpecsFilter"
+      cpu_allocation_ratio: ${_param:nova_cpu_allocation_ratio}
+      ram_allocation_ratio: ${_param:nova_ram_allocation_ratio}
+      disk_allocation_ratio: ${_param:nova_disk_allocation_ratio}
+      workers: 8
+      logging:
+      - engine: syslog
+        facility: local0
+        heka:
+          enabled: true
+      bind:
+        private_address: ${_param:cluster_local_address}
+        public_address: ${_param:cluster_vip_address}
+        public_name: ${_param:cluster_vip_address}
+        novncproxy_address: ${_param:cluster_local_address}
+        novncproxy_port: 6080
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: nova
+        user: nova
+        password: ${_param:mysql_nova_password}
+      identity:
+        engine: keystone
+        region: ${_param:openstack_region}
+        host: ${_param:cluster_vip_address}
+        port: 35357
+        user: nova
+        password: ${_param:keystone_nova_password}
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      glance:
+        host: ${_param:cluster_vip_address}
+        port: 9292
+      network:
+        engine: neutron
+        region: ${_param:openstack_region}
+        host: ${_param:neutron_service_host}
+        user: neutron
+        password: ${_param:keystone_neutron_password}
+        port: 9696
+        mtu: 1500
+        tenant: service
+      metadata:
+        password: ${_param:metadata_password}

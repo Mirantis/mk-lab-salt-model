@@ -1,0 +1,15 @@
+applications:
+- keepalived
+classes:
+- service.keepalived.support
+parameters:
+  keepalived:
+    cluster:
+      enabled: true
+      instance:
+        stacklight_telemetry_vip:
+          address: ${_param:keepalived_stacklight_telemetry_vip_address}
+          password: ${_param:keepalived_stacklight_telemetry_vip_password}
+          interface: ${_param:keepalived_stacklight_telemetry_vip_interface}
+          virtual_router_id: 120
+          priority: 101

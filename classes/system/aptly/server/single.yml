@@ -1,0 +1,79 @@
+classes:
+- service.aptly.server.single
+- system.nginx.server.single
+- service.iptables.server
+parameters:
+  _param:
+    nginx_aptly_server_host: ${linux:network:fqdn}
+    aptly_server_secure: true
+  iptables:
+    service:
+      enabled: true
+      chain:
+        INPUT:
+          rules:
+            # Only local network can access WebDav and aptly API
+            - destination_port: 8088
+              protocol: tcp
+              source_network: 10.0.107.0/24
+              jump: ACCEPT
+            - destination_port: 8088
+              protocol: tcp
+              source_network: 185.22.96.0/22
+              jump: ACCEPT
+            - destination_port: 8088
+              protocol: tcp
+              source_network: 10.0.174.0/23
+              jump: ACCEPT
+            - destination_port: 8088
+              protocol: tcp
+              source_network: 10.0.175.0/23
+              jump: ACCEPT
+            - destination_port: 8088
+              protocol: tcp
+              jump: DROP
+            - destination_port: 8081
+              protocol: tcp
+              source_network: 10.0.107.0/24
+              jump: ACCEPT
+            - destination_port: 8081
+              protocol: tcp
+              source_network: 10.0.174.0/23
+              jump: ACCEPT
+            - destination_port: 8081
+              protocol: tcp
+              source_network: 10.0.175.0/23
+              jump: ACCEPT
+            - destination_port: 8081
+              protocol: tcp
+              jump: DROP
+  nginx:
+    server:
+      site:
+        aptly_server:
+          enabled: true
+          type: aptly
+          name: server
+          host:
+            name: ${_param:nginx_aptly_server_host}
+        aptly_api:
+          enabled: true
+          check: false
+          type: nginx_proxy
+          name: aptly_api
+          proxy:
+            host: 127.0.0.1
+            port: 8080
+            protocol: http
+            size: 1G
+          host:
+            name: ${_param:nginx_aptly_server_host}
+            port: 8081
+  aptly:
+    server:
+      enabled: true
+      secure: ${_param:aptly_server_secure}
+      gpg:
+        keypair_id: ${_param:aptly_gpg_keypair_id}
+        public_key: ${_param:aptly_gpg_public_key}
+        private_key: ${_param:aptly_gpg_private_key}

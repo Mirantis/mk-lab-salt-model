@@ -1,0 +1,27 @@
+parameters:
+  _param:
+    docker_rundeck_replicas: 1
+    docker_image_rundeck: docker-sandbox.sandbox.mirantis.net/ikharin/oss/rundeck:devel
+  docker:
+    client:
+      stack:
+        rundeck:
+          service:
+            rundeck:
+              image: ${_param:docker_image_rundeck}
+              deploy:
+                replicas: ${_param:docker_rundeck_replicas}
+                restart_policy:
+                  condition: any
+              ports:
+                - 14440:4440
+              volumes:
+                - /srv/volumes/rundeck/etc/framework.properties:/etc/rundeck/framework.properties
+                - /srv/volumes/rundeck/etc/tokens.properties:/etc/rundeck/tokens.properties
+                - /srv/volumes/rundeck/etc/realm.properties:/etc/rundeck/realm.properties
+                - /srv/volumes/rundeck/etc/rundeck-config.properties:/etc/rundeck/rundeck-config.properties
+                - /srv/volumes/rundeck/rundeck:/var/rundeck
+                - /srv/volumes/rundeck/log:/var/log/rundeck
+                - /srv/volumes/rundeck/logs:/var/lib/rundeck/logs
+                - /srv/volumes/rundeck/plugins:/opt/rundeck-plugins
+                - /srv/volumes/rundeck/storage:/var/lib/rundeck/var/storage

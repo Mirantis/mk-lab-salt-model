@@ -1,0 +1,77 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        deploy_heat_cicd:
+          name: deploy-heat-{{name}}
+          jobs:
+            - name: cicd-lab-dev
+              lab: cicd_lab_dev
+          template:
+            type: workflow-scm
+            concurrent: true
+            display_name: "Deploy {{name}} heat stack"
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: cicd-lab-pipeline.groovy
+            param:
+              # heat
+              HEAT_TEMPLATE_URL:
+                type: string
+                default: "git@github.com:Mirantis/mk-lab-heat-templates.git"
+              HEAT_TEMPLATE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              HEAT_TEMPLATE_BRANCH:
+                type: string
+                default: "master"
+              HEAT_STACK_NAME:
+                type: string
+                description: Heat stack name. Will be generated if missing.
+              HEAT_STACK_TEMPLATE:
+                type: string
+                default: "{{lab}}"
+              HEAT_STACK_ENVIRONMENT:
+                type: string
+                default: "tcpisek"
+              HEAT_STACK_ZONE:
+                type: string
+                default: "mirantis-zone-qa"
+              HEAT_STACK_PUBLIC_NET:
+                type: string
+                default: "mirantis-private"
+              HEAT_STACK_DELETE:
+                type: boolean
+                default: 'true'
+                description: "Delete heat stack at the end of job"
+              HEAT_STACK_REUSE:
+                type: boolean
+                default: 'false'
+                description: "Reuse existing stack and only orchestrate deployment"
+
+              # salt master
+              SALT_MASTER_CREDENTIALS:
+                type: string
+                default: "salt-qa-credentials"
+              SSH_PUBLIC_KEY:
+                type: string
+                description: "User's public SSH key to be able to login when stack is deployed"
+
+              # openstack api
+              OPENSTACK_API_URL:
+                type: string
+                default: "https://vpc.tcpisek.cz:5000/v2.0"
+              OPENSTACK_API_CREDENTIALS:
+                type: string
+                default: "openstack-qa-credentials"
+              OPENSTACK_API_PROJECT:
+                type: string
+                default: "mirantis_mk20_qa"
+              OPENSTACK_API_CLIENT:
+                type: string
+                default: "liberty"
+              OPENSTACK_API_VERSION:
+                type: string
+                default: "2"

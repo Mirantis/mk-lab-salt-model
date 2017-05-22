@@ -2,6 +2,9 @@ parameters:
   _param:
     nginx_proxy_openstack_web_host: ${_param:cluster_public_host}
     nginx_proxy_openstack_web_proxy_host: ${_param:cluster_vip_address}
+    nginx_proxy_openstack_web_buffer_size:
+      number: 4
+      size: 256
   nginx:
     server:
       enabled: true
@@ -11,10 +14,16 @@ parameters:
           type: nginx_proxy
           name: openstack_web
           proxy:
-            host: prx
+            host: localhost
+            # TODO: port must be configurable, as some deployments might have HAproxy over prx nodes
             port: 8078
+            size: 10000m
+            timeout: 43200
             protocol: http
             websocket: true
+            request_buffer: false
+            buffer:
+              ${_param:nginx_proxy_openstack_web_buffer_size}
           host:
             name: ${_param:nginx_proxy_openstack_web_host}
             port: 443

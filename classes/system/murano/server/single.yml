@@ -1,0 +1,41 @@
+classes:
+- service.murano.server.single
+- service.rabbitmq.server.single
+parameters:
+  murano:
+    server:
+      enabled: true
+      version: ${_param:murano_version}
+      bind:
+        address: ${_param:single_address}
+        port: 8082
+      network:
+        external: ${_param:murano_external_network}
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: murano
+        user: murano
+        password: ${_param:mysql_murano_password}
+      identity:
+        engine: keystone
+        host: ${_param:openstack_control_address}
+        port: 35357
+        tenant: service
+        user: murano
+        password: ${_param:keystone_murano_password}
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        host: ${_param:cluster_vip_address}
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+      murano_agent_queue:
+        engine: rabbitmq
+        host: ${_param:openstack_proxy_address}
+        port: 5673
+        user: openstack
+        password: ${_param:rabbitmq_murano_agent_password}
+        virtual_host: '/catalog'

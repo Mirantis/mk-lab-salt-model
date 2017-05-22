@@ -1,0 +1,29 @@
+parameters:
+  _param:
+    salt_minion_ca_common_name: Salt Master CA
+    salt_minion_ca_country: cz
+    salt_minion_ca_locality: Prague
+    salt_minion_ca_organization: Mirantis
+    salt_minion_ca_days_valid_authority: 3650
+    salt_minion_ca_days_valid_certificate: 365
+  salt:
+    minion:
+      ca:
+        salt_master_ca:
+          common_name: ${_param:salt_minion_ca_common_name}
+          country: ${_param:salt_minion_ca_country}
+          locality: ${_param:salt_minion_ca_locality}
+          organization: ${_param:salt_minion_ca_organization}
+          signing_policy:
+            cert_server:
+              type: v3_edge_cert_server
+              minions: '*'
+            cert_client:
+              type: v3_edge_cert_client
+              minions: '*'
+            cert_open:
+              type: v3_edge_cert_open
+              minions: '*'
+          days_valid:
+            authority: ${_param:salt_minion_ca_days_valid_authority}
+            certificate: ${_param:salt_minion_ca_days_valid_certificate}

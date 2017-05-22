@@ -1,0 +1,96 @@
+parameters:
+  _param:
+    sudo_shells:
+    - /bin/sh
+    - /bin/ksh
+    - /bin/bash
+    - /bin/rbash
+    - /bin/dash
+    - /bin/zsh
+    - /bin/csh
+    - /bin/fish
+    - /bin/tcsh
+    - /usr/bin/login
+    - /usr/bin/su
+    - /usr/su
+    sudo_restricted_su:
+    - /bin/vi* /etc/sudoers*
+    - /bin/nano /etc/sudoers*
+    - /bin/emacs /etc/sudoers*
+    - /bin/su - root
+    - /bin/su -
+    - /bin/su
+    - /usr/sbin/visudo
+    sudo_coreutils_safe:
+    - /usr/bin/less
+    - /usr/bin/grep
+    - /usr/bin/fgrep
+    - /usr/bin/egrep
+    - /usr/bin/zgrep
+    - /usr/bin/tail
+    - /usr/bin/socat
+    - /usr/bin/top
+    - /usr/bin/tail
+    - /usr/bin/lsof
+    - /usr/bin/virsh
+    - /bin/ls
+    - /bin/cp
+    - /bin/netstat
+    sudo_rabbitmq_safe:
+    - /usr/sbin/rabbitmqctl
+    - /usr/sbin/rabbitmqctl status
+    - /usr/sbin/rabbitmqctl cluster_status
+    - /usr/sbin/rabbitmqctl list_queues*
+    sudo_salt_safe:
+    - /usr/bin/salt * state*
+    - /usr/bin/salt * service*
+    - /usr/bin/salt * pillar*
+    - /usr/bin/salt * grains*
+    - /usr/bin/salt * saltutil*
+    - /usr/bin/salt * test.ping
+    - /usr/bin/salt-call state*
+    - /usr/bin/salt-call service*
+    - /usr/bin/salt-call pillar*
+    - /usr/bin/salt-call grains*
+    - /usr/bin/salt-call saltutil*
+    sudo_salt_trusted:
+    - /usr/bin/salt*
+    sudo_networking:
+    - /sbin/ip
+    - /sbin/ss
+    - /sbin/ifconfig
+    - /sbin/route
+    - /sbin/ethtool
+    - /sbin/tcpdump
+    sudo_contrail_utilities:
+    - /usr/bin/contrail*
+    - /bin/contrail*
+    - /usr/bin/vif
+    - /usr/bin/flow
+    - /usr/bin/vrfstats
+    - /usr/bin/rt
+    - /usr/bin/dropstats
+    - /usr/bin/mpls
+    - /usr/bin/mirror
+    - /usr/bin/vxlan
+    - /usr/bin/nh
+    sudo_storage_utilities:
+    - /usr/bin/ceph*
+    - /usr/bin/rados*
+    - /usr/bin/rbd
+    - /usr/sbin/gluster
+    sudo_openstack_clients:
+    - /usr/bin/openstack
+    - /usr/bin/heat*
+    - /usr/bin/nova*
+    - /usr/bin/neutron*
+    - /usr/bin/keystone*
+    - /usr/bin/glance*
+    - /usr/bin/cinder*
+    - /usr/bin/swift*
+    - /usr/bin/ironic*
+    - /usr/bin/manila*
+    - /usr/bin/barbican*
+    - /usr/bin/ceilometer*
+    - /usr/bin/trove*
+    

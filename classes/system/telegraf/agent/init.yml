@@ -1,0 +1,11 @@
+classes:
+- service.telegraf.agent
+parameters:
+  telegraf:
+    agent:
+      output:
+        prometheus_client:
+          bind:
+            address: 0.0.0.0
+            port: 9126
+          engine: prometheus

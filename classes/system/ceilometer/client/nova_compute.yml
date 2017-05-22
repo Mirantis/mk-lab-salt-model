@@ -1,0 +1,7 @@
+parameters:
+  nova:
+    compute:
+      notification:
+        driver: messagingv2
+        notify_on:
+          state_change: vm_and_task_state

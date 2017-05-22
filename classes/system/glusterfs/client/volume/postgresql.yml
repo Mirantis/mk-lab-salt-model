@@ -1,0 +1,13 @@
+parameters:
+  _param:
+    postgresql_glusterfs_service_host: ${_param:glusterfs_service_host}
+    glusterfs_node01_address: ${_param:cluster_node01_address}
+    glusterfs_node02_address: ${_param:cluster_node02_address}
+    glusterfs_node03_address: ${_param:cluster_node03_address}
+  glusterfs:
+    client:
+      volumes:
+        postgresql:
+          path: /srv/volumes/postgresql
+          server: ${_param:postgresql_glusterfs_service_host}
+          opts: "defaults,backup-volfile-servers=${_param:glusterfs_node01_address}:${_param:glusterfs_node02_address}:${_param:glusterfs_node03_address}"

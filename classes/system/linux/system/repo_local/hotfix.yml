@@ -1,0 +1,14 @@
+parameters:
+  linux:
+    system:
+      repo:
+        local-hotfix:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/local-hotfix/ ${_param:linux_distrib_codename} main"
+          architectures: amd64
+          key_url: "http://${_param:public_key_host}/public.gpg"
+          pin:
+          - pin: 'release l=local-hotfix trusty'
+            priority: 1101
+            package: '*'
+

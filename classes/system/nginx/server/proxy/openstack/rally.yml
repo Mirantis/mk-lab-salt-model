@@ -1,0 +1,14 @@
+parameters:
+  nginx:
+    server:
+      site:
+        nginx_static_rally_results:
+          enabled: true
+          type: nginx_static
+          name: rally_results
+          check: false
+          autoindex: true
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8989
+          ssl: ${_param:nginx_proxy_ssl}

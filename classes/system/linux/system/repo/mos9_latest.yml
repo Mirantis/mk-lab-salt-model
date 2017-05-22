@@ -5,14 +5,20 @@ parameters:
         python-msgpack:
           version: latest
       repo:
-      # This repository is needed because the python-influxdb package
-      # required for Mitaka Ceilometer is only present in
-      # mos9.0-proposed from the 9.0-latest repository
         mirantis_latest_openstack_proposed:
           source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/snapshots/9.0-latest/ mos9.0-proposed main"
           architectures: amd64
           key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/snapshots/9.0-latest/archive-mos9.0.key"
           pin:
+            # Ceilometer packages should be picked from mos9.0-proposed
+            # if more recent versions exist there because the packages
+            # from mos9.0-stable have bugs related to the Events API.
+            - pin: "release a=mos9.0-proposed"
+              priority: 800
+              package: "/ceilometer/"
+            # This repository is needed because the python-influxdb package
+            # required for Mitaka Ceilometer is only present in
+            # mos9.0-proposed from the 9.0-latest repository
             - pin: "release a=mos9.0-proposed"
               priority: 400
               package: "*"

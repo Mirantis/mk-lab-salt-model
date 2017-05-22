@@ -1,0 +1,46 @@
+parameters:
+  _param:
+    haproxy_openldap_bind_host: ${_param:haproxy_bind_address}
+    haproxy_openldap_bind_port: 389
+    haproxy_openldap_ssl_bind_port: 636
+  haproxy:
+    proxy:
+      listen:
+        openldap:
+          mode: tcp
+          balance: source
+          binds:
+            - address: ${_param:haproxy_openldap_bind_host}
+              port: ${_param:haproxy_openldap_bind_port}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 1389
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 1389
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 1389
+              params: backup check
+        openldap_ssl:
+          mode: tcp
+          balance: source
+          binds:
+            - address: ${_param:haproxy_openldap_bind_host}
+              port: ${_param:haproxy_openldap_ssl_bind_port}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 1636
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 1636
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 1636
+              params: backup check

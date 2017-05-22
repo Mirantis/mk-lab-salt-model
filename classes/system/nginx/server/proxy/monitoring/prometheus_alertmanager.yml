@@ -1,0 +1,16 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_prometheus_alertmanager:
+          enabled: true
+          type: nginx_proxy
+          name: prometheus_alertmanager
+          proxy:
+            host: ${_param:prometheus_control_address}
+            port: 15011
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 15011

@@ -1,0 +1,90 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-debian-heat-resources:
+          name: build-debian-{{name}}-{{os}}-{{dist}}
+          jobs:
+            # Trusty
+            - name: heat-resource-salt
+              os: ubuntu
+              dist: trusty
+              branch: master
+            # Xenial
+            - name: heat-resource-salt
+              os: ubuntu
+              dist: xenial
+              branch: master
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-debian-packages-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  salt-formulas/{{name}}:
+                    branches:
+                      - "{{branch}}"
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "git@github.com:salt-formulas/heat-resource-salt.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "github-credentials"
+              DEBIAN_SNAPSHOT:
+                type: boolean
+                default: 'true'
+              REVISION_POSTFIX:
+                type: string
+                default: '~{{dist}}1'
+              EXTRA_REPO_URL:
+                type: string
+                default: "deb ${_param:jenkins_aptly_url}/{{dist}}/ testing extra"
+              EXTRA_REPO_KEY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_url}/public.gpg"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "{{os}}-{{dist}}-extra"
+              OS:
+                type: string
+                default: "{{os}}"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              UPLOAD_APTLY:
+                type: boolean
+                default: 'true'
+              PRE_BUILD_SCRIPT:
+                type: text
+                default: |
+                  echo "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/ mos9.0 main restricted" >> /etc/apt/sources.list.d/extra.list
+                  curl --insecure -ss -f "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key" | apt-key add -
+                  apt-get update
+

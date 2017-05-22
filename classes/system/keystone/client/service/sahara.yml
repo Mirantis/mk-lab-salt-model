@@ -1,0 +1,30 @@
+parameters:
+  _param:
+    cluster_public_protocol: https
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                sahara:
+                  is_admin: true
+                  password: ${_param:keystone_sahara_password}
+                  email: ${_param:admin_email}
+          service:
+            sahara:
+              type: data-processing
+              description: Sahara Data Processing
+              endpoints:
+                - region: ${_param:openstack_region}
+                  public_address: ${_param:cluster_public_host}
+                  public_protocol: ${_param:cluster_public_protocol}
+                  public_port: 8386
+                  public_path: '/v1.1/%(project_id)s'
+                  internal_address: ${_param:sahara_service_host}
+                  internal_port: 8386
+                  internal_path: '/v1.1/%(project_id)s'
+                  admin_address: ${_param:sahara_service_host}
+                  admin_port: 8386
+                  admin_path: '/v1.1/%(project_id)s'

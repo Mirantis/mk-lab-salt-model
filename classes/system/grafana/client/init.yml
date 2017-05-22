@@ -1,0 +1,17 @@
+classes:
+- service.grafana.client.single
+parameters:
+  _param:
+    grafana_protocol: http
+    grafana_port: 3000
+  grafana:
+    client:
+      enabled: true
+      server:
+        protocol: ${_param:grafana_protocol}
+        host: ${_param:grafana_address}
+        port: ${_param:grafana_port}
+        user: ${_param:grafana_user}
+        password: ${_param:grafana_password}
+      remote_data:
+        engine: 'salt_mine'

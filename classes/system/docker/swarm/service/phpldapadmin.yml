@@ -1,0 +1,22 @@
+parameters:
+  _param:
+    docker_image_phpldapadmin: tcpcloud/phpldapadmin:0.6.12
+  docker:
+    client:
+      service:
+        phpldapadmin:
+          restart:
+            condition: any
+          image: ${_param:docker_image_phpldapadmin}
+          hosts:
+            ldap:
+              name: ldap.${_param:openldap_domain}
+              address: ${_param:cluster_vip_address}
+          environment:
+            PHPLDAPADMIN_LDAP_HOSTS: "#PYTHON2BASH:[{'${_param:cluster_public_host}': [{'server': [{'tls': False}]},{'login': [{'bind_id': 'cn=admin,${_param:openldap_dn}'},{'bind_pass': '${_param:openldap_admin_password}'}]}]}]"
+            PHPLDAPADMIN_HTTPS: false
+            PHPLDAPADMIN_TRUST_PROXY_SSL: true
+            PHPLDAPADMIN_SERVER_ADMIN: ${_param:admin_email}
+            PHPLDAPADMIN_THEME: mirantis
+          ports:
+            - 18089:80

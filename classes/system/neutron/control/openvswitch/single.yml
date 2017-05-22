@@ -1,0 +1,45 @@
+classes:
+- service.neutron.control.single
+parameters:
+  _param:
+    neutron_control_dvr: True
+    neutron_l3_ha: False
+    neutron_global_physnet_mtu: 1500
+    neutron_external_mtu: 1500
+    neutron_tenant_network_types: "flat,vxlan"
+  neutron:
+    server:
+      plugin: ml2
+      global_physnet_mtu: ${_param:neutron_global_physnet_mtu}
+      l3_ha: ${_param:neutron_l3_ha}
+      dvr: ${_param:neutron_control_dvr}
+      backend:
+        engine: ml2
+        tenant_network_types: "${_param:neutron_tenant_network_types}"
+        external_mtu: ${_param:neutron_external_mtu}
+        mechanism:
+          ovs:
+            driver: openvswitch
+      compute:
+        region: ${_param:openstack_region}
+      database:
+        host: ${_param:openstack_database_address}
+      identity:
+        region: ${_param:openstack_region}
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+  mysql:
+    server:
+      database:
+        neutron:
+          encoding: utf8
+          users:
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: '%'
+            rights: all
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: ${_param:cluster_local_address}
+            rights: all

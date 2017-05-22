@@ -1,0 +1,12 @@
+parameters:
+  _param:
+    salt_minion_ca_authority: salt_master_ca
+  salt:
+    minion:
+      cert:
+        ceph:
+          host: ${_param:salt_minion_ca_host}
+          signing_policy: cert_server
+          authority: ${_param:salt_minion_ca_authority}
+          common_name: ${_param:cluster_public_host}
+

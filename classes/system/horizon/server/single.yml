@@ -1,28 +1,16 @@
 classes:
 - service.horizon.server.single
+- system.memcached.server.single
 parameters:
+  _param:
+    horizon_site_branding: "OpenStack Dashboard"
   horizon:
     server:
-      branding: "OpenStack Dashboard"
+      branding: ${_param:horizon_site_branding}
       bind:
         address: 0.0.0.0
         port: 8078
-      plugin:
-        contrail:
-          source:
-            engine: pkg
-            name: openstack-dashboard-contrail-panels
-        horizon_overrides:
-          override: true
-          overrides:
-            - contrail_openstack_dashboard
-          app: horizon_overrides
-          source:
-            engine: pkg
-            name: python-horizon-overrides-plugin
-        horizon_theme:
-          app: horizon_theme
-          theme_name: mirantis-theme
-          source:
-            engine: pkg
-            name: openstack-dashboard-mirantis-theme
+      plugin: {}
+      session:
+        engine: "cache"
+

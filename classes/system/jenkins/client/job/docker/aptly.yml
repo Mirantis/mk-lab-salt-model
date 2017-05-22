@@ -1,0 +1,48 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        docker-build-images-aptly:
+          name: docker-build-images-aptly
+          discard:
+            build:
+              keep_num: 25
+            artifact:
+              keep_num: 25
+          type: workflow-scm
+          concurrent: true
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/docker-aptly"
+            credentials: "gerrit"
+          trigger:
+            gerrit:
+              project:
+                "mk/docker-aptly":
+                  branches:
+                    - master
+              event:
+                ref:
+                  - updated: {}
+          param:
+            IMAGE_GIT_URL:
+              type: string
+              default: "${_param:jenkins_gerrit_url}/mk/docker-aptly"
+            IMAGE_BRANCH:
+              type: string
+              default: "master"
+            IMAGE_CREDENTIALS_ID:
+              type: string
+              default: "gerrit"
+            IMAGE_TAGS:
+              type: string
+              default: "latest"
+            REGISTRY_URL:
+              type: string
+              default: ""
+            REGISTRY_CREDENTIALS_ID:
+              type: string
+              default: "dockerhub"
+            DOCKER_GIT_TAG:
+              type: boolean
+              default: "true"

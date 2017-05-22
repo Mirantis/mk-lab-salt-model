@@ -1,9 +1,13 @@
 parameters:
+  _param:
+    openstack_message_queue_node01_hostname: msg01
+    openstack_message_queue_node02_hostname: msg02
+    openstack_message_queue_node03_hostname: msg03
   reclass:
     storage:
       node:
         openstack_message_queue_node01:
-          name: msg01
+          name: ${_param:openstack_message_queue_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.message_queue
@@ -14,7 +18,7 @@ parameters:
             keepalived_vip_priority: 103
             rabbitmq_cluster_role: master
         openstack_message_queue_node02:
-          name: msg02
+          name: ${_param:openstack_message_queue_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:  
           - cluster.${_param:cluster_name}.openstack.message_queue
@@ -25,7 +29,7 @@ parameters:
             keepalived_vip_priority: 102
             rabbitmq_cluster_role: slave
         openstack_message_queue_node03:
-          name: msg03
+          name: ${_param:openstack_message_queue_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.message_queue

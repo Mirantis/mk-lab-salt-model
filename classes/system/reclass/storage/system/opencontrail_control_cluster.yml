@@ -1,9 +1,13 @@
 parameters:
+  _param:
+    opencontrail_control_node01_hostname: ntw01
+    opencontrail_control_node02_hostname: ntw02
+    opencontrail_control_node03_hostname: ntw03
   reclass:
     storage:
       node:
         opencontrail_control_node01:
-          name: ntw01
+          name: ${_param:opencontrail_control_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.opencontrail.control
@@ -14,9 +18,9 @@ parameters:
             keepalived_vip_priority: 103
             opencontrail_database_id: 1
         opencontrail_control_node02:
-          name: ntw02
+          name: ${_param:opencontrail_control_node02_hostname}
           domain: ${_param:cluster_domain}
-          classes:  
+          classes:
           - cluster.${_param:cluster_name}.opencontrail.control
           params:
             salt_master_host: ${_param:reclass_config_master}
@@ -25,7 +29,7 @@ parameters:
             keepalived_vip_priority: 102
             opencontrail_database_id: 2
         opencontrail_control_node03:
-          name: ntw03
+          name: ${_param:opencontrail_control_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.opencontrail.control

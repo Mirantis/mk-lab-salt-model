@@ -1,0 +1,76 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        test-opencontrail:
+          name: test-opencontrail-{{buildname}}-{{os}}-{{dist}}
+          jobs:
+            - buildname: oc31
+              os: ubuntu
+              dist: trusty
+              branch: R3.1
+            - buildname: oc311
+              os: ubuntu
+              dist: trusty
+              branch: R3.1.1.x
+            - buildname: oc32
+              os: ubuntu
+              dist: trusty
+              branch: R3.2
+          template:
+            discard:
+             build:
+               keep_num: 5
+             artifact:
+               keep_num: 5
+            type: workflow-scm
+            concurrent: true
+            quiet_period: 120
+            scm:
+              type: git
+              url: "https://github.com/chnyda/contrail-unittest"
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/contrail"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              KEEP_REPOS:
+                type: boolean
+                default: 'false'
+                description: "Don't cleanup on failure"
+              OS:
+                type: string
+                default: "{{os}}"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+            trigger:
+              gerrit:
+                project:
+                  contrail/contrail-controller:
+                    branches:
+                      - "{{branch}}"
+                  contrail/contrail-vrouter:
+                    branches:
+                      - "{{branch}}"
+                event:
+                  patchset:
+                    - created:
+                        excludeDrafts: false
+                        excludeTrivialRebase: false
+                        excludeNoCodeChange: false
+                  comment:
+                    - addedContains:
+                        commentAddedCommentContains: '(recheck|reverify)'
+            param:
+              TEST_MODELS:
+                type: string
+                default: "{{clusters}}"

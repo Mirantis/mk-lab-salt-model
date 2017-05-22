@@ -6,12 +6,13 @@ parameters:
     ceilometer_collector:
       enabled: true
       influxdb_database: ceilometer
-      influxdb_host: ${_param:stacklight_monitor_node01_address}
+      influxdb_host: ${_param:stacklight_telemetry_address}
       influxdb_password: ${_param:ceilometer_influxdb_password}
       influxdb_port: 8086
       influxdb_username: ceilometer
-      resource_decoding: false
-      amqp_host: ${_param:cluster_vip_address}
+      elasticsearch_host: ${_param:stacklight_log_address}
+      resource_decoding: true
+      amqp_host: ${_param:openstack_message_queue_address}
       amqp_port: 5672
       amqp_user: openstack
       amqp_password: ${_param:rabbitmq_openstack_password}

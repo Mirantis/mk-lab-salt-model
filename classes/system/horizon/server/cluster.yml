@@ -1,52 +1,16 @@
 classes:
 - service.keepalived.cluster.single
-- service.horizon.server.single
+- service.horizon.server.cluster
 - service.haproxy.proxy.single
+- system.haproxy.proxy.listen.openstack.horizon
+- system.memcached.server.single
 parameters:
-  haproxy:
-    proxy:
-      listen:
-        horizon_web:
-          type: general-service
-          check: false
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8078
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8078
-            params: check
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8078
-            params: check
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8078
-            params: check
+  _param:
+    horizon_site_branding: "OpenStack Dashboard"
   horizon:
     server:
-      branding: "OpenStack Dashboard"
-      bind:
-        address: ${_param:single_address}
-        port: 8078
-      plugin:
-        contrail:
-          source:
-            engine: pkg
-            name: openstack-dashboard-contrail-panels
-        horizon_overrides:
-          override: true
-          overrides:
-            - contrail_openstack_dashboard
-          app: horizon_overrides
-          source:
-            engine: pkg
-            name: python-horizon-overrides-plugin
-        horizon_theme:
-          app: horizon_theme
-          theme_name: mirantis-theme
-          source:
-            engine: pkg
-            name: openstack-dashboard-mirantis-theme
+      branding: ${_param:horizon_site_branding}
+      plugin: {}
+      session:
+        engine: "cache"
+

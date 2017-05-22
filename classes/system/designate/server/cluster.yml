@@ -1,0 +1,59 @@
+classes:
+- service.designate.server.cluster
+- service.keepalived.cluster.single
+- system.haproxy.proxy.listen.openstack.designate
+- service.haproxy.proxy.single
+parameters:
+  designate:
+    _support:
+      sensu:
+        enabled: false
+    server:
+      enabled: true
+      local_bind: true
+      region: ${_param:openstack_region}
+      domain_id: ${_param:designate_domain_id}
+      version: ${_param:designate_version}
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name:
+          main_database: designate
+          pool_manager: designate_pool_manager
+        user: designate
+        password: ${_param:mysql_designate_password}
+      identity:
+        engine: keystone
+        host: ${_param:openstack_control_address}
+        port: 35357
+        tenant: service
+        user: designate
+        password: ${_param:keystone_designate_password}
+      bind:
+        api:
+          address: ${_param:single_address}
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        members:
+        - host: ${_param:openstack_message_queue_node01_address}
+        - host: ${_param:openstack_message_queue_node02_address}
+        - host: ${_param:openstack_message_queue_node03_address}
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+      pool:
+        pool_id: ${_param:designate_pool_id}
+        nameservers:
+          - uuid: ${_param:designate_node1_uuid}
+            host: ${_param:cluster_node01_address}
+            port: 53
+          - uuid: ${_param:designate_node2_uuid}
+            host: ${_param:cluster_node02_address}
+            port: 53
+        targets:
+          uuid: ${_param:designate_target_uuid}
+          options: 'port: 53, host: 127.0.0.1'
+          masters: 127.0.0.1:5354
+          type:  ${_param:designate_target_type}

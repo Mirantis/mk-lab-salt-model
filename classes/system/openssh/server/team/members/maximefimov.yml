@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        mefimov:
+          enabled: true
+          name: mefimov
+          sudo: false
+          full_name: Maxim Efimov
+          home: /home/mefimov
+          email: mefimov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        mefimov:
+          enabled: true
+          public_keys: ${public_keys:mefimov}
+          user: ${linux:system:user:mefimov}
+  public_keys:
+    mefimov:
+      - key: rsa-key AAAAB3NzaC1yc2EAAAABJQAAAQEAgLfqReVrcsOuG8GaxPF1iSJjhUPsCnoxtAwFU4YPd0qVmLFxZtcKgb29yR/OSKQz3o5RM1OvQhHs080/gfiboMIyVa5gOCcbVj1PoySd8dAAVy9DORKWCU3djWmHcsG76FU1G8UE1w7nSrWqs01KW9/NzLjiHxf/4r3YWZ51UTr/C1AFyPPMfFRbffqq6yqULG+/TfpkgN2maBrotN5trDuGAHKluyboL7+EZazYpgjUsd2cPMH8TzdQZNwYrtrzWDS0YAqSQVyMc2dFh/gptw/QCsWT2IMyQKLKOcaAy2qon1xWDRFL1fVgqjakF+oM5RBAvX1bkJ1Vx883GEnPaQ==
+

@@ -1,0 +1,17 @@
+parameters:
+  _param:
+    compute_dpdk_driver: uio
+  linux:
+    network:
+      bridge: openvswitch
+      dpdk:
+        enabled: true
+        driver: "${_param:compute_dpdk_driver}"
+      openvswitch:
+        pmd_cpu_mask: "${_param:compute_ovs_pmd_cpu_mask}"
+        dpdk_socket_mem: "${_param:compute_ovs_dpdk_socket_mem}"
+        dpdk_lcore_mask: "${_param:compute_ovs_dpdk_lcore_mask}"
+        memory_channels: "${_param:compute_ovs_memory_channels}"
+  neutron:
+    compute:
+      dpdk: True

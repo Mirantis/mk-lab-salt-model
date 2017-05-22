@@ -1,0 +1,114 @@
+parameters:
+  _param:
+    jenkins_pollscm_spec: "H/60 * * * *"
+  jenkins:
+    client:
+      job_template:
+        git-mirror:
+          name: git-mirror-{{name}}
+          jobs:
+            - name: contrail-build
+              branches: ${_param:contrail_branches}
+            - name: contrail-controller
+              branches: ${_param:contrail_branches}
+            - name: contrail-vrouter
+              branches: ${_param:contrail_branches}
+            - name: contrail-third-party
+              branches: ${_param:contrail_branches}
+            - name: contrail-generateDS
+              branches: ${_param:contrail_branches}
+            - name: contrail-sandesh
+              branches: ${_param:contrail_branches}
+            - name: contrail-packages
+              branches: ${_param:contrail_branches}
+            - name: contrail-nova-vif-driver
+              branches: ${_param:contrail_branches}
+            - name: contrail-neutron-plugin
+              branches: ${_param:contrail_branches}
+            - name: contrail-nova-extensions
+              branches: ${_param:contrail_branches}
+            - name: contrail-ceilometer-plugin
+              branches: ${_param:contrail_ceilometer_plugin_branches}
+            - name: contrail-heat
+              branches: ${_param:contrail_branches}
+            - name: contrail-web-storage
+              branches: ${_param:contrail_branches}
+            - name: contrail-web-server-manager
+              branches: ${_param:contrail_branches}
+            - name: contrail-web-controller
+              branches: ${_param:contrail_branches}
+            - name: contrail-web-core
+              branches: ${_param:contrail_branches}
+            - name: contrail-webui-third-party
+              branches: ${_param:contrail_branches}
+            - name: contrail-dpdk-extra-packages
+              branches: ${_param:contrail_dpdk_extra_branches}
+            - name: contrail-kubernetes
+              branches: ${_param:contrail_kubernetes_branches}
+            - name: contrail-dpdk
+              branches: ${_param:contrail_dpdk_branches}
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: git-mirror-pipeline.groovy
+              github:
+                url: "https://github.com/Juniper/{{name}}"
+            trigger:
+              github:
+              pollscm:
+                spec: ${_param:jenkins_pollscm_spec}
+            param:
+              SOURCE_URL:
+                type: string
+                default: "https://github.com/Juniper/{{name}}.git"
+              TARGET_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/contrail/{{name}}.git"
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              BRANCHES:
+                type: string
+                default: "{{branches}}"
+      job:
+        git-mirror-ifmap-python-client:
+          discard:
+            build:
+              keep_num: 10
+            artifact:
+              keep_num: 10
+          type: workflow-scm
+          concurrent: false
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: git-mirror-pipeline.groovy
+            github:
+              url: "https://github.com/tcpcloud/ifmap-python-client"
+          trigger:
+            github:
+            pollscm:
+              spec: ${_param:jenkins_pollscm_spec}
+          param:
+            SOURCE_URL:
+              type: string
+              default: "https://github.com/tcpcloud/ifmap-python-client.git"
+            TARGET_URL:
+              type: string
+              default: "${_param:jenkins_gerrit_url}/contrail/ifmap-python-client.git"
+            CREDENTIALS_ID:
+              type: string
+              default: "gerrit"
+            BRANCHES:
+              type: string
+              default: "master"

@@ -1,0 +1,5 @@
+classes:
+- cluster.virtual-mcp11-k8s-calico-dyn.kubernetes
+- cluster.virtual-mcp11-k8s-calico-dyn.stacklight
+- cluster.virtual-mcp11-k8s-calico-dyn.infra
+- cluster.overrides

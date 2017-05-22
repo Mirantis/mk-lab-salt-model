@@ -1,0 +1,34 @@
+parameters:
+  _param:
+    docker_image_openldap: osixia/openldap:1.1.8
+  docker:
+    client:
+      service:
+        openldap:
+          restart:
+            condition: any
+          image: ${_param:docker_image_openldap}
+          hostname: ldap01.${_param:openldap_domain}
+          hosts:
+            ldap01:
+              name: ldap01.${_param:openldap_domain}
+              address: 127.0.0.1
+          environment:
+            HOSTNAME: ldap01.${_param:openldap_domain}
+            LDAP_ORGANISATION: "${_param:openldap_organisation}"
+            LDAP_DOMAIN: "${_param:openldap_domain}"
+            LDAP_ADMIN_PASSWORD: ${_param:openldap_admin_password}
+            LDAP_CONFIG_PASSWORD: ${_param:openldap_config_password}
+            LDAP_TLS: "false"
+          ports:
+            - 1389:389
+            - 1636:636
+          volume:
+            database:
+              type: bind
+              source: /srv/volumes/openldap/database
+              destination: /var/lib/ldap
+            config:
+              type: bind
+              source: /srv/volumes/openldap/config
+              destination: /etc/ldap/slapd.d

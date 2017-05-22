@@ -1,0 +1,26 @@
+parameters:
+  linux:
+    system:
+      user:
+        cmay:
+          enabled: true
+          name: cmay
+          sudo: false
+          full_name: Collin May
+          home: /home/cmay
+          email: cmay@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        cmay:
+          enabled: true
+          public_keys: ${public_keys:cmay}
+          user: ${linux:system:user:cmay}
+  public_keys:
+    cmay:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDjJ7z4adgi3Ha/eoLV/f/Q9eKN3lXaOE/WWvLIDC4KhGzJLjrrOAC/Qbmd+rD/k2VFPg/7m9KiyRJiRpBeda58CAKIP2I+DDpKpaRAKblrTvuDRPaTPgoo52viF8KsILGp2l5IEwmI5DceCzyEZaZh4X8qa4sXgASa8XFLcVpK0JJDZ7uxYuJ8u5KRGqXFI16dO2NuB1AY1E3XPaQA3vqFEnv+PyRvYDSmmZ2Ey5nLI5x1UeszLM5OvNojYUYH6N1BovoH08p4YIzPK0vQj40AneDehldskKu1JUC7VBFeOvFjSclWjgieqavFNKQrcyj5NO3bqSUmRW0cnS8MMv00whzb/r6NHcubKkSW7zgUP6WCdyr6BK/HYCNxkKV1P/vizBAwa4cN7w9MxDHXnfSmxujjHEZ3TJaKM0RCpMs4Ss1U6dwftLptKRs/0u5ma2FAaWFp1tYLccE2joe1knwjJdlZVFY2jJu2RMt4KfAs6Dp7FiuzWBMiZV3oLsGM8oORbYaHUVtLGaoFu0doIcqogdQ02RrQLrF89HLDSGmUJph195OmauATbkejPxAwLkf9jLcGVesvPByIldENoCAhaxlE3y0Lxdm+DOlg1Sg2iqo06O9hAtEye6G0+zfv0bEdw1CYlBJWAPIRAIvuiFarx1eTH7wfT3zWgXdRlTp5eQ== cmay@Collin.May.Workstation
+
+

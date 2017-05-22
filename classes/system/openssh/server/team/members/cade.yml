@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        cade:
+          enabled: true
+          name: cade
+          sudo: true
+          full_name: Cade Ekblad-Frank
+          home: /home/cade
+          email: cade@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        cade:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpSYtgC/lSMXCfjjxSWFJ8WUjhGfBWLnCJ4n8AzXGw/t/x+DBjMQz40D0T4ymvn/8/vRDwZ8stISWGeTGn0G4z1H4FWM+orBbT2srPHL2/XbjKUYRQOUxp8f4wBW4VNsaTPbzjh6A1BY0d7dOee6k2N5ramIibojzbWSEkxFG9vxtXm5jDYs4gcx0rYN11+9wamsHYAdXv4VJmUMS8TEP/8p67NtRNcq1m9uuHlZE5CxTcF6CvflgnXrDrF6QrdbjPVpzXKZmvdYom0OT97FJRtcdojovsZpOo59vozmyUh2g0ycq1izpLT0uQQ3vT6mz53gc5wiUynY6yX7wedqq74/vFz/QKBYjh/OqxZMhkH4GsWXs7yGW7q4+cNEDzARyTj7ikhg/C+UrXZ5jKx7Xc7cbhyuyzHm55+AgfhPLQoiYL3trONdH539kYnY6IAAsz0213ulJRPUHN3+M0x4iEoFAqwWo3wqdkH24v8plqLga7Q3zTbLYX+FOZOv0WC9gI3elmcd9ZBHHh0SOatQEg+Eu0m3ezyLmLHQ3pidWbksz9pnkLWBxeBq3x/xSXM5geI2BgMWVV+74YhBb9+irCpaU0BPYOpX023yNskXODF5RYAt5I5fVAfogHy4S2c3xgGlYUklUEvWBtl6bFYQjQfK2xeANaFUIBKdD5hgDdhQ== cade@mirantis.com
+          user: ${linux:system:user:cade}

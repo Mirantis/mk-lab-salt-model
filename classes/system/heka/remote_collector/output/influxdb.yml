@@ -1,0 +1,10 @@
+parameters:
+  _param:
+    influxdb_port: 8086
+  heka:
+    remote_collector:
+      influxdb_host: ${_param:heka_influxdb_host}
+      influxdb_port: ${_param:influxdb_port}
+      influxdb_database: lma
+      influxdb_username: lma
+      influxdb_password: ${_param:influxdb_stacklight_password}

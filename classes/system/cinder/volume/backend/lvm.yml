@@ -1,0 +1,18 @@
+parameters:
+  _param:
+    cinder_lvm_devices: [ "/dev/loop0" ]
+  linux:
+    storage:
+      lvm:
+        cinder-vg:
+          enabled: true
+          name: cinder-volume
+          devices: ${_param:cinder_lvm_devices}
+  cinder:
+    volume:
+      default_volume_type: lvm-driver
+      backend:
+        lvm-driver:
+          engine: lvm
+          type_name: lvm-driver
+          volume_group: cinder-volume

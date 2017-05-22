@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        miwinski:
+          enabled: true
+          name: miwinski
+          sudo: true
+          full_name: Marcin Iwinski
+          home: /home/miwinski
+          email: miwinski@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        miwinski:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCydY97fXVWbcUiNaK5KnMHQpLT4acAVXykKqB5hAUPwKn4nFN3dFNw9dpToFpriqNpJTZrEdxVgL9obB4aouHpi+NVH6s8cMZ6ulNTiSTBM0Xkmu7jl66eMhfHNaFwgFC0vsGQ85oI813H7A601tCweKegMUW/mwOKbwHj1isEA+jbyrdRTC64icBa6zbW/G2uF0ajz9dCPe9L0rAbQFE51N1fxrnLeb6BI+5br0H6bRz1kGc5ZsNiUx3EEEOrMFbAbHQAxvD8Te/nUErdlHCiFufKlXLJSUNDPGFrW2mIfvfGlbyrLPgm24RKS6xfcD7BhJOmr54k7QbWChEp/SrX iwi@iwon
+          user: ${linux:system:user:miwinski}

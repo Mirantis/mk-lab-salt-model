@@ -1,0 +1,17 @@
+parameters:
+  glusterfs:
+    server:
+      volumes:
+        rundeck:
+          storage: /srv/glusterfs/rundeck
+          replica: 3
+          bricks:
+            - ${_param:cluster_node01_address}:/srv/glusterfs/rundeck
+            - ${_param:cluster_node02_address}:/srv/glusterfs/rundeck
+            - ${_param:cluster_node03_address}:/srv/glusterfs/rundeck
+          options:
+            cluster.readdir-optimize: On
+            nfs.disable: On
+            network.remote-dio: On
+            diagnostics.client-log-level: WARNING
+            diagnostics.brick-log-level: WARNING

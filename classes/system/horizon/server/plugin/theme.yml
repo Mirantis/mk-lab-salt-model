@@ -1,0 +1,12 @@
+parameters:
+  _param:
+    horizon_dashboard_theme: mirantis
+  horizon:
+    server:
+      plugin:
+        horizon_theme:
+          app: horizon_theme
+          theme_name: ${_param:horizon_dashboard_theme}
+          source:
+            engine: pkg
+            name: openstack-dashboard-${_param:horizon_dashboard_theme}-theme

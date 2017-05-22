@@ -1,0 +1,10 @@
+parameters:
+  nova:
+    compute:
+      ceph:
+        enabled: true
+        ephemeral: yes
+        rbd_pool: ${_param:nova_storage_pool}
+        secret_uuid: ${_param:nova_storage_secret_uuid}
+        client_cinder_key: ${_param:nova_storage_client_key}
+        rbd_user: ${_param:nova_storage_user}

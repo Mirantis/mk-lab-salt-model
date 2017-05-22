@@ -1,0 +1,13 @@
+classes:
+  - system.jenkins.client.job.git-mirrors.upstream
+parameters:
+  _param:
+    jenkins_git_mirror_upstream_jobs:
+      - name: cookiecutter-templates
+        downstream: mk/cookiecutter-templates
+        upstream: "git@github.com:Mirantis/mk2x-cookiecutter-reclass-model"
+        branches: master,mcp10
+      - name: heat-templates
+        downstream: mk/heat-templates
+        upstream: "git@github.com:Mirantis/mk-lab-heat-templates"
+        branches: master

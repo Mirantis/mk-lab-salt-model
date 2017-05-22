@@ -1,0 +1,10 @@
+parameters:
+  _param:
+    contrail_compute_dpdk_enabled: False
+  opencontrail:
+    client:
+      virtual_router:
+        local_compute:
+          name: ${linux:system:name}
+          ip_address: ${_param:single_address}
+          dpdk_enabled: ${_param:contrail_compute_dpdk_enabled}

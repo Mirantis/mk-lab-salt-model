@@ -1,0 +1,54 @@
+parameters:
+  _param:
+    docker_image_openldap: osixia/openldap:1.1.8
+    docker_image_phpldapadmin: tcpcloud/phpldapadmin:0.6.12
+  docker:
+    client:
+      stack:
+        ldap:
+          service:
+            server:
+              networks:
+                - ldap
+              deploy:
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_openldap}
+              hostname: ldap01
+              domainname: ${_param:openldap_domain}
+              ports:
+                - 1389:389
+                - 1636:636
+              volumes:
+                - /srv/volumes/openldap/database:/var/lib/ldap
+                - /srv/volumes/openldap/config:/etc/ldap/slapd.d
+              environment:
+                HOSTNAME: ldap01.${_param:openldap_domain}
+                LDAP_ORGANISATION: "${_param:openldap_organisation}"
+                LDAP_DOMAIN: "${_param:openldap_domain}"
+                LDAP_ADMIN_PASSWORD: ${_param:openldap_admin_password}
+                LDAP_CONFIG_PASSWORD: ${_param:openldap_config_password}
+                LDAP_TLS: "false"
+            admin:
+              networks:
+                - ldap
+              deploy:
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_phpldapadmin}
+              depends_on:
+                - server
+              hostname: ldap
+              environment:
+                PHPLDAPADMIN_LDAP_HOSTS: "#PYTHON2BASH:[{'server': [{'server': [{'tls': False}]},{'login': [{'bind_id': 'cn=admin,${_param:openldap_dn}'},{'bind_pass': '${_param:openldap_admin_password}'}]}]}]"
+                PHPLDAPADMIN_HTTPS: "false"
+                PHPLDAPADMIN_TRUST_PROXY_SSL: "true"
+                PHPLDAPADMIN_SERVER_ADMIN: ${_param:admin_email}
+                PHPLDAPADMIN_THEME: mirantis
+              ports:
+                - 18089:80
+          network:
+            ldap:
+              driver: overlay
+              driver_opts:
+                encrypted: 1

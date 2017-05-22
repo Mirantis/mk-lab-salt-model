@@ -1,0 +1,19 @@
+parameters:
+  _param:
+    elasticsearch_replicas: 1
+    docker_image_oss_elasticsearch: docker-sandbox.sandbox.mirantis.net/vstoiko/oss/elasticsearch:latest
+  docker:
+    client:
+      service:
+        elasticsearch:
+          replicas: ${_param:elasticsearch_replicas}
+          image: ${_param:docker_image_oss_elasticsearch}
+          restart:
+            condition: any
+          ports:
+            - ${_param:haproxy_elasticsearch_exposed_port}:${_param:haproxy_elasticsearch_bind_port}
+          volume:
+            elasticsearch:
+              type: bind
+              source: /srv/volumes/elasticsearch
+              destination: /usr/share/elasticsearch/data

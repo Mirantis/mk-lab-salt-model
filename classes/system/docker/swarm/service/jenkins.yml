@@ -1,0 +1,25 @@
+parameters:
+  _param:
+    docker_image_jenkins: tcpcloud/jenkins:2.52
+  docker:
+    client:
+      service:
+        jenkins:
+          environment:
+            JAVA_OPTS: "-Djenkins.install.runSetupWizard=false -Dhudson.DNSMultiCast.disabled=true -Dhudson.udp=-1 -Dhudson.footerURL=https://www.mirantis.com"
+            JENKINS_NUM_EXECUTORS: 4
+          restart:
+            condition: any
+          image: ${_param:docker_image_jenkins}
+          ports:
+            - 18081:8080
+            - 50001:50000
+          volume:
+            home:
+              type: bind
+              source: /srv/volumes/jenkins
+              destination: /var/jenkins_home
+            cacerts:
+              type: bind
+              source: /etc/ssl/certs/java/cacerts
+              destination: /etc/ssl/certs/java/cacerts

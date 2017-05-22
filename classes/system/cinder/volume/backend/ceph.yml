@@ -1,0 +1,17 @@
+parameters:
+  cinder:
+    volume:
+      message_queue: 
+        ha_queues: true
+      enabled: true
+      notification: true
+      default_volume_type: standard-iops
+      backend:
+        ceph:
+          type_name: standard-iops
+          backend: ceph
+          pool: ${_param:cinder_storage_pool}
+          engine: ceph
+          user: ${_param:cinder_storage_user}
+          secret_uuid: ${_param:cinder_storage_secret_uuid}
+          client_cinder_key: ${_param:cinder_storage_client_key}

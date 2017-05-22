@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        adobdin:
+          enabled: true
+          name: adobdin
+          sudo: false
+          full_name: Aleksandr Dobdin
+          home: /home/adobdin
+          email: adobdin@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        adobdin:
+          enabled: true
+          public_keys: ${public_keys:adobdin}
+          user: ${linux:system:user:adobdin}
+  public_keys:
+    adobdin:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDYuMN95aiH6BDEvPPS2vD7/2/bE0hG6KvfJL4TD3TBs/BGtyeFWUyz25obYxYdyMfzVZIrpv8+Ib1ClREEHiLxOepANvFbw9s2B5SzVoDW8lI0l9hM6jByg4zheoZOOZf4kXQeygoa9fsJi0nB+kLP3oqIiNtKBa/xB2gmBC1O/V3I0lE9lY6Rx9xs6N5+yr+2t1ngIqLMxQRDcahTDp+kMvJeobzsQiQvL7dc6qxeqglGmUwvCXEvZad6Avp6EwEvRl+f7Yy7fTyI5uiOA/SieDRFc//VwzgAy6aXYDVzfdWMFRCDXiV3+p63G23YsnhJXeZM0lb15RKST5E7I5yP
+

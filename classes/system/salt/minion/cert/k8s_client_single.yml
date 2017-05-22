@@ -1,0 +1,13 @@
+parameters:
+  salt:
+    minion:
+      cert:
+        k8s_client:
+          host: ${_param:salt_minion_ca_host}
+          authority: ${_param:salt_minion_ca_authority}
+          key_file: /etc/kubernetes/ssl/kubelet-client.key
+          cert_file: /etc/kubernetes/ssl/kubelet-client.crt
+          ca_file: /etc/kubernetes/ssl/ca-kubernetes.crt
+          common_name: kubelet-client
+          signing_policy: cert_client
+          alternative_names: IP:${_param:control_address},IP:${_param:kubernetes_internal_api_address}

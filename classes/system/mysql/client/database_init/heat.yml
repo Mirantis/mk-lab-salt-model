@@ -1,0 +1,15 @@
+classes:
+- system.mysql.client.database.heat
+parameters:
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          database:
+            heat:
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: heat

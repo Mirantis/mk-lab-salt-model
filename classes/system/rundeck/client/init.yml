@@ -1,0 +1,19 @@
+classes:
+  - service.rundeck.client
+parameters:
+  _param:
+    rundeck_client_host: ${_param:haproxy_rundeck_bind_host}
+    rundeck_client_port: ${_param:haproxy_rundeck_bind_port}
+    rundeck_client_https: ${_param:haproxy_rundeck_ssl:enabled}
+    rundeck_client_username: ${_param:rundeck_admin_username}
+    rundeck_client_password: ${_param:rundeck_admin_password}
+  rundeck:
+    client:
+      server:
+        endpoint:
+          host: ${_param:rundeck_client_host}
+          port: ${_param:rundeck_client_port}
+          https: ${_param:rundeck_client_https}
+        credentials:
+          username: ${_param:rundeck_client_username}
+          password: ${_param:rundeck_client_password}

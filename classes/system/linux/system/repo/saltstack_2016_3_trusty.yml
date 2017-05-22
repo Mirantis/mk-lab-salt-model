@@ -1,0 +1,8 @@
+##Obsolete, please use repo/saltstack/trusty
+parameters:
+  linux:
+    system:
+      repo:
+        salt:
+          source: "deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.3 trusty main"
+          key_url: "http://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.3/SALTSTACK-GPG-KEY.pub"

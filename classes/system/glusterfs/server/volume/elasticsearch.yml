@@ -1,0 +1,17 @@
+parameters:
+  glusterfs:
+    server:
+      volumes:
+        elasticsearch:
+          storage: /srv/glusterfs/elasticsearch
+          replica: 3
+          bricks:
+            - ${_param:cluster_node01_address}:/srv/glusterfs/elasticsearch
+            - ${_param:cluster_node02_address}:/srv/glusterfs/elasticsearch
+            - ${_param:cluster_node03_address}:/srv/glusterfs/elasticsearch
+          options:
+            cluster.readdir-optimize: On
+            nfs.disable: On
+            network.remote-dio: On
+            diagnostics.client-log-level: WARNING
+            diagnostics.brick-log-level: WARNING

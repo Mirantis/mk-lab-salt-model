@@ -1,0 +1,120 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-debian-salt-multibranch:
+          name: build-debian-salt-formula-{{name}}-ubuntu-{{dist}}
+          jobs:
+            - name: ceilometer
+              dist: trusty
+            - name: cinder
+              dist: trusty
+            - name: glance
+              dist: trusty
+            - name: heat
+              dist: trusty
+            - name: horizon
+              dist: trusty
+            - name: keystone
+              dist: trusty
+            - name: kubernetes
+              dist: trusty
+            - name: neutron
+              dist: trusty
+            - name: nova
+              dist: trusty
+            - name: swift
+              dist: trusty
+            - name: ceilometer
+              dist: xenial
+            - name: cinder
+              dist: xenial
+            - name: glance
+              dist: xenial
+            - name: heat
+              dist: xenial
+            - name: horizon
+              dist: xenial
+            - name: keystone
+              dist: xenial
+            - name: kubernetes
+              dist: xenial
+            - name: neutron
+              dist: xenial
+            - name: nova
+              dist: xenial
+            - name: swift
+              dist: xenial
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-debian-packages-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  salt-formulas/{{name}}:
+                    branches:
+                      - master
+                      - debian/{{dist}}
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/salt-formulas/{{name}}.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "master"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              DEBIAN_BRANCH:
+                type: string
+                default: 'debian/{{dist}}'
+              DEBIAN_SNAPSHOT:
+                type: boolean
+                default: 'true'
+              EXTRA_REPO_URL:
+                type: string
+                default: "deb ${_param:jenkins_aptly_url}/{{dist}}/ testing salt salt-latest"
+              EXTRA_REPO_KEY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_url}/public.gpg"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "ubuntu-{{dist}}-salt"
+              OS:
+                type: string
+                default: "ubuntu"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              PPA:
+                type: string
+                default: "salt-formulas/ppa"
+              UPLOAD_PPA:
+                type: boolean
+                default: 'true'
+              UPLOAD_APTLY:
+                type: boolean
+                default: 'true'

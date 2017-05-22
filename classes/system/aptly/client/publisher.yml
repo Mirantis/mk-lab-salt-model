@@ -1,0 +1,9 @@
+classes:
+  - service.aptly.client.publisher
+parameters:
+  aptly:
+    publisher:
+      enabled: true
+      source:
+        engine: docker
+        image: tcpcloud/aptly-publisher

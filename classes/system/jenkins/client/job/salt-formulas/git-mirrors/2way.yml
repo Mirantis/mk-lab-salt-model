@@ -1,0 +1,141 @@
+parameters:
+  _param:
+    jenkins_pollscm_spec: "H/60 * * * *"
+  jenkins:
+    client:
+      job_template:
+        git-mirror-2way-salt-formula:
+          name: git-mirror-2way-salt-formula-{{name}}
+          jobs:
+            - name: aodh
+            - name: apache
+            - name: aptcacher
+            - name: aptly
+            - name: artifactory
+            - name: backupninja
+            - name: avinetworks
+            - name: billometer
+            - name: bind
+            - name: bird
+            - name: cadf
+            - name: calico
+            - name: cassandra
+            - name: ccp
+            - name: ceilometer
+            - name: ceph
+            - name: chrony
+            - name: cinder
+            - name: collectd
+            - name: dekapod
+            - name: devops-portal
+            - name: docker
+            - name: dovecot
+            - name: elasticsearch
+            - name: etcd
+            - name: foreman
+            - name: freeipa
+            - name: galera
+            - name: gerrit
+            - name: git
+            - name: gitlab
+            - name: glance
+            - name: glusterfs
+            - name: grafana
+            - name: graphite
+            - name: haproxy
+            - name: heat
+            - name: heka
+            - name: horizon
+            - name: influxdb
+            - name: iptables
+            - name: isc-dhcp
+            - name: java
+            - name: jenkins
+            - name: kedb
+            - name: keepalived
+            - name: keystone
+            - name: kibana
+            - name: kubernetes
+            - name: letsencrypt
+            - name: libvirt
+            - name: linux
+            - name: lldp
+            - name: logrotate
+            - name: maas
+            - name: magnum
+            - name: memcached
+            - name: midonet
+            - name: monasca
+            - name: mongodb
+            - name: murano
+            - name: mysql
+            - name: nagios
+            - name: network
+            - name: neutron
+            - name: nfs
+            - name: nginx
+            - name: nodejs
+            - name: nova
+            - name: ntp
+            - name: opencontrail
+            - name: openldap
+            - name: openssh
+            - name: openvpn
+            - name: openvstorage
+            - name: owncloud
+            - name: postfix
+            - name: postgresql
+            - name: pritunl
+            - name: prometheus
+            - name: python
+            - name: rabbitmq
+            - name: reclass
+            - name: redis
+            - name: roundcube
+            - name: rsync
+            - name: rsyslog
+            - name: sahara
+            - name: salt
+            - name: sensu
+            - name: sentry
+            - name: sphinx
+            - name: spinnaker
+            - name: statsd
+            - name: supervisor
+            - name: swift
+            - name: taiga
+            - name: telegraf
+            - name: varnish
+            - name: zookeeper
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: git-mirror-2way-pipeline.groovy
+              github:
+                url: "https://github.com/salt-formulas/salt-formula-{{name}}"
+            trigger:
+              github:
+              pollscm:
+                spec: ${_param:jenkins_pollscm_spec}
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/salt-formulas/{{name}}.git"
+              TARGET_URL:
+                type: string
+                default: "git@github.com:salt-formulas/salt-formula-{{name}}.git"
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              BRANCHES:
+                type: string
+                default: ${_param:salt_formulas_branches}

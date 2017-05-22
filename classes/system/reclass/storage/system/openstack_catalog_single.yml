@@ -1,0 +1,15 @@
+parameters:
+  _param:
+    openstack_catalog_node01_hostname: asc01
+  reclass:
+    storage:
+      node:
+        openstack_catalog_node01:
+          name: ${_param:openstack_catalog_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.catalog
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: ${_param:linux_system_codename}
+            single_address: ${_param:openstack_catalog_node01_address}

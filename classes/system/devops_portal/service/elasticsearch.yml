@@ -1,0 +1,10 @@
+parameters:
+  devops_portal:
+    config:
+      service:
+        elasticsearch:
+          configure_proxy: true
+          endpoint:
+            address: ${_param:haproxy_elasticsearch_bind_host}
+            port: ${_param:haproxy_elasticsearch_bind_port}
+            https: ${_param:haproxy_elasticsearch_ssl:enabled}

@@ -1,0 +1,43 @@
+parameters:
+  _param:
+    docker_image_gerrit: tcpcloud/gerrit:2.13.6
+    gerrit_ldap_server: ""
+    gerrit_ldap_bind_user: ""
+    gerrit_ldap_bind_password: ""
+    gerrit_ldap_account_base: ""
+    gerrit_ldap_group_base: ""
+
+  docker:
+    client:
+      service:
+        gerrit:
+          environment:
+            #GERRIT_INIT_ARGS: ""
+            DATABASE_TYPE: "mysql"
+            DB_PORT_3306_TCP_ADDR: ${_param:cluster_vip_address}
+            DB_ENV_MYSQL_USER: gerrit
+            DB_ENV_MYSQL_PASSWORD: ${_param:mysql_gerrit_password}
+            DB_ENV_MYSQL_DB: gerrit
+            AUTH_TYPE: ${_param:gerrit_auth_type}
+            LDAP_SERVER: ${_param:gerrit_ldap_server}
+            LDAP_ACCOUNTPATTERN: 'uid={username}'
+            LDAP_ACCOUNTBASE: ${_param:gerrit_ldap_account_base}
+            LDAP_GROUPBASE: ${_param:gerrit_ldap_group_base}
+            LDAP_USERNAME: ${_param:gerrit_ldap_bind_user}
+            LDAP_PASSWORD: ${_param:gerrit_ldap_bind_password}
+            WEBURL: ${_param:gerrit_public_host}
+            GERRIT_ADMIN_SSH_PUBLIC: ${_param:gerrit_admin_public_key}
+            GERRIT_ADMIN_PWD: ${_param:gerrit_admin_password}
+            GERRIT_ADMIN_EMAIL: ${_param:gerrit_admin_email}
+            CANLOADINIFRAME: "true"
+          restart:
+            condition: any
+          image: ${_param:docker_image_gerrit}
+          ports:
+            - 18083:8080
+            - 29417:29418
+          volume:
+            site:
+              type: bind
+              source: /srv/volumes/gerrit
+              destination: /var/gerrit/review_site

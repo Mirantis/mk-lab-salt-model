@@ -12,12 +12,16 @@ parameters:
           version: 1.0.1-0contrail1
         contrail-api-cli:
           version: latest
+      kernel:
+        modules:
+        - nf_conntrack_ipv4
   haproxy:
     proxy:
       listen:
         contrail_api:
           type: contrail-api
           service_name: contrail
+          check: false
           binds:
           - address: ${_param:single_address}
             port: 8082
@@ -64,3 +68,7 @@ parameters:
             port: 5938
           user: haproxy
           password: ${_param:opencontrail_stats_password}
+  opencontrail:
+    web:
+      database:
+        port: 9042

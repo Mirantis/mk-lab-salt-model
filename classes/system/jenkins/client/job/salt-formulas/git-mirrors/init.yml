@@ -1,0 +1,5 @@
+classes:
+  - system.jenkins.client.job.salt-formulas.git-mirrors.2way
+parameters:
+  _param:
+    salt_formulas_branches: master

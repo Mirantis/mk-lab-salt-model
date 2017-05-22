@@ -1,0 +1,9 @@
+classes:
+  - system.jenkins.client.job.git-mirrors.downstream
+parameters:
+  _param:
+    jenkins_git_mirror_downstream_jobs:
+      - name: salt-formulas
+        downstream: salt-formulas/salt-formulas
+        upstream: "https://github.com/salt-formulas/salt-formulas"
+        branches: master

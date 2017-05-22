@@ -1,0 +1,13 @@
+classes:
+  - system.jenkins.client.job.git-mirrors.upstream
+parameters:
+  _param:
+    jenkins_git_mirror_upstream_jobs:
+      - name: pipeline-library
+        downstream: mcp-ci/pipeline-library
+        upstream: "git@github.com:Mirantis/pipeline-library.git"
+        branches: master
+      - name: mk-pipelines
+        downstream: mk/mk-pipelines
+        upstream: "git@github.com:Mirantis/mk-pipelines.git"
+        branches: master

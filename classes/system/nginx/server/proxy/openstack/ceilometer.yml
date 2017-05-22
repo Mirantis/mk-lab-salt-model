@@ -1,0 +1,20 @@
+parameters:
+  _param:
+    nginx_proxy_openstack_api_host: ${_param:cluster_public_host}
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_openstack_api_ceilometer:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_ceilometer
+          check: false
+          proxy:
+            host: ${_param:ceilometer_service_host}
+            port: 8777
+            protocol: http
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8777
+          ssl: ${_param:nginx_proxy_ssl}

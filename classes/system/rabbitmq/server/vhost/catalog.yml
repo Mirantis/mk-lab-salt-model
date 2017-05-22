@@ -1,0 +1,20 @@
+parameters:
+  rabbitmq:
+    server:
+      host:
+        '/murano':
+          enabled: true
+          user: openstack
+          password: ${_param:rabbitmq_murano_agent_password}
+          policies:
+          - name: HA
+            pattern: '^(?!amq\.).*'
+            definition: '{"ha-mode": "all", "message-ttl": 120000}'
+      admin:
+        name: admin
+        password: zeQuooQu47eed8esahpie2Lai8En9ohp
+      bind:
+        address: ${_param:single_address}
+      management:
+        bind:
+          address: ${_param:single_address}

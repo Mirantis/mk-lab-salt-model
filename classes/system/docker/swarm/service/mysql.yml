@@ -1,0 +1,22 @@
+parameters:
+  _param:
+    docker_image_mysql: mysql:5.6
+  docker:
+    client:
+      service:
+        mysql:
+          environment:
+            MYSQL_USER: gerrit
+            MYSQL_PASSWORD: ${_param:mysql_gerrit_password}
+            MYSQL_DATABASE: gerrit
+            MYSQL_ROOT_PASSWORD: ${_param:mysql_admin_password}
+          restart:
+            condition: any
+          image: "${_param:docker_image_mysql}"
+          ports:
+            - 13306:3306
+          volume:
+            data:
+              type: bind
+              source: /srv/volumes/mysql
+              destination: /var/lib/mysql

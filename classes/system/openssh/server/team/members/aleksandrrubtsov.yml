@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        arubtsov:
+          enabled: true
+          name: arubtsov
+          sudo: false
+          full_name: Aleksandr Rubtsov
+          home: /home/arubtsov
+          email: arubtsov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        arubtsov:
+          enabled: true
+          public_keys: ${public_keys:arubtsov}
+          user: ${linux:system:user:arubtsov}
+  public_keys:
+    arubtsov:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDceCojbryph3bYRePvIrnS05jyukYkP/ZAgTSuIqn8Lzm7speEnKvoPXz28uc1UklxI125vXwAnrxf/Ogtw0qASJd1NGTk+0Qal+jFdRSamszHvlvEmL0Eh0yFIpDGJQRStXrTdryRumr3g7xF+vFgoh9nlb7vHNj/14PWBWrDNSVCtH2/gskYRVSrydgxpHSi4CA7bRpC0FD3X7fLSnAzDRFld/XPkPxM6Tpg+Dajlk62DzP2cLfM0OAR6PoTu31kT4W4fwnhYwoT0uNwJNQ28uiyHutUwioX3evb0Dys2tSK3w7i7bHpn0PdPClHz/xgg6PB8HdxpMApq/Z56FZx
+

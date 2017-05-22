@@ -1,0 +1,8 @@
+classes:
+- service.kubernetes.master.single
+parameters:
+  kubernetes:
+    master:
+      container: false
+      network:
+        engine: calico

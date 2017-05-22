@@ -1,0 +1,31 @@
+parameters:
+  _param:
+    docker_image_aptly:
+      api: tcpcloud/aptly-api
+      public: tcpcloud/aptly-public
+  docker:
+    client:
+      stack:
+        aptly:
+          environment:
+            EMAIL_ADDRESS: ${_param:admin_email}
+          service:
+            api:
+              deploy:
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_aptly:api}
+              ports:
+                - 18084:8080
+              volumes:
+                - /srv/volumes/aptly:/var/lib/aptly
+            public:
+              deploy:
+                replicas: 3
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_aptly:public}
+              ports:
+                - 18085:80
+              volumes:
+                - /srv/volumes/aptly/public:/var/www/html

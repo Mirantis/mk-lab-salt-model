@@ -1,0 +1,27 @@
+parameters:
+  _param:
+    openstack_dns_node01_hostname: dns01
+    openstack_dns_node02_hostname: dns02
+  reclass:
+    storage:
+      node:
+        openstack_dns_node01:
+          name: ${_param:openstack_dns_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.dns
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_dns_node01_address}
+            keepalived_vip_priority: 110
+        openstack_dns_node02:
+          name: ${_param:openstack_dns_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.dns
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_dns_node02_address}
+            keepalived_vip_priority: 111

@@ -1,0 +1,26 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        xenial-updates-newton:
+          source: http://ubuntu-cloud.archive.canonical.com/ubuntu/
+          distribution: xenial-updates/newton
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - EC4926EA
+          publisher:
+            component: newton
+            distributions:
+              - ubuntu-xenial/nightly
+        xenial-updates-ocata:
+          source: http://ubuntu-cloud.archive.canonical.com/ubuntu/
+          distribution: xenial-updates/ocata
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - EC4926EA
+          publisher:
+            component: ocata
+            distributions:
+              - ubuntu-xenial/nightly

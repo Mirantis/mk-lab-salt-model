@@ -1,6 +1,35 @@
 applications:
 - openssh
 parameters:
+  _param:
+    cluster_private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEAxL6/rVgCetsETpZaUmXmkj8cZ1WN0eubH1FvMDOi/La9ZJyT
+      k0C6AYpJnIyEm93pMj5cLm08qRqMW+2pdOhYjcH69yg5MrX5SkRk8jCmIHIYoIbh
+      Qnwbnj3dd3I39ZdfU2FO7u2vlbglVou6ZoQxlJDItuLNtzq6EG+w9eF19e7+OsC6
+      6iUItp618zfw1l3J/8nKvCGe2RYDf7mJW6XwCl/DwryJmwwzvPgYJ3QMuDD8/HFj
+      lrJ3xjFTXj4b4Ws1XIoy78fFbtiLr4OwqCYkho03u2E5rOOP1qZxZB63sivHMLMO
+      MM5bOAQKbulFNoyALADGYfc7sf0bZ4u9XXDXxQIDAQABAoIBAQCfmc2MJRT97KW1
+      yqpCpX9BrAiymuiNHf+cjEcSZxEUyHkjIRFmJt+9WB0W7ba1anM92vCUiPDojSzH
+      dig9Oi578JxR20NrK8uqv4jUHzrknynzLveVI3CUEcOSnglfJQijbxDFKfOCFPvV
+      FUyE1UATMNBh6+LNfMprgu+exuMWOPnDyUiYQ+WZ0JfuZY8fuaZte4woJJOb9LUu
+      5rsMG/smIzjpgZ0Z9ZVDMurfq565qhpaXRAqKeIuyht8pacTo31iMQdHB78AvY/3
+      g0z21Gk8k3z0Kr/YFKr2r4FmXY5m/gAUvZly2ZrVQM5XsbTVCzq/JpI5fssNvSbU
+      AKmXzf4RAoGBAOO3d4/cstxERzW6hyOTjZIN1ppR52CsnZTsVPbfd0pCtmzmVZce
+      CtHKdcXSbTwZvvkK09QSWAp3MoSpd0gIOiLU8Wx/R/RIZsu9BlhTS3r3EQLnk72d
+      H/1TTA+j4T/LIYLSojQ1RxvIrHetAD44j732aTwKAHj/SybEAVqNkOB/AoGBAN0u
+      gLcrgqIHGrk4VjWSvlCGymfF40equcx+ud7XhfZDGETUOSahW4dPZ52cjPAkrCBQ
+      MMfcDwSVGsOAjd+mNt11BHUKobnhXwFaWWuyqyn9NmWFbjMbICVh7E3Of5aVN38o
+      lrmo/7LuKMVG7XRwphCv5NkaJmQG4njDyUQWlaW7AoGADCd8wDb9bPhP/LQqBmIX
+      ylXmwHHisaxE9O/wUQT4bwREjGd25gv6c9wkkRx8LBsLsGs9hzI7dMOL9Ly+2x9l
+      SvqmsC3S/1zl77X1Ir2/Z57MT6Vgo1xBmtnZU3Rhz2/eKAdqFPNLClaZrgGT475N
+      HcyLLWMzR0IJFtabY+Puea0CgYA8Zb5wRkldxWLewSuJZZDinGwY+kieAVjLJq/K
+      0j+ah6fQ48LXcah0wpIgz+cMjHcUO9GWQdk3/x9X03rqX5EL2DBnZYfUIl63F9zj
+      M97ZkHOSNWVqPzX//0Vv2butewG0j3jZKfTo/2/SrxOYgEpYtC9huWpSVi7xm0US
+      erhSkQKBgFIf9JEsfgE57ANhvITZ3ZI0uZXNxZkXQaVg8jvScDi79IIhy9iPzhKC
+      aIIQoDNIlWv1ftCRZ5AlBvVXgvQ/QNrwy48JiQTzWZlb9Ezg8w+olQmSbG6fq7Y+
+      7r3i+QUZ7RBdOb24QcQ618q54ozNTCB7OywY78ptFzeoBeptiNr1
+      -----END RSA PRIVATE KEY-----
   openssh:
     client:
       enabled: true
@@ -8,7 +37,7 @@ parameters:
         root:
           enabled: true
           user: ${linux:system:user:root}
-          private_key: ${private_keys:workshop}
+          private_key: ${private_keys:lab}
           known_hosts:
           - ${known_hosts:git.tcpcloud.eu}
   known_hosts:
@@ -17,33 +46,6 @@ parameters:
       type: ecdsa
       fingerprint: fc:77:72:6c:65:c0:e1:26:0d:68:b8:a8:4a:56:38:22
   private_keys:
-    workshop:
+    lab:
       type: rsa
-      key: |
-        -----BEGIN RSA PRIVATE KEY-----
-        MIIEogIBAAKCAQEAqdHr4zmivHPEimCuK9vtATe4PvGEr0Np/JxYDlEQsr5Cajh4
-        tajxmZrjdAnJWFXVbmYl21sN1cUW0ltxB+9+lc4GNVNCZqE4kmpsyx2lrF7xCFvF
-        Qou26JYud/UCT9IpCYgWjQIGSC8gq1TzfgOpn6rWnLNSl3WdM5TKtQT7RXIkdSUw
-        kXFbObz9lsM+ULWNozCId2osJHj4zE0D3H5odU5DpcWLuSG0MmdxtWoQNJjSiPWt
-        HbRdvNmr/xeqcAfzdUdZxGf/VbXDdiNZn9TVv7UxxBHE812KNUf/Cvb5agDfEL7x
-        i2bWXbhr4jVTaDVr6MWl8Q7fAj79gdjQnUBWaQIDAQABAoIBAFU3kU6yIna9BViH
-        UX+S2ijtRBjZ68JjavEnp4xvo5h+nydcdT57q9lv/0nAi3g3gmXm/oJH+/ZU87HV
-        zy+zP+t+umDSChUkPBZFL5jxpKyN7BhMrP1KzRuEGYd6vJE/nfY5g095P5vDgnpX
-        o+SNg/YqrY1u8zgr/hnfRaV2/XyIDEEcQXTHseWTnnMQnULFU88xL8yq8ACT5GhK
-        7A9m5ukfcU6d/fs/psz5Yqw5IQsWbv1yJ3/FKufPHlo2Nzh3/3eDAZUXvaBgf1so
-        FWFpHtkry3OXOGaZ98HgF9hL0twS0pzMvuypdGUQAt6nyB1N5re4LK/MAOddqwEc
-        1+NQzfECgYEA2ryEf0GLJdtiYs3F4HbwTwJVIXdyWv7kjYGeMkutzzAjXl6wx8aq
-        kfqLJ7x7UkR5unZ1ajEbKBciAlSuFA+Gikn6a4Lv8h87aSnHpPd/2VSitRlI/gW7
-        w4U4CL3Br1JyonU5WA7VYfTow7KnHBhdwm27RMA9uosyIpveQRpqSG0CgYEAxsAS
-        wCQKrhuPq2YtGtFR7K4BL+N+0E1Vq6h49u1ukcgUe0GHVD3VzBypNCv7rWEVHzAg
-        biCVi7PCjzZYW4fYZmzVD4JbFLVGOUu7aJwLaE4wDe72DNr6YZhcS+Ta98BP+x0q
-        Wt34JNPDabRPfhXfhiCqnWjjod+4Zqx4VJVNgG0CgYB5EXL8xJhyAbW5Hk/x56Mm
-        +BGKjoR7HS3/rMiU6hJv5SMObrbGPI3YcqZm/gn8BO6jaEGg30E6tWMbiyc270j2
-        be/vZe/NQcAuevOHuX3IGvJb7nzaLO46UBgtrmnv0mCkzuFIfh1ZNKdI+i9Ie6wZ
-        m4bVjNod0EGVqlQgELDXGQKBgB+NNmzSS++/6FrpaZesSzkrlnynvOYMoOETacCp
-        iLgT70xx5q308w/oLORfZyDrHJNK7JsPCS6YZvadRgGh2zTHajuAEj2DWZaW8zV0
-        MEtqvi44FU+NI9qCeYSC3FAgc5IF20d5nX8bLxaEzWnSxx1f6jX7BMgZ4AhMsP2c
-        hiUxAoGAFaxn+t9blIjqUiuh0smSYFhLBVPZveYHQDmQYERjktptBd3X95fGnSKh
-        iDe2iPGyud2+Yu4X/VjHLh/MRru+ZXvPXw1XwEqX93q8a1n283ul0Rl9+KKKOVHR
-        eecTjI/BfXBf33mPRKny3xuHw6uwta2T3OXky9IhqYS1kkHiZWA=
-        -----END RSA PRIVATE KEY-----
+      key: ${_param:cluster_private_key}

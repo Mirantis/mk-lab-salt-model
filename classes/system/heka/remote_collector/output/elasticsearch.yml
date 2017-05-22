@@ -1,0 +1,7 @@
+parameters:
+  _param:
+    elasticsearch_port: 9200
+  heka:
+    remote_collector:
+      elasticsearch_host: ${_param:heka_elasticsearch_host}
+      elasticsearch_port: ${_param:elasticsearch_port}

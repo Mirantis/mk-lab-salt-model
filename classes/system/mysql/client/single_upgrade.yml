@@ -1,0 +1,25 @@
+classes:
+- system.mysql.client.database_upgrade.aodh
+- system.mysql.client.database_upgrade.ceilometer
+- system.mysql.client.database_upgrade.cinder
+- system.mysql.client.database_upgrade.glance
+- system.mysql.client.database_upgrade.heat
+- system.mysql.client.database_upgrade.keystone
+- system.mysql.client.database_upgrade.nova
+- system.mysql.client.database_upgrade.nova_api
+- system.mysql.client.database_upgrade.neutron
+- service.mysql.client.single
+parameters:
+  _param:
+    mysql_client_host: localhost
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          admin:
+            host: ${_param:mysql_client_host}
+            port: 3306
+            user: ${_param:mysql_admin_user}
+            password: ${_param:mysql_admin_password}
+            encoding: utf8

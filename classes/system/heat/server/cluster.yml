@@ -2,74 +2,59 @@ classes:
 - service.heat.server.cluster
 - service.haproxy.proxy.single
 - service.keepalived.cluster.single
+- system.haproxy.proxy.listen.openstack.heat
 parameters:
-  haproxy:
-    proxy:
-      listen:
-        heat_cloudwatch_api:
-          type: openstack-service
-          service_name: heat
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8000
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8000
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8000
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8000
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        heat_api:
-          type: openstack-service
-          service_name: heat
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8004
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8004
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8004
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8004
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-        heat_cfn_api:
-          type: openstack-service
-          service_name: heat
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8003
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 8003
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 8003
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 8003
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+  _param:
+    cluster_public_protocol: https
   heat:
     server:
       stack_domain_admin:
         name: heat_domain_admin
         password: ${_param:heat_domain_admin_password}
         domain: heat
-      logging:
-        heka:
-          enabled: true
-
+      enabled: true
+      region: ${_param:openstack_region}
+      version: ${_param:heat_version}
+      bind:
+        api_cfn:
+          address: ${_param:cluster_local_address}
+        api_cloudwatch:
+          address: ${_param:cluster_local_address}
+        api:
+          address: ${_param:cluster_local_address}
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: heat
+        user: heat
+        password: ${_param:mysql_heat_password}
+      metadata:
+        host: ${_param:cluster_public_host}
+        port: 8000
+        protocol: ${_param:cluster_public_protocol}
+      waitcondition:
+        host: ${_param:cluster_public_host}
+        port: 8000
+        protocol: ${_param:cluster_public_protocol}
+      watch:
+        host: ${_param:cluster_public_host}
+        port: 8003
+        protocol: ${_param:cluster_public_protocol}
+      identity:
+        engine: keystone
+        host: ${_param:cluster_vip_address}
+        port: 35357
+        tenant: service
+        user: heat
+        password: ${_param:keystone_heat_password}
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}

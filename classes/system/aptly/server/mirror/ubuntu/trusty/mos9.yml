@@ -1,0 +1,76 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        mirantis-openstack-9.0-trusty:
+          source: http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/
+          distribution: mos9.0
+          components: main restricted
+          architectures: amd64
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - mos9/mos9.0
+        #mirantis-openstack-9.0-hotfix-trusty:
+        #  source: http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/
+        #  distribution: mos9.0-hotfix
+        #  components: main restricted
+        #  architectures: amd64
+        #  key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+        #  gpgkeys:
+        #    - 1FA22B08
+        #  publisher:
+        #    component: main
+        #    distributions:
+        #      - mos9/mos9.0-hotfix
+        mirantis-openstack-9.0-proposed-trusty:
+          source: http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/
+          distribution: mos9.0-proposed
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - mos9/mos9.0-proposed
+        # FIXME, enable security once contain packages, otherwise broke aptly publish
+        #mirantis-openstack-9.0-security-trusty:
+        #  source: http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/
+        #  distribution: mos9.0-security
+        #  components: main restricted
+        #  architectures: amd64
+        #  key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+        #  gpgkeys:
+        #    - 1FA22B08
+        #  publisher:
+        #    component: main
+        #    distributions:
+        #      - mos9/mos9.0-security
+        mirantis-openstack-9.0-updates-trusty:
+          source: http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/
+          distribution: mos9.0-updates
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - mos9/mos9.0-updates
+        mirantis-openstack-9.0-extras-murano:
+          source: http://mirror.fuel-infra.org/extras/murano-plugin-repos/release/1.2.0/ubuntu/9.0/
+          distribution: mos9.0
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: murano
+            distributions:
+              - mos9/mos9.0

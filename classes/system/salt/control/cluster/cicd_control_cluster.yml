@@ -1,0 +1,29 @@
+parameters:
+  salt:
+    control:
+      size:
+        cicd.control:
+          cpu: 8
+          ram: 32768
+          disk_profile: large
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            cid01:
+              name: ${_param:cicd_control_node01_hostname}
+              provider: ${_param:infra_kvm_node01_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: cicd.control
+            cid02:
+              name: ${_param:cicd_control_node02_hostname}
+              provider: ${_param:infra_kvm_node02_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: cicd.control
+            cid03:
+              name: ${_param:cicd_control_node03_hostname}
+              provider: ${_param:infra_kvm_node03_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: cicd.control

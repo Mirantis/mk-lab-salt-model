@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        docker-trusty:
+          source: https://apt.dockerproject.org/repo
+          distribution: ubuntu-trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 58118E89F3A912897C070ADBF76221572C52609D
+          publisher:
+            component: docker
+            distributions:
+              - ubuntu-trusty/nightly

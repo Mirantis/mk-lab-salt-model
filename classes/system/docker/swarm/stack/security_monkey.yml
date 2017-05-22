@@ -1,0 +1,35 @@
+parameters:
+  _param:
+    docker_security_monkey_api_replicas: 1
+    docker_security_monkey_scheduler_replicas: 1
+    docker_image_security_monkey_api: docker-sandbox.sandbox.mirantis.net/vstoiko/oss/security-monkey-api:3842.6
+    docker_image_security_monkey_scheduler: docker-sandbox.sandbox.mirantis.net/vstoiko/oss/security-monkey-scheduler:3842.6
+    security_monkey_db: secmonkey
+  docker:
+    client:
+      stack:
+        security_monkey:
+          environment:
+            SECURITY_MONKEY_POSTGRES_USER: ${_param:secmonkey_db_user}
+            SECURITY_MONKEY_POSTGRES_PASSWORD: ${_param:secmonkey_db_user_password}
+            SECURITY_MONKEY_POSTGRES_HOST: ${_param:secmonkey_db_host}
+            SECURITY_MONKEY_POSTGRES_PORT: ${_param:haproxy_postgresql_bind_port}
+          service:
+            api:
+              image: ${_param:docker_image_security_monkey_api}
+              deploy:
+                replicas: ${_param:docker_security_monkey_api_replicas}
+                restart_policy:
+                  condition: any
+              ports:
+                - ${_param:haproxy_security_monkey_exposed_port}:${_param:haproxy_security_monkey_bind_port}
+              volumes:
+                - /srv/volumes/security_monkey:/var/log/security_monkey
+            scheduler:
+              image: ${_param:docker_image_security_monkey_scheduler}
+              deploy:
+                replicas: ${_param:docker_security_monkey_scheduler_replicas}
+                restart_policy:
+                  condition: any
+              volumes:
+                - /srv/volumes/security_monkey:/var/log/security_monkey

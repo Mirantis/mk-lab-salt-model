@@ -1,0 +1,11 @@
+parameters:
+  linux:
+    system:
+      config:
+        jenkins_master:
+          grains:
+            fqdn: dummy
+          pillar:
+            jenkins:
+              master:
+                home: /srv/volumes/jenkins

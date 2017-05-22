@@ -1,0 +1,17 @@
+parameters:
+  _param:
+    cluster_node01_hostname: nal01
+    cluster_node02_hostname: nal02
+    cluster_node03_hostname: nal03
+  opencontrail:
+    client:
+      analytics_node:
+        member01:
+          name: ${_param:cluster_node01_hostname}
+          ip_address: ${_param:cluster_node01_address}
+        member02:
+          name: ${_param:cluster_node02_hostname}
+          ip_address: ${_param:cluster_node02_address}
+        member03:
+          name: ${_param:cluster_node03_hostname}
+          ip_address: ${_param:cluster_node03_address}

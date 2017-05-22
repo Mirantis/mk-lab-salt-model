@@ -1,0 +1,22 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            designate_pool_manager_upgrade:
+              encoding: utf8
+              users:
+              - name: designate
+                password: ${_param:mysql_designate_password}
+                host: '%'
+                rights: all
+              - name: designate
+                password: ${_param:mysql_designate_password}
+                host: ${_param:single_address}
+                rights: all
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: designate_pool_manager

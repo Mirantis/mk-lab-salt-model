@@ -1,0 +1,24 @@
+parameters:
+  linux:
+    system:
+      user:
+        manashkin:
+          enabled: true
+          name: manashkin
+          sudo: false
+          full_name: Miroslav Anashkin
+          home: /home/manashkin
+          email: manashkin@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        manashkin:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDb1XOAU6ZoU+hSB0SPaypwK1Weu2armLzQrIQ3hhmlpAxFDV50oiF/PyPZ7W5NkJWgEr+DGYuZiKuqTDosrQV5Tt8TA4nt6bSJ9SlhJlNGltrOeWeLcP/Hf2YyWm0e9puzAIgUsKN8Np+CBrpIls4bq2JCshkz/vz9AreaFBMHrhjrh8YNn+yNbETJf9nmxDazVqYp3UI5SU4Wg0KchrFHBPNlREL099SSARfTGIsfbbJmSHx2LUw3Rt6v2fizRslv+Tuxvx2tqRsgbjeF7+NKfOFMBIloab97ag7N9EUdVvOHrjScXQ+nP/kdk3iq7O2WDpAgKYXIbSuaWA0YUk5Z manashkin@mirantis.com
+          user: ${linux:system:user:manashkin}
+          group:
+          - supportl2

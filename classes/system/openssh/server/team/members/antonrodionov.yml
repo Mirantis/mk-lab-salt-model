@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        arodionov:
+          enabled: true
+          name: arodionov
+          sudo: false
+          full_name: Anton Rodionov
+          home: /home/arodionov
+          email: arodionov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        arodionov:
+          enabled: true
+          public_keys: ${public_keys:arodionov}
+          user: ${linux:system:user:arodionov}
+  public_keys:
+    arodionov:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDR4n6F0zmhsB3SutXA74bWANA5DZVekZKB50UVuT5aBXDpAiTPWHq+OUmF1Ptmh+T7jSJClHeaPQTcWnN7Z0knKqGNynMsL560Cp6z3cHh40FLodVSCcoHyqPiFS9kGjOsgM5+VsKAUDy9Dgh7lg8YJBVUSnpRu2f3PnLiKTh656oe2+xBHmYWCZEKTS2Qu60e4cDtBvpWbvsB+89FKM5oNArJyd7SQzpuIj071qbQoRla/nG8J2mOZUVCfXGNl6+JsbDxh6C1aeEgyjm5yy3ODpeY2eKMwlaIKoYtzolwshkcJw240q49PKE8OI2gIAt95rVXRuYpC9gm61Wlf91Z
+

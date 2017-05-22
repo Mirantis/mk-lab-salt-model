@@ -1,0 +1,18 @@
+parameters:
+  _param:
+    opencontrail_asn: 64512
+    opencontrail_router01_hostname: mx01
+    opencontrail_router02_hostname: mx02
+  opencontrail:
+    client:
+      bgp_router:
+        router01:
+          name: ${_param:opencontrail_router01_hostname}
+          type: router
+          ip_address: ${_param:opencontrail_router01_address}
+          asn: ${_param:opencontrail_asn}
+        router02:
+          name: ${_param:opencontrail_router02_hostname}
+          type: router
+          ip_address: ${_param:opencontrail_router02_address}
+          asn: ${_param:opencontrail_asn}

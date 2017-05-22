@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    system:
+      repo:
+        sensu:
+          source: "deb https://sensu.global.ssl.fastly.net/apt ${_param:linux_system_codename} main"
+          architectures: amd64
+          key_url: "https://sensu.global.ssl.fastly.net/apt/pubkey.gpg"

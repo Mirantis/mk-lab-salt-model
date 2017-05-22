@@ -1,0 +1,20 @@
+parameters:
+  _param:
+    docker_image_registry: registry:2
+  docker:
+    client:
+      service:
+        registry:
+          replica: 3
+          environment:
+            REGISTRY_HTTP_SECRET: ${_param:docker_registry_http_secret}
+          restart:
+            condition: any
+          image: ${_param:docker_image_registry}
+          ports:
+            - 15000:5000
+          volume:
+            site:
+              type: bind
+              source: /srv/volumes/registry
+              destination: /var/lib/registry

@@ -1,0 +1,7 @@
+parameters:
+  _param:
+    aggregator_port: 5565
+  heka:
+    remote_collector:
+      aggregator_host: ${_param:heka_aggregator_host}
+      aggregator_port: ${_param:aggregator_port}

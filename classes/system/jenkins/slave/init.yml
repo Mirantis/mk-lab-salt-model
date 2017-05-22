@@ -1,0 +1,37 @@
+applications:
+  - jenkins
+classes:
+  - service.java.environment
+parameters:
+  _param:
+    java_environment_version: "8"
+    java_environment_platform: openjdk
+    jenkins_slave_user: none
+    jenkins_slave_password: none
+    jenkins_master_host: ${_param:control_vip_address}
+    jenkins_master_port: 8081
+    jenkins_master_protocol: http
+  java:
+    environment:
+      headless: true
+  jenkins:
+    slave:
+      enabled: true
+      pkgs: false
+      sudo: false
+      scripts: []
+      master:
+        host: ${_param:jenkins_master_host}
+        port: ${_param:jenkins_master_port}
+        protocol: ${_param:jenkins_master_protocol}
+      user:
+        name: ${_param:jenkins_slave_user}
+        password: ${_param:jenkins_slave_password}
+  linux:
+    system:
+      user:
+        jenkins:
+          enabled: true
+          name: jenkins
+          home: /var/lib/jenkins
+          sudo: false

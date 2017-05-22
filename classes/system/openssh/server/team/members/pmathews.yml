@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        pmathews:
+          enabled: true
+          name: pmathews
+          sudo: true
+          full_name: Paul Mathews
+          home: /home/pmathews
+          email: pmathews@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        pmathews:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa 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
+          user: ${linux:system:user:pmathews}

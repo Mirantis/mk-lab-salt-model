@@ -1,0 +1,39 @@
+parameters:
+  _param:
+    jenkins_git_mirror_downstream_jobs: []
+    jenkins_pollscm_spec: "H/60 * * * *"
+  jenkins:
+    client:
+      job_template:
+        git_mirror_downstream_common:
+          name: git-mirror-downstream-{{name}}
+          jobs: ${_param:jenkins_git_mirror_downstream_jobs}
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: git-mirror-pipeline.groovy
+            trigger:
+              pollscm:
+                spec: ${_param:jenkins_pollscm_spec}
+            param:
+              SOURCE_URL:
+                type: string
+                default: "{{upstream}}"
+              TARGET_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/{{downstream}}"
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              BRANCHES:
+                type: string
+                default: "{{branches}}"

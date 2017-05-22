@@ -1,0 +1,20 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        deploy_kafka_demo:
+          type: workflow-scm
+          concurrent: false
+          display_name: "Kafka demo"
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: kafka-demo.groovy
+          param:
+              # salt master
+              SALT_MASTER_CREDENTIALS:
+                type: string
+                default: "salt-qa-credentials"
+              SALT_URL:
+                type: string

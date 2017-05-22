@@ -2,6 +2,7 @@ classes:
 - service.keepalived.cluster.single
 - service.haproxy.proxy.single
 - service.neutron.control.cluster
+- system.haproxy.proxy.listen.openstack.neutron
 parameters:
   mysql:
     server:

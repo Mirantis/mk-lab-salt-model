@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        sssd-trusty:
+          source: http://ppa.launchpad.net/sssd/updates/ubuntu
+          distribution: trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - CA45F42B
+          publisher:
+            component: extra
+            distributions:
+              - ubuntu-trusty/nightly

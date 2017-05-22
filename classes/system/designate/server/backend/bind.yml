@@ -1,0 +1,36 @@
+parameters:
+  designate:
+    server:
+      backend:
+        bind9:
+          rndc_key: "${_param:designate_bind9_rndc_key}"
+  bind:
+    server:
+      key:
+        designate:
+          secret: "${_param:designate_bind9_rndc_key}"
+          algorithm: hmac-sha512
+      allow_new_zones: true
+      query: true
+      control:
+        local:
+          enabled: true
+          bind:
+            address: 127.0.0.1
+            port: 953
+          allow:
+            - 127.0.0.1
+            - ${_param:single_address}
+          keys:
+            - designate
+    client:
+      enabled: true
+      option:
+        default:
+          server: 127.0.0.1
+          port: 953
+          key: designate
+      key:
+        designate:
+          secret: "${_param:designate_bind9_rndc_key}"
+          algorithm: hmac-sha512

@@ -1,0 +1,15 @@
+classes:
+- system.mysql.client.database.designate_pool_manager
+parameters:
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          database:
+            designate_pool_manager:
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: designate_pool_manager

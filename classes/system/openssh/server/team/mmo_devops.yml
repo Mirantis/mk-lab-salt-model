@@ -1,0 +1,11 @@
+classes:
+# DevOps/SRE Team
+- system.openssh.server.team.members.cade
+- system.openssh.server.team.members.dszeluga
+- system.openssh.server.team.members.jmosher
+- system.openssh.server.team.members.ecantwell
+- system.openssh.server.team.members.mrelewicz
+- system.openssh.server.team.members.mwilson
+- system.openssh.server.team.members.pmathews
+# Missing- team members still in flux
+# - system.openssh.server.team.members.bpiotrowski

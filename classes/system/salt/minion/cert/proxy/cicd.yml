@@ -1,0 +1,15 @@
+classes:
+- system.salt.minion.cert.proxy
+parameters:
+  salt:
+    minion:
+      cert:
+        proxy:
+          alternative_names: "DNS:${_param:cluster_public_host}, DNS:*.${_param:cluster_public_host}, IP:${_param:control_vip_address}, IP:${_param:single_address}"
+          key_file: /etc/haproxy/ssl/${_param:cluster_public_host}.key
+          cert_file: /etc/haproxy/ssl/${_param:cluster_public_host}.crt
+          all_file: /etc/haproxy/ssl/${_param:cluster_public_host}-all.pem
+          ca_file: /etc/haproxy/ssl/${_param:salt_minion_ca_authority}-ca.crt
+          user: root
+          group: haproxy
+          mode: 640

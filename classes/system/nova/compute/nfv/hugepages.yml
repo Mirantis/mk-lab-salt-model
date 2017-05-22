@@ -1,0 +1,18 @@
+parameters:
+  _param:
+    compute_hugepages_size: 1G
+    compute_hugepages_mount: /mnt/hugepages_1G
+  linux:
+    system:
+      kernel:
+        hugepages:
+          large:
+            default: true
+            size: ${_param:compute_hugepages_size}
+            count: ${_param:compute_hugepages_count}
+            mount_point: ${_param:compute_hugepages_mount}
+  nova:
+    compute:
+      hugepages:
+        mount_points:
+        - path: ${_param:compute_hugepages_mount}

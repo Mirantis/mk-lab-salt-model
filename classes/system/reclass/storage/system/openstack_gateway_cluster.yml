@@ -1,0 +1,44 @@
+parameters:
+  _param:
+    openstack_gateway_node01_hostname: gtw01
+    openstack_gateway_node02_hostname: gtw02
+    openstack_gateway_node03_hostname: gtw03
+
+    openstack_gateway_node01_tenant_address: ${_param:single_address}
+    openstack_gateway_node02_tenant_address: ${_param:single_address}
+    openstack_gateway_node03_tenant_address: ${_param:single_address}
+  reclass:
+    storage:
+      node:
+        openstack_gateway_node01:
+          name: ${_param:openstack_gateway_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.gateway
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: ${_param:linux_system_codename}
+            single_address: ${_param:openstack_gateway_node01_address}
+            tenant_address: ${_param:openstack_gateway_node01_tenant_address}
+        openstack_gateway_node02:
+          name: ${_param:openstack_gateway_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.gateway
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: ${_param:linux_system_codename}
+            single_address: ${_param:openstack_gateway_node02_address}
+            tenant_address: ${_param:openstack_gateway_node02_tenant_address}
+        openstack_gateway_node03:
+          name: ${_param:openstack_gateway_node03_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.gateway
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: ${_param:linux_system_codename}
+            single_address: ${_param:openstack_gateway_node03_address}
+            tenant_address: ${_param:openstack_gateway_node03_tenant_address}
+
+

@@ -1,0 +1,53 @@
+parameters:
+  _param:
+    jenkins_pollscm_spec: "H/60 * * * *"
+  jenkins:
+    client:
+      job_template:
+        git_mirror_2way_salt_model:
+          name: git-mirror-2way-salt-model-{{name}}
+          param:
+            name:
+              - reclass-system
+              - slovaktelekom
+              - stacklight
+              - statens
+          template:
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: git-mirror-2way-pipeline.groovy
+              github:
+                url: "https://github.com/Mirantis/{{name}}-salt-model"
+            trigger:
+              github:
+              pollscm:
+                spec: ${_param:jenkins_pollscm_spec}
+              gerrit:
+                project:
+                  salt-models/{{name}}:
+                    branches:
+                      - master
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/salt-models/{{name}}.git"
+              TARGET_URL:
+                type: string
+                default: "git@github.com:Mirantis/{{name}}-salt-model.git"
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              BRANCHES:
+                type: string
+                default: "master"

@@ -1,0 +1,13 @@
+parameters:
+  aptly:
+    server:
+      repo:
+        contrail:
+          distribution: trusty
+          component: main
+          architectures: amd64
+          comment: "Local Contrail APT repository"
+          publisher:
+            component: jc30
+            distributions:
+              - local/trusty

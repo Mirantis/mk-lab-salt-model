@@ -1,0 +1,23 @@
+parameters:
+  linux:
+    system:
+      user:
+        apetrenko:
+          enabled: true
+          name: apetrenko
+          sudo: false
+          full_name: Andrii Petrenko
+          home: /home/apetrenko
+          email: apetrenko@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        apetrenko:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDU7eLohJKXXB57H/buBlUcBTQXgsXmGXxMao0PQthdfDWhFKXc9fI+1rdsNjA8NPmq8gYdqldOgoIFAmBSwK/+z12ihIGmQJY8vRhr5jnsxee8VZczEj1bhYq/72mpN2KMxiL7Sv2l+WknviqitLzLgYZr17nJtqRdbhiqhEVQOZWKIngRZb4HIdRyA8qCpCFFbUN1etgsVuQaPMwcPdHKHHUzf2hBaELDBF+liVAJzwYlxBQ7m183K6zZ7Gs+wMKphVA5PjyPQbpA3ascF3fdottsat9QJOjrQsXlu+gekPy+fK8GkzDCrCWVcg5LHO+hj3ZnFIjEPxcPPEFo/NRF apl@MMO.mirantis.com
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9cTDTzDVzIhZi/2F4tdEEIqewAOr8YY55Hk+zhuNZSZeI47eKVBvn09p0uiBLQIjrtO3TNh/93Bd+ts/wqwyembXdx5/hW+WdbpneRr8dRI03VEkLomHQqSsXMkr+VvegMc7i+266i5yDC1u4awX5+pR9WWzqaJrybNItmVucRGLGucx7qownV+Kp+8xXIG3lgT2fJw0qbv6hTbdvl7uw1JJ7bKhVxdeyeiv9blWLdQ7oCzQbjrQq8wlJvUfzNOGURMaFRQO4MHvecsBO99EgAaSqRmsDSLGQ/90RMH72BfP8YU/zSRwZNZDDq091oRhowgB1zfy1VgKm0/At1sswcsmfH+H/aC/RBB3NmG5GZq5uqRvgjlC4dz0GXalcJLN/NqQYywQ5WlOp518C5m2Is6t8mNvZh+is2GrmvCX97Y1gvzn65lUdfCP+Ee397mBi8XP5QZ4ojZ+SDt9efgpFUbmhbei2mNF9hpt2fhvLCv3HCayG9M/1QA9m3WdKo3gZKTBbMfKxU5mlTWsSLOt/44zMxdBLFq5gyhof7GxZiMeEllMF9v1cX0MCFlqbRSxfpqJv/0qsU3w9xRwDjWnm51uVeo69apRTlSNOyuXOsLyxzBS3n5cvlJ8L6r1cikmd0sx9LlrNw1ENxELDDIxj77BTcXNQVLfOfrEnSDIt+Q== apetrenko@mirantis.com
+          user: ${linux:system:user:apetrenko}

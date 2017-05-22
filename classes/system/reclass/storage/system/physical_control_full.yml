@@ -1,94 +1,153 @@
 parameters:
+  _param:
+    infra_kvm_node01_hostname: kvm01
+    infra_kvm_node02_hostname: kvm02
+    infra_kvm_node03_hostname: kvm03
+    infra_kvm_node04_hostname: kvm04
+    infra_kvm_node05_hostname: kvm05
+    infra_kvm_node06_hostname: kvm06
+    infra_kvm_node07_hostname: kvm07
+    infra_kvm_node08_hostname: kvm08
+    infra_kvm_node09_hostname: kvm09
+
+    infra_kvm_node01_deploy_address: ${_param:infra_kvm_node01_address}
+    infra_kvm_node02_deploy_address: ${_param:infra_kvm_node02_address}
+    infra_kvm_node03_deploy_address: ${_param:infra_kvm_node03_address}
+    infra_kvm_node04_deploy_address: ${_param:infra_kvm_node04_address}
+    infra_kvm_node05_deploy_address: ${_param:infra_kvm_node05_address}
+    infra_kvm_node06_deploy_address: ${_param:infra_kvm_node06_address}
+    infra_kvm_node07_deploy_address: ${_param:infra_kvm_node07_address}
+    infra_kvm_node08_deploy_address: ${_param:infra_kvm_node08_address}
+    infra_kvm_node09_deploy_address: ${_param:infra_kvm_node09_address}
+
+    infra_kvm_node01_storage_address: ${_param:infra_kvm_node01_address}
+    infra_kvm_node02_storage_address: ${_param:infra_kvm_node02_address}
+    infra_kvm_node03_storage_address: ${_param:infra_kvm_node03_address}
+    infra_kvm_node04_storage_address: ${_param:infra_kvm_node04_address}
+    infra_kvm_node05_storage_address: ${_param:infra_kvm_node05_address}
+    infra_kvm_node06_storage_address: ${_param:infra_kvm_node06_address}
+    infra_kvm_node07_storage_address: ${_param:infra_kvm_node07_address}
+    infra_kvm_node08_storage_address: ${_param:infra_kvm_node08_address}
+    infra_kvm_node09_storage_address: ${_param:infra_kvm_node09_address}
+
+    infra_kvm_node01_public_address: ${_param:infra_kvm_node01_address}
+    infra_kvm_node02_public_address: ${_param:infra_kvm_node02_address}
+    infra_kvm_node03_public_address: ${_param:infra_kvm_node03_address}
+    infra_kvm_node04_public_address: ${_param:infra_kvm_node04_address}
+    infra_kvm_node05_public_address: ${_param:infra_kvm_node05_address}
+    infra_kvm_node06_public_address: ${_param:infra_kvm_node06_address}
+    infra_kvm_node07_public_address: ${_param:infra_kvm_node07_address}
+    infra_kvm_node08_public_address: ${_param:infra_kvm_node08_address}
+    infra_kvm_node09_public_address: ${_param:infra_kvm_node09_address}
+
   reclass:
     storage:
       node:
-        fuel_compute_node01:
-          name: kvm01
+        infra_kvm_node01:
+          name: ${_param:infra_kvm_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node01_address}
-            deploy_address: ${_param:fuel_compute_node01_deploy_address}
-        fuel_compute_node02:
-          name: kvm02
+            single_address: ${_param:infra_kvm_node01_address}
+            deploy_address: ${_param:infra_kvm_node01_deploy_address}
+            public_address: ${_param:infra_kvm_node01_public_address}
+            storage_address: ${_param:infra_kvm_node01_storage_address}
+        infra_kvm_node02:
+          name: ${_param:infra_kvm_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node02_address}
-            deploy_address: ${_param:fuel_compute_node02_deploy_address}
-        fuel_compute_node03:
-          name: kvm03
+            single_address: ${_param:infra_kvm_node02_address}
+            deploy_address: ${_param:infra_kvm_node02_deploy_address}
+            public_address: ${_param:infra_kvm_node02_public_address}
+            storage_address: ${_param:infra_kvm_node02_storage_address}
+        infra_kvm_node03:
+          name: ${_param:infra_kvm_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node03_address}
-            deploy_address: ${_param:fuel_compute_node03_deploy_address}
-        fuel_compute_node04:
-          name: kvm04
+            single_address: ${_param:infra_kvm_node03_address}
+            deploy_address: ${_param:infra_kvm_node03_deploy_address}
+            public_address: ${_param:infra_kvm_node03_public_address}
+            storage_address: ${_param:infra_kvm_node03_storage_address}
+        infra_kvm_node04:
+          name: ${_param:infra_kvm_node04_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node04_address}
-            deploy_address: ${_param:fuel_compute_node04_deploy_address}
-        fuel_compute_node05:
-          name: kvm05
+            single_address: ${_param:infra_kvm_node04_address}
+            deploy_address: ${_param:infra_kvm_node04_deploy_address}
+            public_address: ${_param:infra_kvm_node04_public_address}
+            storage_address: ${_param:infra_kvm_node04_storage_address}
+        infra_kvm_node05:
+          name: ${_param:infra_kvm_node05_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node05_address}
-            deploy_address: ${_param:fuel_compute_node05_deploy_address}
-        fuel_compute_node06:
-          name: kvm06
+            single_address: ${_param:infra_kvm_node05_address}
+            deploy_address: ${_param:infra_kvm_node05_deploy_address}
+            public_address: ${_param:infra_kvm_node05_public_address}
+            storage_address: ${_param:infra_kvm_node05_storage_address}
+        infra_kvm_node06:
+          name: ${_param:infra_kvm_node06_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node06_address}
-            deploy_address: ${_param:fuel_compute_node06_deploy_address}
-        fuel_compute_node07:
-          name: kvm07
+            single_address: ${_param:infra_kvm_node06_address}
+            deploy_address: ${_param:infra_kvm_node06_deploy_address}
+            public_address: ${_param:infra_kvm_node06_public_address}
+            storage_address: ${_param:infra_kvm_node06_storage_address}
+        infra_kvm_node07:
+          name: ${_param:infra_kvm_node07_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node07_address}
-            deploy_address: ${_param:fuel_compute_node07_deploy_address}
-        fuel_compute_node08:
-          name: kvm08
+            single_address: ${_param:infra_kvm_node07_address}
+            deploy_address: ${_param:infra_kvm_node07_deploy_address}
+            public_address: ${_param:infra_kvm_node07_public_address}
+            storage_address: ${_param:infra_kvm_node07_storage_address}
+        infra_kvm_node08:
+          name: ${_param:infra_kvm_node08_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node08_address}
-            deploy_address: ${_param:fuel_compute_node08_deploy_address}
-        fuel_compute_node09:
-          name: kvm09
+            single_address: ${_param:infra_kvm_node08_address}
+            deploy_address: ${_param:infra_kvm_node08_deploy_address}
+            public_address: ${_param:infra_kvm_node08_public_address}
+            storage_address: ${_param:infra_kvm_node08_storage_address}
+        infra_kvm_node09:
+          name: ${_param:infra_kvm_node09_hostname}
           domain: ${_param:cluster_domain}
           classes:
-          - cluster.${_param:cluster_name}.fuel.compute
+          - cluster.${_param:cluster_name}.infra.kvm
           params:
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: trusty
-            single_address: ${_param:fuel_compute_node09_address}
-            deploy_address: ${_param:fuel_compute_node09_deploy_address}
+            single_address: ${_param:infra_kvm_node09_address}
+            deploy_address: ${_param:infra_kvm_node09_deploy_address}
+            public_address: ${_param:infra_kvm_node09_public_address}
+            storage_address: ${_param:infra_kvm_node09_storage_address}

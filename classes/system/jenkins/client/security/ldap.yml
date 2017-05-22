@@ -1,0 +1,18 @@
+parameters:
+  _param:
+    jenkins_security_ldap_manager_dn: ''
+    jenkins_security_ldap_manager_password: ''
+    jenkins_security_ldap_user_search_filter: 'uid={0}'
+    jenkins_security_ldap_user_search_base: ''
+    jenkins_security_ldap_group_search_base: ''
+  jenkins:
+    client:
+      security:
+        ldap:
+          server: ${_param:jenkins_security_ldap_server}
+          root_dn: ${_param:jenkins_security_ldap_root_dn}
+          manager_dn: ${_param:jenkins_security_ldap_manager_dn}
+          manager_password: ${_param:jenkins_security_ldap_manager_password}
+          user_search: ${_param:jenkins_security_ldap_user_search_filter}
+          user_search_base: ${_param:jenkins_security_ldap_user_search_base}
+          group_search_base: ${_param:jenkins_security_ldap_group_search_base}

@@ -1,0 +1,10 @@
+parameters:
+  _param:
+    linux_repo_cassandra_component: 21x
+  linux:
+    system:
+      repo:
+        cassandra:
+          source: "deb http://www.apache.org/dist/cassandra/debian/ ${_param:linux_repo_cassandra_component} main"
+          architectures: amd64
+          key_url: "https://www.apache.org/dist/cassandra/KEYS"

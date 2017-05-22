@@ -1,0 +1,25 @@
+classes:
+  - system.jenkins.client.job.deploy.lab.mk
+parameters:
+  _param:
+    jenkins_deploy_lab_mk_jobs:
+      - lab: mcp10_contrail
+        install: core,kvm,openstack,contrail
+        stack_type: physical
+        test: openstack
+        timer: ""
+      - lab: mcp10_opencontrail_nfv
+        install: core,kvm,openstack,nfv
+        stack_type: physical
+        test: openstack
+        timer: ""
+      - lab: mcp10_dvr
+        install: core,kvm,openstack,dvr
+        stack_type: physical
+        test: openstack
+        timer: ""
+      - lab: mcp10_non_dvr
+        install: core,kvm,openstack
+        stack_type: physical
+        test: openstack
+        timer: ""

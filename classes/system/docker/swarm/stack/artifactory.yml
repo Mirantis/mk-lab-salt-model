@@ -1,0 +1,23 @@
+parameters:
+  docker:
+    client:
+      stack:
+        artifactory:
+          environment:
+            MYSQL_HOST: ${_param:cluster_vip_address}
+            MYSQL_USERNAME: artifactory
+            MYSQL_PASSWORD: ${_param:mysql_artifactory_password}
+            MYSQL_DATABASE: artifactory
+          service:
+            artifactory:
+              deploy:
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_repository:cicd}/artifactory
+              ports:
+                - 18082:8081
+              volumes:
+                - /srv/volumes/artifactory/data:/var/opt/jfrog/artifactory/data
+                - /srv/volumes/artifactory/backup:/var/opt/jfrog/artifactory/backup
+                - /srv/volumes/artifactory/etc:/var/opt/jfrog/artifactory/etc
+                - /srv/volumes/artifactory/logs:/var/opt/jfrog/artifactory/logs

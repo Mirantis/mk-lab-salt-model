@@ -1,4 +1,6 @@
 parameters:
+  _param:
+    cluster_public_protocol: https
   keystone:
     client:
       server:
@@ -16,7 +18,8 @@ parameters:
               description: OpenStack Alarming Service
               endpoints:
               - region: ${_param:openstack_region}
-                public_address: ${_param:aodh_service_host}
+                public_address: ${_param:cluster_public_host}
+                public_protocol: ${_param:cluster_public_protocol}
                 public_port: 8042
                 public_path: '/'
                 internal_address: ${_param:aodh_service_host}

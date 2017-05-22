@@ -1,0 +1,10 @@
+parameters:
+  docker:
+    swarm:
+      network:
+        docker_gwbridge:
+          subnet: ${_param:docker_gwbridge_subnet}
+          opt:
+            com.docker.network.bridge.name: docker_gwbridge
+            com.docker.network.bridge.enable_icc: false
+            com.docker.network.bridge.enable_ip_masquerade: true

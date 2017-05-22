@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        rabbitmq-testing-trusty:
+          source: http://www.rabbitmq.com/debian/
+          distribution: testing
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 056E8E56
+          publisher:
+            component: rabbitmq
+            distributions:
+              - ubuntu-trusty/nightly

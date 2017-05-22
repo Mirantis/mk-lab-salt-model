@@ -1,0 +1,19 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        designate_api:
+          type: openstack-service
+          service_name: designate
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9001
+          servers:
+          - name: ${_param:cluster_node01_hostname}
+            host: ${_param:cluster_node01_address}
+            port: 9001
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ${_param:cluster_node02_hostname}
+            host: ${_param:cluster_node02_address}
+            port: 9001
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3

@@ -1,0 +1,10 @@
+parameters:
+  prometheus:
+    server:
+      target:
+        kubernetes:
+          enabled: true
+          api_ip: ${_param:kubernetes_control_address}
+          ssl_dir: /opt/prometheus/config
+          cert_name: prometheus-server.crt
+          key_name: prometheus-server.key

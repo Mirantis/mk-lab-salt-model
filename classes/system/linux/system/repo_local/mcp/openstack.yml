@@ -1,0 +1,45 @@
+parameters:
+  linux:
+    system:
+      repo:
+        mirantis_openstack:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu-${_param:linux_system_codename}/ ${_param:openstack_version} main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=${_param:openstack_version}'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_hotfix:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu-${_param:linux_system_codename}/ ${_param:openstack_version}-hotfix main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-hotfix'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_security:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu-${_param:linux_system_codename}/ ${_param:openstack_version}-security main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-security'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_updates:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu-${_param:linux_system_codename}/ ${_param:openstack_version}-updates main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-updates'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_holdback:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu-${_param:linux_system_codename}/ ${_param:openstack_version}-holdback main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-holdback'
+            priority: 1100
+            package: '*'

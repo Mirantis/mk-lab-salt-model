@@ -1,0 +1,28 @@
+parameters:
+  _param:
+    cluster_influxdb_port: ${_param:influxdb_port}
+  haproxy:
+    proxy:
+      listen:
+        influxdb:
+          mode: http
+          options:
+            - "httpchk GET /ping"
+            - httplog
+            - dontlog-normal
+          binds:
+            - address: ${_param:cluster_vip_address}
+              port: ${_param:cluster_influxdb_port}
+          servers:
+            - name: ${_param:cluster_node01_hostname}
+              host: ${_param:cluster_node01_address}
+              port: 8086
+              params: 'check'
+            - name: ${_param:cluster_node02_hostname}
+              host: ${_param:cluster_node02_address}
+              port: 8086
+              params: 'backup check'
+            - name: ${_param:cluster_node03_hostname}
+              host: ${_param:cluster_node03_address}
+              port: 8086
+              params: 'backup check'

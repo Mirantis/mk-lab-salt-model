@@ -1,0 +1,30 @@
+parameters:
+  _param:
+    cluster_public_protocol: https
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                swift:
+                  is_admin: true
+                  password: ${_param:keystone_swift_password}
+                  email: ${_param:admin_email}
+          service:
+            radosgw-swift:
+              type: object-store
+              description: Swift Service (radosgw)
+              endpoints:
+                - region: ${_param:openstack_region}
+                  public_address: ${_param:cluster_public_host}
+                  public_protocol: ${_param:cluster_public_protocol}
+                  public_port: 8081
+                  public_path: '/swift/v1' # /$(project_id)s
+                  internal_address: ${_param:radosgw_service_host}
+                  internal_port: 8081
+                  internal_path: '/swift/v1'
+                  admin_address: ${_param:radosgw_service_host}
+                  admin_port: 8081
+                  admin_path: '/swift/v1'

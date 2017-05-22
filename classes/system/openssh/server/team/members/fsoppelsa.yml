@@ -1,0 +1,24 @@
+parameters:
+  linux:
+    system:
+      user:
+        fsoppelsa:
+          enabled: true
+          name: fsoppelsa
+          sudo: false
+          full_name: Fabrizio Soppelsa
+          home: /home/fsoppelsa
+          email: fsoppelsa@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        fsoppelsa:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCs1bA1kgjstOfTVlS5+COuv3U1UYmAkDkTHHCw188XmZKQwmjrHQdbxA91fi/LmGNO87r9S3Sy6bmwYeBd8MUycYKXYPvHaS2JnflgtOy8L1xxubOgA+bpaziHImC0Xf6AQZRbVNlegVG5dVxZ1b1gNIaxufO8BmR4X/apG7TBXAhd+IYRzXsHlZVyrnZyUHNWJWQaUt+640ziR2+1mQZMktgfC9X3G9FxXtCEl6zvkHv8I2XOuzAfHFyoZlv32fo7BF1SjJnMkAhU5jMaliKQNt9Z3G3zcW0yA4D2IruueCJ7HNbXP2wxxiCpTxfpadfglUhm4U0wvTluippKlC1j fsoppelsa@yoda.local
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDTui9BfPuQgiGH0MkOrjWAkveC2J6Kh8zWmPMj3x2QIlHaXoMjnOTsfYqSSzlXIdswU6+46MMOG2jn1D78/hOEqNOFhOp+jtrjAhNUsufDdHclcMQJXPh/m/OaKyJq5UeNdFpq7UdhwA6E8Z9w4Jld/MzoV675RvI2OrzjSw8/K8pxf5YDOPrsxohFTwHaosbqrt/Owjiyqsh8NnJkEnNoFjvVNebpiKDZB2hOTOGjSOmHExQ7rmWNcdUISe/jwLrl5oR7ciwg4BnvcBye1W8l68w5vJ1dlUH8k3NNx010nnKal4MvL0mSYVqd32m5stBLSwZ57UBVVTJl6i3aSQz fsoppelsa@darthvader.local
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDkuI6Hfp6dXFHNtL4c3GaIJM13fAJMaUyTatWJ8//qhJz5brbdeF9IQBykPkA59mtWJ6hx81jWgrzp8rHauAQdVEOsn+ZfcTA8zcQaqEv0qe2FxJKN7Ex7YTtXa90uLUiiGTJFy8D9rjKVQLqWjtqo1n94XIvJncw/HmX/RK7lMVmEjUAJmBRo7yCr0N/6i7ITN7Nnn8bB/eKy27TGao5Sw/2fdWKlh+XPvDskpxKL0/jcoBOg5QiB0zT/XTq3ZL6xCTOQ9JUDKmIvHQIJ2ykxyZE/Kh1yHwU0sifz6PLi+z5OhOFpEEFyAtSLeOyZj+gnBtw4DjsglZ10+Q2uJ0Ir fsoppelsa@anakin.msk.mirantis.com
+          user: ${linux:system:user:fsoppelsa}

@@ -1,0 +1,48 @@
+parameters:
+  linux:
+    system:
+      package:
+        python-msgpack:
+          version: latest
+        mysql-wsrep-common-5.6:
+          version: 5.6.33-0~u14.04+mos1
+        python-mysqldb:
+          version: 1.2.3-2ubuntu1
+      repo:
+        mirantis_9_0_mos_main_repo:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/ mos9.0 main restricted"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+          pin:
+            # Galera packages should be picked from mos9.0-main
+            - pin: "release a=mos9.0"
+              priority: 800
+              package: "/mysql-server-wsrep-5.6/"
+            - pin: "release a=mos9.0"
+              priority: 800
+              package: "/mysql-client-5.6/"
+            - pin: "release a=mos9.0"
+              priority: 800
+              package: "/mysql-server-wsrep-core-5.6/"
+            - pin: "release a=mos9.0"
+              priority: 800
+              package: "/mysql-client-core-5.6/"
+            # Set lowest priority for remain packages from this repo
+            # as we want use only galera from here
+            - pin: "release a=mos9.0"
+              priority: 700
+              package: "*"
+        mirantis_9_0_mos_updated_repo:
+          source: "deb [arch=amd64] http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0 mos9.0-updates restricted main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.0/archive-mos9.0.key"
+          pin:
+            # Galera packages should be picked from mos9.0-main
+            - pin: "release a=mos9.0-updates"
+              priority: 800
+              package: "/mysql-wsrep-common-5.6/"
+            # Set lowest priority for remain packages from this repo
+            # as we want use only galera from here
+            - pin: "release a=mos9.0-updates"
+              priority: 700
+              package: "*"

@@ -1,3 +1,0 @@
-classes:
-- system.keystone.client.single
-- system.keystone.client.service.nova21

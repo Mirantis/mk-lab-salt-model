@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        enikanorov:
+          enabled: true
+          name: enikanorov
+          sudo: false
+          full_name: Eugene Nikanorov
+          home: /home/enikanorov
+          email: enikanorov@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        enikanorov:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUUx8Pv9g12UREG8sXcg2C9F3TQoI8Sc2lcn07+nw5S21BmCe87kD6FtvVPHts7u1n/A3PvAVOjHEq4q5gzRGbbVDiw6Ga2r60Knus4unKW23EeTBLkRTsap6pZkS5qzUeI913iv8pyNjTnhCDa2kYmr5UkZEA/zMwWiZ1jAJPqQ9AL1MSpcbgJYeGCW+3nIASRIyqmBfCyukAZuDUuVMe9tki6fIvlWMASxyLEYg2xbPjTTdX5QAFCraKTC7TjLCen9I3h/eCVxUsb1dBi3+wn9hFPtD+LKaQHrm3PqE3S6FdE4zhh0btH90hXq0v02MFPZzxhpJojoGZqYtoaRB3 eugene@ubuntu-dev
+          user: ${linux:system:user:enikanorov}

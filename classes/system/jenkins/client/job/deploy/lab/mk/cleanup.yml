@@ -1,0 +1,69 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        deploy-heat-cleanup:
+          type: workflow-scm
+          concurrent: true
+          display_name: "Deploy - heat cleanup"
+          discard:
+            build:
+              keep_num: 20
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: cleanup-pipeline.groovy
+          param:
+            # openstack api
+            OPENSTACK_API_URL:
+              type: string
+              default: "https://vpc.tcpisek.cz:5000/v2.0"
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              default: "openstack-qa-credentials"
+            OPENSTACK_API_PROJECT:
+              type: string
+              default: "mirantis_mk20_qa"
+            OPENSTACK_API_CLIENT:
+              type: string
+              default: "liberty"
+            OPENSTACK_API_VERSION:
+              type: string
+              default: "2"
+            # heat
+            HEAT_STACK_NAME:
+              type: string
+              description: This stack will be deleted.
+        delete-failed-stacks:
+          type: workflow-scm
+          concurrent: true
+          display_name: "Deploy - delete failed stacks"
+          discard:
+            build:
+              keep_num: 20
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: delete-broken-stacks-pipeline.groovy
+          trigger:
+            timer:
+              spec: "0 H * * *"
+          param:
+            # openstack api
+            OPENSTACK_API_URL:
+              type: string
+              default: "https://vpc.tcpisek.cz:5000/v2.0"
+            OPENSTACK_API_CREDENTIALS:
+              type: string
+              default: "openstack-qa-credentials"
+            OPENSTACK_API_PROJECT:
+              type: string
+              default: "mirantis_mk20_qa"
+            OPENSTACK_API_CLIENT:
+              type: string
+              default: "liberty"
+            OPENSTACK_API_VERSION:
+              type: string
+              default: "2"

@@ -1,0 +1,4 @@
+parameters:
+  glance:
+    server:
+      notification: true

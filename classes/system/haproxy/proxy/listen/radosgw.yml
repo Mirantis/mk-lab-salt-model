@@ -1,0 +1,26 @@
+parameters:
+  _param:
+    haproxy_radosgw_bind_port: 8080
+    haproxy_radosgw_source_port: 8080
+  haproxy:
+    proxy:
+      listen:
+        radosgw:
+          mode: tcp
+          balance: source
+          binds:
+            - address: ${_param:cluster_vip_address}
+              port: ${_param:haproxy_radosgw_bind_port}
+          servers:
+            - name: ${_param:cluster_node01_hostname}
+              host: ${_param:cluster_node01_address}
+              port: ${_param:haproxy_radosgw_source_port}
+              params: check
+            - name: ${_param:cluster_node02_hostname}
+              host: ${_param:cluster_node02_address}
+              port: ${_param:haproxy_radosgw_source_port}
+              params: backup check
+            - name: ${_param:cluster_node03_hostname}
+              host: ${_param:cluster_node03_address}
+              port: ${_param:haproxy_radosgw_source_port}
+              params: backup check

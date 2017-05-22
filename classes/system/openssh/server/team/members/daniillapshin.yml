@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        dlapshin:
+          enabled: true
+          name: dlapshin
+          sudo: false
+          full_name: Daniil Lapshin
+          home: /home/dlapshin
+          email: dlapshin@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        dlapshin:
+          enabled: true
+          public_keys: ${public_keys:dlapshin}
+          user: ${linux:system:user:dlapshin}
+  public_keys:
+    dlapshin:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDD8H0HjsSYujNEyR9xTM55l0mpdXyvvjKHAVqRbmep7xvRgY6fdiQmkaAEgcbtGpoopTgwTX7P5GAIbioG4Nfy2pl8l+KwqxA5nCST1AzzxzwL7XJDqpeKUDXzlzNeLZhBS9MuDkuX+NXRCt51s5Dza1wa01asaX1vgTPO42EFfp6a/TNq/db3+8qV7GOK7PHLbGN4fB8KBbPr9ygzby7C4XbDZwLTz7yjr1yTSMLLiRguasGvcun+Q2U9i6J/nHd0Tw1V/FO+CKS0p/L+QVnQ8VhjyiodA6phn4llI6Q0BzIHafFjxqzJ1oiZ30iJSchmVDi9p6Q4VnhkuDxjmNZ6Fukn9SDMEHEgPSIcRSs9yiRXbOd3eBXQaDkAQ++9jFnbyNH5mQQm/hyrwJU6Kwpye168bIl6LT76C+3KIVMSNWTDZQNAU3FWvUXxKRABxoolNrs+rkmOs0rFwWrx+PDX0rydGmwG5QrAHkA1NGZD2dhZCx/NZMfeM8VR/YaiWhL5dOas8Tk1EQpmX1uewEAwCQwQHZTDeenS6mS5AE2wqyYI60meSW1euE9aXjtC0hAlZuxslzAQ9sgShdyBy3sc4Kr3l7fxV/LXlMg/ugb8SMU8vXDgIf3Glz2wFE8jS1T+c27em5L3seTWm/SRIdylewb5GYP8HAPwm6xWLaZZmQ==
+

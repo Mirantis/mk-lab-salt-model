@@ -1,0 +1,2 @@
+classes:
+- service.heka.metric_collector.output.nagios

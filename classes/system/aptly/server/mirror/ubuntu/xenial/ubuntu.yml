@@ -1,0 +1,292 @@
+parameters:
+  _param:
+    linux_system_country_code_default: cz
+    linux_system_country_code: ${_param:linux_system_country_code_default}
+  aptly:
+    server:
+      mirror:
+        # xenial
+        xenial-main:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/xenial
+        xenial-multiverse:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/xenial
+        xenial-restricted:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/xenial
+        xenial-universe:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/xenial
+
+        # xenial-updates
+        xenial-updates-main:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-updates
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/xenial-updates
+        xenial-updates-multiverse:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-updates
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/xenial-updates
+        xenial-updates-restricted:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-updates
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/xenial-updates
+        xenial-updates-universe:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-updates
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/xenial-updates
+
+        #xenial-security:
+        xenial-security-main:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-security
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/xenial-security
+        xenial-security-multiverse:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-security
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/xenial-security
+        xenial-security-restricted:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-security
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/xenial-security
+        xenial-security-universe:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-security
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/xenial-security
+
+        #xenial-proposed:
+        xenial-proposed-main:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-proposed
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/xenial-proposed
+        xenial-proposed-multiverse:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-proposed
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/xenial-proposed
+        xenial-proposed-restricted:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-proposed
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/xenial-proposed
+        xenial-proposed-universe:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-proposed
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/xenial-proposed
+
+        #xenial-backports:
+        xenial-backports-main:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-backports
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/xenial-backports
+        xenial-backports-multiverse:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-backports
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/xenial-backports
+        xenial-backports-restricted:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-backports
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/xenial-backports
+        xenial-backports-universe:
+          sources: true
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: xenial-backports
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/xenial-backports

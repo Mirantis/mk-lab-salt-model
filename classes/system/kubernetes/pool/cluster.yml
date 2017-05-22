@@ -1,0 +1,11 @@
+classes:
+- service.kubernetes.pool.cluster
+- service.docker.host
+parameters:
+  kubernetes:
+    pool:
+      container: false
+      network:
+        engine: calico
+        prometheus:
+          enabled: true

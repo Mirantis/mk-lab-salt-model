@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        mlos:
+          enabled: true
+          name: mlos
+          sudo: true
+          full_name: Mateusz Los
+          home: /home/mlos
+          email: mlos@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        mlos:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCu2lUtuV3WnfLk/TcXQA0p/XKMSsRU+0Ov/j1x1aFZgG14QckfkOPJ8bRZ6+R5csYtd8Xy1yQS9xWQcq+bON4CkY/PfwCdmVxjWy5lLIg1Pmq18z+f/DNwCqPhXZy9MO3WkfXWtzd5qhk4aHUVX4R6K64OaDCdIqaVAiHTZp4jy+CqhOLiJcCyrrr/nXEHooVr9iZo2c8qGNdPfS9xw8Ikb7/TXOTOme8RL+DBOXLLjQaECcQYZlD057zSULLkUNH4y+3hs4hSmpzQj52NZ3FyDQTW6d3H0wmjaNhu2zrBOn48UGvYeTzT8QZCHYAYv20bFWLWDzDpB9lqUO2P+9g1 losiek@Mateuszs-MacBook-Pro-2.local
+          user: ${linux:system:user:mlos}

@@ -1,0 +1,33 @@
+parameters:
+  _param:
+    docker_image_registry: registry:2
+    docker_image_visualizer: manomarks/visualizer
+  docker:
+    client:
+      stack:
+        docker:
+          service:
+            registry:
+              environment:
+                REGISTRY_HTTP_SECRET: ${_param:docker_registry_http_secret}
+              deploy:
+                replicas: 3
+                restart_policy:
+                  condition: any
+              image: ${_param:docker_image_registry}
+              ports:
+                - 15000:5000
+              volumes:
+                - /srv/volumes/registry:/var/lib/registry
+            visualizer:
+              deploy:
+                restart_policy:
+                  condition: any
+                placement:
+                  constraints:
+                    - "node.role == manager"
+              image: ${_param:docker_image_visualizer}
+              ports:
+                - 18090:8080
+              volumes:
+                - /var/run/docker.sock:/var/run/docker.sock

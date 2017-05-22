@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        galera-trusty:
+          source: http://releases.galeracluster.com/ubuntu/
+          distribution: trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - BC19DDBA
+          publisher:
+            component: galera
+            distributions:
+              - ubuntu-trusty/nightly

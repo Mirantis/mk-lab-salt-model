@@ -1,0 +1,37 @@
+classes:
+- service.ceph.client.single
+parameters:
+  _param:
+    ceph_auth_client_required: cephx
+  ceph:
+    client:
+      config:
+        global:
+          fsid: ${_param:ceph_fsid}
+          mon_initial_members: ${_param:ceph_mon_initial_members}
+          mon_host: ${_param:ceph_mon_host}
+          auth_client_required: ${_param:ceph_auth_client_required}
+          public_network: ${_param:ceph_public_network}
+          cluster_network: ${_param:ceph_cluster_network}
+          osd_fs_mount_options_xfs: rw,noatime
+          osd_fs_type: xfs
+        osd:
+          filestore_xattr_use_omap: True
+          osd_journal_size: 7500
+        mon:
+          mon_debug_dump_transactions: False
+        client:
+          rbd_cache_size: 268435456
+          rbd_cache_max_dirty: 134217728
+          rbd_cache_max_dirty_age: 5
+          rbd_cache: True
+      # TODO: Configure these keys on cluster level
+      # keyring:
+      #   images:
+      #     key:
+      #   object:
+      #     key:
+      #   cinder:
+      #     key:
+      #   nova:
+      #     key:

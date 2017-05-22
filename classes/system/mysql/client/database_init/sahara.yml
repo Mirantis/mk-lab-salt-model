@@ -1,0 +1,15 @@
+classes:
+- system.mysql.client.database.sahara
+parameters:
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          database:
+            sahara:
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: sahara

@@ -1,9 +1,11 @@
 parameters:
+  _param:
+    stacklight_monitor_node01_hostname: mon01
   reclass:
     storage:
       node:
         stacklight_server_node01:
-          name: mon01
+          name: ${_param:stacklight_monitor_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.server

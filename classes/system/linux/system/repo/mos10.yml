@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      repo:
+        mirantis_openstack:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/ mos10.0 main restricted"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/archive-mos10.0.key"
+        mirantis_openstack_hotfix:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/ mos10.0-hotfix main restricted"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/archive-mos10.0.key"
+        mirantis_openstack_security:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/ mos10.0-security main restricted"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/archive-mos10.0.key"
+        mirantis_openstack_updates:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/ mos10.0-updates main restricted"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/10.0/archive-mos10.0.key"

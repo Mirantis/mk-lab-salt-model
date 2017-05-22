@@ -1,0 +1,22 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        etcd_cluster:
+          type: etcd
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 4001
+          servers:
+          - name: etc01
+            host: ${_param:cluster_node01_address}
+            port: 4001
+            params: check
+          - name: etc02
+            host: ${_param:cluster_node02_address}
+            port: 4001
+            params: backup check
+          - name: etc03
+            host: ${_param:cluster_node03_address}
+            port: 4001
+            params: backup check

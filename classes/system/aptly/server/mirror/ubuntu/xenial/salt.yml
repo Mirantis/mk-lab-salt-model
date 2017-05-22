@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        salt-2016.3-xenial:
+          source: http://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.3/
+          distribution: xenial
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - DE57BFBE
+          publisher:
+            component: salt
+            distributions:
+              - ubuntu-xenial/nightly

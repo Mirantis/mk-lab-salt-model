@@ -1,0 +1,14 @@
+classes:
+- service.cinder.volume.local
+parameters:
+  cinder:
+    volume:
+      enabled: True
+      database:
+        host: ${_param:single_address}
+      glance:
+        host: ${_param:single_address}
+      message_queue:
+        host: ${_param:single_address}
+      identity:
+        host: ${_param:single_address}

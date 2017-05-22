@@ -1,0 +1,17 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            aodh:
+              encoding: utf8
+              users:
+              - name: aodh
+                password: ${_param:mysql_aodh_password}
+                host: '%'
+                rights: all
+              - name: aodh
+                password: ${_param:mysql_aodh_password}
+                host: ${_param:single_address}
+                rights: all

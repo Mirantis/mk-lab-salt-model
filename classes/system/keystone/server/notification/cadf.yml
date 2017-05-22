@@ -1,0 +1,4 @@
+parameters:
+  keystone:
+    server:
+      notification_format: cadf

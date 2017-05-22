@@ -6,7 +6,7 @@ parameters:
     storage:
       data_source:
         engine: git
-        address:  '${_param:reclass_data_repository}'
+        address: '${_param:reclass_data_repository}'
         branch: ${_param:reclass_data_revision}
   salt:
     master:

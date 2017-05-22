@@ -1,0 +1,18 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_jenkins:
+          enabled: true
+          type: nginx_proxy
+          name: jenkins
+          proxy:
+            host: ${_param:foundation_intergration_address}
+            port: 8080
+            protocol: http
+          host:
+            name: ${_param:cluster_public_host}
+            port: 8095
+            protocol: https
+          ssl: ${_param:nginx_proxy_ssl}

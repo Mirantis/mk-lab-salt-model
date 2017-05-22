@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        sflorczak:
+          enabled: true
+          name: sflorczak
+          sudo: true
+          full_name: Szymon Florczak
+          home: /home/sflorczak
+          email: sflorczak@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        sflorczak:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOdCr32ewiGJKLLwxf0Ic0naFV1j+ZflpfUVjuIPplrLeL5u8CNVlT5adPzgc48ijbee3qpzNvkOC7Ym295xQXUluo/cj2p5wVp70YnHrfhnLjGOCldm/K8B9bHmHbm1XW6hWUp7SWjMwhOdR217iveVLkuOy+hPdpXOC86hO93v7fY12UZDiqSRfrHpUqEaHHqlSyU2Eftn9GsR4UaotkeaQsiv8bi/k5nrwea/ccALZXnhrgTSTpXOVy3rfR5cCFQCA1PjMYvFEjhUofCHBSk+OA8xwOkpBOCfYrWRUmMT7MGEV5Jjm75QUrq1AuqRdFh8SM5lP39Tdwr8FMC+q5 flor3k@MacBook-Pro-Szymon.local
+          user: ${linux:system:user:sflorczak}

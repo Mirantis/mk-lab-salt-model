@@ -1,0 +1,10 @@
+parameters:
+  devops_portal:
+    config:
+      service:
+        securitymonkey:
+          configure_proxy: true
+          endpoint:
+            address: ${_param:haproxy_security_monkey_bind_host}
+            port: ${_param:haproxy_security_monkey_bind_port}
+            https: ${_param:haproxy_security_monkey_ssl:enabled}

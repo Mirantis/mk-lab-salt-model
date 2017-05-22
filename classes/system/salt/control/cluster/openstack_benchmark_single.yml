@@ -1,0 +1,18 @@
+parameters:
+  salt:
+    control:
+      size:
+        openstack.benchmark:
+          cpu: 2
+          ram: 4096
+          disk_profile: small
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            bmk01:
+              provider: ${_param:infra_kvm_node03_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_trusty_image}
+              size: openstack.benchmark

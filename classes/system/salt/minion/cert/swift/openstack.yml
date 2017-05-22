@@ -1,0 +1,11 @@
+classes:
+- system.salt.minion.cert.swift
+parameters:
+  _param:
+    salt_pki_swift_alt_names: IP:${_param:cluster_public_host},DNS:${_param:cluster_public_host}
+  salt:
+    minion:
+      cert:
+        swift:
+          common_name: swift
+          alternative_names: IP:127.0.0.1,${_param:salt_pki_swift_alt_names}

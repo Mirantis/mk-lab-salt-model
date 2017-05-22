@@ -37,4 +37,4 @@ parameters:
             rights: all privileges
   supervisor:
     server:
-      enabled: false
+      enabled: true

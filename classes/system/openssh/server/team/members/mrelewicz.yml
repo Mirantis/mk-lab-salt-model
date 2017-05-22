@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        mrelewicz:
+          enabled: true
+          name: mrelewicz
+          sudo: true
+          full_name: Maciej Relewicz
+          home: /home/mrelewicz
+          email: mrelewicz@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        mrelewicz:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCsB8R/Sv7hI7kHnOa7slfRQUhx3uVo3lDT7SLZw6m5Xnc7JVmQBmsO3s0lLHWRcxBUNso8P5xd8XG30VaW2MPrHGEMy6TbwxJmoFb8+zZaETjcaXvXig2RAQe/I3GAplptCz76GFM9SQavXtqb4D7wPi/AGs7yTFBa1rlVPdmhnlQ2woZoF/Hb5vPpFbK8ucR79eopNyd+g9mhLALJGRIUkRh6q66LCUAbMHA/Lm01IV//mGFUS1Sh0lcM34LOl99SyRVKW7kbql4vWE/4ZSxX1GJC4WVxxBitdWAypGuq3PY8L/+JDjXK7hXSrYaVWygrrluQh+ZXY8S1zx1SoPEG8uzyqdei8VxDPJd+3Y+w3YvWiYI2QA7fdtf4AW57OjZJrCgC2SpUuO6TNGcQ3gxV2/IChHQMHUV6IYc+ENaKuFIXVfvFBa/VMVRoTFXKVdE1cycDR3mgygGxE9QWxLmsJf7ZaK6A0zQjxTQs0GJi6Id9dgjDsh90uPIaVJWGKZZqDH+/cbXqN1AOTK3ecVji2fOfL3JQfY4wTFt/WmGa2VrdTfv/d9bcvEvhHYaCUs3sWy3sobJXwYCiXwuZVTTLj4EvN6L+jt8I9nG/6OWILUPVjrx84ikZ3Ig1Tbts2giIuB8JpQRup1mrEtpxoeOga1ts5ZGF8XfIKOpqaBpTsw== mrelewicz@mirantis.com
+          user: ${linux:system:user:mrelewicz}

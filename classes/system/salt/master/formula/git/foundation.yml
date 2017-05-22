@@ -1,0 +1,56 @@
+parameters:
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            aptly:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-aptly.git'
+              revision: ${_param:salt_master_environment_revision}
+            bind:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-bind.git'
+              revision: ${_param:salt_master_environment_revision}
+            gerrit:
+              module:
+                gerrit.py:
+                  enabled: true
+              state:
+                gerrit.py:
+                  enabled: true
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-gerrit.git'
+              revision: ${_param:salt_master_environment_revision}
+            jenkins:
+              module:
+                jenkins_common.py:
+                  enabled: true
+              state:
+                jenkins_credential.py:
+                  enabled: true
+                jenkins_job.py:
+                  enabled: true
+                jenkins_lib.py:
+                  enabled: true
+                jenkins_node.py:
+                  enabled: true
+                jenkins_plugin.py:
+                  enabled: true
+                jenkins_security.py:
+                  enabled: true
+                jenkins_slack.py:
+                  enabled: true
+                jenkins_smtp.py:
+                  enabled: true
+                jenkins_user.py:
+                  enabled: true
+                jenkins_view.py:
+                  enabled: true
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-jenkins.git'
+              revision: ${_param:salt_master_environment_revision}
+            openldap:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-openldap.git'
+              revision: ${_param:salt_master_environment_revision}

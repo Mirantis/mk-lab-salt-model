@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        haproxy-trusty:
+          source: http://ppa.launchpad.net/vbernat/haproxy-1.5/ubuntu
+          distribution: trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 1C61B9CD
+          publisher:
+            component: haproxy
+            distributions:
+              - ubuntu-trusty/nightly

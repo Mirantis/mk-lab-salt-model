@@ -1,0 +1,71 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        mirantis_openstack_newton_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/newton/xenial
+          distribution: newton
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/newton/xenial/archive-mcpnewton.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/newton
+
+        mirantis_openstack_newton_hotfix_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/newton/xenial
+          distribution: newton-hotfix
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/newton/xenial/archive-mcpnewton.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/newton-hotfix
+
+        mirantis_openstack_newton_security_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/newton/xenial
+          distribution: newton-security
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/newton/xenial/archive-mcpnewton.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/newton-security
+
+        # required for alternative horizon plugins/etc..
+        mirantis_openstack_newton_updates_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/newton/xenial
+          distribution: newton-updates
+          components:  main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/newton/xenial/archive-mcpnewton.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/newton-updates
+
+        # required for salt formulas
+        mirantis_openstack_newton_holdback_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/newton/xenial
+          distribution: newton-holdback
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/newton/xenial/archive-mcpnewton.key"
+          gpgkeys:
+          - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/newton-holdback
+

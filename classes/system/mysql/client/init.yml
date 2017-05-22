@@ -1,0 +1,14 @@
+parameters:
+  _param:
+    mysql_client_host: localhost
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          admin:
+            host: ${_param:mysql_client_host}
+            port: 3306
+            user: ${_param:mysql_admin_user}
+            password: ${_param:mysql_admin_password}
+            encoding: utf8

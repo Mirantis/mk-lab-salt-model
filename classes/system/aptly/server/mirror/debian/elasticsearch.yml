@@ -1,0 +1,52 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        elasticsearch-2x:
+          source: http://packages.elastic.co/elasticsearch/2.x/debian
+          distribution: stable
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - D88E42B4
+          publisher:
+            component: elastic
+            distributions:
+              - trusty/nightly
+              - xenial/nightly
+        kibana:
+          source: http://packages.elasticsearch.org/kibana/4.4/debian
+          distribution: stable
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - D88E42B4
+          publisher:
+            component: elastic
+            distributions:
+              - trusty/nightly
+              - xenial/nightly
+        kibana-46:
+          source: http://packages.elasticsearch.org/kibana/4.6/debian
+          distribution: stable
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - D88E42B4
+          publisher:
+            component: elastic
+            distributions:
+              - trusty/nightly
+              - xenial/nightly
+        elasticsearch-curator:
+          source: http://packages.elastic.co/curator/4/debian
+          distribution: stable
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - D88E42B4
+          publisher:
+            component: elastic
+            distributions:
+              - trusty/nightly
+              - xenial/nightly

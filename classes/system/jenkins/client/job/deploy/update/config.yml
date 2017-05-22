@@ -1,0 +1,45 @@
+#
+# Jobs to run given states on given Salt master environment's
+#
+parameters:
+  _param:
+    jenkins_salt_api_url: "http://${_param:salt_master_host}:6969"
+  jenkins:
+    client:
+      job:
+        deploy-update-service-config:
+          type: workflow-scm
+          concurrent: true
+          display_name: "Deploy - update service(s) config"
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: change-config.groovy
+          param:
+            SALT_MASTER_URL:
+              type: string
+              default: "${_param:jenkins_salt_api_url}"
+              description: Full Salt API address [https://10.10.10.1:8000].
+            SALT_MASTER_CREDENTIALS:
+              type: string
+              default: "salt"
+              description: Credentials to the Salt API.
+            TARGET_SERVERS:
+              type: string
+              default: "*"
+              description: Salt compound target to match nodes to be updated [*, G@osfamily:debian].
+            TARGET_STATES:
+              type: string
+              description: Config changes to be applied, empty string means running highstate [linux, linux,openssh, salt.minion.grains].
+            TARGET_SUBSET_TEST:
+              type: string
+              description: Number of nodes to test config changes, empty string means all targetted nodes.
+            TARGET_SUBSET_LIVE:
+              type: string
+              default: '1'
+              description: Number of selected noded to live apply selected config changes.
+            TARGET_BATCH_LIVE:
+              type: string
+              description: Batch size for the complete live config changes on all nodes, empty string means apply to all targetted nodes.
+

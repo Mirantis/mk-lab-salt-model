@@ -1,0 +1,15 @@
+classes:
+  - system.jenkins.client.job.salt-models.git-mirrors
+  - system.jenkins.client.job.salt-models.tests
+  - system.jenkins.client.job.salt-models.generate
+  - system.jenkins.client.job.salt-models.generate-auto
+parameters:
+  _param:
+    salt_formulas_branches: master
+  jenkins:
+    client:
+      view:
+        "Salt models":
+          enabled: true
+          type: ListView
+          include_regex: ".*-salt-model-.*"

@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        influxdb-xenial:
+          source: https://repos.influxdata.com/ubuntu/
+          distribution: xenial
+          components: stable
+          architectures: amd64
+          gpgkeys:
+            - 2582E0C5
+          publisher:
+            component: influxdb
+            distributions:
+              - ubuntu-xenial/nightly

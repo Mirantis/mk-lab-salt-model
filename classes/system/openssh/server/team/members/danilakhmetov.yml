@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        dakhmetov:
+          enabled: true
+          name: dakhmetov
+          sudo: false
+          full_name: Danil Akhmetov
+          home: /home/dakhmetov
+          email: dakhmetov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        dakhmetov:
+          enabled: true
+          public_keys: ${public_keys:dakhmetov}
+          user: ${linux:system:user:dakhmetov}
+  public_keys:
+    dakhmetov:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDO//KNaUfZIWgwJBQg8us0uFNoiy9xA5DBlhD9r0ZkRyXSBaOLPpcWwOcfV0+W9d7bp5pchbRNjf2Nrajy+zady4qWBSMqonP8PiDfSVPymxjv8d/KwIhnao2Noe1F4fviHU5TBTWwRiBf53NzNd/uO99hXMUshQ6a3GymfVLsMkrymzyOw7UA9Irdf3K/KRQTbmYyu7Kp6EoIh/Mz8/9wHuFHPmj8e9ynw3T/0050BttgTjAlS5e6CJMq585OsbZvW+YA8H3avR7qXMSb6uRsJs3ZOijDtdj0cWVMvseKgfghq7Q57e0TtApbge1R1apz+zmipkMxVrr40cVRcKvB
+

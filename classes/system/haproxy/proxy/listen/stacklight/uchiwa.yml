@@ -1,0 +1,29 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        uchiwa:
+          mode: http
+          options:
+            - forwardfor
+            - httpchk
+            - httpclose
+            - httplog
+          balance: source
+          binds:
+            - address: ${_param:cluster_vip_address}
+              port: 3001
+          servers:
+            - name: ${_param:cluster_node01_hostname}
+              host: ${_param:cluster_node01_address}
+              port: 3001
+              params: check
+            - name: ${_param:cluster_node02_hostname}
+              host: ${_param:cluster_node02_address}
+              port: 3001
+              params: check
+            - name: ${_param:cluster_node03_hostname}
+              host: ${_param:cluster_node03_address}
+              port: 3001
+              params: check
+

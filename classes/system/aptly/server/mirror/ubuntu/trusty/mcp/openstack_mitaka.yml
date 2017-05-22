@@ -1,0 +1,71 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        mirantis_openstack_mitaka_trusty:
+          source: http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty
+          distribution: mitaka
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty/archive-mcpmitaka.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-trusty/mitaka
+
+        mirantis_openstack_mitaka_hotfix_trusty:
+          source: http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty
+          distribution: mitaka-hotfix
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty/archive-mcpmitaka.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-trusty/mitaka-hotfix
+
+        mirantis_openstack_mitaka_security_trusty:
+          source: http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty
+          distribution: mitaka-security
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty/archive-mcpmitaka.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-trusty/mitaka-security
+
+        # required for alternative horizon plugins/etc..
+        mirantis_openstack_mitaka_updates_trusty:
+          source: http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty
+          distribution: mitaka-updates
+          components:  main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty/archive-mcpmitaka.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-trusty/mitaka-updates
+
+        # required for salt formulas
+        mirantis_openstack_mitaka_holdback_trusty:
+          source: http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty
+          distribution: mitaka-holdback
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/mitaka/trusty/archive-mcpmitaka.key"
+          gpgkeys:
+          - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-trusty/mitaka-holdback
+

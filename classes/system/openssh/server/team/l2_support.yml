@@ -1,0 +1,38 @@
+classes:
+- system.linux.system.sudo
+# L2
+- system.openssh.server.team.members.aepifanov
+- system.openssh.server.team.members.apetrenko
+- system.openssh.server.team.members.ashishkin
+- system.openssh.server.team.members.atarasov
+- system.openssh.server.team.members.dklepikov
+- system.openssh.server.team.members.dsutyagin
+- system.openssh.server.team.members.ekozhemyakin
+- system.openssh.server.team.members.enikanorov
+- system.openssh.server.team.members.fsoppelsa
+- system.openssh.server.team.members.manashkin
+- system.openssh.server.team.members.nkondra
+- system.openssh.server.team.members.obryndzii
+- system.openssh.server.team.members.oliemieshko
+- system.openssh.server.team.members.sovsianikov
+parameters:
+  linux:
+    system:
+      group:
+        supportl2:
+          enabled: true
+          name: supportl2
+      sudo:
+        enabled: true
+        aliases:
+          command:
+            L2_SUPPORT_SALT: ${_param:sudo_salt_safe}
+            L2_SUPPORT_SALT_TRUSTED: ${_param:sudo_salt_trusted}
+            L2_SUPPORT_RESTRICTED_SHELLS: ${_param:sudo_shells}
+            L2_SUPPORT_RESTRICTED: ${_param:sudo_restricted_su}
+        groups:
+          supportl2:
+            commands:
+                - ALL
+                - '!L2_SUPPORT_RESTRICTED_SHELLS'
+                - '!L2_SUPPORT_RESTRICTED'

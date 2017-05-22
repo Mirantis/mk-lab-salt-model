@@ -1,9 +1,11 @@
 parameters:
+  _param:
+    openstack_proxy_node01_hostname: prx01
   reclass:
     storage:
       node:
         openstack_proxy_node01:
-          name: prx01
+          name: ${_param:openstack_proxy_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.openstack.proxy

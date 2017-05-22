@@ -1,0 +1,11 @@
+classes:
+  - system.docker.swarm.network.gwbridge
+parameters:
+  _param:
+    docker_gwbridge_subnet: 10.20.0.0/16
+  docker:
+    swarm:
+      role: manager
+      advertise_addr: ${_param:single_address}
+      master:
+        host: ${_param:cluster_node01_address}

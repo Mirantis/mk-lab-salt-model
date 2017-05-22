@@ -1,0 +1,23 @@
+parameters:
+  influxdb:
+    server:
+      database:
+        lma:
+          enabled: true
+          name: lma
+          retention_policy:
+          - name: lma
+            is_default: true
+            duration: 30d
+            replication: 1
+      user:
+        lma:
+          enabled: true
+          name: lma
+          password: ${_param:influxdb_stacklight_password}
+      grant:
+        grant_lma_all:
+          enabled: true
+          user: lma
+          database: lma
+          privilege: all

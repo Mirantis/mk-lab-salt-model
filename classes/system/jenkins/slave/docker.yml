@@ -1,0 +1,18 @@
+classes:
+  - system.jenkins.slave
+parameters:
+  linux:
+    system:
+      user:
+        jenkins:
+          groups:
+            - docker
+      sudo:
+        enabled: true
+        users:
+          jenkins:
+            setenv: true
+            hosts:
+            - ALL
+            commands:
+            - /usr/bin/docker

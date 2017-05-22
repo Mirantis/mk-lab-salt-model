@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        dszeluga:
+          enabled: true
+          name: dszeluga
+          sudo: true
+          full_name: Damian Szeluga
+          home: /home/dszeluga
+          email: dszeluga@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        dszeluga:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEEFoCOaivah6AjFZmPIDlDlp8mUfsh9UFrjgLL8vqVYoyVnuZ5DQZTeZsCgFCPxodEsgHDkSEFwkB6hbyqEXszGIL8dWwSBR3QfNJD2cjZ8ZYqXsKN63RzHGAjTXMjlCB7TZtcui1SWpKjGd+x3gQ0KkHZI9V9WVYDcC75kyEAHZptM2N9jlwbhr9lXZ77gZacjaGoKN0Agb/ydd1TyhQ1F3g56pnvgZtkOe/bStwjpz2NS0FqiqAR3wOeZZUGsR3TCP70oYfaeJvpCDVRR/gVXqqvcBAiNYTGC/tMlKuECKPtOOAP8Oc+bt1eOrbiPVJ5NfoOIpmMCDUUSnFoNGN damjanek@cocaine.local
+          user: ${linux:system:user:dszeluga}

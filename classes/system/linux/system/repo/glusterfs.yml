@@ -1,0 +1,11 @@
+parameters:
+  _param:
+    glusterfs_version: 3.8
+  linux:
+    system:
+      repo:
+        glusterfs-ppa:
+          source: "deb http://ppa.launchpad.net/gluster/glusterfs-${_param:glusterfs_version}/ubuntu ${_param:linux_system_codename} main"
+          architectures: amd64
+          key_id: 3FE869A9
+          key_server: keyserver.ubuntu.com

@@ -2,6 +2,8 @@ classes:
 - service.haproxy.proxy.single
 - service.keepalived.cluster.single
 - service.opencontrail.control.cluster
+- system.haproxy.proxy.listen.opencontrail.control
+- system.haproxy.proxy.listen.opencontrail.analytics
 parameters:
 # Temprorary fix for MOS9 packages to pin old version of kafka
   linux:
@@ -11,92 +13,10 @@ parameters:
           version: 0.9.0-0contrail0
         python-kafka:
           version: 1.0.1-0contrail1
-        contrail-api-cli:
-          version: latest
-  haproxy:
-    proxy:
-      listen:
-        contrail_api:
-          type: contrail-api
-          service_name: contrail
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8082
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 9100
-            params: check inter 2000 rise 2 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 9100
-            params: check inter 2000 rise 2 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 9100
-            params: check inter 2000 rise 2 fall 3
-        contrail_discovery:
-          type: contrail-api
-          service_name: contrail
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 5998
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 9110
-            params: check inter 2000 rise 2 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 9110
-            params: check inter 2000 rise 2 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 9110
-            params: check inter 2000 rise 2 fall 3
-        contrail_analytics:
-          type: contrail-analytics
-          service_name: contrail
-          binds:
-          - address: ${_param:cluster_vip_address}
-            port: 8081
-          servers:
-          - name: ctl01
-            host: ${_param:cluster_node01_address}
-            port: 9081
-            params: check inter 2000 rise 2 fall 3
-          - name: ctl02
-            host: ${_param:cluster_node02_address}
-            port: 9081
-            params: check inter 2000 rise 2 fall 3
-          - name: ctl03
-            host: ${_param:cluster_node03_address}
-            port: 9081
-            params: check inter 2000 rise 2 fall 3
-        contrail_config_stats:
-          type: contrail-config
-          check: false
-          format: listen
-          binds:
-          - address: '*'
-            port: 5937
-          user: haproxy
-          password: ${_param:opencontrail_stats_password}
-        contrail_openstack_stats:
-          type: contrail-config
-          check: false
-          format: listen
-          binds:
-          - address: '*'
-            port: 5936
-          user: haproxy
-          password: ${_param:opencontrail_stats_password}
-        contrail_collector_stats:
-          type: contrail-config
-          check: false
-          format: listen
-          binds:
-          - address: '*'
-            port: 5938
-          user: haproxy
-          password: ${_param:opencontrail_stats_password}
+      kernel:
+        modules:
+        - nf_conntrack_ipv4
+  opencontrail:
+    web:
+      database:
+        port: 9042

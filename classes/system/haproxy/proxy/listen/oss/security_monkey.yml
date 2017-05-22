@@ -1,0 +1,37 @@
+parameters:
+  _param:
+    haproxy_security_monkey_bind_host: ${_param:haproxy_bind_address}
+    haproxy_security_monkey_bind_port: 5001
+    haproxy_security_monkey_exposed_port: 15001
+    haproxy_security_monkey_ssl:
+      enabled: false
+  haproxy:
+    proxy:
+      listen:
+        security_monkey:
+          mode: http
+          options:
+          - httpchk GET /
+          balance: source
+          http_request:
+            - action: "add-header X-Forwarded-Proto https"
+              condition: "if { ssl_fc }"
+          sticks:
+          - http-check expect status 404
+          binds:
+            - address: ${_param:haproxy_security_monkey_bind_host}
+              port: ${_param:haproxy_security_monkey_bind_port}
+              ssl: ${_param:haproxy_security_monkey_ssl}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: ${_param:haproxy_security_monkey_exposed_port}
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: ${_param:haproxy_security_monkey_exposed_port}
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: ${_param:haproxy_security_monkey_exposed_port}
+              params: backup check

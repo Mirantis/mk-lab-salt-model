@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        influxdb-trusty:
+          source: https://repos.influxdata.com/ubuntu/
+          distribution: trusty
+          components: stable
+          architectures: amd64
+          gpgkeys:
+            - 2582E0C5
+          publisher:
+            component: influxdb
+            distributions:
+              - trusty/nightly

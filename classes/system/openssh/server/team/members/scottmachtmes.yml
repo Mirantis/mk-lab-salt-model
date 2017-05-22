@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        smachtmes:
+          enabled: true
+          name: smachtmes
+          sudo: false
+          full_name: Scott Machtmes
+          home: /home/smachtmes
+          email: smachtmes@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        smachtmes:
+          enabled: true
+          public_keys: ${public_keys:smachtmes}
+          user: ${linux:system:user:smachtmes}
+  public_keys:
+    smachtmes:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDHGFStJ/pZhZP1c28yubmxGvkCI6UqcxIYZ4oi1QBP0yir2fib/2K8MJcqmRwYhrhw09DAaTnMWhssBhvvgVKX2wS1VhHDo82yRftgN6boo+55zi9Y9o/8IXme1vVTGp8MZV9UCPJMPYrhGxFwOBWIdIYtI0ayDVic54EsTVHUld0ED5NHOBBTJIIz2nXxX8GKC86qPrAlV28VM+Bq8yTNmj18lBTqNXoTswHALNbG8zeV0s8LiDH8LyHgaF8hlmI9EMfGidVQN5txG7x077SQ8Sgs/UfX3q7INyriAVBA5okNoLb0bR9QcRUtQrynOdPp89PoyzNT9JTwmVUWFYkd
+

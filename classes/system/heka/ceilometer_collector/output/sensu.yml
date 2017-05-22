@@ -1,0 +1,3 @@
+classes:
+- service.heka.ceilometer_collector.output.sensu
+

@@ -1,0 +1,11 @@
+classes:
+- system.salt.minion.cert.proxy
+parameters:
+  _param:
+    salt_pki_proxy_alt_names: IP:${_param:cluster_public_host},DNS:${_param:cluster_public_host},DNS:proxy.${_param:cluster_public_host},DNS:horizon.${_param:cluster_public_host}
+  salt:
+    minion:
+      cert:
+        proxy:
+          common_name: proxy
+          alternative_names: IP:127.0.0.1,${_param:salt_pki_proxy_alt_names}

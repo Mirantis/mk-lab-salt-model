@@ -1,0 +1,18 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            kubernetes:
+              source: pkg
+              name: salt-formula-kubernetes
+            etcd:
+              source: pkg
+              name: salt-formula-etcd
+            bird:
+              source: pkg
+              name: salt-formula-bird
+            docker:
+              source: pkg
+              name: salt-formula-docker

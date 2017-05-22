@@ -1,0 +1,11 @@
+classes:
+- service.mongodb.server.cluster
+parameters:
+  _param:
+    mongodb_server_replica_set: mongodb
+    mongodb_master: mdb01
+    mongodb_server_members:
+    - host: mdb01
+      priority: 2
+    - host: mdb02
+    - host: mdb03

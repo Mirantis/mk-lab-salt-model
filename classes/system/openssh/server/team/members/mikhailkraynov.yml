@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        mkraynov:
+          enabled: true
+          name: mkraynov
+          sudo: false
+          full_name: Mikhail Kraynov
+          home: /home/mkraynov
+          email: mkraynov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        mkraynov:
+          enabled: true
+          public_keys: ${public_keys:mkraynov}
+          user: ${linux:system:user:mkraynov}
+  public_keys:
+    mkraynov:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDD2yg5tjwdg+SFPbcm+qIsrYjLcI3qbaqSInA+qY7oyLGj3nO0sC4Wj+6hOQIEzuxXtt7a88Y0ghQrYB5EB6RK7Q6Ll0vT7XdqdVoYiYiKIvaAk7rOt1hhfDb1ogVTXXs7dKCUKmJDMZnALOuh2UJHoRd3G4wyveInNBAHW6PqOIfU0PjEckjDuGhAmYSlawXebNxDgGOvk0TfsxUGiCN3JKKZ6w5956eub6/I+HWpMzZIB1oUsgtPfhTvFnA7vq7JxNVWUv/tXvSI0qKuOCZ+eH8n2/cWtrzOwRUptMGMS7oOMvwEil99BruuB8Xl5Um1iG8qd+H0gAfVeKMnuBkT
+

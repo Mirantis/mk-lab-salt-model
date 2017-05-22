@@ -1,0 +1,22 @@
+parameters:
+  salt:
+    control:
+      size:
+        openstack.dns:
+          cpu: 2
+          ram: 4096
+          disk_profile: small
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            dns01:
+              provider: ${_param:infra_kvm_node01_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: openstack.dns
+            dns02:
+              provider: ${_param:infra_kvm_node02_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_xenial_image}
+              size: openstack.dns

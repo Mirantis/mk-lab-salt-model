@@ -1,0 +1,48 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        #trusty-updates-juno:
+        #  source: http://ubuntu-cloud.archive.canonical.com/ubuntu/
+        #  distribution: trusty-updates/juno
+        #  components: main
+        #  architectures: amd64
+        #  gpgkeys:
+        #    - EC4926EA
+        #  publisher:
+        #    component: juno
+        #    distributions:
+        #      - trusty
+        #trusty-updates-kilo:
+        #  source: http://ubuntu-cloud.archive.canonical.com/ubuntu/
+        #  distribution: trusty-updates/kilo
+        #  components: main
+        #  architectures: amd64
+        #  gpgkeys:
+        #    - EC4926EA
+        #  publisher:
+        #    component: kilo
+        #    distributions:
+        #      - trusty
+        trusty-updates-liberty:
+          source: http://ubuntu-cloud.archive.canonical.com/ubuntu/
+          distribution: trusty-updates/liberty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - EC4926EA
+          publisher:
+            component: liberty
+            distributions:
+              - ubuntu-trusty/nightly
+        trusty-updates-mitaka:
+          source: http://ubuntu-cloud.archive.canonical.com/ubuntu/
+          distribution: trusty-updates/mitaka
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - EC4926EA
+          publisher:
+            component: mitaka
+            distributions:
+              - ubuntu-trusty/nightly

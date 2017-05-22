@@ -1,0 +1,8 @@
+classes:
+- service.sensu.client
+parameters:
+  _param:
+    sensu_message_queue_host: ${_param:stacklight_monitor_address}
+  sensu:
+    client:
+      metric_handlers: []

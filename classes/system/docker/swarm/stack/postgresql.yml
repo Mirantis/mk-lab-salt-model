@@ -1,0 +1,24 @@
+parameters:
+  _param:
+    docker_postgresql_replicas: 1
+    docker_image_postgresql: docker-sandbox.sandbox.mirantis.net/vstoiko/oss/postgresql:latest
+    postgresql_admin_user: postgres
+    postgresql_admin_user_password: postgrespassword
+  docker:
+    client:
+      stack:
+        postgresql:
+          environment:
+            POSTGRES_USER: ${_param:postgresql_admin_user}
+            POSTGRES_PASSWORD: ${_param:postgresql_admin_user_password}
+          service:
+            db:
+              image: ${_param:docker_image_postgresql}
+              deploy:
+                replicas: ${_param:docker_postgresql_replicas}
+                restart_policy:
+                  condition: any
+              ports:
+                - ${_param:haproxy_postgresql_exposed_port}:${_param:haproxy_postgresql_bind_port}
+              volumes:
+                - /srv/volumes/postgresql/data:/var/lib/postgresql/data

@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        dgoloshubov:
+          enabled: true
+          name: dgoloshubov
+          sudo: false
+          full_name: Dmitry Goloshubov
+          home: /home/dgoloshubov
+          email: dgoloshubov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        dgoloshubov:
+          enabled: true
+          public_keys: ${public_keys:dgoloshubov}
+          user: ${linux:system:user:dgoloshubov}
+  public_keys:
+    dgoloshubov:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3k+8GqLyioUc3bEYRHvId62f+KnOvZvVRQH71q1iynbG6ELOZVoxs2AuVjej7weEI7SBsrTKraHkZ7DumKHFMqDG6hiVW2YxJWtX1smcHyapL0k4Tq61MjdwZ6QzNcVstPh/fnbAQCdBEzL8pxbxgRj3xmgPm8pP3RAyBFZOuovfa+VmJXx8kdu8bhieWHTTlrBuhlBc0tM5RBm3WFK0jIK1qO0UJ5Ji0I1hhdg6ti5hEY76Binwzh0A75UDAQ7RmJxWwXiXs/RJOR1c9Wsr4FlLJ5bfMT6bpdYQcPtq3WEkgT0xZTZ5u4hOLsZNJDET+wH/4nL/3/ejtADujQaUJ
+

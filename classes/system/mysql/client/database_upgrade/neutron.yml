@@ -1,0 +1,22 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            neutron_upgrade:
+              encoding: utf8
+              users:
+              - name: neutron
+                password: ${_param:mysql_neutron_password}
+                host: '%'
+                rights: all
+              - name: neutron
+                password: ${_param:mysql_neutron_password}
+                host: ${_param:single_address}
+                rights: all
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: neutron

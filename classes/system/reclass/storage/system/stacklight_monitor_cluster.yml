@@ -1,33 +1,43 @@
 parameters:
+  _param:
+    stacklight_monitor_node01_hostname: mon01
+    stacklight_monitor_node02_hostname: mon02
+    stacklight_monitor_node03_hostname: mon03
   reclass:
     storage:
       node:
         stacklight_monitor_node01:
-          name: mon01
+          name: ${_param:stacklight_monitor_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.monitor
           params:
+            redis_cluster_role: 'master'
+            rabbitmq_cluster_role: 'master'
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node01_address}
             keepalived_vip_priority: 103
         stacklight_monitor_node02:
-          name: mon02
+          name: ${_param:stacklight_monitor_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.monitor
           params:
+            redis_cluster_role: 'slave'
+            rabbitmq_cluster_role: 'slave'
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node02_address}
             keepalived_vip_priority: 102
         stacklight_monitor_node03:
-          name: mon03
+          name: ${_param:stacklight_monitor_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.monitor
           params:
+            redis_cluster_role: 'slave'
+            rabbitmq_cluster_role: 'slave'
             salt_master_host: ${_param:reclass_config_master}
             linux_system_codename: xenial
             single_address: ${_param:stacklight_monitor_node03_address}

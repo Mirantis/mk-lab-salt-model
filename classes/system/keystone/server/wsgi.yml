@@ -1,0 +1,19 @@
+classes:
+- system.apache.server.single
+parameters:
+  keystone:
+    server:
+      service_name: apache2
+  apache:
+    server:
+      enabled: true
+      default_mpm: event
+      site:
+        keystone:
+          enabled: true
+          type: keystone
+          name: wsgi
+          host:
+            name: ${linux:network:fqdn}
+      modules:
+        - wsgi

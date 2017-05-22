@@ -1,0 +1,37 @@
+classes:
+- service.designate.server.single
+- service.haproxy.proxy.single
+parameters:
+  designate:
+    server:
+      enabled: true
+      local_bind: true
+      region: ${_param:openstack_region}
+      domain_id: ${_param:designate_domain_id}
+      version: ${_param:designate_version}
+      bind:
+        api:
+          address: ${_param:single_address}
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name:
+          main_database: designate
+          pool_manager: designate_pool_manager
+        user: designate
+        password: ${_param:mysql_designate_password}
+      identity:
+        engine: keystone
+        host: ${_param:openstack_control_address}
+        port: 35357
+        tenant: service
+        user: designate
+        password: ${_param:keystone_designate_password}
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:cluster_vip_address}
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'

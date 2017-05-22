@@ -13,14 +13,17 @@ parameters:
           engine: virt
           node:
             mon01:
-              provider: kvm01.${_param:cluster_domain}
+              name: ${_param:stacklight_monitor_node01_hostname}
+              provider: ${_param:infra_kvm_node01_hostname}.${_param:cluster_domain}
               image: ${_param:salt_control_xenial_image}
               size: stacklight.server
             mon02:
-              provider: kvm02.${_param:cluster_domain}
+              name: ${_param:stacklight_monitor_node02_hostname}
+              provider: ${_param:infra_kvm_node02_hostname}.${_param:cluster_domain}
               image: ${_param:salt_control_xenial_image}
               size: stacklight.server
             mon03:
-              provider: kvm03.${_param:cluster_domain}
+              name: ${_param:stacklight_monitor_node03_hostname}
+              provider: ${_param:infra_kvm_node03_hostname}.${_param:cluster_domain}
               image: ${_param:salt_control_xenial_image}
               size: stacklight.server

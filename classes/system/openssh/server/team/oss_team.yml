@@ -1,0 +1,51 @@
+parameters:
+  linux:
+    system:
+      user:
+        ikharin:
+          enabled: true
+          name: ikharin
+          sudo: true
+          full_name: Ilya Kharin
+          home: /home/ikharin
+          email: ikharin@mirantis.com
+        vstoiko:
+          enabled: true
+          name: vstoiko
+          sudo: true
+          full_name: Volodymyr Stoiko
+          home: /home/vstoiko
+          email: vstoiko@mirantis.com
+        mivanov:
+          enabled: true
+          name: mivanov
+          sudo: true
+          full_name: Michael Ivanov
+          home: /home/mivanov
+          email: mivanov@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        ikharin:
+          enabled: true
+          public_keys:
+          - ${public_keys:ikharin}
+          user: ${linux:system:user:ikharin}
+        vstoiko:
+          enabled: true
+          public_keys:
+          - ${public_keys:vstoiko}
+          user: ${linux:system:user:vstoiko}
+        mivanov:
+          enabled: true
+          public_keys:
+          - ${public_keys:mivanov}
+          user: ${linux:system:user:mivanov}
+  public_keys:
+    ikharin:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA0NNCF9Orei3Ls5wa7xNH/2nl4eAUYY/vuAers7as8lQXjUXkurLQUG1YTQhuRiqyLrqLZjokq87l3LcpXsiBaqNybwlg4OAcf7p59FwDwdpCcAfoHeP03vt/FOYgozeExIRxVNHMdZjQJ4o5j75vnwTfGIubSF1eUOwtRVeezAREK1OPA2TRvlSOXCsAinNSZHBFTlYVYIXQEk/zuH7PdwlU2rkN69mNivh1tAUDlhrwZHrR9rcudafp5s3C5MKFtI3W4MhYIqv9ZViEhLwfEhNb0WXiUv+sdGTf8jTcXaYOlw6z9A76Ab/9bfPyOTmI7tli8Pz15+YPj1ymdlIZlQ==
+    vstoiko:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDF13qwUbb+lva8KCNE6IppajmGfF3MJIFhIPD7HYwzeIyI3INlc6nMMOk+r4a6IO3okVxgqRi27boebvUpazw0Jw4T4e1oLQpWCxvhTZkukFsrd9DJiCj07VXluua2ofaCRLCSHVLdjAH4WocmZeCXpZF1ldDeNBeuX0iYJiFBslrG/pmOuCm3IEL7GmoIJjF0Idtwo3tkWcvCUXKvBaVqCHS34Q/KJLAvZc95MLESs/kdnhfxhxbpWrRRFcZn/zIxuuptuTBzWOPd7CnsOLo5PCnuxIfDznDYYzQUJq6OmwMZipepTtymXUvFQiqq7xc/HmNR51vowqwoftgHNxYvoaQgXkneWFnq4Cl9WZaLVs90wNgQewPaKmhL8ia1S2C3Cub0ILsbU/091L7adBeZI87pkfx72HhFQRUOcVprgPAEKKTbEvUQKAQ4rZ6GOIU5Tz/fKf1sXLhiTEAgpGpaTyyTP04vpgP5iY4kcXQHpRsPxg1BQ+93S3KqF2XAdXvrA4eZfAHmGhsAOePdnJQZVf8c4exsgkIGEyM9Wgi2ZWlq7oY0tFJLf+Kq7y23QuC6isIqBBIDN/TtmHRpiWNY4zwmGhzSxBdA6zMVy9PblrU71w1xVBS4KKwUqbWbP06pA7V04sp8kGKz5OmN9Z+rdTQJ2v41SSU71kT6XSFFOQ==
+    mivanov:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLY+5Yc3MMOmxVGrBmvfMX9bwK98RdgW+9E/rj56rh1w5cuIy5qN0xsuU4634EcSLRUjGXBcutDXPEXV1s7BZfeZjXJri37RICLsKfvPZcyiEqtwTbGYkcDDOHH0nmZdfngi0r/qAc5o5k3KA7Eh4CJW+GgqPoShngCKo9YKqbWFUkrGpX7wIUMlqwyuVKsybxD6EU+CB3RAeASG4E0rRq7VYQaTj/+PQq8VrWGUs9QHW8wX+OakDDCI7Or4Ll5q/uPCopaU9r7yz+uEYA1L8P2wEJ4XG9V6dxUMvzrFLBE+wDrHHXcEZMWGbmrPHUy5Yt8UCFPgtYfOl2BvHHHUSp

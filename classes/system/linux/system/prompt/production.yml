@@ -1,0 +1,7 @@
+classes:
+  - system.linux.system.prompt
+parameters:
+  linux:
+    system:
+      prompt:
+        default: \\n\\[\\033[0;37m\\]\\D{%y/%m/%d %H:%M:%S} ${linux:system:name}.${linux:system:domain}\\[\\e[0m\\]\\n\\[\\e[1;31m\\][\\u@\\h:\\w]\\[\\e[0m\\]

@@ -1,0 +1,27 @@
+parameters:
+  _param:
+    pushkin_db_host: ${_param:haproxy_postgresql_bind_host}
+    pushkin_db_port: ${_param:haproxy_postgresql_bind_port}
+    pushkin_db_user: pushkin
+    pushkin_db_user_password: pushkin
+  postgresql:
+    client:
+      server:
+        server01:
+          admin:
+            host: ${_param:pushkin_db_host}
+            port: ${_param:pushkin_db_port}
+            user: ${_param:postgresql_admin_user}
+            password: ${_param:postgresql_admin_user_password}
+          database:
+            pushkin:
+              enabled: true
+              encoding: 'UTF8'
+              locale: 'en_US'
+              template: 'hstore_enabled'
+              users:
+              - name: ${_param:pushkin_db_user}
+                password: ${_param:pushkin_db_user_password}
+                host: ${_param:pushkin_db_host}
+                createdb: true
+                rights: all privileges

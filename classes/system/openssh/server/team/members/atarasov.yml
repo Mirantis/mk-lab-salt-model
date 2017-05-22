@@ -1,0 +1,23 @@
+parameters:
+  linux:
+    system:
+      user:
+        atarasov:
+          enabled: true
+          name: atarasov
+          sudo: false
+          full_name: Anton Tarasov
+          home: /home/atarasov
+          email: atarasov@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        atarasov:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSY2GXoKjTudh4iB8rXj6LP5nARndPoh4WeRYxcz57BdT9Xl9gN4E7wGn81kXoJOue5mYUNhjAvUCzKHOB2I6m/zSp5Fv6YDn6oeuD50vKhA6DkMllTVDX+UAegNRVNRRaTCeiqFlqym+2WbxaPjpuWvxuMcR9aZU5MT8H+UMWKbFpuvS83c/nD9QMC0s80bfz9e8OV/ysHsAvXmgQrkl3T0aKpV6IGU597li9k2z2DO9vLxd61rEsYsedPXpUGVn9l3NGW3Ix7dIOQPDFc/rOHVpwLu8V/Lq9zeo8g/12/50RewQ5TIOA3NPeO0D4FUUfj+yBvSjTDj4v6oTY+dyn tonyco@Tonys-MBP
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDI9aXXUufNBbexFsXVPSoaZ8S1gX9gdMGFZUNz9yGdkO5AtGp8A925UCYXZyENB1ZOO7GRFrfeWG2HZEGkcAANw/mWewdNZ1ESnLHSJa/VLtkhOp50647QdaSS5N9jvWbfJOepF6qxfuOpcSZjMj06cfFTXkv65A8jFq4iU/HV6V31csYl00WRF6aFX5u1sgpg4QzklvM4gJykNn8cw2Igi7UhjIvo74HG0UlVFt6qc4yahD2YURn8ZF8A62KVwZ26HbFejzD0S48DivldFGF4AH+tY81CCOrCfJSPs1nemoORwp9J20AnjZ7tGZR5KA9+Op+klvaJxsP4K/y1rBUH tonyco@atarasov-pc
+          user: ${linux:system:user:atarasov}

@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    system:
+      repo:
+        grafana:
+          enabled: true
+          source: 'deb https://packagecloud.io/grafana/stable/debian/ jessie main'
+          key_url: 'https://packagecloud.io/gpg.key'

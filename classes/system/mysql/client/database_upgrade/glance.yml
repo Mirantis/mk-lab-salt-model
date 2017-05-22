@@ -1,0 +1,22 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            glance_upgrade:
+              encoding: utf8
+              users:
+              - name: glance
+                password: ${_param:mysql_glance_password}
+                host: '%'
+                rights: all
+              - name: glance
+                password: ${_param:mysql_glance_password}
+                host: ${_param:single_address}
+                rights: all
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: glance

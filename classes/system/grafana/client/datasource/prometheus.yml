@@ -1,0 +1,14 @@
+parameters:
+  _param:
+    grafana_prometheus_is_default: true
+    grafana_prometheus_ds_name: prometheus
+  grafana:
+    client:
+      datasource:
+        prometheus:
+          type: prometheus
+          name: ${_param:grafana_prometheus_ds_name}
+          host: ${_param:grafana_prometheus_address}
+          port: ${_param:grafana_prometheus_port}
+          is_default: ${_param:grafana_prometheus_is_default}
+

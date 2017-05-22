@@ -3,6 +3,10 @@ parameters:
     nagios_notification_email: root@localhost
     nagios_host_dimension_key: nagios_host
     nagios_default_host_alarm_clusters: 00-clusters
+    nagios_monitoring_network: []
+    nagios_monitoring_interface:
+    - eth0
+    - ens3
   nagios :
     server:
       enabled: true
@@ -45,9 +49,9 @@ parameters:
         grain_hostname: 'host'
         hostname_suffix: ${_param:stacklight_environment}
         hostgroups:
-          - target: '*'
+          - target: 'G@services:openssh'
             name: All
-            expr_from: glob
+            expr_from: compound
           - target: 'G@roles:nova.controller'
             expr_from: compound # the default
             name: Nova Controller
@@ -63,9 +67,8 @@ parameters:
           - target: 'G@services:openssh'
             contact_groups: Operator
             use: generic_host_tpl
-            interface:
-            - eth0
-            - ens3
+            interface: ${_param:nagios_monitoring_interface}
+            network: ${_param:nagios_monitoring_network}
         services:
           - target: 'G@roles:openssh.server'
             name: SSH

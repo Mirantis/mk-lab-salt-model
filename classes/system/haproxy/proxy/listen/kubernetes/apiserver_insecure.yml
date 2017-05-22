@@ -1,0 +1,40 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        k8s_cluster:
+          type: kubernetes
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8080
+          servers:
+          - name: ${_param:cluster_node01_hostname}
+            host: ${_param:cluster_node01_address}
+            port: 8080
+            params: check
+          - name: ${_param:cluster_node02_hostname}
+            host: ${_param:cluster_node02_address}
+            port: 8080
+            params: check
+          - name: ${_param:cluster_node03_hostname}
+            host: ${_param:cluster_node03_address}
+            port: 8080
+            params: check
+        k8s_cluster_localhost:
+          type: kubernetes
+          binds:
+          - address: localhost
+            port: 8080
+          servers:
+          - name: ${_param:cluster_node01_hostname}
+            host: ${_param:cluster_node01_address}
+            port: 8080
+            params: check
+          - name: ${_param:cluster_node02_hostname}
+            host: ${_param:cluster_node02_address}
+            port: 8080
+            params: check
+          - name: ${_param:cluster_node03_hostname}
+            host: ${_param:cluster_node03_address}
+            port: 8080
+            params: check

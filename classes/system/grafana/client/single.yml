@@ -1,23 +1,12 @@
 classes:
-- service.grafana.client.single
+- system.grafana.client
+- system.grafana.client.datasource.influxdb
 parameters:
-  grafana:
-    client:
-      enabled: true
-      server:
-        protocol: http
-        host: ${_param:stacklight_monitor_address}
-        port: 3000
-        user: ${_param:grafana_user}
-        password: ${_param:grafana_password}
-      remote_data:
-        engine: 'salt_mine'
-      datasource:
-        lma:
-          type: influxdb
-          host: ${_param:grafana_influxdb_host}
-          port: ${_param:influxdb_port}
-          user: ${_param:influxdb_user}
-          password: ${_param:influxdb_password}
-          database: ${_param:influxdb_database}
-          is_default: true
+  _param:
+    grafana_address: ${_param:stacklight_monitor_address}
+    grafana_influxdb_address: ${_param:grafana_influxdb_host}
+    grafana_influxdb_port: ${_param:influxdb_port}
+    grafana_influxdb_user: lma
+    grafana_influxdb_password: ${_param:influxdb_stacklight_password}
+    grafana_influxdb_database: lma
+    grafana_influxdb_ds_name: lma

@@ -1,0 +1,15 @@
+classes:
+- system.mysql.client.database.glance
+parameters:
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          database:
+            glance:
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: glance

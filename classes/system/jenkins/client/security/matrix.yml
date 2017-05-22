@@ -1,0 +1,49 @@
+parameters:
+  _param:
+    # Full admin access
+    jenkins_security_matrix_admins:
+      - ${_param:jenkins_client_user}
+      - admins
+    # Read only access
+    jenkins_security_matrix_read: []
+    # Read + permissions to build jobs
+    jenkins_security_matrix_build: []
+    # Build permissions + create/delete, whatever.
+    jenkins_security_matrix_write:
+      - ${_param:jenkins_client_user}
+
+  jenkins:
+    client:
+      security:
+        matrix:
+          permissions:
+            Jenkins:
+              ADMINISTER: ${_param:jenkins_security_matrix_admins}
+              READ: ${_param:jenkins_security_matrix_read}
+            hudson:
+              model:
+                Item:
+                  BUILD: ${_param:jenkins_security_matrix_build}
+                  CANCEL: ${_param:jenkins_security_matrix_build}
+                  CONFIGURE: ${_param:jenkins_security_matrix_write}
+                  CREATE: ${_param:jenkins_security_matrix_write}
+                  DELETE: ${_param:jenkins_security_matrix_write}
+                  DISCOVER: ${_param:jenkins_security_matrix_build}
+                  EXTENDED_READ: ${_param:jenkins_security_matrix_build}
+                  WIPEOUT: ${_param:jenkins_security_matrix_write}
+                  WORKSPACE: ${_param:jenkins_security_matrix_write}
+                  READ: ${_param:jenkins_security_matrix_read}
+                Run:
+                  DELETE: ${_param:jenkins_security_matrix_write}
+                  ARTIFACTS: ${_param:jenkins_security_matrix_write}
+                  UPDATE: ${_param:jenkins_security_matrix_write}
+                View:
+                  READ: ${_param:jenkins_security_matrix_read}
+            com:
+              sonyericsson:
+                hudson:
+                  plugins:
+                    gerrit:
+                      trigger:
+                        PluginImpl:
+                          RETRIGGER: ${_param:jenkins_security_matrix_build}

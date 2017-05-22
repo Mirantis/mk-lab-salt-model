@@ -1,0 +1,10 @@
+parameters:
+  horizon:
+    server:
+      plugin:
+        api_mask:
+          app: api_mask
+          mask_url: ${_param:horizon_api_mask_url}
+          source:
+            engine: pkg
+            name: openstack-dashboard-api-mask

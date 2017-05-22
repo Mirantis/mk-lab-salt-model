@@ -1,0 +1,30 @@
+classes:
+- service.prometheus.server.container
+parameters:
+  docker:
+    client:
+      service:
+        prometheus_server:
+          network: monitoring
+          replicas: 1
+          environment:
+            config_dir: /opt/prometheus/config
+            bind_port: ${prometheus:server:bind:port}
+            bind_address: ${prometheus:server:bind:address}
+            alertmanager_port: ${prometheus:alertmanager:bind:port}
+            storage_local_engine: ${prometheus:server:storage:local:engine}
+            storage_local_retention: ${prometheus:server:storage:local:retention}
+            storage_local_memory_chunks: ${prometheus:server:storage:local:memory_chunks}
+            storage_local_max_chunks_to_persist: ${prometheus:server:storage:local:max_chunks_to_persist}
+            storage_local_num_fingerprint_mutexes: ${prometheus:server:storage:local:num_fingerprint_mutexes}
+            discovery_domain: 'prometheus_alertmanager'
+          restart:
+            condition: any
+          image: ${_param:docker_image_prometheus}
+          ports:
+            - 15010:${prometheus:server:bind:port}
+          volume:
+            site:
+              type: bind
+              source: /srv/volumes/prometheus
+              destination: /opt/prometheus/config

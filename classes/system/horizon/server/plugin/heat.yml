@@ -1,0 +1,11 @@
+parameters:
+  horizon:
+    server:
+      plugin:
+        heat:
+          source:
+            engine: pkg
+            name: openstack-dashboard-heat-server-templates
+        horizon_overrides:
+          overrides:
+          - heat_server_templates

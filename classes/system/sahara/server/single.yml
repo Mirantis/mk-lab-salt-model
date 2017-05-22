@@ -1,0 +1,31 @@
+classes:
+- service.sahara.server.single
+parameters:
+  sahara:
+    server:
+      enabled: true
+      version: ${_param:sahara_version}
+      bind:
+        host: ${_param:single_address}
+        port: 8386
+      database:
+        engine: mysql
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: sahara
+        user: sahara
+        password: ${_param:mysql_sahara_password}
+      identity:
+        engine: keystone
+        host: ${_param:openstack_control_address}
+        port: 35357
+        user: sahara
+        password: ${_param:keystone_sahara_password}
+        tenant: service
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:cluster_vip_address}
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'

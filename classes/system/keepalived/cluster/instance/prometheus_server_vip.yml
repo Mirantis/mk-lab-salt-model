@@ -1,0 +1,18 @@
+applications:
+- keepalived
+classes:
+- service.keepalived.support
+parameters:
+  _param:
+    keepalived_vip_priority: 101
+  keepalived:
+    cluster:
+      enabled: true
+      instance:
+        prometheus_server_vip:
+          address: ${_param:keepalived_prometheus_vip_address}
+          password: ${_param:keepalived_prometheus_vip_password}
+          interface: ${_param:keepalived_prometheus_vip_interface}
+          virtual_router_id: 105
+          priority: ${_param:keepalived_vip_priority}
+

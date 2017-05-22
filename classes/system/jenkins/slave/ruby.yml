@@ -1,0 +1,12 @@
+classes:
+  - system.jenkins.slave
+parameters:
+  linux:
+    system:
+      package:
+        ruby:
+          version: latest
+        rbenv:
+          version: latest
+        ruby-build:
+          version: latest

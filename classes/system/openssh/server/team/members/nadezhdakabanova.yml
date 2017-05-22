@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        nkabanova:
+          enabled: true
+          name: nkabanova
+          sudo: false
+          full_name: Nadezhda Kabanova
+          home: /home/nkabanova
+          email: nkabanova@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        nkabanova:
+          enabled: true
+          public_keys: ${public_keys:nkabanova}
+          user: ${linux:system:user:nkabanova}
+  public_keys:
+    nkabanova:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDuI74hcXTCbbvWoWHNLkng0nDBBwEzZJu8APmKVBukr9Lldz5r8n4OLRzlMI9oKbzvOuY082Cwp+9f5w5ViF/wmmEBa5sktUOBI5Jsi+g5ulb1i2HQOiaRibFJZZcoW03YRQCqQ8D9H4QcuXkT4oNuL5Wcj0UKPQT5r6N2kvuNXlJfEezQQim4nVRymel2USPt/AhlN4AUfBShR8Ykaky2Me4pt5xi0fLOJ9ZDWlEa4dl19Jd4tPz66+dLPiWql+6dgd9GiN+f7NLdDOv3RfOBH6n/It4y/fI+2/UY57X13dWauQNIQHQHDTpCCRiB+XOHwoCRaV81XTHbR865+/sP
+

@@ -1,9 +1,13 @@
 parameters:
+  _param:
+    stacklight_log_node01_hostname: log01
+    stacklight_log_node02_hostname: log02
+    stacklight_log_node03_hostname: log03
   reclass:
     storage:
       node:
         stacklight_log_node01:
-          name: log01
+          name: ${_param:stacklight_log_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.log
@@ -14,7 +18,7 @@ parameters:
             single_address: ${_param:stacklight_log_node01_address}
             keepalived_vip_priority: 103
         stacklight_log_node02:
-          name: log02
+          name: ${_param:stacklight_log_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.log
@@ -24,7 +28,7 @@ parameters:
             single_address: ${_param:stacklight_log_node02_address}
             keepalived_vip_priority: 102
         stacklight_log_node03:
-          name: log03
+          name: ${_param:stacklight_log_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.stacklight.log

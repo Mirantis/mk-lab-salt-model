@@ -1,0 +1,7 @@
+parameters:
+  neutron:
+    server:
+      backend:
+        mechanism:
+          sriov:
+            driver: sriovnicswitch

@@ -1,0 +1,15 @@
+parameters:
+  _param:
+    horizon_jenkins_url: http://localhost:8080/
+    horizon_jenkins_user: admin
+  horizon:
+    server:
+      jenkins_api:
+        url: ${_param:horizon_jenkins_url}
+        user: ${_param:horizon_jenkins_user}
+        password: ${_param:horizon_jenkins_password}
+      plugin:
+        jenkins:
+          source:
+            engine: pkg
+            name: openstack-dashboard-jenkins

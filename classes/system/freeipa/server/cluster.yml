@@ -1,0 +1,18 @@
+classes:
+  - service.freeipa.server
+parameters:
+  freeipa:
+    server:
+      realm: ${_param:freeipa_realm} 
+      domain: ${_param:cluster_domain}
+      princimal_user: ${_param:freeipa_principal_user}
+      servers:
+        - ${_param:infra_freeipa_node01_hostname}.${_param:cluster_domain}
+        - ${_param:infra_freeipa_node02_hostname}.${_param:cluster_domain}
+        - ${_param:infra_freeipa_node03_hostname}.${_param:cluster_domain}
+      admin:
+        password: ${_param:freeipa_admin_password}
+      ldap:
+        password: ${_param:freeipa_ldap_password}
+
+

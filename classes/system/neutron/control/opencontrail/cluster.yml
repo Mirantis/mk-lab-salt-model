@@ -1,0 +1,44 @@
+classes:
+- service.keepalived.cluster.single
+- service.haproxy.proxy.single
+- service.neutron.control.cluster
+- system.haproxy.proxy.listen.openstack.neutron
+parameters:
+  mysql:
+    server:
+      database:
+        neutron:
+          encoding: utf8
+          users:
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: '%'
+            rights: all
+          - name: neutron
+            password: ${_param:mysql_neutron_password}
+            host: ${_param:cluster_local_address}
+            rights: all
+  neutron:
+    server:
+      dns_domain: ${_param:cluster_domain}
+      database:
+        host: ${_param:openstack_database_address}
+      identity:
+        region: ${_param:openstack_region}
+        host: ${_param:openstack_control_address}
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+      compute:
+        host: ${_param:openstack_control_address}
+        region: ${_param:openstack_region}
+      backend:
+        engine: contrail
+        host: ${_param:opencontrail_control_address}
+        port: 8082
+        user: admin
+        password: ${_param:keystone_admin_password}
+        tenant: admin
+        token: ${_param:keystone_service_token}

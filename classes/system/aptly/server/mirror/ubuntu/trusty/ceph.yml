@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        ceph-trusty:
+          source: http://download.ceph.com/debian-hammer
+          distribution: trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 460F3994
+          publisher:
+            component: ceph
+            distributions:
+              - ubuntu-trusty/nightly

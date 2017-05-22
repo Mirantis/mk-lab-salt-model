@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    system:
+      repo:
+        influxdb:
+          source: 'deb [arch=amd64] https://repos.influxdata.com/ubuntu ${_param:linux_system_codename} stable'
+          architectures: amd64
+          key_url: 'https://repos.influxdata.com/influxdb.key'

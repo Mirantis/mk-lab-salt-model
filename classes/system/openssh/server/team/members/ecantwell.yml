@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        ecantwell:
+          enabled: true
+          name: ecantwell
+          sudo: true
+          full_name: Erick Cantwell
+          home: /home/ecantwell
+          email: ecantwell@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        ecantwell:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDYAORp6uIs68C7P2QbNh/Jd58NudtLZrCLir/iGbHx8w1kV4yHG+o1N2wS5PYTkvIAl1/bMexniQiBKSmHvT8GnLJjyNBZL9PcLvCdYQQyQsXtd9LMUAaQehwQnQhB59CDOpTyIwrUuG+z8W5DFx47wKh6yVWCAwTVDJ3bRcL4bv16TE2A3PfCUNxFy8q6Z2RbL1YdIJwsywBBTj8wT1HuEImhefRmC0PuWPzoZZdezRQs05+fgNjw3gcVh3vdzWg6Klfz2FTQl0CgXOVaFWGIE8mi+uh/g0ML5JVQNEpqGxtHtHADykZvac+ozOTthSu+JaQEgUhc8bwV/31Hzh/9r3hOlkMj/Gmsprd+JWyeKewbBKVmaCVFsN7h8WSmBoSkk4uK7yPpR3xkC+Fs5vtXGqEBYFO/44b2WNgwZNE/gEgaxQFqAvg/E2bJVLwQ8ePUxIYoZN2qv2yIvqHCmWSDs6clTz+TGPPh92Txsp2/iTodhDk1muHfS4NGf9wkSMJQPuHFR+izsC5byPYKT4QfpWOrFDa1hHEgO4Hf/zpfAS4yIeo+hNIpE740w6tZINE9RJLutiTq+datt7M9qzqMVq9xEON/I8zBmfY5Srky9gTNhSdViWVPB6Tb8xiIXHZAx4YcJ1waZNZP6Yqn0WsEkAYC3vCXqpeRNcCVu3NIkw==
+          user: ${linux:system:user:ecantwell}

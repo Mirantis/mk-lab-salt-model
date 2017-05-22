@@ -1,0 +1,10 @@
+parameters:
+  salt:
+    master:
+      environment:
+        dev:
+          formula:
+            ccp:
+              source: git
+              address: '${_param:salt_master_environment_repository}/salt-formula-ccp.git'
+              revision: ${_param:salt_master_environment_revision}

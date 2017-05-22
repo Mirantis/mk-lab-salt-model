@@ -1,0 +1,18 @@
+parameters:
+  _param:
+    docker_image_visualizer: manomarks/visualizer
+  docker:
+    client:
+      service:
+        visualizer:
+          restart:
+            condition: any
+          image: ${_param:docker_image_visualizer}
+          constraint: "node.role==manager"
+          ports:
+            - 18090:8080
+          volume:
+            docker:
+              type: bind
+              source: /var/run/docker.sock
+              destination: /var/run/docker.sock

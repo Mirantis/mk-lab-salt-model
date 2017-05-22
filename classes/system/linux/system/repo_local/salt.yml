@@ -1,0 +1,9 @@
+parameters:
+  linux:
+    system:
+      repo:
+        salt:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu-${_param:linux_system_codename}/ nightly salt"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"

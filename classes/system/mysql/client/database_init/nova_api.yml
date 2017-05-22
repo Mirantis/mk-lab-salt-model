@@ -1,0 +1,21 @@
+classes:
+- system.mysql.client.database.nova_api
+parameters:
+  mysql:
+    client:
+      enabled: true
+      server:
+        database:
+          database:
+            nova_api:
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: nova_api
+            nova_cell0:
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: nova_cell0

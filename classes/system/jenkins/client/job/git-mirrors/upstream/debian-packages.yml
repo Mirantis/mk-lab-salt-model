@@ -1,0 +1,9 @@
+classes:
+  - system.jenkins.client.job.git-mirrors.upstream
+parameters:
+  _param:
+    jenkins_git_mirror_upstream_jobs:
+      - name: debian-telegraf
+        downstream: debian/telegraf
+        upstream: "git@github.com:Mirantis/telegraf.git"
+        branches: master

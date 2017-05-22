@@ -1,0 +1,18 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_horizon:
+          enabled: true
+          type: nginx_proxy
+          name: horizon
+          proxy:
+            host: ${_param:openstack_proxy_address}
+            port: 443
+            protocol: https
+          host:
+            name: ${_param:cluster_public_host}
+            port: 443
+            protocol: https
+          ssl: ${_param:nginx_proxy_ssl}

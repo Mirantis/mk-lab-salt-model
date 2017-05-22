@@ -1,0 +1,21 @@
+parameters:
+  _param:
+    horizon_telemetry_engine: graphite
+    horizon_telemetry_host: 127.0.0.1
+    horizon_telemetry_port: 80
+    horizon_telemetry_control_nodes: {}
+  horizon:
+    server:
+      control_nodes: ${_param:horizon_telemetry_control_nodes}
+      plugin:
+        telemetry:
+          metric:
+            engine: ${_param:horizon_telemetry_engine}
+            host: ${_param:horizon_telemetry_host}
+            port: ${_param:horizon_telemetry_port}
+          source:
+            engine: pkg
+            name: openstack-dashboard-telemetry
+        horizon_overrides:
+          overrides:
+          - horizon_telemetry

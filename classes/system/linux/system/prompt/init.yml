@@ -1,0 +1,7 @@
+parameters:
+  linux:
+    system:
+      prompt:
+        default: \\n\\[\\033[0;37m\\]\\D{%y/%m/%d %H:%M:%S} ${linux:system:name}.${linux:system:domain}\\[\\e[0m\\]\\n\\[\\e[1;39m\\][\\u@\\h:\\w]\\[\\e[0m\\]
+      bash:
+        preserve_history: true

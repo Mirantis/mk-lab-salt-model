@@ -1,0 +1,10 @@
+classes:
+  - service.docker.client
+parameters:
+  docker:
+    client:
+      enabled: true
+      compose:
+        source:
+          engine: docker
+          image: "docker/compose:1.8.0"

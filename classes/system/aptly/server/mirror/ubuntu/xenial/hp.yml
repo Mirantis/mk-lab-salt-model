@@ -1,0 +1,18 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        hp-xenial:
+          source: http://downloads.linux.hpe.com/SDR/repo/mcp/Ubuntu
+          distribution: xenial/current
+          components: non-free
+          architectures: amd64
+          gpgkeys:
+            - 26C2B797
+            - B1275EA3
+            - 5CE2D476
+            - 2689B887
+          publisher:
+            component: hp-non-free
+            distributions:
+              - xenial/nightly

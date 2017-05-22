@@ -8,3 +8,8 @@ parameters:
       external_access: ${_param:neutron_compute_external_access}
       backend:
         tenant_network_types: ${_param:neutron_tenant_network_types}"
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}

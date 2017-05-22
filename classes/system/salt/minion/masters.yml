@@ -1,0 +1,7 @@
+parameters:
+  salt:
+    minion:
+      master_type: failover
+      masters:
+      - host: ${_param:infra_config_deploy_address}
+      - host: ${_param:infra_config_address}

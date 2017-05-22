@@ -1,0 +1,22 @@
+classes:
+  - service.rundeck.common
+parameters:
+  linux:
+    system:
+      user:
+        runbook:
+          enabled: true
+          name: ${_param:rundeck_runbook_user}
+          system: true
+          sudo: true
+          full_name: Rundeck Remote
+          home: /var/lib/runbook
+  openssh:
+    server:
+      enabled: true
+      user:
+        runbook:
+          enabled: true
+          public_keys:
+            - key: ${_param:rundeck_runbook_public_key}
+          user: ${linux:system:user:runbook}

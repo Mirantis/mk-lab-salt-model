@@ -1,0 +1,17 @@
+classes:
+- service.prometheus.pushgateway.container
+parameters:
+  docker:
+    client:
+      service:
+        prometheus_pushgateway:
+          network: monitoring
+          replicas: 2
+          environment:
+            bind_port: ${prometheus:pushgateway:bind:port}
+            bind_address: ${prometheus:pushgateway:bind:address}
+          restart:
+            condition: any
+          image: ${_param:docker_image_pushgateway}
+          ports:
+            - 15012:${prometheus:pushgateway:bind:port}

@@ -1,0 +1,23 @@
+parameters:
+  linux:
+    system:
+      user:
+        obryndzii:
+          enabled: true
+          name: obryndzii
+          sudo: false
+          full_name: Oleksandr Bryndzii
+          home: /home/obryndzii
+          email: obryndzii@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        obryndzii:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCdHeeCZb+4YOBC925Byc0JkdFiNHnxl1DikrJlvza66n+URnfpTvtYhy70oT4jWruWf5dGAh81LK6SJfcLKqDvSNwAU4utQp1t71VllPB482oUhFSBAPOhWHElFakWcgnayOFVtMKhUZ4d5i+C7vXr+JpporBk6le7LuHD0/vNEG6SywexV3/lDZV1kahPSHblBxaED6nNeAODXXRMAOzgV25+UcDINaVTSzzQtCfUHydkVmw+TmxYc5wbdac1AtUkFmFbC6XTsv4VyZsH563jHNRf4UYPN6MP4SWv8axPiGUU5jr4laaIpDQ0TF/b+0Z+QidDxxTIsQxR0r/auUJp obryndzii@obryndzii-pc
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDD+5Ykrt46voaBAZ4BnYCB7EjRWNd6R+IqLaoQJzHh0joXVyZj/MsV0LcegxVV21Qnecp3qSw9XQiyJ9cghJbN3/AhEFpx7yZzf7sHez7FxRFefBSCO2IYSDBabO4eyv1X8UXtJrZ88lJBmWQr8nVy3E78za1cq0jRKNlGyvTrRtwY69WDhhc6k8CxIGAUrT6uAFeNCfroRKuw3zDm0FIxoq0eExNwBNw0rIXXUowDoCafTYSVpqSQ+Sby/wfRMc12ISmUnOQ2d9A1+YWoZgdHs+G/OK1ADQu/6edaSOWhX0BGLNRig5lWfgbOmAlzIqNqcLDMaBrcwcpi2LN5pIQf obryndzii@obryndzii-pc
+          user: ${linux:system:user:obryndzii}

@@ -1,0 +1,15 @@
+parameters:
+  _param:
+    cinder_nfs_local_path: /var/lib/cinder/nfs
+  cinder:
+    controller:
+      default_volume_type: nfs-driver
+      backend:
+        nfs-driver:
+          engine: nfs
+          type_name: nfs-driver
+          volume_group: cinder-volume
+          path: ${_param:cinder_nfs_local_path}
+          devices:
+          - ${_param:cinder_nfs_host}:${_param:cinder_nfs_remote_path}
+          options: ${_param:cinder_nfs_mount_options}

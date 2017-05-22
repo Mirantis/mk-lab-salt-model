@@ -1,0 +1,17 @@
+parameters:
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_openstack_api_sahara:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_sahara
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8386
+            protocol: http
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8386
+          ssl: ${_param:nginx_proxy_ssl}

@@ -1,0 +1,155 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        test-salt-formula:
+          name: test-salt-formula-{{name}}-latest
+          jobs:
+            - name: aodh
+            - name: apache
+            - name: aptcacher
+            - name: aptly
+            - name: artifactory
+            - name: backupninja
+            - name: avinetworks
+            - name: billometer
+            - name: bind
+            - name: bird
+            - name: cadf
+            - name: calico
+            - name: cassandra
+            - name: ccp
+            - name: ceilometer
+            - name: ceph
+            - name: chrony
+            - name: cinder
+            - name: collectd
+            - name: designate
+            - name: dekapod
+            - name: devops-portal
+            - name: docker
+            - name: dovecot
+            - name: elasticsearch
+            - name: etcd
+            - name: foreman
+            - name: freeipa
+            - name: galera
+            - name: gerrit
+            - name: git
+            - name: gitlab
+            - name: glance
+            - name: glusterfs
+            - name: grafana
+            - name: graphite
+            - name: haproxy
+            - name: heat
+            - name: heka
+            - name: horizon
+            - name: influxdb
+            - name: iptables
+            - name: isc-dhcp
+            - name: java
+            - name: jenkins
+            - name: kedb
+            - name: keepalived
+            - name: keystone
+            - name: kibana
+            - name: kubernetes
+            - name: letsencrypt
+            - name: libvirt
+            - name: linux
+            - name: lldp
+            - name: logrotate
+            - name: maas
+            - name: magnum
+            - name: memcached
+            - name: midonet
+            - name: monasca
+            - name: mongodb
+            - name: murano
+            - name: mysql
+            - name: nagios
+            - name: network
+            - name: neutron
+            - name: nfs
+            - name: nginx
+            - name: nodejs
+            - name: nova
+            - name: ntp
+            - name: opencontrail
+            - name: openldap
+            - name: openssh
+            - name: openvpn
+            - name: openvstorage
+            - name: owncloud
+            - name: postfix
+            - name: postgresql
+            - name: pritunl
+            - name: prometheus
+            - name: python
+            - name: rabbitmq
+            - name: reclass
+            - name: redis
+            - name: roundcube
+            - name: rsync
+            - name: rsyslog
+            - name: rundeck
+            - name: sahara
+            - name: salt
+            - name: sensu
+            - name: sentry
+            - name: sphinx
+            - name: spinnaker
+            - name: statsd
+            - name: supervisor
+            - name: swift
+            - name: taiga
+            - name: telegraf
+            - name: tftpd-hpa
+            - name: varnish
+            - name: zookeeper
+          template:
+            discard:
+              build:
+                keep_num: 25
+              artifact:
+                keep_num: 25
+            type: workflow-scm
+            concurrent: true
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: test-salt-formulas-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  salt-formulas/{{name}}:
+                    branches:
+                      - master
+                event:
+                  patchset:
+                    - created:
+                        excludeDrafts: false
+                        excludeTrivialRebase: false
+                        excludeNoCodeChange: false
+                  comment:
+                    - addedContains:
+                        commentAddedCommentContains: '(recheck|reverify)'
+            param:
+              SALT_VERSION:
+                type: string
+                default: "latest"
+              SALT_OPTS:
+                type: string
+                default: "--force-color"
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              DEFAULT_GIT_URL:
+                type: string
+                description: "Run against alternate system reclass"
+                default: "${_param:jenkins_gerrit_url}/salt-formulas/{{name}}"
+              DEFAULT_GIT_REF:
+                type: string
+                default: master

@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        jpalmerin:
+          enabled: true
+          name: jpalmerin
+          sudo: false
+          full_name: Josue Palmerin
+          home: /home/jpalmerin
+          email: jpalmerin@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        jpalmerin:
+          enabled: true
+          public_keys: ${public_keys:jpalmerin}
+          user: ${linux:system:user:jpalmerin}
+  public_keys:
+    jpalmerin:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKW9yFRdSTlpg2oVDYrg69yPzeG14CoLFvJeU9I4ZHv/d0SkiU12y+zkljWLEaa2aj+Zs8IbJZy+3Av1/uZ/s5UX0KkGJP1oCjH5LYPNbeXpdaCl/1w5uHf43DIebrj6q5XE0ziXLC79lEyXs1rQFV7B5D2rxnjrRPLnCckT4D2G1WoW5bylPezXqoO2YIua5IG/O0EOeV2gSQJAYEVQceJg+Hr6mtjL1AwSADecG5QiY+WV/XdX3OFiafJ5gnS2OpqH5MdNcnqegiXEdaEe07tW99E2j3EXY9nOvorzgB8xO+m3EKM0jAxAbA5LALAijn6ax/cuSMMKD4lkQbTc4b
+

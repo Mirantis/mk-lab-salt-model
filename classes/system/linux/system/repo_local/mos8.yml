@@ -1,0 +1,53 @@
+parameters:
+  linux:
+    system:
+      repo:
+        mirantis_openstack:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/mos8/ mos8.0 main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=mos8.0'
+            priority: 1100
+            package: '*'
+        #mos8_openstack_hotfix:
+        #  source: "deb [arch=amd64] http://${_param:local_repo_url}/mos8/ mos8.0-hotfix main"
+        #  architectures: amd64
+        #  key_url: "http://${_param:local_repo_url}/public.gpg"
+        #  pin:
+        #  - pin: 'release a=mos8.0-hotfix'
+        #    priority: 1100
+        #    package: '*'
+        mos8_openstack_proposed:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/mos8/ mos8.0-proposed main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=mos8.0-proposed'
+            priority: 1100
+            package: '*'
+        #mos8_openstack_security:
+        #  source: "deb [arch=amd64] http://${_param:local_repo_url}/mos8/ mos8.0-security main"
+        #  architectures: amd64
+        #  key_url: "http://${_param:local_repo_url}/public.gpg"
+        #  pin:
+        #  - pin: 'release a=mos8.0-security'
+        #    priority: 1100
+        #    package: '*'
+        mos8_openstack_updates:
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/mos8/ mos8.0-updates main"
+          architectures: amd64
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+          pin:
+          - pin: 'release a=mos8.0-updates'
+            priority: 1100
+            package: '*'
+        #mos8_murano:
+        #  refresh_db: ${_param:linux_repo_refresh_db}
+        #  source: "deb [arch=amd64] http://${_param:local_repo_url}/mos8/ mos8.0 murano"
+        #  architectures: amd64
+        #  key_url: "http://${_param:local_repo_url}/public.gpg"
+        #  pin:
+        #  - pin: 'release a=mos8.0-proposed'
+        #    priority: 1100
+        #    package: '*'

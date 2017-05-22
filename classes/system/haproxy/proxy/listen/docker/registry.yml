@@ -1,0 +1,36 @@
+parameters:
+  _param:
+    haproxy_docker_registry_listen_host: ${_param:haproxy_bind_address}
+    haproxy_docker_registry_listen_port: 5000
+    haproxy_docker_registry_ssl:
+      enabled: false
+  haproxy:
+    proxy:
+      listen:
+        registry:
+          mode: http
+          options:
+            - forwardfor
+            - httpclose
+            - httplog
+          balance: source
+          http_request:
+            - action: "add-header X-Forwarded-Proto https"
+              condition: "if { ssl_fc }"
+          binds:
+            - address: ${_param:haproxy_docker_registry_listen_host}
+              port: ${_param:haproxy_docker_registry_listen_port}
+              ssl: ${_param:haproxy_docker_registry_ssl}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 15000
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 15000
+              params: check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 15000
+              params: check

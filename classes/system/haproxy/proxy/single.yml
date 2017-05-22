@@ -1,0 +1,4 @@
+parameters:
+  haproxy:
+    proxy:
+      enabled: true

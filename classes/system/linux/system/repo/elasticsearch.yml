@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    system:
+      repo:
+        elasticsearch:
+          source: "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main"
+          architectures: amd64
+          key_url: "https://packages.elastic.co/GPG-KEY-elasticsearch"

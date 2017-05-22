@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        mpetersen:
+          enabled: true
+          name: mpetersen
+          sudo: false
+          full_name: Michael Petersen
+          home: /home/mpetersen
+          email: mpetersen@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        mpetersen:
+          enabled: true
+          public_keys: ${public_keys:mpetersen}
+          user: ${linux:system:user:mpetersen}
+  public_keys:
+    mpetersen:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDJzKgMddHiRYBewGuS9aIHJWrwoz3lTms0obWttyKCFCr9ULwVvok8NbFQQPPoh0uZIMLh6q7Uu1iJLgrRcPfEuzzwujdy8uZ4EN+xRDpcBJJs8laaRrigwjLEfOjayytHddgS6CnzL4zYmkd2mnvmB6YwWGid0NEAHTHmTS1LOxkn+YYUvHjWi4HZnAyjX0/udDDHYRCE/dcSpG6t2wXmddPJGcgUbniwEDEGlwM0nSEvi4K9hUcP53d8zkn7Klc9NC2DGnFKelTiNoizKGrimB7PKUuVJ38/OMwodMt0VAQmBeObKvNEmsz3thWv2UM21RvPNYDISf1f5YxDpMLQF9A8YwODhLQjS7Gb/7eiZhcEjNKVkKiSyqdohV2ZTZCaBfpeW/yzXaNC1oGDEWJPX3KmBsQaT5w9NSl5oj7qtMTSVH/qY2QQIgz1cNhQDRrH48YRykVt+3iu/qToB8FFe5MPixKvxnGlk0weLCn1liasNDu2LjWALD8WTV+ksi80OwVUtrMkI1d5+doXKtf4+4zNGZT8G2EnenkkFyBfe+T7de9NXGdiMorsukf0Iq6OXMYWIi5nO/bnuU9p0dFCk5U9jfxdlLKFLUI5Web1xVfm5qlYyMjhfkP9JAZViA80+WUUx1cIcI2KR7Sd8uwxdyscF8dWj2ouyluLwHpmsw==
+

@@ -1,0 +1,48 @@
+parameters:
+  _param:
+    jenkins_git_mirror_upstream_jobs: []
+  jenkins:
+    client:
+      job_template:
+        git_mirror_upstream_common:
+          name: git-mirror-upstream-{{name}}
+          jobs: ${_param:jenkins_git_mirror_upstream_jobs}
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: git-mirror-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  "{{downstream}}":
+                    branches:
+                      - master
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/{{downstream}}"
+              TARGET_URL:
+                type: string
+                default: "{{upstream}}"
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              BRANCHES:
+                type: string
+                default: "{{branches}}"

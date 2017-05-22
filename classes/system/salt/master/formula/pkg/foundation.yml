@@ -1,0 +1,33 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            aptcacher:
+              source: pkg
+              name: salt-formula-aptcacher
+            aptly:
+              source: pkg
+              name: salt-formula-aptly
+            bind:
+              source: pkg
+              name: salt-formula-bind
+            gerrit:
+              source: pkg
+              name: salt-formula-gerrit
+            jenkins:
+              source: pkg
+              name: salt-formula-jenkins
+            freeipa:
+              source: pkg
+              name: salt-formula-freeipa
+            maas:
+              source: pkg
+              name: salt-formula-maas
+            openldap:
+              source: pkg
+              name: salt-formula-openldap
+            lldp:
+              source: pkg
+              name: salt-formula-lldp

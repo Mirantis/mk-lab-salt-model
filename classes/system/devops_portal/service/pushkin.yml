@@ -1,0 +1,10 @@
+parameters:
+  devops_portal:
+    config:
+      service:
+        pushkin:
+          configure_proxy: true
+          endpoint:
+            address: ${_param:haproxy_pushkin_bind_host}
+            port: ${_param:haproxy_pushkin_bind_port}
+            https: ${_param:haproxy_pushkin_ssl:enabled}

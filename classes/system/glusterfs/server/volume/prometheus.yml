@@ -1,0 +1,17 @@
+parameters:
+  glusterfs:
+    server:
+      volumes:
+        prometheus:
+          storage: /srv/glusterfs/prometheus
+          replica: 3
+          bricks:
+            - ${_param:cluster_node01_address}:/srv/glusterfs/prometheus
+            - ${_param:cluster_node02_address}:/srv/glusterfs/prometheus
+            - ${_param:cluster_node03_address}:/srv/glusterfs/prometheus
+          options:
+            cluster.readdir-optimize: On
+            nfs.disable: On
+            network.remote-dio: On
+            diagnostics.client-log-level: WARNING
+            diagnostics.brick-log-level: WARNING

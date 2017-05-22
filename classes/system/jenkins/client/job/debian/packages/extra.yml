@@ -1,0 +1,204 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-debian:
+          name: build-debian-{{package}}-ubuntu-{{dist}}
+          jobs:
+            - package: librdkafka
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-kafka
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: liburcu
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-kazoo
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-pathlib
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: kafka
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-geventhttpclient
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-consistent-hash
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: libipfix
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-ncclient
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-pycassa
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-xmltodict
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-backports.ssl-match-hostname
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-certifi
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-docker
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-cassandra-driver
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-redis
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-tabulate
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: cassandra-cpp-driver
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: libuv1
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: python-sseclient
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: reclass
+              dist: trusty
+              build: pipeline
+              branch: debian/trusty
+            - package: librdkafka
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: python-kafka
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: python-geventhttpclient
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: python-docker
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: python-consistent-hash
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: libipfix
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: cassandra-cpp-driver
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: python-sseclient
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: reclass
+              dist: xenial
+              build: pipeline
+              branch: debian/xenial
+            - package: telegraf
+              dist: trusty
+              build: telegraf
+              branch: release-1.2
+            - package: telegraf
+              dist: xenial
+              build: telegraf
+              branch: release-1.2
+            - package: libvirt-exporter
+              dist: xenial
+              build: libvirt-exporter
+              branch: master
+          template:
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-debian-packages-{{build}}.groovy
+            trigger:
+              gerrit:
+                project:
+                  debian/{{package}}:
+                    branches:
+                      - "{{branch}}"
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/debian/{{package}}.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              EXTRA_REPO_URL:
+                type: string
+                default: "deb ${_param:jenkins_aptly_url}/{{dist}}/ testing extra"
+              EXTRA_REPO_KEY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_url}/public.gpg"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "ubuntu-{{dist}}-extra"
+              OS:
+                type: string
+                default: "ubuntu"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              PPA:
+                type: string
+                default: "mirantis-opencontrail/extra"
+              UPLOAD_PPA:
+                type: boolean
+                default: 'true'
+              UPLOAD_APTLY:
+                type: boolean
+                default: 'true'

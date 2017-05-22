@@ -7,3 +7,8 @@ parameters:
       agent_mode: ${_param:neutron_gateway_agent_mode}
       backend:
         tenant_network_types: ${_param:neutron_tenant_network_types}"
+      message_queue:
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}

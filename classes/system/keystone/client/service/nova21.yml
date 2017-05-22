@@ -1,4 +1,6 @@
 parameters:
+  _param:
+    cluster_public_protocol: https
   keystone:
     client:
       server:
@@ -16,26 +18,28 @@ parameters:
               description: OpenStack Compute Service
               endpoints:
               - region: ${_param:openstack_region}
-                public_address: ${_param:nova_service_host}
+                public_address: ${_param:cluster_public_host}
+                public_protocol: ${_param:cluster_public_protocol}
                 public_port: 8774
-                public_path: '/v2/$(tenant_id)s'
+                public_path: '/v2/$(project_id)s'
                 internal_address: ${_param:nova_service_host}
                 internal_port: 8774
-                internal_path: '/v2/$(tenant_id)s'
+                internal_path: '/v2/$(project_id)s'
                 admin_address: ${_param:nova_service_host}
                 admin_port: 8774
-                admin_path: '/v2/$(tenant_id)s'
+                admin_path: '/v2/$(project_id)s'
             nova:
               type: compute
               description: OpenStack Compute Service v2.1
               endpoints:
               - region: ${_param:openstack_region}
-                public_address: ${_param:nova_service_host}
+                public_address: ${_param:cluster_public_host}
+                public_protocol: ${_param:cluster_public_protocol}
                 public_port: 8774
-                public_path: '/v2.1'
+                public_path: '/v2.1/$(project_id)s'
                 internal_address: ${_param:nova_service_host}
                 internal_port: 8774
-                internal_path: '/v2.1'
+                internal_path: '/v2.1/$(project_id)s'
                 admin_address: ${_param:nova_service_host}
                 admin_port: 8774
-                admin_path: '/v2.1'
+                admin_path: '/v2.1/$(project_id)s'

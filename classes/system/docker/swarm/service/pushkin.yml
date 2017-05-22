@@ -1,0 +1,28 @@
+parameters:
+  _param:
+    docker_pushkin_replicas: 1
+    docker_image_pushkin: docker-sandbox.sandbox.mirantis.net/vstoiko/oss/pushkin:latest
+    pushkin_db_password: pushkin
+    pushkin_db_user: pushkin
+    pushkin_db: pushkin
+  docker:
+    client:
+      service:
+        pushkin-backend:
+          environment:
+            POSTGRES_USER: ${_param:pushkin_db_user}
+            POSTGRES_PASSWORD: ${_param:pushkin_db_password}
+            POSTGRES_DB: ${_param:pushkin_db}
+            PUSHKINDBHOST: ${_param:haproxy_pushkin_db_bind_host}
+            PUSHKINELASTICHOST: ${_param:haproxy_elasticsearch_bind_host}
+          replicas: ${_param:docker_pushkin_replicas}
+          image: ${_param:docker_image_pushkin}
+          restart:
+            condition: any
+          ports:
+            - ${_param:haproxy_pushkin_exposed_port}:${_param:haproxy_pushkin_bind_port}
+          volume:
+            pushkin:
+              type: bind
+              source: /srv/volumes/pushkin/logs
+              destination: /var/log/pushkin

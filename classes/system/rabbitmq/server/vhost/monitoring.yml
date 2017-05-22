@@ -5,4 +5,4 @@ parameters:
         '/monitor':
           enabled: true
           user: monitor
-          password: ${_param:rabbitmq_graphite_password}
+          password: ${_param:rabbitmq_monitor_password}

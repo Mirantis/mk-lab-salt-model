@@ -1,0 +1,23 @@
+parameters:
+  linux:
+    system:
+      repo:
+        ubuntu:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu ${_param:linux_system_codename} main universe restricted"
+          architectures: amd64
+          default: true
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+        ubuntu-updates:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu ${_param:linux_system_codename}-updates main universe restricted"
+          architectures: amd64
+          default: true
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+        ubuntu-security:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/ubuntu ${_param:linux_system_codename}-security main universe restricted"
+          architectures: amd64
+          default: true
+          key_url: "http://${_param:local_repo_url}/public.gpg"
+

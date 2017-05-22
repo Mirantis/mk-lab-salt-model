@@ -1,0 +1,42 @@
+parameters:
+  _param:
+    stacklight_monitor_node01_hostname: mon01
+    stacklight_monitor_node02_hostname: mon02
+    stacklight_monitor_node03_hostname: mon03
+  reclass:
+    storage:
+      node:
+        stacklight_server_node01:
+          name: ${_param:stacklight_monitor_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - system.docker.swarm.master
+          - cluster.${_param:cluster_name}.stacklight.server
+          - cluster.${_param:cluster_name}.stacklight.client
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node01_address}
+            keepalived_vip_priority: 103
+        stacklight_server_node02:
+          name: ${_param:stacklight_monitor_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - system.docker.swarm.manager
+          - cluster.${_param:cluster_name}.stacklight.server
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node02_address}
+            keepalived_vip_priority: 102
+        stacklight_server_node03:
+          name: ${_param:stacklight_monitor_node03_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - system.docker.swarm.manager
+          - cluster.${_param:cluster_name}.stacklight.server
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:stacklight_monitor_node03_address}
+            keepalived_vip_priority: 101

@@ -1,0 +1,74 @@
+classes:
+  - system.jenkins.client.job.image
+parameters:
+  _param:
+    jenkins_packer_pipeline: "${_param:jenkins_gerrit_url}/mk/packer-templates"
+  jenkins:
+    client:
+      job:
+        build-image-debian-8:
+          type: workflow-scm
+          concurrent: false
+          scm:
+            type: git
+            url: "${_param:jenkins_packer_pipeline}"
+            credentials: "gerrit"
+          display_name: "[Images] Build Debian 8 image"
+          param:
+            BUILD_OS:
+              type: string
+              default: "debian-8"
+            BUILD_ONLY:
+              type: string
+              default: "qemu"
+            PACKER_DEBUG:
+              type: boolean
+              default: "false"
+            PACKER_URL:
+              type: string
+              default: "https://releases.hashicorp.com/packer/0.8.6/packer_0.8.6_linux_amd64.zip"
+            PACKER_ZIP:
+              type: string
+              default: "packer_0.8.6_linux_amd64.zip"
+            PACKER_ZIP_MD5:
+              type: string
+              default: "4cda1c44cf666fada495dd8e01522e1c"
+            PACKER_ARGS:
+              type: string
+              default: ""
+            UPLOAD_URL:
+              type: string
+              default: "http://jenkins:eyoocaiG3ADireK3Eef8gae1roh5oox0@10.10.100.85:8088/"
+            SKIP_UPLOAD:
+              type: boolean
+              default: "false"
+            CLEANUP_OLD:
+              type: boolean
+              default: "true"
+            CLEANUP_KEEP:
+              type: string
+              default: "3"
+            GLANCE_UPLOAD:
+              type: boolean
+              default: "true"
+            GLANCE_IMG_TYPES:
+              type: string
+              default: "qcow2"
+            GLANCE_URL:
+              type: string
+              default: "https://vpc.tcpisek.cz:5000/v2.0"
+            GLANCE_CREDENTIALS_ID:
+              type: string
+              default: "openstack-qa-credentials"
+            GLANCE_PROJECT:
+              type: string
+              default: "mirantis_mk20_qa"
+            GLANCE_ARGS:
+              type: string
+              default: ""
+            GLANCE_PUBLIC:
+              type: boolean
+              default: "true"
+            OPENSTACK_API_CLIENT:
+              type: string
+              default: "liberty"

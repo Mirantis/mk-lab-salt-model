@@ -1,0 +1,6 @@
+classes:
+- system.ceilometer.client.cinder_control
+- system.ceilometer.client.keystone
+- system.ceilometer.client.glance
+- system.ceilometer.client.heat
+- system.ceilometer.client.nova_control

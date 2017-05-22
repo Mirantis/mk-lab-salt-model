@@ -1,4 +1,6 @@
 parameters:
+  _param:
+    cluster_public_protocol: https
   keystone:
     client:
       server:
@@ -19,12 +21,13 @@ parameters:
               description: OpenStack Orchestration Service
               endpoints:
               - region: ${_param:openstack_region}
-                public_address: ${_param:heat_service_host}
+                public_address: ${_param:cluster_public_host}
+                public_protocol: ${_param:cluster_public_protocol}
                 public_port: 8004
-                public_path: '/v1/%(tenant_id)s'
+                public_path: '/v1/%(project_id)s'
                 internal_address: ${_param:heat_service_host}
                 internal_port: 8004
-                internal_path: '/v1/%(tenant_id)s'
+                internal_path: '/v1/%(project_id)s'
                 admin_address: ${_param:heat_service_host}
                 admin_port: 8004
-                admin_path: '/v1/%(tenant_id)s'
+                admin_path: '/v1/%(project_id)s'

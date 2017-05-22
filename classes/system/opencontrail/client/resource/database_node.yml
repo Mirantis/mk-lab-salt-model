@@ -1,0 +1,17 @@
+parameters:
+  _param:
+    cluster_node01_hostname: ntw01
+    cluster_node02_hostname: ntw02
+    cluster_node03_hostname: ntw03
+  opencontrail:
+    client:
+      database_node:
+        member01:
+          name: ${_param:cluster_node01_hostname}
+          ip_address: ${_param:cluster_node01_address}
+        member02:
+          name: ${_param:cluster_node02_hostname}
+          ip_address: ${_param:cluster_node02_address}
+        member03:
+          name: ${_param:cluster_node03_hostname}
+          ip_address: ${_param:cluster_node03_address}

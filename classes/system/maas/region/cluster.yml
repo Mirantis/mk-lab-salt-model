@@ -1,0 +1,12 @@
+classes:
+  - system.maas.region.single
+  - system.keepalived.server.cluster_maas
+parameters:
+  _param:
+    cluster_vip_address: 10.0.175.80
+  maas:
+    cluster:
+      enabled: true
+      role: ${_param:maas_cluster_role}
+      region:
+        host: ${_param:cluster_vip_address}

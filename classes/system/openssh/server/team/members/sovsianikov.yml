@@ -1,0 +1,24 @@
+parameters:
+  linux:
+    system:
+      user:
+        sovsianikov:
+          enabled: true
+          name: sovsianikov
+          sudo: false
+          full_name: Serhii Ovsianikov
+          home: /home/sovsianikov
+          email: sovsianikov@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        sovsianikov:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC728opxEr1QAil48NXPoA1QH4qzbGy8OjEq0s+JuovWYg6eRxf4UEhZgtxW3z3vls0xV5fNpoGa1j2xIDYRIxdZV05X9J+CZ9hxUfE0tIi8iS8/r5x+SFeWQmf4zVOwQMRwXujNsmKBDQVpP/y/2wlYHk3RPrPLGZAH5LkO29W4iTKDciOF4p9uGw55CCR7Iaw/S3fq/CV3rSbtsxXpnYzJ0JZEYIVhO8ZRN9kP1upmTOGeC3g8ahSWgkWOD4xLbrUjoaOTqZjEVIUxDf0bLT2/ztihgqvKG9CTObKrHM8/V3tPqns9Xhu+uDc+h0pplxrVAlVtGiC9yx/R3e3gahJ sovsianikov@sovsianikov-nbook
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqe1+ymHcc750HopiD17J79Yh2P3Bdg7csJi1C/1B8Xk09rOoo5eIGGdo+7EqO2alRqzdan8Um7eSd6sH2sGUakHXApz0ig1xyqDcKpbla+13kJ9bEYyI3+7kXdm5/iAIzRmQVBYbtf6MK7GwLv6+5h+QKA4yiHr1xj2mXgmakU8B5r7GZXCq+DDEDXL+7r9h68DqOuQacKesbQZHPUBLCjINigLHA24Z+8Fglk0BkH+EiuBj91/QBT7Wy003njMz4/ecx0t1jRE6yMImDq62h/L7dS17no2ghVhZbFfDTBoyGuMp200tnhIP9Dwuisy0TuGBjiSVO/QJ2o0aAptwl sovsianikov@sovsianikov-lin
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDd1/kdx3SIx6BxEMpO1+t05ZLVqYGlxxS0oPcpnMAR+t6dBjdmYqMIUb817easmPFDpC38DgClqAzAHoCoPSj5LymiKpkVI0qinyS3b+V/9AK3fdlkE5lUIi7Ij/aCIO197teo1rhUbOjwXVRRqCWPAsAZ1v3ljmHVdBIjva5RraCHM1HDt12c1QdnQdNyQuXXKCx18DpfHcfICVYBXDubEjyGxjomk2nAwF4wH1Zol7I3+djOZcKOw0AVhI8VHb73MIaPSF3/oadsVle6XIlr6HJq8PlmmZ2Bs6cCM8ndRvPycKO+d2Rhm2qGiCWQzz4bLJuEqP9ez1bUQ+1VcJpR sovsianikov@Serhiis-PC.local
+          user: ${linux:system:user:sovsianikov}

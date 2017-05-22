@@ -1,0 +1,33 @@
+classes:
+  - system.jenkins.client.job.opencontrail.build
+  - system.jenkins.client.job.opencontrail.git-mirrors
+parameters:
+  _param:
+    contrail_branches: "R3.0.2.x,R3.0.3.x,R3.1,R3.1.1.x,R3.2,R4.0,master"
+    contrail_kubernetes_branches: "master,release-1.2"
+    contrail_dpdk_extra_branches: "mitaka,kilo,liberty-multiqueue"
+    contrail_ceilometer_plugin_branches: "master,R4.0"
+    contrail_kubernetes_branches: "master,origin-1.1,origin-1.1.3,release-1.1,release-1.2"
+    contrail_dpdk_branches: "master,R3.0.2.x,R3.0.3.x,R3.1,R3.1.1.x,R3.2,R4.0,contrail_dpdk_17_02,contrail_dpdk_1_7,contrail_dpdk_2_0,contrail_dpdk_2_1"
+  jenkins:
+    client:
+      view:
+        Opencontrail:
+          enabled: true
+          type: CategorizedJobsView
+          include_regex: "build-opencontrail-.*"
+          categories:
+            - group_regex: "build-opencontrail-dpdk-extra-.*"
+              naming_rule: "DPDK Extras"
+            - group_regex: "build-opencontrail-oc303-.*"
+              naming_rule: "R3.0.3.x"
+            - group_regex: "build-opencontrail-oc31-.*"
+              naming_rule: "R3.1"
+            - group_regex: "build-opencontrail-oc311-.*"
+              naming_rule: "R3.1.1.x"
+            - group_regex: "build-opencontrail-oc32-.*"
+              naming_rule: "R3.2"
+            - group_regex: "build-opencontrail-oc40-.*"
+              naming_rule: "R4.0"
+            - group_regex: "build-opencontrail-oc666-.*"
+              naming_rule: "oc-666"

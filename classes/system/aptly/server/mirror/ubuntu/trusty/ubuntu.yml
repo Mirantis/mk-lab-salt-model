@@ -1,0 +1,276 @@
+parameters:
+  _param:
+    linux_system_country_code: cz
+  aptly:
+    server:
+      mirror:
+        # trusty
+        trusty-main:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/trusty
+        trusty-multiverse:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/trusty
+        trusty-restricted:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/trusty
+        trusty-universe:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/trusty
+
+        # trusty-updates
+        trusty-updates-main:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-updates
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/trusty-updates
+        trusty-updates-multiverse:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-updates
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/trusty-updates
+        trusty-updates-restricted:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-updates
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/trusty-updates
+        trusty-updates-universe:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-updates
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/trusty-updates
+
+        #trusty-security:
+        trusty-security-main:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-security
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/trusty-security
+        trusty-security-multiverse:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-security
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/trusty-security
+        trusty-security-restricted:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-security
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/trusty-security
+        trusty-security-universe:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-security
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/trusty-security
+
+        #trusty-proposed:
+        trusty-proposed-main:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-proposed
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/trusty-proposed
+        trusty-proposed-multiverse:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-proposed
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/trusty-proposed
+        trusty-proposed-restricted:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-proposed
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/trusty-proposed
+        trusty-proposed-universe:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-proposed
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/trusty-proposed
+
+        #trusty-backports:
+        trusty-backports-main:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-backports
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: main
+            distributions:
+              - ubuntu/trusty-backports
+        trusty-backports-multiverse:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-backports
+          components: multiverse
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: multiverse
+            distributions:
+              - ubuntu/trusty-backports
+        trusty-backports-restricted:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-backports
+          components: restricted
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: restricted
+            distributions:
+              - ubuntu/trusty-backports
+        trusty-backports-universe:
+          source: http://${_param:linux_system_country_code}.archive.ubuntu.com/ubuntu/
+          distribution: trusty-backports
+          components: universe
+          architectures: amd64
+          gpgkeys:
+            - 40976EAF437D05B5
+            - 437D05B5
+            - C0B21F32
+          publisher:
+            component: universe
+            distributions:
+              - ubuntu/trusty-backports
+

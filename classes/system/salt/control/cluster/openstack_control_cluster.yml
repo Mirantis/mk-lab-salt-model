@@ -13,14 +13,17 @@ parameters:
           engine: virt
           node:
             ctl01:
-              provider: kvm01.${_param:cluster_domain}
+              name: ${_param:openstack_control_node01_hostname}
+              provider: ${_param:infra_kvm_node01_hostname}.${_param:cluster_domain}
               image: ${_param:salt_control_trusty_image}
               size: openstack.control
             ctl02:
-              provider: kvm02.${_param:cluster_domain}
+              name: ${_param:openstack_control_node02_hostname}
+              provider: ${_param:infra_kvm_node02_hostname}.${_param:cluster_domain}
               image: ${_param:salt_control_trusty_image}
               size: openstack.control
             ctl03:
-              provider: kvm03.${_param:cluster_domain}
+              name: ${_param:openstack_control_node03_hostname}
+              provider: ${_param:infra_kvm_node03_hostname}.${_param:cluster_domain}
               image: ${_param:salt_control_trusty_image}
               size: openstack.control

@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        maas-xenial:
+          source: http://ppa.launchpad.net/maas/stable/ubuntu
+          distribution: xenial
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 684D4A1C
+          publisher:
+            component: maas
+            distributions:
+              - xenial/nightly

@@ -1,0 +1,10 @@
+parameters:
+  linux:
+    system:
+      repo:
+        cloudarchive:
+          refresh_db: ${_param:linux_repo_refresh_db}
+          source: "deb [arch=amd64] http://${_param:local_repo_url}/${_param:linux_system_codename}/ nightly liberty"
+          architectures: amd64
+          default: true
+          key_url: "http://${_param:local_repo_url}/public.gpg"

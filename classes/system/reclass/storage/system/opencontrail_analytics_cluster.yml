@@ -1,9 +1,13 @@
 parameters:
+  _param:
+    opencontrail_analytics_node01_hostname: nal01
+    opencontrail_analytics_node02_hostname: nal02
+    opencontrail_analytics_node03_hostname: nal03
   reclass:
     storage:
       node:
         opencontrail_analytics_node01:
-          name: nal01
+          name: ${_param:opencontrail_analytics_node01_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.opencontrail.analytics
@@ -14,7 +18,7 @@ parameters:
             keepalived_vip_priority: 103
             opencontrail_database_id: 1
         opencontrail_analytics_node02:
-          name: nal02
+          name: ${_param:opencontrail_analytics_node02_hostname}
           domain: ${_param:cluster_domain}
           classes:  
           - cluster.${_param:cluster_name}.opencontrail.analytics
@@ -25,7 +29,7 @@ parameters:
             keepalived_vip_priority: 102
             opencontrail_database_id: 2
         opencontrail_analytics_node03:
-          name: nal03
+          name: ${_param:opencontrail_analytics_node03_hostname}
           domain: ${_param:cluster_domain}
           classes:
           - cluster.${_param:cluster_name}.opencontrail.analytics

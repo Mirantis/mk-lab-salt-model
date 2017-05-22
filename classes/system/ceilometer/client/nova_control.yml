@@ -1,0 +1,5 @@
+parameters:
+  nova:
+    controller:
+      notification:
+        driver: messagingv2

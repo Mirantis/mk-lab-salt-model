@@ -1,0 +1,19 @@
+parameters:
+  _param:
+    nginx_proxy_openstack_api_host: ${_param:cluster_public_host}
+  nginx:
+    server:
+      enabled: true
+      site:
+        nginx_proxy_openstack_api_murano:
+          enabled: true
+          type: nginx_proxy
+          name: openstack_api_murano
+          proxy:
+            host: ${_param:nginx_proxy_openstack_api_proxy_host}
+            port: 8082
+            protocol: http
+          host:
+            name: ${_param:nginx_proxy_openstack_api_host}
+            port: 8082
+          ssl: ${_param:nginx_proxy_ssl}

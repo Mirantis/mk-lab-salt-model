@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        dkostriukov:
+          enabled: true
+          name: dkostriukov
+          sudo: false
+          full_name: Denis Kostriukov
+          home: /home/dkostriukov
+          email: dkostryukov@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        dkostriukov:
+          enabled: true
+          public_keys: ${public_keys:dkostriukov}
+          user: ${linux:system:user:dkostriukov}
+  public_keys:
+    dkostriukov:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDFjDsPP7Y3cvYo6zI/IG3b9qvFK4b1ehoKk16VooobM9gsuD/goKo9sOVt8+kscxzXuynhwDfn9+7r9SAGnhZ2Bp39KjSPzR9LCk4fkByXlusZZLhHK3wVkjA2QOFqGvECTHZp79KBQWkU9VM3N7xNwEHbfz/5iZM7MK2VpsRG/JjJed8ckJQjL0n3gNKDkMvum0MyDz4/YIIlYy7mG2FV55j8HNJidzedlYATfd9j2OtL73lxN7H7gcf6acw76PXOyYU9V/zLd82AIVuR7LgntVt2GxNmaJzaV0ffaJgoTLqPm3KwsCrxlhgOIikARBt+Oc8O0dEucYsPU3dWXNJH
+

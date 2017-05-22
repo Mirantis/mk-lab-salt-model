@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        ashishkin:
+          enabled: true
+          name: ashishkin
+          sudo: false
+          full_name: Aleksei Shishkin
+          home: /home/ashishkin
+          email: ashishkin@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        ashishkin:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWlGbkhGN+DPrs3S/szWdwieH3Zu/E5bXnm8OCNSSS/xHbeSimqCIoAlZny58GYYabvsOmwh6qjiFmLmZq0MIlEc1RjMR95XLBWmhtpvYABRzMnUZUoFQ+cq1Lzo3ina4mLZAs2u27eEFmLLtV3sCcRAiDUnc6VoUne55NwjP4Ns+OL0Yin46Fr6SFxh6NUwi6woH58DWm1bfaisRyHzCBQJNmI3k0XKB9L9inpPMdmjzbdbitlrokHhDHE+ospLjZMBcV+8h1pK0yq/klT04ClJ58KXJeWJq2dz4nNyyVFNE2+DKwk18YUmtKLz/+BZxiaYY4Z5o6tXIttjfzf6Bn ashishkin@m83.local
+          user: ${linux:system:user:ashishkin}

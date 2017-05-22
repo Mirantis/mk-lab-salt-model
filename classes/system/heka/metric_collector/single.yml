@@ -12,7 +12,3 @@ parameters:
       influxdb_port: 8086
       influxdb_time_precision: ms
       influxdb_username: lma
-      nagios_host: ${_param:nagios_host}
-      nagios_username: ${_param:nagios_username}
-      nagios_password: ${_param:nagios_password}
-      nagios_port: ${_param:nagios_status_port}

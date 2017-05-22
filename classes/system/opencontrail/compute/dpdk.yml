@@ -1,0 +1,27 @@
+parameters:
+  _param:
+    contrail_compute_dpdk_enabled: True
+  nova:
+    compute:
+      libvirt_service: libvirt-bin
+  opencontrail:
+    compute:
+      dpdk:
+        enabled: ${_param:contrail_compute_dpdk_enabled}
+        taskset: "${_param:compute_vrouter_taskset}"
+        socket_mem: "${_param:compute_vrouter_socket_mem}"
+      interface:
+        mac_address: ${_param:compute_vrouter_dpdk_mac_address}
+        pci: ${_param:compute_vrouter_dpdk_pci}
+  linux:
+    system:
+      package:
+        liburcu4:
+          version: 0.9.1-3+tcp1
+    network:
+      interface:
+        vhost0:
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          post_up_cmds:
+          - ip link set vhost0 address ${_param:compute_vrouter_dpdk_mac_address}

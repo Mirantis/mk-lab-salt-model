@@ -1,0 +1,22 @@
+parameters:
+  linux:
+    system:
+      user:
+        aepifanov:
+          enabled: true
+          name: aepifanov
+          sudo: false
+          full_name: Andrey Epifanov
+          home: /home/aepifanov
+          email: aepifanov@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        aepifanov:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCkat3pSeBI83ZtYOJ6Pg5DKD97hMNvwJc8KAL7QPxYj/h8QaVs0EvRZnjXAmr8H7MBRoF6SZJjCPdKab7zDrlimc2Z6KmorBYjv2TMBLPq1xC4j3hEf7V6ATUTh19APKiaF8yUD/bVSB2Qpwg7P3buI/VgXinxZbFfOjllaqYyjqhnnTM842XmdyikvlJYhBNbOXPD/v1Rdw+b50Aa2CgRz6m8J+PjQfz2Rb8oZ4UUgXuDttp8oPcFpWEWJGmnJ3FeGpS8a6KGTO4DQZf+F0lO3A+y7121qbz9Uypxo6znbAHa77OiyzX625WwHeeH8HxF9ANLgKv9AlE2fAk6btS/ aepifanov@aepifanov-nb
+          user: ${linux:system:user:aepifanov}

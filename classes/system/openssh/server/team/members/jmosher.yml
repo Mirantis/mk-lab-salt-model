@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        jmosher:
+          enabled: true
+          name: jmosher
+          sudo: true
+          full_name: Jaymes Mosher
+          home: /home/jmosher
+          email: jmosher@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        jmosher:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQClNkHapODxW9iiYKG/anZO3+Ca01pXSAohWqB8fIxHJ3l2SPV6tHsHNAiUQNcG7i9hNHNOC7moa9fL6et+3rphxHfpHqxzTEwEOyzR6GiyWMNdkrXJApAiGNNoeMY1t2rxPhjQGLCqjNdGgSMcyb+/Rw5zRHRkJbRP6l0z2/VwAqhW31qEp/S6sPdZvuCgsKN2g2y2qHq7oMSh0WIcaJsDbOkcxzypOk+0J/Gu0RMu1JpjVSaWu996XB3LmdtP6ll9EAJ+OYcMbtT8/XWc4UGraka8BWbt20qS6Q6GxAkY+96Iir+NvS4KEzkaryFgct8+eN5soJeKf8eoN1ecPX99nvuyG08DsKdyowDzr8PDZrt7mRQd/k2nnPGo1oVJPtCKV/UeAEUJcwecq9GE7HmSQ6WyQ4cdIrBw/IWZI/pJ/H+9QnOKldJpUP0g3dru5TJFbR5iGrqdikXrMG/7w5+3H94ardCysEH2e7Nbhb4dHm3YM3h3HT7I9qpojvzlxe6OhO4xEX0KfjuVz/HaqD1tC+FaGL/JD2yLPpRTGykDjuUuEQdzvTUCg5tMmSGMB2LpwvWPVCpkr6jczzPCpeMQptXz8k/9ljKVKvAGBnFPQUTip3qHQpBpOTNvTHJNQEF9wsRIs36hxbZE6yY7H/mX0SDeOS+v4ub3PvugGzvglw==
+          user: ${linux:system:user:jmosher}

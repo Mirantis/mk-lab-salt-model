@@ -1,0 +1,26 @@
+parameters:
+  salt:
+    control:
+      size:
+        infra.idm:
+          cpu: 4
+          ram: 8192
+          disk_profile: large
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            idm01:
+              provider: ${_param:infra_kvm_node01_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_centos7_image}
+              size: infra.idm
+            idm02:
+              provider: ${_param:infra_kvm_node02_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_centos7_image}
+              size: infra.idm
+            idm03:
+              provider: ${_param:infra_kvm_node03_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_centos7_image}
+              size: infra.idm

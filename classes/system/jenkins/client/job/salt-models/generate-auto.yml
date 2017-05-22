@@ -1,0 +1,44 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        generate-salt-model-auto:
+          name: generate-salt-model-{{cookiecutter_template}}
+          param:
+            cookiecutter_template:
+            - separated-products-auto
+          template:
+            type: workflow-scm
+            concurrent: true
+            display_name: "Generate reclass cluster {{cookiecutter_template}} automatically"
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "jenkins-mk"
+              script: generate-cookiecutter-products-auto.groovy
+            param:
+              COOKIECUTTER_TEMPLATE_URL:
+                type: string
+                default: "git@github.com:Mirantis/mk2x-cookiecutter-reclass-model.git"
+              COOKIECUTTER_TEMPLATE_CREDENTIALS:
+                type: string
+                default: github-credentials
+              COOKIECUTTER_TEMPLATE_BRANCH:
+                type: string
+                default: master
+              COOKIECUTTER_TEMPLATE_PATH:
+                type: string
+                default: "./"
+              COOKIECUTTER_TEMPLATE_CONTEXT:
+                type: text
+              RECLASS_MODEL_URL:
+                type: string
+              RECLASS_MODEL_CREDENTIALS:
+                type: string
+                default: gerrit
+              RECLASS_MODEL_BRANCH:
+                type: string
+                default: master
+              EMAIL_ADDRESS:
+                type: string
+                default: ""

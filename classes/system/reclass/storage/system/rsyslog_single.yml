@@ -1,0 +1,15 @@
+parameters:
+  _param:
+    rsyslog_node01_hostname: rsl01
+  reclass:
+    storage:
+      node:
+        rsyslog_node01:
+          name: ${_param:rsyslog_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.infra.rsyslog
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:rsyslog_node01_address}

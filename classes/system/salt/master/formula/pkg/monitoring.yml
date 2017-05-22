@@ -1,0 +1,12 @@
+parameters:
+  salt:
+    master:
+      environment:
+        prd:
+          formula:
+            prometheus:
+              source: pkg
+              name: salt-formula-prometheus
+            telegraf:
+              source: pkg
+              name: salt-formula-telegraf

@@ -1,0 +1,19 @@
+parameters:
+  salt:
+    control:
+      size:
+        infra.proxy:
+          cpu: 32
+          ram: 65536
+          disk_profile: small
+          net_profile: default
+      cluster:
+        internal:
+          domain: ${_param:cluster_domain}
+          engine: virt
+          node:
+            prx01:
+              name: ${_param:openstack_proxy_node01_hostname}
+              provider: ${_param:infra_kvm_node01_hostname}.${_param:cluster_domain}
+              image: ${_param:salt_control_trusty_image}
+              size: infra.proxy

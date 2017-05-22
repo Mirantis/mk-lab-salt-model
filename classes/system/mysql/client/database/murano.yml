@@ -1,0 +1,17 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            murano:
+              encoding: utf8
+              users:
+              - name: murano
+                password: ${_param:mysql_murano_password}
+                host: '%'
+                rights: all
+              - name: murano
+                password: ${_param:mysql_murano_password}
+                host: ${_param:single_address}
+                rights: all

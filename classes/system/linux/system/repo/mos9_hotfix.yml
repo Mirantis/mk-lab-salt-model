@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    system:
+      repo:
+        mirantis_openstack_puppet_hotfix:
+          source: "deb http://mirror.fuel-infra.org/mos-repos/ubuntu/9.1-hotfix-puppet/ mos9.0 main restricted"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mos-repos/ubuntu/9.1-hotfix-puppet/archive-mos9.0.key"

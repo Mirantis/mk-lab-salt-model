@@ -1,0 +1,25 @@
+parameters:
+  gerrit:
+    client:
+      user:
+        akomarek:
+          fullname: Ales Komarek
+          email: "akomarek@mirantis.com"
+          ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3odU+3V2uDA2ptAFL9hrJRPNEEdAyztWOZFQ5Oyd9oerTGOU3p4xmrgWWjfKFKbYGhiiIUcYAol5PkTfKukGEkkjCHYA1t023soCaaAj85wCZCnw2zQNAziwxTYmAzTqgxiSvtZNMMrtJvFHRIRDzJ3M1lV0prWNWkMM1/3FAd4W49y6VT3fkMCo8uqG7CfGdgR2DgBCxf9KaNPfW5eDEPOgmE5lK8tVSEI6T+Cg7hbcTf4lFYnlFBnlQgp/0JstsM4Vbwb4B34LOpOsf2S8rrWk2xQMjwaMHXkc2s/E8iW3F5nVFuyEXYISFQIiAHw8dzC6CHgLcyHUVWwznKawZ
+          groups:
+          - devops-core
+          - devops-release
+        jpavlik:
+          fullname: Jakub Pavlik
+          email: "jpavlik@mirantis.com"
+          ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAylDZDzgMuEsJQpwFHDW+QivCVhryxXd1/HWqq1TVhJmT9oNAYdhUBnf/9kVtgmP0EWpDJtGSEaSugCmx8KE76I64RhpOTlm7wO0FFUVnzhFtTPx38WHfMjMdk1HF8twZU4svi72Xbg1KyBimwvaxTTd4zxq8Mskp3uwtkqPcQJDSQaZYv+wtuB6m6vHBCOTZwAognDGEvvCg0dgTU4hch1zoHSaxedS1UFHjUAM598iuI3+hMos/5hjG/vuay4cPLBJX5x1YF6blbFALwrQw8ZmTPaimqDUA9WD6KSmS1qg4rOkk4cszIfJ5vyymMrG+G3qk5LeT4VrgIgWQTAHyXw==
+          groups:
+          - devops-core
+          - devops-release
+        fpytloun:
+          fullname: Filip Pytloun
+          email: "fpytloun@mirantis.com"
+          ssh_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcuHTjJ3CoWdkmvtag07bIWeyAMqFLAN+QApat7TXUcDYmm/neK4Asg3m/UicofZnB80cI4tjnB84Z8WazLHMxVTLwHbEqTVbXVeKebiZ5yn0yo4ndRzmppUfSvs0xcMysBwu+hYAnIDXTedctbciMSYKbuQ+b9XZ4mFZ/2RHG4QBA/dPUxJdCwvkBu7AOV+6zaRSR99UETr5nxICQUGVJBTy6VkCsch4mK3/K2SrujODUhytcROg+6ejV/aZHWH9xIFRBLfhmSFeOC6oneBWo4QBQ2tTZgb7Go744JpkhkoMfWQnR2s6cCgUN60BJ6j5snqmbv9/2CmgbI4UprC+E6lL04K/Jbgjv+fi3KqnCIpRiQzahmjSeeYdPducWme3BVDceUSb5EzF/RjSDi4yHcTWJS0TcPf195p42O1G6tLw5zfmIu2+PWUq1L4pLualboUbaDtwqg0WaLWKONi9tJkOS1OMz4hxqEbWBAtFNJLHC5K+OXcV8Yt6C7iB2dEZ4c26MAi1pdMqhFjxYiCGYKZ4lyV9xo8tWcs5fiUIi2PKyLQ9SMRQbhXIcb9ENby2D/ijh5AVpbBew8iaUQQKg83Yo0z2PwTWyNFuXECAl667XaTNZEMVUjo5yU/OtktVZiH6ZfvEFwj+7OpLBiZ3sFgp/7EHcGXa0FL6BcXuwfQ==
+          groups:
+          - devops-core
+          - devops-release

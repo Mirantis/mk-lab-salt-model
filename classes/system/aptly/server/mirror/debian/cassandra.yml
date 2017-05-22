@@ -1,0 +1,18 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        cassandra-21x:
+          source: http://www.apache.org/dist/cassandra/debian
+          distribution: 21x
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - F758CE318D77295D
+            - 2B5C1B00
+            - 0353B12C
+          publisher:
+            component: extra
+            distributions:
+              - trusty/nightly
+              - xenial/nightly

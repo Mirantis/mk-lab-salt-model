@@ -1,0 +1,17 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            designate:
+              encoding: utf8
+              users:
+              - name: designate
+                password: ${_param:mysql_designate_password}
+                host: '%'
+                rights: all
+              - name: designate
+                password: ${_param:mysql_designate_password}
+                host: ${_param:single_address}
+                rights: all

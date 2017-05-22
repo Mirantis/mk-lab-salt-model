@@ -1,0 +1,15 @@
+parameters:
+  _param:
+    openstack_benchmark_node01_hostname: bmk01
+  reclass:
+    storage:
+      node:
+        openstack_benchmark_node01:
+          name: ${_param:openstack_benchmark_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.benchmark
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: xenial
+            single_address: ${_param:openstack_benchmark_node01_address}

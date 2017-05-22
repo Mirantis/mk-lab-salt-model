@@ -1,0 +1,58 @@
+parameters:
+  _param:
+    haproxy_gerrit_bind_host: ${_param:haproxy_bind_address}
+    haproxy_gerrit_bind_port: 8080
+    haproxy_gerrit_ssh_bind_host: ${_param:haproxy_gerrit_bind_host}
+    haproxy_gerrit_ssh_bind_port: 29418
+    haproxy_gerrit_ssl:
+      enabled: false
+  haproxy:
+    proxy:
+      listen:
+        gerrit:
+          mode: http
+          options:
+            - forwardfor
+            - httpchk
+            - httpclose
+            - httplog
+          balance: source
+          http_request:
+            - action: "add-header X-Forwarded-Proto https"
+              condition: "if { ssl_fc }"
+          binds:
+            - address: ${_param:haproxy_gerrit_bind_host}
+              port: ${_param:haproxy_gerrit_bind_port}
+              ssl: ${_param:haproxy_gerrit_ssl}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 18083
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 18083
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 18083
+              params: backup check
+        gerrit_ssh:
+          mode: tcp
+          balance: source
+          binds:
+            - address: ${_param:haproxy_gerrit_ssh_bind_host}
+              port: ${_param:haproxy_gerrit_ssh_bind_port}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 29417
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 29417
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 29417
+              params: backup check

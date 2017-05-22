@@ -1,0 +1,109 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+
+        #TOOD: 4x the lower below
+        #tcpcloud-[stable/testing]-xxx-[trusty/xenial]:
+        #
+        # Other components
+        # salt tcp-salt extra liberty mitaka oc30 security mitaka
+
+        tcpcloud-nightly-main-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+            #TODO: extra component might not be needed; tcp is just for heka
+          components: main security
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+            - 3EF02D1C
+          publisher:
+            component: tcp-main
+            distributions:
+              - ubuntu-trusty/nightly
+
+        tcpcloud-nightly-main-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+            #TODO: extra component might not be needed; tcp is just for heka
+          components: tcp
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+            - 3EF02D1C
+          publisher:
+            component: tcp
+            distributions:
+              - ubuntu-trusty/nightly
+
+        tcpcloud-nightly-extra-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+            #TODO: extra component might not be needed; tcp is just for heka
+          components: extra
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+            - 3EF02D1C
+          publisher:
+            component: tcp-extra
+            distributions:
+              - ubuntu-trusty/nightly
+
+        # required for alternative horizon plugins/etc..
+        tcpcloud-nightly-liberty-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+          components: liberty
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+            - 3EF02D1C
+          publisher:
+            component: tcp-liberty
+            distributions:
+              - ubuntu-trusty/nightly
+
+        # required for salt formulas
+        tcpcloud-nightly-salt-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+          components: tcp-salt
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+          - 3EF02D1C
+          publisher:
+            component: tcp-salt
+            distributions:
+              - ubuntu-trusty/nightly
+
+        # required for opencontrail formulas
+        tcpcloud-nightly-oc30-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+          components: oc30
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+            - 3EF02D1C
+          publisher:
+            component: tcp-oc30
+            distributions:
+              - ubuntu-trusty/nightly
+
+        # elastic, kibana is there
+        tcpcloud-nightly-elastic-trusty:
+          source: http://apt.tcpcloud.eu/nightly
+          distribution: trusty
+          components: elastic
+          architectures: amd64
+          key_url: "http://apt.tcpcloud.eu/public.gpg"
+          gpgkeys:
+            - 3EF02D1C
+          publisher:
+            component: tcp-elastic
+            distributions:
+              - ubuntu-trusty/nightly
+

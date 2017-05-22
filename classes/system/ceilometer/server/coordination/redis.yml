@@ -1,0 +1,7 @@
+classes:
+- service.redis.server.single
+parameters:
+  aodh:
+    server:
+      coordination_backend:
+        url:  redis://${_param:single_address}:6379/${_param:cluster_node01_address}

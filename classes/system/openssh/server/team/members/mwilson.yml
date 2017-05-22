@@ -1,0 +1,21 @@
+parameters:
+  linux:
+    system:
+      user:
+        mwilson:
+          enabled: true
+          name: mwilson
+          sudo: true
+          full_name: Mike Wilson
+          home: /home/mwilson
+          email: mwilson@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        mwilson:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA3ltgS2MbSWR6c/V60oEHtUnLQ3bm5sSqnjFEvL00Y/aVuNL6VCnPCrWXlYSbp6P70UYuD+ngD4x7aW8jg13ii9rw2RntlaPfmttIOb6REDFohOhC4T3BPdeCd5wVe9p/ioyiFCqNi6/m/RWL7Iv8IlR/2IetQHL14VWwTgGd62sqExdb6oZM3Yux/S4jSTcMYBzt49t+QKTLiYTvQJl7Tzv8RJNzAWMsgBwo9M1N73Zqa0hA46sGkbwmWXoBhnJwowGD38q54P+WaSrar/9FT7l+uCXMwbsyYDpoRJH8SQOOpKrymEeyKCjXQUVtLopmfZMZ6COBpLsTSq1BCytwQw== /home/mwilson/.ssh/id_rsa
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDV6H07IEV9merlHUFV8O/Y7sczYXNZjysTBg4TkUW3mWzvW0PJMKnP6Fc1XfFE53fR71N09gkmnVlEtbHa8PTXoS89JVuUHTnitAbDdINShm0pFNWsi/3f00nbfQ8hjaxEWeZ4VlwYzP4v5IPVtpDug+epK65clIG8Xfxlp+CcckyeDdBNSztHHDuQiholzmPicN6EFM6bVUqUZSGnmxiOCrYUOMXBbYChBc3otfeF6vO3WvnKF77nixgOGGmuS0+t96vPKLB3cl5GYpTFyOmrt3tu7JPlTsqwUa0yqDa3ny+5BToIpnROhAqTZV5fV3LHgtObcWYRGANdjVWyPiNOiywiDzsw7/xzuuqV2wLeLnFG1Z+G550F1Ed4lrsPYKc7+qxZYLquI0iJoIjg5WPzNw5QBLdb1srL9zo+0A91Asx8U95IjIMWumowWjDN3Mn0qJwxW5d8SUign3wksIu2FlkLCT4u95CEIebDVEhTQQR0AOP00/KLKtBDn9a5H0UnJZZSTG4+prU3CnqyXqyp6dano86fGEkkcP2PDi/SUwoxdBvMVbdZxYpPYm+8Oe0TjLWPlwu4kYCwVnl3EYgJZAHjT6wVHOjyXcJYezPvvXY8B/VR8UfupetHg5/mVjoQQy2+Nl34AaDN2TLQLXRuG+U+hZqV5Jzc3JO+KKfDUw== mwilson@mwilson-ThinkPad-W530
+          user: ${linux:system:user:mwilson}

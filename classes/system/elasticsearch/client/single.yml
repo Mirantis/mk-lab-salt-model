@@ -5,4 +5,4 @@ parameters:
     client:
       enabled: true
       server:
-        host: ${_param:stacklight_monitor_address}
+        host: ${_param:stacklight_log_address}

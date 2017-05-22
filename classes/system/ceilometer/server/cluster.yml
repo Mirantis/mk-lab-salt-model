@@ -1,18 +1,37 @@
 classes:
 - service.ceilometer.server.cluster
 - system.haproxy.proxy.listen.openstack.ceilometer
-- service.keepalived.cluster.single
+- system.keepalived.cluster.instance.openstack_telemetry_vip
+- service.haproxy.proxy.single
 parameters:
   ceilometer:
     server:
-      database:
-        influxdb:
-          host: ${_param:stacklight_monitor_node01_address}
-          port: 8086
-          user: ceilometer
-          password: ${_param:ceilometer_influxdb_password}
-          database: ceilometer
-        elasticsearch:
-          enabled: true
-          host: ${_param:stacklight_monitor_address}
-          port: 9200
+      enabled: true
+      version: ${_param:ceilometer_version}
+      region: ${_param:openstack_region}
+      cluster: true
+      secret: ${_param:ceilometer_secret_key}
+      ttl: 86400
+      publisher:
+        default:
+      bind:
+        host: ${_param:cluster_local_address}
+        port: 8777
+      identity:
+        engine: keystone
+        host: ${_param:openstack_control_address}
+        port: 35357
+        tenant: service
+        user: ceilometer
+        password: ${_param:keystone_ceilometer_password}
+      message_queue:
+        engine: rabbitmq
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        # Workaround for https://bugs.launchpad.net/ceilometer/+bug/1337715
+        rpc_thread_pool_size: 5

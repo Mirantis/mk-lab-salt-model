@@ -1,0 +1,451 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-debian-salt-formula:
+          name: build-debian-salt-formula-{{name}}-ubuntu-{{dist}}
+          jobs:
+            - name: aodh
+              dist: trusty
+            - name: apache
+              dist: trusty
+            - name: aptcacher
+              dist: trusty
+            - name: aptly
+              dist: trusty
+            - name: artifactory
+              dist: trusty
+            - name: avinetworks
+              dist: trusty
+            - name: backupninja
+              dist: trusty
+            - name: billometer
+              dist: trusty
+            - name: bind
+              dist: trusty
+            - name: bird
+              dist: trusty
+            - name: cadf
+              dist: trusty
+            - name: calico
+              dist: trusty
+            - name: cassandra
+              dist: trusty
+            - name: ccp
+              dist: trusty
+            - name: ceph
+              dist: trusty
+            - name: chrony
+              dist: trusty
+            - name: collectd
+              dist: trusty
+            - name: dekapod
+              dist: trusty
+            - name: designate
+              dist: trusty
+            - name: devops-portal
+              dist: trusty
+            - name: docker
+              dist: trusty
+            - name: dovecot
+              dist: trusty
+            - name: elasticsearch
+              dist: trusty
+            - name: etcd
+              dist: trusty
+            - name: foreman
+              dist: trusty
+            - name: freeipa
+              dist: trusty
+            - name: galera
+              dist: trusty
+            - name: gerrit
+              dist: trusty
+            - name: git
+              dist: trusty
+            - name: gitlab
+              dist: trusty
+            - name: glusterfs
+              dist: trusty
+            - name: grafana
+              dist: trusty
+            - name: graphite
+              dist: trusty
+            - name: haproxy
+              dist: trusty
+            - name: heka
+              dist: trusty
+            - name: influxdb
+              dist: trusty
+            - name: iptables
+              dist: trusty
+            - name: isc-dhcp
+              dist: trusty
+            - name: java
+              dist: trusty
+            - name: jenkins
+              dist: trusty
+            - name: kedb
+              dist: trusty
+            - name: keepalived
+              dist: trusty
+            - name: kibana
+              dist: trusty
+            - name: letsencrypt
+              dist: trusty
+            - name: libvirt
+              dist: trusty
+            - name: linux
+              dist: trusty
+            - name: lldp
+              dist: trusty
+            - name: logrotate
+              dist: trusty
+            - name: maas
+              dist: trusty
+            - name: magnum
+              dist: trusty
+            - name: memcached
+              dist: trusty
+            - name: midonet
+              dist: trusty
+            - name: monasca
+              dist: trusty
+            - name: mongodb
+              dist: trusty
+            - name: murano
+              dist: trusty
+            - name: mysql
+              dist: trusty
+            - name: nagios
+              dist: trusty
+            - name: network
+              dist: trusty
+            - name: nfs
+              dist: trusty
+            - name: nginx
+              dist: trusty
+            - name: nodejs
+              dist: trusty
+            - name: ntp
+              dist: trusty
+            - name: opencontrail
+              dist: trusty
+            - name: openldap
+              dist: trusty
+            - name: openssh
+              dist: trusty
+            - name: openvpn
+              dist: trusty
+            - name: openvstorage
+              dist: trusty
+            - name: owncloud
+              dist: trusty
+            - name: postfix
+              dist: trusty
+            - name: postgresql
+              dist: trusty
+            - name: pritunl
+              dist: trusty
+            - name: prometheus
+              dist: trusty
+            - name: python
+              dist: trusty
+            - name: rabbitmq
+              dist: trusty
+            - name: reclass
+              dist: trusty
+            - name: redis
+              dist: trusty
+            - name: roundcube
+              dist: trusty
+            - name: rsync
+              dist: trusty
+            - name: rsyslog
+              dist: trusty
+            - name: rundeck
+              dist: trusty
+            - name: sahara
+              dist: trusty
+            - name: salt
+              dist: trusty
+            - name: sensu
+              dist: trusty
+            - name: sentry
+              dist: trusty
+            - name: sphinx
+              dist: trusty
+            - name: spinnaker
+              dist: trusty
+            - name: statsd
+              dist: trusty
+            - name: supervisor
+              dist: trusty
+            - name: taiga
+              dist: trusty
+            - name: telegraf
+              dist: trusty
+            - name: tftpd-hpa
+              dist: trusty
+            - name: varnish
+              dist: trusty
+            - name: zookeeper
+              dist: trusty
+            - name: aodh
+              dist: xenial
+            - name: apache
+              dist: xenial
+            - name: aptcacher
+              dist: xenial
+            - name: aptly
+              dist: xenial
+            - name: artifactory
+              dist: xenial
+            - name: avinetworks
+              dist: xenial
+            - name: backupninja
+              dist: xenial
+            - name: billometer
+              dist: xenial
+            - name: bind
+              dist: xenial
+            - name: bird
+              dist: xenial
+            - name: cadf
+              dist: xenial
+            - name: calico
+              dist: xenial
+            - name: cassandra
+              dist: xenial
+            - name: ccp
+              dist: xenial
+            - name: ceph
+              dist: xenial
+            - name: chrony
+              dist: xenial
+            - name: collectd
+              dist: xenial
+            - name: dekapod
+              dist: xenial
+            - name: designate
+              dist: xenial
+            - name: devops-portal
+              dist: xenial
+            - name: docker
+              dist: xenial
+            - name: dovecot
+              dist: xenial
+            - name: elasticsearch
+              dist: xenial
+            - name: etcd
+              dist: xenial
+            - name: foreman
+              dist: xenial
+            - name: freeipa
+              dist: xenial
+            - name: galera
+              dist: xenial
+            - name: gerrit
+              dist: xenial
+            - name: git
+              dist: xenial
+            - name: gitlab
+              dist: xenial
+            - name: glusterfs
+              dist: xenial
+            - name: grafana
+              dist: xenial
+            - name: graphite
+              dist: xenial
+            - name: haproxy
+              dist: xenial
+            - name: heka
+              dist: xenial
+            - name: influxdb
+              dist: xenial
+            - name: iptables
+              dist: xenial
+            - name: isc-dhcp
+              dist: xenial
+            - name: java
+              dist: xenial
+            - name: jenkins
+              dist: xenial
+            - name: kedb
+              dist: xenial
+            - name: keepalived
+              dist: xenial
+            - name: kibana
+              dist: xenial
+            - name: letsencrypt
+              dist: xenial
+            - name: libvirt
+              dist: xenial
+            - name: linux
+              dist: xenial
+            - name: lldp
+              dist: xenial
+            - name: logrotate
+              dist: xenial
+            - name: maas
+              dist: xenial
+            - name: magnum
+              dist: xenial
+            - name: memcached
+              dist: xenial
+            - name: midonet
+              dist: xenial
+            - name: monasca
+              dist: xenial
+            - name: mongodb
+              dist: xenial
+            - name: murano
+              dist: xenial
+            - name: mysql
+              dist: xenial
+            - name: nagios
+              dist: xenial
+            - name: network
+              dist: xenial
+            - name: nfs
+              dist: xenial
+            - name: nginx
+              dist: xenial
+            - name: nodejs
+              dist: xenial
+            - name: ntp
+              dist: xenial
+            - name: opencontrail
+              dist: xenial
+            - name: openldap
+              dist: xenial
+            - name: openssh
+              dist: xenial
+            - name: openvpn
+              dist: xenial
+            - name: openvstorage
+              dist: xenial
+            - name: owncloud
+              dist: xenial
+            - name: postfix
+              dist: xenial
+            - name: postgresql
+              dist: xenial
+            - name: pritunl
+              dist: xenial
+            - name: prometheus
+              dist: xenial
+            - name: python
+              dist: xenial
+            - name: rabbitmq
+              dist: xenial
+            - name: reclass
+              dist: xenial
+            - name: redis
+              dist: xenial
+            - name: roundcube
+              dist: xenial
+            - name: rsync
+              dist: xenial
+            - name: rundeck
+              dist: xenial
+            - name: rsyslog
+              dist: xenial
+            - name: sahara
+              dist: xenial
+            - name: salt
+              dist: xenial
+            - name: sensu
+              dist: xenial
+            - name: sentry
+              dist: xenial
+            - name: sphinx
+              dist: xenial
+            - name: spinnaker
+              dist: xenial
+            - name: statsd
+              dist: xenial
+            - name: supervisor
+              dist: xenial
+            - name: taiga
+              dist: xenial
+            - name: telegraf
+              dist: xenial
+            - name: tftpd-hpa
+              dist: xenial
+            - name: varnish
+              dist: xenial
+            - name: zookeeper
+              dist: xenial
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-debian-packages-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  salt-formulas/{{name}}:
+                    branches:
+                      - master
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/salt-formulas/{{name}}.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "master"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              DEBIAN_SNAPSHOT:
+                type: boolean
+                default: 'true'
+              REVISION_POSTFIX:
+                type: string
+                default: '~{{dist}}1'
+              EXTRA_REPO_URL:
+                type: string
+                default: "deb ${_param:jenkins_aptly_url}/{{dist}}/ testing salt salt-latest"
+              EXTRA_REPO_KEY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_url}/public.gpg"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "ubuntu-{{dist}}-salt"
+              OS:
+                type: string
+                default: "ubuntu"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              PPA:
+                type: string
+                default: "salt-formulas/ppa"
+              UPLOAD_PPA:
+                type: boolean
+                default: 'true'
+              UPLOAD_APTLY:
+                type: boolean
+                default: 'true'

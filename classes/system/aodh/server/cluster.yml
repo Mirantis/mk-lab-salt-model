@@ -1,4 +1,40 @@
 classes:
 - service.aodh.server.cluster
 - system.haproxy.proxy.listen.openstack.aodh
-- service.keepalived.cluster.single
+parameters:
+  aodh:
+    server:
+      enabled: true
+      version: ${_param:aodh_version}
+      cluster: true
+      ttl: 86400
+      debug: false
+      verbose: true
+      region: ${_param:openstack_region}
+      database:
+        engine: "mysql+pymysql"
+        host: ${_param:openstack_database_address}
+        port: 3306
+        name: aodh
+        user: aodh
+        password: ${_param:mysql_aodh_password}
+      bind:
+        host: ${_param:cluster_local_address}
+        port: 8042
+      identity:
+        engine: keystone
+        host: ${_param:keystone_service_host}
+        port: 35357
+        tenant: service
+        user: aodh
+        password: ${_param:keystone_aodh_password}
+      message_queue:
+        engine: rabbitmq
+        port: 5672
+        user: openstack
+        password: ${_param:rabbitmq_openstack_password}
+        virtual_host: '/openstack'
+        members:
+          - host: ${_param:openstack_message_queue_node01_address}
+          - host: ${_param:openstack_message_queue_node02_address}
+          - host: ${_param:openstack_message_queue_node03_address}

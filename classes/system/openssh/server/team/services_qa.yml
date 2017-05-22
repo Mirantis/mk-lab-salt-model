@@ -1,0 +1,35 @@
+parameters:
+  linux:
+    system:
+      user:
+        npliashechnikov:
+          enabled: true
+          name: npliashechnikov
+          sudo: true
+          full_name: Nikolay Pliashechnykov
+          home: /home/npliashechnikov
+        mchernik:
+          enabled: true
+          name: mchernik
+          sudo: true
+          full_name: Mikhail Chernik
+          home: /home/mchernik
+  openssh:
+    server:
+      enabled: true
+      user:
+        npliashechnikov:
+          enabled: true
+          public_keys:
+          - ${public_keys:npliashechnikov}
+          user: ${linux:system:user:npliashechnikov}
+        mchernik:
+          enabled: true
+          public_keys:
+          - ${public_keys:mchernik}
+          user: ${linux:system:user:mchernik}
+  public_keys:
+    npliashechnikov:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAxy9ZNE+36U1W3vPxzMx++AujS8Ay9ZgJrfaa6YsWl1FeN87VuGucslHjLqFfiIYJLQl3m7tSLiAujQ/izBKDbfA5hd5z7JaCRB1LE+CehmCL0UVwsHflAi0tPn1tDrTcVGf/BRH0FsoZJo+KpOwohYGN8BMOpUIAP2SkGrE7cGbPrd9NbRqPW80iyIzsNIqzVKTcsh0CcJcr05V5n3or0GvteDMxl+mjAi6hpfx06a/bEfPLV10Ftl4+nIkbXr0KWA68uy7XmTlH+qgVUCMGwRP4mFaU63+uX45WboLKQ0aacPX833qvZJTIPe2FhAygoVoBwgOKBzrbnicBa9U+AQ== dkth1p3@lxf01p581
+    mchernik:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiYzcWNIP1K3DnSfztIZdMTl6zSr133eixsHDWWqI71Fj5UOny4kMH2P/qYk0WHhm7P9kwBNDgmJBY/eO5jb00D2w9BGHyvsOnkpAgzw5neL4ivRT7qLWkRdbcLo8AAFQN7VW+bgMb8gFfYWfttHyfkbJOQlU2xmi8fvhQ+2IM/12S0f0lP2uIYgVn8g9f+1OmtXKOWi/cKx0+6NYsuFjM2oVRlBhwlhPD2mI00rSL6zYjz/8GapPPkylQnds09NueNmrScjsPmJl6lPzU8maxHABZ/KctIZW/0ucMolv/3Ybm5FJIsj6YGUdz7AWzdE9o4tSfugFR3P7Ng/scxXpZ migel@mungo

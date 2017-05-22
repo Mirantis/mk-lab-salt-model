@@ -1,0 +1,85 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-debian-horizon-theme:
+          name: build-debian-horizon-theme-{{name}}-{{os_version}}-{{os}}-{{dist}}
+          jobs:
+            # Trusty
+            - name: horizon-mirantis-theme
+              os: ubuntu
+              dist: trusty
+              os_version: mitaka
+              branch: master
+            # Xenial
+            - name: horizon-mirantis-theme
+              os: ubuntu
+              dist: xenial
+              os_version: mitaka
+              branch: master
+          template:
+            discard:
+              build:
+                keep_num: 10
+              artifact:
+                keep_num: 10
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-debian-packages-pipeline.groovy
+            trigger:
+              gerrit:
+                project:
+                  horizon-themes/{{name}}:
+                    branches:
+                      - "{{branch}}"
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/horizon-themes/{{name}}.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              DEBIAN_SNAPSHOT:
+                type: boolean
+                default: 'true'
+              REVISION_POSTFIX:
+                type: string
+                default: '~{{os_version}}1{{dist}}1'
+              EXTRA_REPO_URL:
+                type: string
+                default: "deb ${_param:jenkins_aptly_url}/{{dist}}/ testing extra {{os_version}}"
+              EXTRA_REPO_KEY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_url}/public.gpg"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "{{os}}-{{dist}}-{{os_version}}"
+              OS:
+                type: string
+                default: "{{os}}"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              UPLOAD_APTLY:
+                type: boolean
+                default: 'true'

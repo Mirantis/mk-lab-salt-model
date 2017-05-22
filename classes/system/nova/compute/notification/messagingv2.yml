@@ -1,0 +1,8 @@
+parameters:
+  nova:
+    compute:
+      notification:
+        driver: messagingv2
+        topics: "${_param:openstack_notification_topics}"
+        notify_on:
+          state_change: vm_and_task_state

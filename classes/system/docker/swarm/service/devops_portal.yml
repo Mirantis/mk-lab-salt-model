@@ -1,0 +1,23 @@
+parameters:
+  _param:
+    docker_devops_portal_replicas: 1
+    docker_image_devops_portal: docker-sandbox.sandbox.mirantis.net/ikharin/oss/devops-portal:latest
+  docker:
+    client:
+      service:
+        devops-portal:
+          replicas: ${_param:docker_devops_portal_replicas}
+          image: ${_param:docker_image_devops_portal}
+          restart:
+            condition: any
+          ports:
+            - 18800:8000
+          volume:
+            nginx:
+              type: bind
+              source: /srv/volumes/devops_portal/nginx/
+              destination: /etc/nginx/config
+            config:
+              type: bind
+              source: /srv/volumes/devops_portal/config/
+              destination: /opt/devops-portal/config

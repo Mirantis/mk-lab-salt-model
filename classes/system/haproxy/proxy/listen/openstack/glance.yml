@@ -1,0 +1,42 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        glance_api:
+          type: openstack-service
+          service_name: glance
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9292
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 9292
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 9292
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 9292
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+        glance_registry_api:
+          type: general-service
+          service_name: glance
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 9191
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 9191
+            params: check
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 9191
+            params: check
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 9191
+            params: check

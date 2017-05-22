@@ -1,0 +1,12 @@
+parameters:
+  _param:
+    haproxy_stats_port: 9600
+  haproxy:
+    proxy:
+      listen:
+        stats:
+          type: stats
+          check: false
+          binds:
+            - address: ${_param:haproxy_bind_address}
+              port: ${_param:haproxy_stats_port}

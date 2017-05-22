@@ -1,0 +1,25 @@
+classes:
+  - system.jenkins.client.job.git-mirrors.upstream
+parameters:
+  _param:
+    jenkins_git_mirror_upstream_jobs:
+      - name: docker-aptly
+        downstream: mk/docker-aptly
+        upstream: "git@github.com:tcpcloud/docker-aptly"
+        branches: master
+      - name: docker-gerrit
+        downstream: mk/docker-gerrit
+        upstream: "git@github.com:Mirantis/docker-gerrit"
+        branches: 2.12.3,2.12.6,2.12.7,2.13.6,admin,master
+      - name: docker-jenkins
+        downstream: mk/docker-jenkins
+        upstream: "git@github.com:Mirantis/docker-jenkins"
+        branches: 2.32.3,2.52,2.7.2,master
+      - name: docker-phpldapadmin
+        downstream: mk/docker-phpldapadmin
+        upstream: "git@github.com:Mirantis/docker-phpldapadmin"
+        branches: stable,master
+      - name: docker-openldap
+        downstream: mk/docker-openldap
+        upstream: "git@github.com:Mirantis/docker-openldap"
+        branches: stable,master

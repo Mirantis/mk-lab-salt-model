@@ -1,0 +1,11 @@
+parameters:
+  linux:
+    system:
+      package:
+        contrail-heat:
+          version: latest
+  heat:
+    server:
+      dir:
+        plugins:
+        - /usr/lib/python2.7/dist-packages/vnc_api/gen/heat/resources

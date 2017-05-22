@@ -7,9 +7,18 @@ parameters:
             aodh:
               source: pkg
               name: salt-formula-aodh
+            #avinetworks:
+            #  source: pkg
+            #  name: salt-formula-avinetworks
+            billometer:
+              source: pkg
+              name: salt-formula-billometer
             ceilometer:
               source: pkg
               name: salt-formula-ceilometer
+            ceph:
+              source: pkg
+              name: salt-formula-ceph
             cinder:
               source: pkg
               name: salt-formula-cinder
@@ -22,6 +31,9 @@ parameters:
             glusterfs:
               source: pkg
               name: salt-formula-glusterfs
+            designate:
+              source: pkg
+              name: salt-formula-designate
             haproxy:
               source: pkg
               name: salt-formula-haproxy
@@ -46,6 +58,9 @@ parameters:
             mysql:
               source: pkg
               name: salt-formula-mysql
+            murano:
+              source: pkg
+              name: salt-formula-murano
             neutron:
               source: pkg
               name: salt-formula-neutron
@@ -64,6 +79,12 @@ parameters:
             rabbitmq:
               source: pkg
               name: salt-formula-rabbitmq
+            sahara:
+              source: pkg
+              name: salt-formula-sahara
+            statsd:
+              source: pkg
+              name: salt-formula-statsd
             supervisor:
               source: pkg
               name: salt-formula-supervisor

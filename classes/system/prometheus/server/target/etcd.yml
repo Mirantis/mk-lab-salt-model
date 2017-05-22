@@ -1,0 +1,13 @@
+parameters:
+  prometheus:
+    server:
+      target:
+        static:
+          etcd:
+            enabled: true
+            scheme: https
+            tls_config:
+              skip_verify: true
+              ssl_dir: /opt/prometheus/config
+              cert_name: prometheus-server.crt
+              key_name: prometheus-server.key

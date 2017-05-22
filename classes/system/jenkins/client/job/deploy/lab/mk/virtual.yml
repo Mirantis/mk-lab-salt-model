@@ -1,0 +1,94 @@
+classes:
+  - system.jenkins.client.job.deploy.lab.mk
+parameters:
+  _param:
+    jenkins_deploy_lab_mk_jobs:
+      # mk20
+      - lab: virtual_mk20_advanced
+        install: core,openstack
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      - lab: virtual_mk20_basic
+        install: core,openstack
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      # mk22
+      - lab: virtual_mk22_advanced
+        install: core,openstack
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      - lab: virtual_mk22_basic
+        install: core,openstack
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      # mcp05
+      - lab: virtual_mcp05_dvr
+        install: core,openstack,dvr
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      - lab: virtual_mcp05_ovs
+        install: core,openstack,ovs
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      # mcp10
+      - lab: virtual_mcp10_contrail
+        install: core,openstack,contrail
+        stack_type: heat
+        test: openstack
+        timer: "H H(0-6) * * *"
+        extra_formulas: ""
+      - lab: virtual_mcp10_dvr
+        install: core,openstack,dvr
+        stack_type: heat
+        test: openstack
+        timer: "H H(0-6) * * *"
+        extra_formulas: ""
+      - lab: virtual_mcp10_ovs
+        install: core,openstack,ovs
+        stack_type: heat
+        test: openstack
+        timer: "H H(0-6) * * *"
+        extra_formulas: ""
+      # mcp11
+      - lab: virtual_mcp11_contrail
+        install: core,openstack,contrail
+        stack_type: heat
+        test: openstack
+        extra_formulas: ""
+        timer: ""
+      - lab: virtual_mcp11_dvr
+        install: core,openstack,dvr
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      - lab: virtual_mcp11_ovs
+        install: core,openstack,ovs
+        stack_type: heat
+        test: openstack
+        timer: ""
+        extra_formulas: ""
+      - lab: virtual_mcp11_k8s_calico
+        install: core,k8s,calico
+        stack_type: heat
+        test: k8s
+        timer: "H H(0-6) * * *"
+        extra_formulas: ""
+      - lab: virtual_mcp11_k8s_contrail
+        install: core,k8s,contrail
+        stack_type: heat
+        test: k8s
+        timer: "H H(0-6) * * *"
+        extra_formulas: ""

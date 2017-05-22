@@ -1,0 +1,31 @@
+parameters:
+  _param:
+    cluster_public_protocol: https
+  keystone:
+    client:
+      server:
+        identity:
+          project:
+            service:
+              user:
+                swift:
+                  is_admin: true
+                  password: ${_param:keystone_swift_password}
+                  email: ${_param:admin_email}
+          service:
+            swift-s3:
+              type: object-store
+              description: S3 Service (swift)
+              region: ${_param:openstack_region}
+              endpoints:
+                - region: ${_param:openstack_region}
+                  public_address: ${_param:cluster_public_host}
+                  public_protocol: ${_param:cluster_public_protocol}
+                  public_port: 8080
+                  public_path: '/v1/AUTH_%(project_id)s'
+                  internal_address: ${_param:swift_service_host}
+                  internal_port: 8080
+                  internal_path: '/v1/AUTH_%(project_id)s'
+                  admin_address: ${_param:swift_service_host}
+                  admin_port: 8080
+                  admin_path: '/'

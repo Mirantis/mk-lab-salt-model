@@ -1,0 +1,30 @@
+parameters:
+  _param:
+    haproxy_phpldapadmin_bind_host: ${_param:haproxy_bind_address}
+    haproxy_phpldapadmin_bind_port: 8089
+  haproxy:
+    proxy:
+      listen:
+        phpldapadmin:
+          mode: http
+          options:
+            - forwardfor
+            - httpclose
+            - httplog
+          balance: source
+          binds:
+            - address: ${_param:haproxy_phpldapadmin_bind_host}
+              port: ${_param:haproxy_phpldapadmin_bind_port}
+          servers:
+            - name: ${_param:cluster_node01_name}
+              host: ${_param:cluster_node01_address}
+              port: 18089
+              params: check
+            - name: ${_param:cluster_node02_name}
+              host: ${_param:cluster_node02_address}
+              port: 18089
+              params: backup check
+            - name: ${_param:cluster_node03_name}
+              host: ${_param:cluster_node03_address}
+              port: 18089
+              params: backup check

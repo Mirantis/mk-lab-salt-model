@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        mroark:
+          enabled: true
+          name: mroark
+          sudo: false
+          full_name: Matthew Roark
+          home: /home/mroark
+          email: mroark@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        mroark:
+          enabled: true
+          public_keys: ${public_keys:mroark}
+          user: ${linux:system:user:mroark}
+  public_keys:
+    mroark:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwCoVNR4+UdV2GQDUHYxy34cNFr/mdcHn0LjEzoJfm/qqFzRFOw7KUvBiDgW1J6TKTOu74gZADlwem5hDHlW+Z60CiSCx1xdOxtmMI8667mrtnD8m3LRWVDAoJzGpP8e2qiq7sBA+U973pQH3+5x3aHJXWoA/zDZzCdsweWIDhHiMbs24/flzXsnpS9BRmbyRoh+wrnM7h+iGRCzDuOZYJkcABvXy9Hs9ZZhDL16mqDJv8WdEF28/aUvVE62AJHLQuSy4mvDL+57XkFlSyMbK1jCJaRzU1B/4TBOtsBCbVNP0VonZEh0vK3d1fu83MwYhAvv+tf+cVvZ6Xn+VXpWcn
+

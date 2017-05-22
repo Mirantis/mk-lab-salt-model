@@ -1,0 +1,9 @@
+classes:
+- service.kubernetes.pool.single
+- service.docker.host
+parameters:
+  kubernetes:
+    pool:
+      container: false
+      network:
+        engine: calico

@@ -1,0 +1,10 @@
+parameters:
+  mongodb:
+    server:
+      database:
+        ceilometer:
+          enabled: true
+          password: ${_param:mongodb_ceilometer_password}
+          users:
+          - name: ceilometer
+            password: ${_param:mongodb_ceilometer_password}

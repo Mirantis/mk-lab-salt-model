@@ -1,0 +1,23 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            ceilometer_upgrade:
+              encoding: utf8
+              users:
+              - name: ceilometer
+                password: ${_param:mysql_ceilometer_password}
+                host: '%'
+                rights: all
+              - name: ceilometer
+                password: ${_param:mysql_ceilometer_password}
+                host: ${_param:single_address}
+                rights: all
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: ceilometer
+

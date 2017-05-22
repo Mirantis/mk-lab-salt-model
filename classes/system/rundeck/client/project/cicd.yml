@@ -1,0 +1,22 @@
+parameters:
+  rundeck:
+    client:
+      project:
+        cicd:
+          description: "CI/CD Runbooks"
+          node:
+            node01:
+              nodename: ${_param:cluster_node01_name}.${_param:cluster_domain}
+              hostname: ${_param:cluster_node01_address}
+              username: ${_param:rundeck_runbook_user}
+              tags: [cicd, docker]
+            node02:
+              nodename: ${_param:cluster_node02_name}.${_param:cluster_domain}
+              hostname: ${_param:cluster_node02_address}
+              username: ${_param:rundeck_runbook_user}
+              tags: [cicd, docker]
+            node03:
+              nodename: ${_param:cluster_node03_name}.${_param:cluster_domain}
+              hostname: ${_param:cluster_node03_address}
+              username: ${_param:rundeck_runbook_user}
+              tags: [cicd, docker]

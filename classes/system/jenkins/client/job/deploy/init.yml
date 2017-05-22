@@ -1,0 +1,21 @@
+classes:
+  - system.jenkins.client.job.deploy.lab
+  - system.jenkins.client.job.deploy.update
+  - system.jenkins.client.job.deploy.openstack
+parameters:
+  jenkins:
+    client:
+      view:
+        Deploy:
+          enabled: true
+          type: CategorizedJobsView
+          include_regex: "deploy-.*"
+          categories:
+            - group_regex: "deploy-(heat|physical)-"
+              naming_rule: ""
+            - group_regex: "deploy-update-*"
+              naming_rule: "support"
+            - group_regex: "(mcp)[0-9]+"
+              naming_rule: ""
+            - group_regex: "(mk)[0-9]+"
+              naming_rule: ""

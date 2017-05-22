@@ -1,9 +1,14 @@
 classes:
 - system.salt.master.single
+- system.salt.master.formula.git.ccp
+- system.salt.master.formula.git.foundation
+- system.salt.master.formula.git.kubernetes
 - system.salt.master.formula.git.openstack
+- system.salt.master.formula.git.oss
 - system.salt.master.formula.git.saltstack
 - system.salt.master.formula.git.stacklight
+- system.salt.master.formula.git.monitoring
 parameters:
   _param:
-    salt_master_environment_repository: "https://github.com/tcpcloud"
+    salt_master_environment_repository: "https://github.com/salt-formulas"
     salt_master_environment_revision: master

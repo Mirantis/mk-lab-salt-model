@@ -1,0 +1,17 @@
+classes:
+  - system.jenkins.client.job.salt-formulas.git-mirrors
+  - system.jenkins.client.job.salt-formulas.tests
+  - system.jenkins.client.job.salt-formulas.release
+parameters:
+  jenkins:
+    client:
+      view:
+        "Salt formulas":
+          enabled: true
+          type: CategorizedJobsView
+          include_regex: "build-debian-salt-formula-.*"
+          categories:
+            - group_regex: ".*-ubuntu-trusty"
+              naming_rule: "Ubuntu Trusty"
+            - group_regex: ".*-ubuntu-xenial"
+              naming_rule: "Ubuntu Xenial"

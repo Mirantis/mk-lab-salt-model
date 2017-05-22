@@ -1,0 +1,15 @@
+classes:
+  - system.jenkins.client.job.debian.packages
+parameters:
+  jenkins:
+    client:
+      view:
+        Debian:
+          enabled: true
+          type: CategorizedJobsView
+          include_regex: "build-debian-(?!salt-formula-).*"
+          categories:
+            - group_regex: ".*-ubuntu-trusty"
+              naming_rule: "Ubuntu Trusty"
+            - group_regex: ".*-ubuntu-xenial"
+              naming_rule: "Ubuntu Xenial"

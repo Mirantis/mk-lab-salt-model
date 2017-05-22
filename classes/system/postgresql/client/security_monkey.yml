@@ -1,0 +1,32 @@
+parameters:
+  _param:
+    secmonkey_db_host: ${_param:haproxy_postgresql_bind_host}
+    secmonkey_db_port: ${_param:haproxy_postgresql_bind_port}
+    secmonkey_db_user: secmonkey
+    secmonkey_db_user_password: secmonkey
+  postgresql:
+    client:
+      server:
+        server01:
+          admin:
+            host: ${_param:secmonkey_db_host}
+            port: ${_param:secmonkey_db_port}
+            user: ${_param:postgresql_admin_user}
+            password: ${_param:postgresql_admin_user_password}
+          database:
+            secmonkey:
+              enabled: true
+              encoding: 'UTF8'
+              locale: 'en_US'
+              users:
+              - name: ${_param:secmonkey_db_user}
+                password: ${_param:secmonkey_db_user_password}
+                host: ${_param:secmonkey_db_host}
+                createdb: true
+                rights: all privileges
+              init:
+                maintenance_db: pushkin
+                force: true
+                queries:
+                - INSERT INTO login VALUES (11, 1) ON CONFLICT (id) DO UPDATE SET id = excluded.id;
+                - INSERT INTO device VALUES (1, 11, 42, 'security_audit_service', NULL, 1, NULL) ON CONFLICT (id) DO UPDATE SET id = excluded.id;

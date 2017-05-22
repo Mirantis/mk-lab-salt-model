@@ -1,0 +1,8 @@
+parameters:
+  nova:
+    compute:
+      vcpu_pin_set: ${_param:nova_cpu_pinning}
+  linux:
+    system:
+      kernel:
+        isolcpu: ${_param:compute_kernel_isolcpu}

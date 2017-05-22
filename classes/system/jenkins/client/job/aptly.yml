@@ -1,0 +1,91 @@
+parameters:
+  jenkins:
+    client:
+      view:
+        Aptly:
+          enabled: true
+          type: CategorizedJobsView
+          include_regex: "aptly-.*"
+          categories:
+            - group_regex: "aptly-.*-nightly-testing"
+              naming_rule: "Nightly -> Testing"
+            - group_regex: "aptly-.*-testing-stable"
+              naming_rule: "Testing -> Stable"
+      job_template:
+        aptly:
+          name: aptly-{{operation}}-{{dist}}-{{source}}-{{target}}
+          jobs:
+            - operation: promote
+              diff_only: false
+              dist: trusty
+              source: nightly
+              target: testing
+            - operation: promote
+              dist: trusty
+              source: testing
+              target: stable
+            - operation: promote
+              dist: xenial
+              source: nightly
+              target: testing
+            - operation: promote
+              dist: xenial
+              source: testing
+              target: stable
+            - operation: diff
+              diff_only: true
+              dist: trusty
+              source: nightly
+              target: testing
+            - operation: diff
+              diff_only: true
+              dist: trusty
+              source: testing
+              target: stable
+            - operation: diff
+              diff_only: true
+              dist: xenial
+              source: nightly
+              target: testing
+            - operation: diff
+              diff_only: true
+              dist: xenial
+              source: testing
+              target: stable
+          template:
+            discard:
+              build:
+                keep_num: 25
+              artifact:
+                keep_num: 25
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: aptly-promote-pipeline.groovy
+            param:
+              SOURCE:
+                type: string
+                default: "{{dist}}/{{source}}"
+              TARGET:
+                type: string
+                default: "{{dist}}/{{target}}"
+              RECREATE:
+                type: boolean
+                default: 'false'
+              DIFF_ONLY:
+                type: boolean
+                default: '{{diff_only}}'
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              COMPONENTS:
+                type: string
+                default: "all"
+                description: "Comma separated list (,)"
+              PACKAGES:
+                type: string
+                default: "all"
+                description: "Comma separated list (,)"

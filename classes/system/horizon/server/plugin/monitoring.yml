@@ -1,0 +1,9 @@
+parameters:
+  horizon:
+    server:
+      plugin:
+        monitoring:
+          app: horizon_monitoring          
+          source:
+            engine: pkg
+            name: openstack-dashboard-sensu

@@ -1,0 +1,187 @@
+parameters:
+  _param:
+    jenkins_contrail_pipeline: "${_param:jenkins_gerrit_url}/contrail/contrail-pipeline"
+  jenkins:
+    client:
+      job_template:
+        build-opencontrail:
+          name: build-opencontrail-{{buildname}}-{{os}}-{{dist}}
+          jobs:
+            - buildname: oc303
+              os: ubuntu
+              dist: trusty
+              branch: R3.0.3.x
+              ppa: mirantis-opencontrail/opencontrail-3.0.3
+              upload_source_package: false
+            - buildname: oc31
+              os: ubuntu
+              dist: trusty
+              branch: R3.1
+              ppa: mirantis-opencontrail/opencontrail-3.1
+              upload_source_package: true
+            - buildname: oc31
+              os: ubuntu
+              dist: xenial
+              branch: R3.1
+              ppa: mirantis-opencontrail/opencontrail-3.1
+              upload_source_package: true
+            - buildname: oc311
+              os: ubuntu
+              dist: trusty
+              branch: R3.1.1.x
+              ppa: mirantis-opencontrail/opencontrail-3.1.1
+              upload_source_package: true
+            - buildname: oc311
+              os: ubuntu
+              dist: xenial
+              branch: R3.1.1.x
+              ppa: mirantis-opencontrail/opencontrail-3.1.1
+              upload_source_package: true
+            - buildname: oc32
+              os: ubuntu
+              dist: trusty
+              branch: R3.2
+              ppa: mirantis-opencontrail/opencontrail-3.2
+              upload_source_package: true
+            - buildname: oc32
+              os: ubuntu
+              dist: xenial
+              branch: R3.2
+              ppa: mirantis-opencontrail/opencontrail-3.2
+              upload_source_package: true
+            - buildname: oc40
+              os: ubuntu
+              dist: trusty
+              branch: R4.0
+              ppa: mirantis-opencontrail/opencontrail-4.0
+              upload_source_package: false
+            - buildname: oc40
+              os: ubuntu
+              dist: xenial
+              branch: R4.0
+              ppa: mirantis-opencontrail/opencontrail-4.0
+              upload_source_package: false
+            - buildname: oc666
+              os: ubuntu
+              dist: trusty
+              branch: master
+              ppa: mirantis-opencontrail/opencontrail-master
+              upload_source_package: false
+            - buildname: oc666
+              os: ubuntu
+              dist: xenial
+              branch: master
+              ppa: mirantis-opencontrail/opencontrail-master
+              upload_source_package: false
+          template:
+            discard:
+             build:
+               keep_num: 5
+             artifact:
+               keep_num: 5
+            type: workflow-scm
+            concurrent: true
+            quiet_period: 120
+            scm:
+              type: git
+              url: "${_param:jenkins_contrail_pipeline}"
+              credentials: "gerrit"
+              github:
+                url: https://github.com/Mirantis/ccp-contrail-pipeline
+            param:
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "{{os}}-{{dist}}-{{buildname}}"
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/contrail"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              KEEP_REPOS:
+                type: boolean
+                default: 'false'
+                description: "Don't cleanup on failure"
+              DEBUG_DPDK:
+                type: boolean
+                default: 'false'
+                description: "CONFIG_RTE_LIBRTE_ETHDEV_DEBUG enabled or disabled"
+              OS:
+                type: string
+                default: "{{os}}"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              PPA:
+                type: string
+                default: "{{ppa}}"
+              UPLOAD_SOURCE_PACKAGE:
+                type: boolean
+                default: '{{upload_source_package}}'
+            trigger:
+              gerrit:
+                project:
+                   contrail/contrail-pipeline:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-build:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-controller:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-vrouter:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-third-party:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-generateDS:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-sandesh:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-packages:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-nova-vif-driver:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-neutron-plugin:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-nova-extensions:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-heat:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-web-storage:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-web-server-manager:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-web-controller:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-web-core:
+                     branches:
+                       - "{{branch}}"
+                   contrail/contrail-webui-third-party:
+                     branches:
+                       - "{{branch}}"
+                event:
+                  comment:
+                    - addedContains:
+                        commentAddedCommentContains: '(buildpackage)'

@@ -1,0 +1,54 @@
+parameters:
+  _param:
+    apt_mk_version: stable
+  linux:
+    system:
+      repo:
+        mirantis_openstack:
+          source: "deb http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename} ${_param:openstack_version} main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename}/archive-mcp${_param:openstack_version}.key"
+          pin:
+          - pin: 'release a=${_param:openstack_version}'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_hotfix:
+          source: "deb http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename} ${_param:openstack_version}-hotfix main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename}/archive-mcp${_param:openstack_version}.key"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-hotfix'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_security:
+          source: "deb http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename} ${_param:openstack_version}-security main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename}/archive-mcp${_param:openstack_version}.key"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-security'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_updates:
+          source: "deb http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename} ${_param:openstack_version}-updates main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename}/archive-mcp${_param:openstack_version}.key"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-uptades'
+            priority: 1100
+            package: '*'
+        mirantis_openstack_holdback:
+          source: "deb http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename} ${_param:openstack_version}-holdback main"
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/${_param:openstack_version}/${_param:linux_system_codename}/archive-mcp${_param:openstack_version}.key"
+          pin:
+          - pin: 'release a=${_param:openstack_version}-holdback'
+            priority: 1100
+            package: '*'
+        mk_openstack:
+          source: "deb [arch=amd64] http://apt-mk.mirantis.com/${_param:linux_system_codename}/ ${_param:apt_mk_version} ${_param:openstack_version}"
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          pin:
+          - pin: 'release a=${_param:apt_mk_version}'
+            priority: 1100
+            package: '*'

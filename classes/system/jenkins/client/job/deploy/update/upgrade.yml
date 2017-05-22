@@ -1,0 +1,37 @@
+#
+# Jobs to update packages on given Salt master environment
+#
+parameters:
+  _param:
+    jenkins_salt_api_url: "http://${_param:salt_master_host}:6969"
+  jenkins:
+    client:
+      job:
+        deploy-upgrade-control:
+          type: workflow-scm
+          concurrent: true
+          display_name: "Deploy - upgrade control VMs"
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: openstack-control-upgrade.groovy
+          param:
+            SALT_MASTER_URL:
+              type: string
+              default: "${_param:jenkins_salt_api_url}"
+            SALT_MASTER_CREDENTIALS:
+              type: string
+              default: "salt"
+            STAGE_TEST_UPGRADE:
+              type: boolean
+              default: 'true'
+              description: "Test if syncdb and APIs succeed"
+            STAGE_REAL_UPGRADE:
+              type: boolean
+              default: 'true'
+              description: "Run real control upgrade"
+            STAGE_ROLLBACK_UPGRADE:
+              type: boolean
+              default: 'true'
+              description: "Rollback if control upgrade fails"

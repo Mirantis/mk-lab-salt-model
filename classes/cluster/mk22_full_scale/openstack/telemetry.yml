@@ -1,8 +1,0 @@
-classes:
-- system.linux.system.repo.mos9
-- cluster.mk22_scale_mirantis
-parameters:
-  linux:
-    network:
-      interface:
-        eth1: ${_param:linux_single_interface}

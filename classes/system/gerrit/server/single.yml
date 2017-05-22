@@ -1,0 +1,61 @@
+classes:
+- service.git.client
+- service.gerrit.server.single
+- service.java.environment
+- service.postgresql.server.local
+parameters:
+  _param:
+    java_environment_platform: openjdk
+    java_environment_version: "8"
+    gerrit_auth_type: HTTP
+    gerrit_server_url: http://${linux:network:fqdn}:8083/
+  gerrit:
+    server:
+      canonical_web_url: ${_param:gerrit_server_url}
+      email_private_key: ""
+      token_private_key: ""
+      admin:
+        name: admin
+        password: ${_param:gerrit_admin_password}
+        public_key: ${_param:gerrit_admin_public_key}
+      plugin:
+        download-commands:
+          engine: gerrit
+#        replication:
+#          engine: gerrit
+        reviewnotes:
+          engine: gerrit
+        singleusergroup:
+          engine: gerrit
+      ssh_rsa_key: ${_param:gerrit_admin_private_key}
+      ssh_rsa_key_pub: ${_param:gerrit_admin_public_key}
+      email: mail@domain.com
+      auth:
+        engine: ${_param:gerrit_auth_type}
+      source:
+        engine: http
+        address: https://gerrit-releases.storage.googleapis.com/gerrit-2.12.4.war
+        hash: sha256=45786a920a929c6258de6461bcf03ddec8925577bd485905f102ceb6e5e1e47c
+#        address: https://gerrit-ci.gerritforge.com/job/Gerrit-stable-2.13/20/artifact/buck-out/gen/gerrit.war
+#        hash: md5=2e17064b8742c4622815593ec496c571
+      database:
+        engine: postgresql
+        host: localhost
+        port: 5432
+        name: gerrit
+        user: gerrit
+        password: ${_param:postgresql_gerrit_password}
+  postgresql:
+    server:
+      version: "9.5"
+      database:
+        gerrit:
+          enabled: true
+          encoding: 'UTF8'
+          locale: 'cs_CZ'
+          users:
+          - name: gerrit
+            password: ${_param:postgresql_gerrit_password}
+            host: localhost
+            rights: all privileges
+            createdb: true

@@ -1,0 +1,8 @@
+parameters:
+  linux:
+    storage:
+      enabled: true
+      loopback:
+        loop0:
+          file: "/srv/disk0"
+          size: ${_param:loopback_device_size}G

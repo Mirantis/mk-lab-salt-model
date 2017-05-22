@@ -1,0 +1,26 @@
+classes:
+  - system.openldap.client.people
+  - system.openldap.client.groups.admins
+parameters:
+  openldap:
+    client:
+      entry:
+        people:
+          entry:
+            admin:
+              attr:
+                uid: admin
+                userPassword: ${_param:openldap_admin_password}
+                uidNumber: 20001
+                gidNumber: ${openldap:client:entry:groups:entry:admins:attr:gidNumber}
+                gecos: Administrator
+                givenName: Charlie
+                sn: Root
+                homeDirectory: /home/admin
+                loginShell: /bin/bash
+                mail: ${_param:admin_email}
+              classes:
+                - posixAccount
+                - inetOrgPerson
+                - top
+                - shadowAccount

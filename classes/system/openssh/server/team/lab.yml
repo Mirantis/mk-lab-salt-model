@@ -1,0 +1,25 @@
+parameters:
+  _param:
+    # This is the public key associated to the default private key setup in
+    # openssh.client.lab
+    cluster_public_key: >-
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDEvr+tWAJ62wROllpSZeaSPxxnVY3R65sfUW8wM6L8tr1knJOTQLoBikmcjISb3ekyPlwubTypGoxb7al06FiNwfr3KDkytflKRGTyMKYgchighuFCfBuePd13cjf1l19TYU7u7a+VuCVWi7pmhDGUkMi24s23OroQb7D14XX17v46wLrqJQi2nrXzN/DWXcn/ycq8IZ7ZFgN/uYlbpfAKX8PCvImbDDO8+BgndAy4MPz8cWOWsnfGMVNePhvhazVcijLvx8Vu2Iuvg7CoJiSGjTe7YTms44/WpnFkHreyK8cwsw4wzls4BApu6UU2jIAsAMZh9zux/Rtni71dcNfF
+  linux:
+    system:
+      user:
+        root:
+          enabled: true
+          name: root
+          home: /root
+  openssh:
+    server:
+      permit_root_login: true
+      user:
+        root:
+          enabled: true
+          user: ${linux:system:user:root}
+          public_keys:
+          - ${public_keys:root}
+  public_keys:
+    root:
+      key: ${_param:cluster_public_key}

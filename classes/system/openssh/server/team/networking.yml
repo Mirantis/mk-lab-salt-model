@@ -1,0 +1,93 @@
+parameters:
+  linux:
+    system:
+      user:
+        aignatov:
+          enabled: true
+          name: aignatov
+          sudo: true
+          full_name: Alexander Ignatov
+          home: /home/aignatov
+          email: aignatov@mirantis.com
+        ataraday:
+          enabled: true
+          name: ataraday
+          sudo: true
+          full_name: Anna Taraday
+          home: /home/ataraday
+          email: ataraday@mirantis.com
+        eezhova:
+          enabled: true
+          name: eezhova
+          sudo: true
+          full_name: Elena Ezhova
+          home: /home/eezhova
+          email: eezhova@mirantis.com
+        ichukhnakov:
+          enabled: true
+          name: ichukhnakov
+          sudo: true
+          full_name: Ilya Chukhnakov
+          home: /home/ichukhnakov
+          email: ichukhnakov@mirantis.com
+        ivasilevskaya:
+          enabled: true
+          name: ivasilevskaya
+          sudo: true
+          full_name: Inessa Vasilevskaya
+          home: /home/ivasilevskaya
+          email: ivasilevskaya@mirantis.com
+        obondarev:
+          enabled: true
+          name: obondarev
+          sudo: true
+          full_name: Oleg Bondarev
+          home: /home/obondarev
+          email: obondarev@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        aignatov:
+          enabled: true
+          public_keys:
+          - ${public_keys:aignatov}
+          user: ${linux:system:user:aignatov}
+        ataraday:
+          enabled: true
+          public_keys:
+          - ${public_keys:ataraday}
+          user: ${linux:system:user:ataraday}
+        eezhova:
+          enabled: true
+          public_keys:
+          - ${public_keys:eezhova}
+          user: ${linux:system:user:eezhova}
+        ichukhnakov:
+          enabled: true
+          public_keys:
+          - ${public_keys:ichukhnakov}
+          user: ${linux:system:user:ichukhnakov}
+        ivasilevskaya:
+          enabled: true
+          public_keys:
+          - ${public_keys:ivasilevskaya}
+          user: ${linux:system:user:ivasilevskaya}
+        obondarev:
+          enabled: true
+          public_keys:
+          - ${public_keys:obondarev}
+          user: ${linux:system:user:obondarev}
+  public_keys:
+    aignatov:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJFYznIFlCdxu5UXzThjYZlZfvXKCcDN0QxDEn7U7dNkK17SyzIJswQcxF7pTlvcuZ7XEskEqyXC8E6P5XyvBJO2xLGrFDJ4U3vf7MKsfwSFEj3NPUzV5bGTrKeKIHTL94L7lwMm1INE7lZzciiwvTxcKv//A+FgG8o1MDhefK56cBH4a9TSjEd+5ImcnCc5sf8B+csyWFPnksnv1zwu//T9aYXRITocdVzrfRHmEiZDpL3mNwpGT3O3XUTiMwdVpN2ImAqSF6XlQl0HlUkBT2idCIoXUR9lcGUx2Q+LSd62JgcVmQHCOmbUENj7NIDgWixgSJYLzsi//YNqJ9jccR aignatov@mirantis.com
+    ataraday:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9Tl4w3FVLfzTrm+P0ziWlSn74sbwycPUXY2eKdBtzLvvd8Vs7Gh8sEL9q8aeg9hY613LWjPvqgnaoosGJ52ckDnArYfpe3AG1Zamr9/Ncq7qC6U+W8lKwiuiS1QQIILm72+me7jzTanOfbpNl64+tIIcJXgPLtQK4dcpHWMXZQw8Fjp5PP7+k0P35yYNRtoHazxlE/lt/6XsQ+NnldRYB2TCtK3uU1ATHg5Sc7Qr1o+obfxDwWglasxfSd7fGqAZjszrm9q4pmKXTpKNlSqGCs7Hp4Hstr//GKLaXucyTtsb/uU40at6X3INGUU/u9txZkLwAGx8kb4XB6F5MwRH/ akamyshnikova@akamyshnikova
+    eezhova:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9WND1z5CWjYrcUmEoao3sR29iqgw+i/osdFeYetGZYCaKSLWHXgvVLf19oYnFSNrsjAhpL6krcMc9luN4Uj1/qoigGQcLnV5KQo8AnkvdCDvBBVg/Y3fbgYmcEx6yPC3bbVB9gsfr8yvgrz3vE3gWApvf9uR2dDljL+TsdrVlWzIFVjKi6PEFErKxExYlQa+BeTmiHVjyKr1l+zNOOZN56nH33G3YYa/vxDO5ejio84LcG0Akul+MI+jZohNsvD/Y9EPm9CB6mmWeqpptVkXP+2HlfjyTG9s+KHvM/wcsW71vT+FR5N0OJAhcjYHsXSKDucD3+VzFTyFjpptRKGTJ eezhova@tiresh.local
+    ichukhnakov:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIc4N1/KTRWKoWoM83hqRaSvk+tIX7mt8fWG4HKngB08PxXGBJElGuMvzEa3mYyKptwSYO/5wgRI/+cD+Sgbr2BGs9HJy23eYPRPwcKdcskandBjVNWrDd4op2s3wGOrwGg/P88JaGqhL8mwM/5UUK4P4gP7uoZdEK9ptHzy/OvBB0Jd6/qkzWv29k8x5ExgNehvfL8PZzcFWwajdv2y53nj1lO4Bw1i3gKVOl9DEe0JkLB8ryiJ4hIKmq7zgBcduPF8xOWUt2F7TA6/o9rXR9+NU6EnSYmOszqTHQ6P5itGogp57SGqoG1PZzXapQnZPwzDX4jMkxmdu1Ji+TJhXd
+    ivasilevskaya:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJk2ip+Rn73D4vt47pe/Hv42ylKJv6JIzeF0k3OflH+RyliVelvo05KMcozfsmmvOKhwgDokBj3KjQ10ewDwD7Fz5H3tosa8JFOs36cuHx9aHrsEmj1oIcIyThrIBwSZGFApqJqj27sLtReVLQJPlYR59RJGw61TogkA/QooOABi+KHzuwPFjAcA1SMfFT8LwiaNPkyUdRb5EQeKCOHniRAEPGNIwskA0sxz25qbB1EU2XBFjkxRE1b5GHfUYL+c2YhAwRWTJbD2JbbcHI6HpsmJutzkS6YIkEn1CK4JuA40OQTYFSEutCk2uPPR0G+77Fec2+vD/8H+ncPxPeDqNR ina@ina-ThinkPad-X240
+    obondarev:
+      key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDca1gqXe14l9uho3t4mZT52lXmSuUxKVOCcSO9Dy+BAmtaVK39+t7la081S5c0H+oTPIXFb32/kO37+qpEgwyOv1zimWIqcR56xrr42gW/QzVLyY64qVnQ9QFiXlvXXBW4YgBuT//SE8upOshLYnznKHOi4IkoKrAE37K34Cz/DGQzFV6sKQSmP6fjJzli0Nzu+YPdBSZW9VH1m7IKxliGoZcjdIkJ+L92+h/mPuN95Bitfe+aoexBQq3u4WjYVVsCE/9TrwLoGlr3zd7VAyVdADJf6phfIMHGDxn8W8125r9UWp4X/36yAIudVC7kHLyr0AHTfYqCVH10nEJvUwRz obondarev@Olegs-MacBook-Pro.local

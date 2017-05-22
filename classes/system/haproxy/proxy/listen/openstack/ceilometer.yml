@@ -2,22 +2,22 @@ parameters:
   haproxy:
     proxy:
       listen:
-        ceilometer-api:
-          type: openstack-service
-          service_name: ceilometer
+        ceilometer_api:
+          type: general-service
+          check: false
           binds:
           - address: ${_param:cluster_vip_address}
             port: 8777
           servers:
-          - name: ctl01
+          - name: ${_param:cluster_node01_hostname}
             host: ${_param:cluster_node01_address}
             port: 8777
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl02
+            params: check
+          - name: ${_param:cluster_node02_hostname}
             host: ${_param:cluster_node02_address}
             port: 8777
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
-          - name: ctl03
+            params: check
+          - name: ${_param:cluster_node03_hostname}
             host: ${_param:cluster_node03_address}
             port: 8777
-            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+            params: check

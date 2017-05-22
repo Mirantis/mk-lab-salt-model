@@ -1,0 +1,18 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        murano_api:
+          type: openstack-service
+          check: false
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8082
+          servers:
+          - name: ${_param:cluster_node01_hostname}
+            host: ${_param:cluster_node01_address}
+            port: 8082
+            params: check
+          - name: ${_param:cluster_node02_hostname}
+            host: ${_param:cluster_node02_address}
+            port: 8082

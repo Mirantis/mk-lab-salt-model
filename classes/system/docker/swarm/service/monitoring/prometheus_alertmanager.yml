@@ -1,0 +1,24 @@
+classes:
+- service.prometheus.alertmanager.container
+parameters:
+  docker:
+    client:
+      service:
+        prometheus_alertmanager:
+          network: monitoring
+          replicas: 2
+          environment:
+            config_dir: /opt/alertmanager/config
+            bind_port: ${prometheus:alertmanager:bind:port}
+            bind_address: ${prometheus:alertmanager:bind:address}
+            discovery_domain: 'prometheus_alertmanager'
+          restart:
+            condition: any
+          image: ${_param:docker_image_alertmanager}
+          ports:
+            - 15011:${prometheus:alertmanager:bind:port}
+          volume:
+            site:
+              type: bind
+              source: /srv/volumes/prometheus
+              destination: /opt/alertmanager/config

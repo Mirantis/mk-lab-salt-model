@@ -1,0 +1,79 @@
+parameters:
+  jenkins:
+    client:
+      job_template:
+        build-opencontrail-dpdk-extra:
+          name: build-opencontrail-dpdk-extra-{{branch_name}}-{{os}}-{{dist}}
+          jobs:
+            - os: ubuntu
+              dist: trusty
+              branch_name: kilo
+              branch_real_name: kilo
+            - os: ubuntu
+              dist: trusty
+              branch_name: liberty
+              branch_real_name: liberty-multiqueue
+            - os: ubuntu
+              dist: trusty
+              branch_name: mitaka
+              branch_real_name: mitaka
+            - os: ubuntu
+              dist: xenial
+              branch_name: mitaka
+              branch_real_name: mitaka
+          template:
+            discard:
+             build:
+               keep_num: 5
+             artifact:
+               keep_num: 5
+            type: workflow-scm
+            concurrent: false
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: build-extra-dpdk-pipeline.groovy
+            quiet_period: 120
+            trigger:
+              gerrit:
+                project:
+                  contrail/contrail-dpdk-extra-packages:
+                    branches:
+                      - "{{branch_real_name}}"
+                message:
+                  build_successful: "Build successful"
+                  build_unstable: "Build unstable"
+                  build_failure: "Build failed"
+                event:
+                  ref:
+                    - updated
+            param:
+              SOURCE_URL:
+                type: string
+                default: "${_param:jenkins_gerrit_url}/contrail/contrail-dpdk-extra-packages.git"
+              SOURCE_BRANCH:
+                type: string
+                default: "{{branch_real_name}}"
+              SOURCE_CREDENTIALS:
+                type: string
+                default: "gerrit"
+              APTLY_URL:
+                type: string
+                default: "${_param:jenkins_aptly_api_url}"
+              APTLY_REPO:
+                type: string
+                default: "{{os}}-{{dist}}-{{branch_name}}"
+              OS:
+                type: string
+                default: "{{os}}"
+              DIST:
+                type: string
+                default: "{{dist}}"
+              ARCH:
+                type: string
+                default: "amd64"
+              BINARY_PACKAGES:
+                description: "binary packages to create"
+                type: string
+                default: "all"

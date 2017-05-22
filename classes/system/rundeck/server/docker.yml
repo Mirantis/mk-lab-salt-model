@@ -1,0 +1,19 @@
+classes:
+  - service.rundeck.common
+  - service.rundeck.server.single
+parameters:
+  rundeck:
+    server:
+      user:
+        uid: 550
+        gid: 550
+      home_dir: /srv/volumes/rundeck
+      root_dir: /srv/volumes/rundeck
+      api:
+        host: ${_param:haproxy_rundeck_bind_host}
+        port: ${_param:haproxy_rundeck_bind_port}
+        https: ${_param:haproxy_rundeck_ssl:enabled}
+      ssh:
+        user: ${_param:rundeck_runbook_user}
+        private_key: ${_param:rundeck_runbook_private_key}
+        public_key: ${_param:rundeck_runbook_public_key}

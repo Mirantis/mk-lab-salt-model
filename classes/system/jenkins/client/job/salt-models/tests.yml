@@ -1,0 +1,98 @@
+parameters:
+  _param:
+  jenkins:
+    client:
+      job_template:
+        test_salt_model:
+          name: test-salt-model-{{name}}
+          jobs:
+            - name: mcp-baremetal-lab
+              extra_formulas: ""
+            - name: mcp-virtual-lab
+              extra_formulas: "prometheus"
+            - name: mk-ci
+              extra_formulas: ""
+            - name: qa
+              extra_formulas: ""
+            - name: stacklight
+              extra_formulas: ""
+            - name: training
+              extra_formulas: ""
+          template:
+            type: workflow-scm
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: test-salt-models-pipeline.groovy
+            concurrent: true
+            trigger:
+              gerrit:
+                project:
+                  salt-models/{{name}}:
+                    branches:
+                      - master
+                event:
+                  patchset:
+                    - created:
+                        excludeDrafts: false
+                        excludeTrivialRebase: false
+                        excludeNoCodeChange: false
+                  comment:
+                    - addedContains:
+                        commentAddedCommentContains: '(recheck|reverify)'
+            param:
+              SALT_OPTS:
+                type: string
+                default: "--force-color"
+              DEFAULT_GIT_URL:
+                type: string
+                description: "Run against alternate system reclass"
+                default: "${_param:jenkins_gerrit_url}/salt-models/{{name}}"
+              DEFAULT_GIT_REF:
+                type: string
+                default: master
+              CREDENTIALS_ID:
+                type: string
+                default: "gerrit"
+              PARALLEL_NODE_GROUP_SIZE:
+                type: string
+                default: "3"
+              # Salt master setup extra formulas
+              EXTRA_FORMULAS:
+                type: string
+                default: "{{extra_formulas}}"
+        test_system_reclass:
+          name: test-salt-model-{{name}}
+          jobs:
+            - name: reclass-system
+              clusters: "mcp-baremetal-lab,mcp-virtual-lab,qa,stacklight,training"
+          template:
+            type: workflow-scm
+            scm:
+              type: git
+              url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+              credentials: "gerrit"
+              script: test-system-reclass-pipeline.groovy
+            concurrent: true
+            trigger:
+              gerrit:
+                project:
+                  salt-models/{{name}}:
+                    branches:
+                      - master
+                event:
+                  comment:
+                    - addedContains:
+                        commentAddedCommentContains: '(recheck|reverify)'
+            param:
+              TEST_MODELS:
+                type: string
+                default: "{{clusters}}"
+              DEFAULT_GIT_URL:
+                type: string
+                description: "Run against alternate system reclass"
+                default: "${_param:jenkins_gerrit_url}/salt-models/reclass-system"
+              DEFAULT_GIT_REF:
+                type: string
+                default: master

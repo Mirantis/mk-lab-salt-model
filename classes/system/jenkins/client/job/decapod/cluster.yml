@@ -1,0 +1,30 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        deploy_decapod:
+          type: workflow-scm
+          name: deploy-decapod
+          display_name: "Deploy - Decapod"
+          discard:
+            build:
+              keep_num: 20
+          concurrent: true
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/decapod-pipelines"
+            credentials: "gerrit"
+            script: decapod-pipeline.groovy
+          param:
+            SALT_MASTER_CREDENTIALS:
+              type: string
+              default: "salt"
+            SALT_MASTER_IP:
+              type: string
+              default: "${_param:infra_config_address}"
+            SALT_MASTER_PORT:
+              type: string
+              default: "${_param:salt_master_api_port}"
+            ASK_ON_ERROR:
+                type: boolean
+                default: 'false'

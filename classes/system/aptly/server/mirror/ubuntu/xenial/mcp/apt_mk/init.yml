@@ -1,0 +1,79 @@
+parameters:
+  _param:
+    apt_mk_version: stable
+  aptly:
+    server:
+      mirror:
+        # required for opencontrail formulas
+        mcp_opencontrail_xenial_oc311:
+          source: http://apt-mk.mirantis.com/xenial/
+          distribution: ${_param:apt_mk_version}
+          components: oc311
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          gpgkeys:
+            - A76882D3
+          publisher:
+            component: oc311
+            distributions:
+              - ubuntu-xenial/${_param:apt_mk_version}
+        mcp_opencontrail_xenial_oc31:
+          source: http://apt-mk.mirantis.com/xenial/
+          distribution: ${_param:apt_mk_version}
+          components: oc31
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          gpgkeys:
+            - A76882D3
+          publisher:
+            component: oc31
+            distributions:
+              - ubuntu-xenial/${_param:apt_mk_version}
+        mcp_opencontrail_xenial_oc32:
+          source: http://apt-mk.mirantis.com/xenial/
+          distribution: ${_param:apt_mk_version}
+          components: oc32
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          gpgkeys:
+            - A76882D3
+          publisher:
+            component: oc32
+            distributions:
+              - ubuntu-xenial/${_param:apt_mk_version}
+        mcp_opencontrail_xenial_oc303:
+          source: http://apt-mk.mirantis.com/xenial/
+          distribution: ${_param:apt_mk_version}
+          components: oc303
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          gpgkeys:
+            - A76882D3
+          publisher:
+            component: oc303
+            distributions:
+              - ubuntu-xenial/${_param:apt_mk_version}
+        mirantis_openstack_xenial_extra:
+          source: http://apt-mk.mirantis.com/xenial/
+          distribution: ${_param:apt_mk_version}
+          components: extra
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          gpgkeys:
+            - A76882D3
+          publisher:
+            component: extra
+            distributions:
+              - ubuntu-xenial/${_param:apt_mk_version}
+        mirantis_openstack_xenial_salt:
+          source: http://apt-mk.mirantis.com/xenial/
+          distribution: ${_param:apt_mk_version}
+          components: salt
+          architectures: amd64
+          key_url: "http://apt-mk.mirantis.com/public.gpg"
+          gpgkeys:
+            - A76882D3
+          publisher:
+            component: salt
+            distributions:
+              - ubuntu-xenial/${_param:apt_mk_version}

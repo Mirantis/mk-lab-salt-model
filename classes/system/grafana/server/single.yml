@@ -5,13 +5,6 @@ parameters:
     grafana_port: 3000
     grafana_user: admin
     grafana_password: admin
-  linux:
-    system:
-      repo:
-        grafana:
-          enabled: true
-          source: 'deb https://packagecloud.io/grafana/stable/debian/ jessie main'
-          key_url: 'https://packagecloud.io/gpg.key'
   grafana:
     server:
       enabled: true
@@ -20,7 +13,7 @@ parameters:
         port: ${_param:grafana_port}
       database:
         engine: mysql
-        host: ${_param:openstack_control_address}
+        host: ${_param:openstack_database_address}
         port: 3306
         name: grafana
         user: grafana

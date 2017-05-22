@@ -1,0 +1,24 @@
+parameters:
+  _param:
+    cluster_node01_hostname: ntw01
+    cluster_node02_hostname: ntw02
+    cluster_node03_hostname: ntw03
+    opencontrail_asn: 64512
+  opencontrail:
+    client:
+      bgp_router:
+        member01:
+          name: ${_param:cluster_node01_hostname}
+          type: control-node
+          ip_address: ${_param:cluster_node01_address}
+          asn: ${_param:opencontrail_asn}
+        member02:
+          name: ${_param:cluster_node02_hostname}
+          type: control-node
+          ip_address: ${_param:cluster_node02_address}
+          asn: ${_param:opencontrail_asn}
+        member03:
+          name: ${_param:cluster_node03_hostname}
+          type: control-node
+          ip_address: ${_param:cluster_node03_address}
+          asn: ${_param:opencontrail_asn}

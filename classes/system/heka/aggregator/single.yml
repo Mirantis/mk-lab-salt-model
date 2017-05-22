@@ -2,19 +2,11 @@ classes:
 - service.heka.aggregator.single
 - system.heka.server
 parameters:
-  _param:
-    nagios_default_host_alarm_clusters: 00-clusters
-    nagios_host_dimension_key: nagios_host
   heka:
     aggregator:
       influxdb_host: ${_param:heka_influxdb_host}
       influxdb_port: ${_param:influxdb_port}
-      influxdb_database: ${_param:influxdb_database}
-      influxdb_username: ${_param:influxdb_user}
-      influxdb_password: ${_param:influxdb_password}
-      nagios_host: ${_param:nagios_host}
-      nagios_username: ${_param:nagios_username}
-      nagios_password: ${_param:nagios_password}
-      nagios_port: ${_param:nagios_status_port}
-      nagios_default_host_alarm_clusters: ${_param:nagios_default_host_alarm_clusters}
-      nagios_host_dimension_key: ${_param:nagios_host_dimension_key}
+      influxdb_database: lma
+      influxdb_username: lma
+      influxdb_password: ${_param:influxdb_stacklight_password}
+      poolsize: 200

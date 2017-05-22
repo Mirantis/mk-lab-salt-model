@@ -1,0 +1,38 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            nova_upgrade_api:
+              encoding: utf8
+              users:
+              - name: nova
+                password: ${_param:mysql_nova_password}
+                host: '%'
+                rights: all
+              - name: nova
+                password: ${_param:mysql_nova_password}
+                host: ${_param:single_address}
+                rights: all
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: nova_api
+            nova_upgrade_cell0:
+              encoding: utf8
+              users:
+              - name: nova
+                password: ${_param:mysql_nova_password}
+                host: '%'
+                rights: all
+              - name: nova
+                password: ${_param:mysql_nova_password}
+                host: ${_param:single_address}
+                rights: all
+              initial_data:
+                engine: backupninja
+                source: ${_param:backupninja_backup_host}
+                host: ${linux:network:fqdn}
+                database: nova_cell0

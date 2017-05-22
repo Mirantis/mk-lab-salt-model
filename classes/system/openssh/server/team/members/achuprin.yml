@@ -1,0 +1,20 @@
+parameters:
+  linux:
+    system:
+      user:
+        achuprin:
+          enabled: true
+          name: achuprin
+          sudo: true
+          full_name: Alexey Chuprin
+          home: /home/achuprin
+          email: achuprin@mirantis.com
+  openssh:
+    server:
+      enabled: true
+      user:
+        achuprin:
+          enabled: true
+          public_keys:
+            - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDho9gTE/kal/lx/edEa073OgsS5Fa+G3ffGUuhPKpqdXp3TfCKchAK1J13TsqW9lLpPLtnDo2OhgJSUwdr0pfNwVEBPldw0KblW/JQIImR/9nojU+IvribDdusRTOJh6i9hSzcLLFtrF8pkZ7S7oyGsOpD7pHoy+qNiDBO1eJ1fkOxkxztpqSjFFg6BaFtA40zLULsqgKIM0EsSgn3vFAQ2zsDWaGynnm/+tQvBj3ogrxblo94uZ+uUK6Z6v+jkZJKA5Nz+w76HAd51A646X3gF05i2LdyPpkWBp0Oqr5PVW66IGfyc+sY0ID35k+wT9tzv/aW4KOFtig5zf/Xv3nDbX0SlIrV5AMzk3pql2aCSE03JSkHb/Gujf1gqQ6ZqqbVFl7CSj2nIZ1DpWhGqw1lF6YH1pf/xbmg7qRAmDCelf/gCZaj9Pe6nA1a6CP5NJt5l3W20blaT5hYxHDqiBPOfTh8YGI16P1p7pV6VfBiQYZk5KGmOqVjIUfQH9axZcOgZjVmrFW8zZCg1VIA4qhYvVfFokL12ty3AiYkdIcDek3GH83LnLrkTX4D6PPzl6lF5f8bAiUfSjH5Yr2EmRxFWizi3LGiNe7QIxVQgB+B71luHG0ymy1Z080XJqZKMs/wosGxOJUiEvjd1i/jkImCNqlta3sBxnjJQRuzX3mUiQ== achuprin@mirantis.com
+          user: ${linux:system:user:achuprin}

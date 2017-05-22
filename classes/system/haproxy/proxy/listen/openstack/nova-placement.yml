@@ -1,0 +1,29 @@
+parameters:
+  haproxy:
+    proxy:
+      listen:
+        nova_placement_api:
+          mode: http
+          binds:
+          - address: ${_param:cluster_vip_address}
+            port: 8778
+          options:
+          - httpclose
+          - httplog
+          health-check:
+            http:
+              options:
+              - expect status 401
+          servers:
+          - name: ctl01
+            host: ${_param:cluster_node01_address}
+            port: 8778
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl02
+            host: ${_param:cluster_node02_address}
+            port: 8778
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3
+          - name: ctl03
+            host: ${_param:cluster_node03_address}
+            port: 8778
+            params: check inter 10s fastinter 2s downinter 3s rise 3 fall 3

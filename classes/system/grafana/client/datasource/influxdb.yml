@@ -1,0 +1,17 @@
+parameters:
+  _param:
+    grafana_influxdb_is_default: true
+    grafana_influxdb_ds_name: influxdb
+  grafana:
+    client:
+      datasource:
+        influxdb:
+          type: influxdb
+          name: ${_param:grafana_influxdb_ds_name}
+          host: ${_param:grafana_influxdb_address}
+          port: ${_param:grafana_influxdb_port}
+          user: ${_param:grafana_influxdb_user}
+          password: ${_param:grafana_influxdb_password}
+          database: ${_param:grafana_influxdb_database}
+          is_default: ${_param:grafana_influxdb_is_default}
+

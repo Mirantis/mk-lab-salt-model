@@ -1,0 +1,71 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        mirantis_openstack_ocata_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/ocata/xenial
+          distribution: ocata
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/ocata/xenial/archive-mcpocata.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/ocata
+
+        mirantis_openstack_ocata_hotfix_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/ocata/xenial
+          distribution: ocata-hotfix
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/ocata/xenial/archive-mcpocata.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/ocata-hotfix
+
+        mirantis_openstack_ocata_security_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/ocata/xenial
+          distribution: ocata-security
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/ocata/xenial/archive-mcpocata.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/ocata-security
+
+        # required for alternative horizon plugins/etc..
+        mirantis_openstack_ocata_updates_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/ocata/xenial
+          distribution: ocata-updates
+          components:  main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/ocata/xenial/archive-mcpocata.key"
+          gpgkeys:
+            - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/ocata-updates
+
+        # required for salt formulas
+        mirantis_openstack_ocata_holdback_xenial:
+          source: http://mirror.fuel-infra.org/mcp-repos/ocata/xenial
+          distribution: ocata-holdback
+          components: main restricted
+          architectures: amd64
+          key_url: "http://mirror.fuel-infra.org/mcp-repos/ocata/xenial/archive-mcpocata.key"
+          gpgkeys:
+          - 1FA22B08
+          publisher:
+            component: main
+            distributions:
+              - ubuntu-xenial/ocata-holdback
+

@@ -1,0 +1,17 @@
+parameters:
+  mysql:
+    client:
+      server:
+        database:
+          database:
+            sahara:
+              encoding: utf8
+              users:
+              - name: sahara
+                password: ${_param:mysql_sahara_password}
+                host: '%'
+                rights: all
+              - name: sahara
+                password: ${_param:mysql_sahara_password}
+                host: ${_param:single_address}
+                rights: all

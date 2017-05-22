@@ -1,0 +1,15 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        erlang-trusty:
+          source: http://packages.erlang-solutions.com/ubuntu
+          distribution: trusty
+          components: contrib
+          architectures: amd64
+          gpgkeys:
+            - A14F4FCA
+          publisher:
+            component: erlang
+            distributions:
+              - ubuntu-trusty/nightly

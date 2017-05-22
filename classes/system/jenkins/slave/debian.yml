@@ -1,0 +1,8 @@
+classes:
+  - system.jenkins.slave
+parameters:
+  linux:
+    system:
+      package:
+        devscripts:
+          version: latest

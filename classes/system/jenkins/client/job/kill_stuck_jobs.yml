@@ -1,0 +1,25 @@
+parameters:
+  jenkins:
+    client:
+      job:
+        kill-stuck-jobs:
+          name: kill-stuck-jobs
+          discard:
+            build:
+              keep_num: 3
+            artifact:
+              keep_num: 3
+          type: workflow-scm
+          concurrent: true
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: abort-long-running-jobs.groovy
+          trigger:
+            timer:
+              spec: "H H * * *"
+          param:
+            MAX_DURATION_IN_HOURS:
+              type: string
+              default: "24"

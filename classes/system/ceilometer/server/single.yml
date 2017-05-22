@@ -1,7 +1,7 @@
 classes:
 - service.ceilometer.server.single
 parameters:
-  ceilometer:	
+  ceilometer:
     server:
       database:
         influxdb:

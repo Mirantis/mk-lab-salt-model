@@ -3,16 +3,19 @@ classes:
 - service.salt.minion.master
 - system.openssh.server.single
 - system.ntp.client.single
-- system.linux.system.repo.tcp_base
 parameters:
   linux:
     system:
       package:
         python-msgpack:
           version: latest
-#        cloud-init:
-#          version: purged
+        cloud-init:
+          version: purged
+        mcelog:
+          version: latest
       kernel:
+        modules:
+          - nf_conntrack
         sysctl:
           net.ipv4.tcp_keepalive_intvl: 3
           net.ipv4.tcp_keepalive_time: 30
@@ -28,6 +31,8 @@ parameters:
           net.ipv4.neigh.default.gc_thresh3: 16384
           net.core.netdev_max_backlog: 261144
           kernel.panic: 60
+      cpu:
+        governor: performance
       timezone: UTC
       locale:
         en_US.UTF-8:
@@ -42,14 +47,13 @@ parameters:
           limits:
             - type: hard
               item: nofile
-              value: 102400
+              value: 307200
             - type: soft
               item: nofile
-              value: 102400
+              value: 307200
             - type: soft
-              item: noproc
-              value: 102400
+              item: nproc
+              value: 307200
             - type: hard
-              item: noproc
-              value: 102400
-
+              item: nproc
+              value: 307200

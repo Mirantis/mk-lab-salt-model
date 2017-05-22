@@ -1,0 +1,18 @@
+parameters:
+  salt:
+    minion:
+      cert:
+        etcd_client:
+          host: ${_param:salt_minion_ca_host}
+          authority: ${_param:salt_minion_ca_authority}
+          common_name: ${linux:system:name}
+          signing_policy: cert_open
+          alternative_names: IP:${_param:cluster_local_address},DNS:${linux:system:name},DNS:${linux:network:fqdn}
+          extended_key_usage: clientAuth
+          key_usage: "digitalSignature,nonRepudiation,keyEncipherment"
+          key_file: /var/lib/etcd/etcd-client.key
+          cert_file: /var/lib/etcd/etcd-client.crt
+          all_file: /var/lib/etcd/etcd-client.pem
+          ca_file: /var/lib/etcd/ca.pem
+          user: etcd
+          group: etcd

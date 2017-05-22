@@ -1,0 +1,24 @@
+parameters:
+  linux:
+    system:
+      user:
+        oliemieshko:
+          enabled: true
+          name: oliemieshko
+          sudo: false
+          full_name: Oleksandr Liemieshko
+          home: /home/oliemieshko
+          email: oliemieshko@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        oliemieshko:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzs6/PozmGRBvr5xL/LfXkAymn93Hh4YSPd3VFkYCDUFMWdlRkQqLImcI44mEW+GpYoXn5pKJGVK7CuE9dmdQCIqI1XkpC3VJJ2BSRuu6S3r1bFDDsS6SFQCn1kgHWi+Fkx3oexMBYHKcpA7WnCIyKewJuXI4LBG/LPiwO9HeNOwluK01U56RzOU/KYofc7UrAEYj3jiplrq7nyuv4MMGrbU5HRAQSnkznISN5ZBsfY7uiPFf5Dr10Y8QSwHFpiTiDxxLrDE5K5CMWSKFexMpmThzdR13t7k4oKU8WRVh8i9jAZRNDY7YcR7Fqdoj58XKPsxQ31KQLgWpj80XAo6fl oliemieshko@oliemieshko-pc
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDj0brDaA7F/Hexk2KblN3bOT8CVozDKT0m12iqosfhth1SH2rzgbbVuOmPyxE9DtGl56LI6B42g4E9t54wwgpdyq6dp+UxOTpUvUgRyRUk7FAObKNn/v2UWFTaGuvsVINxMU5pJe4cWmIO8Skv/2ChG682u4gyEK7shpAf7Jom4tqaayZer//Yqm9c8fM1xpqooEdCWR3X6wzCg91kJqs86BBLI5u4enl2q9d2aqSvQqvj60eDOyVl2zpkgbaWG3sXlQ8FVcam97Y54tidC9GZgRaq3pt2HNqSghLDD4AkDSilfaM20swV0Y54iz3w/vIwnVmkfo38/RezyMC3yf9B oliemieshko@sunnyval
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC918wr3osIqWXuhpGUHTEr7A5VJDfYXcTiIGhvxkAVMdiRAHJIzFd0vx4MnBS8/m8CKKY+Iv8x4zShW2V2juHgLzlg/940SNsSOWApz7QNR+g+fXu1RuBL3Mk+VwA6pNTPNmcMe/asEAAV4tdjpJRgM3YJKIcocK6yU5tH6x0ohdHy7eICa6cXCm3hoBgiiMkf6djuRugzFNvK4JzMpKYBpMgC7ux6qgyXTIy/OQzp65CxM0WsHw6cmOOw4kTiOn77UX/qqOhYg4pD6YiEPApLaNyhxtEwv70Ta/cNYiGiZGs68MJ+xvCmOWMd5i2534NxbNsKguhoApJU0E5HPjHz lemax@shadow
+          user: ${linux:system:user:oliemieshko}

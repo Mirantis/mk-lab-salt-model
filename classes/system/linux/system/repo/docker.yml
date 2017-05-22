@@ -1,0 +1,9 @@
+parameters:
+  linux:
+    system:
+      repo:
+        docker:
+          source: "deb https://apt.dockerproject.org/repo ubuntu-${_param:linux_system_codename} main"
+          architectures: amd64
+          key_id: 58118E89F3A912897C070ADBF76221572C52609D
+          key_server: hkp://p80.pool.sks-keyservers.net:80

@@ -1,0 +1,24 @@
+parameters:
+  linux:
+    system:
+      user:
+        nkondra:
+          enabled: true
+          name: nkondra
+          sudo: false
+          full_name: Nazarii Kondra
+          home: /home/nkondra
+          email: nkondra@mirantis.com
+          groups:
+          - supportl2
+  openssh:
+    server:
+      enabled: true
+      user:
+        nkondra:
+          enabled: true
+          public_keys:
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9A6qJfHEIegIcHHgbBFONf3Yld5cbvhvylqDsy+Cu0vSkGHjMRATQJcTeMuG9HGOirVFMzmlKZHPJoQyFGo7FsJS81ZHwPCnh4UnQ3AL5CBp2nofeeXjOInA1CBJfqXgPhwjPexN1k/P7a7psmZ6nD61BHHeHR8U8SHy0Q0SxQPW9S2aFUxt1HVeZYTdWsSe4TIANepZomokcNi2s5GbfAzYo11ga0i56+ZHP0plrQXu8HYHPBjpHctFgE1NpE7vvrIo3c8E154jkxPj8vD+snHsQjpwUmK5lbbkOq9clchPtRtiTu83qZO0/es4zwyohrbqiqvKUITnzz/NcKPbD root@nazaros
+          - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4UpJRI+XeVqSU8ENSgQwQyqEKwmuV+xsr1xqd6hm8cIGTImnJQSAKKHErgW0Dm5LIaZFOzYEhrxuFxPymQ5jBCyh9kK/SpeFYZNn7PUo7QLvRE12eze2EfEIS8OeLeyew3UJE+ropP7sZTBUbO9ZeOjVN0sU0GT1XMGOr3AcKB5R6P84ZIzL8KX+vw7VRGoWqgNmM4ZSM1JIp1n6S//2Is78hmoQjaw6SqcDJxqfNT4VtLnV8BDFJyiiu/ufWZ1FwSoFOSUpUYkI+Bg8zF0hHP2mf0gr/8hlTubM5UGtIWO6K849D7H43LF2QxlOXqisMJTYnIzIEVlSz9QWyRmAD nazaros@nazaros
+          user: ${linux:system:user:nkondra}
+

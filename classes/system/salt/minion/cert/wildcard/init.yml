@@ -1,0 +1,16 @@
+parameters:
+  _param:
+    salt_minion_ca_authority: salt_master_ca
+    salt_pki_wildcard_alt_names: IP:${_param:cluster_public_host},DNS:${_param:cluster_public_host},DNS:*.${_param:cluster_public_host},DNS:${_param:cluster_domain},DNS:*.${_param:cluster_domain}
+  salt:
+    minion:
+      cert:
+        proxy:
+          host: ${_param:salt_minion_ca_host}
+          signing_policy: cert_server
+          authority: ${_param:salt_minion_ca_authority}
+          common_name: wildcard
+          alternative_names: IP:127.0.0.1,${_param:salt_pki_wildcard_alt_names}
+          key_file:  /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:wildcard:common_name}.key
+          cert_file: /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:wildcard:common_name}.crt
+          all_file:  /srv/salt/pki/${_param:cluster_name}/${salt:minion:cert:wildcard:common_name}-chain-with-key.pem

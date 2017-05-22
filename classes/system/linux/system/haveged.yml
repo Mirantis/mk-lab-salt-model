@@ -1,0 +1,5 @@
+parameters:
+  linux:
+    system:
+      haveged:
+        enabled: true

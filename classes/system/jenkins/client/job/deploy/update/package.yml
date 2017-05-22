@@ -1,0 +1,42 @@
+#
+# Jobs to update packages on given Salt master environment
+#
+parameters:
+  _param:
+    jenkins_salt_api_url: "http://${_param:salt_master_host}:6969"
+  jenkins:
+    client:
+      job:
+        deploy-update-package:
+          type: workflow-scm
+          concurrent: true
+          display_name: "Deploy - update system package(s)"
+          scm:
+            type: git
+            url: "${_param:jenkins_gerrit_url}/mk/mk-pipelines"
+            credentials: "gerrit"
+            script: update-package.groovy
+          param:
+            SALT_MASTER_URL:
+              type: string
+              default: "${_param:jenkins_salt_api_url}"
+            SALT_MASTER_CREDENTIALS:
+              type: string
+              default: "salt"
+            TARGET_SERVERS:
+              type: string
+              default: "*"
+              description: Salt compound target to match nodes to be updated [*, G@osfamily:debian].
+            TARGET_PACKAGES:
+              type: string
+              description: Space delimited list of packages to be updates [package1=version package2=version], empty string means all updating all packages to the latest version.
+            TARGET_SUBSET_TEST:
+              type: string
+              description: Number of nodes to list package updates, empty string means all targetted nodes.
+            TARGET_SUBSET_LIVE:
+              type: string
+              default: '1'
+              description: Number of selected noded to live apply selected package update.
+            TARGET_BATCH_LIVE:
+              type: string
+              description: Batch size for the complete live package update on all nodes, empty string means apply to all targetted nodes.

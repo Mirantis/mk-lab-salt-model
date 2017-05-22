@@ -1,0 +1,16 @@
+parameters:
+  _param:
+    openstack_proxy_node01_hostname: prx01
+  reclass:
+    storage:
+      node:
+        openstack_proxy_node01:
+          name: ${_param:openstack_proxy_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.openstack.proxy
+          - cluster.${_param:cluster_name}.stacklight.proxy
+          params:
+            salt_master_host: ${_param:reclass_config_master}
+            linux_system_codename: trusty
+            single_address: ${_param:openstack_proxy_node01_address}

@@ -1,0 +1,17 @@
+classes:
+- system.docker.client
+- system.elasticsearch.client.single
+- system.grafana.client
+- system.grafana.client.datasource.prometheus
+- system.kibana.client.single
+parameters:
+  _param:
+    # Elasticsearch/Kibana client parameters
+    stacklight_log_address: ${_param:stacklight_address}
+    # Grafana client parameters
+    grafana_address: ${_param:stacklight_address}
+    grafana_port: 15013
+    grafana_user: admin
+    grafana_password: ${_param:grafana_admin_password}
+    grafana_prometheus_address: ${_param:stacklight_address}
+    grafana_prometheus_port: 15010

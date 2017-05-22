@@ -1,0 +1,16 @@
+parameters:
+  aptly:
+    server:
+      mirror:
+        aptly:
+          source: http://repo.aptly.info/
+          distribution: squeeze
+          components: main
+          architectures: amd64
+          gpgkeys:
+            - 9C7DE460
+          publisher:
+            component: extra
+            distributions:
+              - trusty/nightly
+              - xenial/nightly

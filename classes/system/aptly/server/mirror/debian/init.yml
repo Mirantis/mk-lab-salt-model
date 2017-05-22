@@ -1,0 +1,7 @@
+## Debian family mirrors
+classes:
+- system.aptly.server.mirror.debian.aptly
+- system.aptly.server.mirror.debian.cassandra
+- system.aptly.server.mirror.debian.jenkins
+- system.aptly.server.mirror.debian.sensu
+- system.aptly.server.mirror.debian.elasticsearch

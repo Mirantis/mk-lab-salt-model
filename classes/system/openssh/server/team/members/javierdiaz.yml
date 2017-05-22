@@ -1,0 +1,25 @@
+parameters:
+  linux:
+    system:
+      user:
+        jdiaz:
+          enabled: true
+          name: jdiaz
+          sudo: false
+          full_name: Javier Diaz
+          home: /home/jdiaz
+          email: jdiaz@mirantis.com
+          groups:
+          - support
+  openssh:
+    server:
+      enabled: true
+      user:
+        jdiaz:
+          enabled: true
+          public_keys: ${public_keys:jdiaz}
+          user: ${linux:system:user:jdiaz}
+  public_keys:
+    jdiaz:
+      - key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/2Kwi/+MO2AowwwQ5S4x3tif+6L8bCHKDV+BNfxezn55j0CMGUNMXSH6p384Zu5DuCWhU8AmdZ+rczGgc9vsdgb8Kukdi19C7vaXLIkjw1ztEkB8xgpXwDrx6O6GNtCmNq2FF1LTHTgs+r6VTKxl3yDGPd01m/fuf7Kq/hb+5out7soXC0eePKwYgFtIngxaFEiGA5sNNETrp8wys4EI2u1Az7C37cchR2qAUILRz01zt7Mp2ma+LNaZx3/bbIHI34EKypCYCFFQq+fodMDiwG15xhsdU8FEVj1NREN1kSOO2xr9IujalNskIfaXsIu7tE/6B4rI0Sl7W/PVw+cFr
+

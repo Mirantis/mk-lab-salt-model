@@ -1,0 +1,9 @@
+parameters:
+  devops_portal:
+    config:
+      service:
+        jenkins:
+          endpoint:
+            address: ${_param:haproxy_jenkins_bind_host}
+            port: ${_param:haproxy_jenkins_bind_port}
+            https: ${_param:haproxy_jenkins_ssl:enabled}

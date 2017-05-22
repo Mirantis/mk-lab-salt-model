@@ -1,0 +1,6 @@
+classes:
+- service.statsd.server.carbon
+parameters:
+  _param:
+    statsd_server_backend_host: 127.0.0.1
+    statsd_server_backend_port: 2023

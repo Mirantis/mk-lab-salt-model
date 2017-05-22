@@ -1,0 +1,73 @@
+classes:
+  - service.gerrit.client
+parameters:
+  _param:
+    gerrit_try_login: true
+  gerrit:
+    client:
+      enabled: True
+      try_login: ${_param:gerrit_try_login}
+      source:
+        engine: pip
+      dir:
+        git: /srv/volumes/gerrit/git
+        gerrit_config: /srv/volumes/gerrit/etc/gerrit.config
+        gerrit_secure_config: /srv/volumes/gerrit/etc/secure.config
+      server:
+        host: ${_param:cluster_vip_address}
+        user: admin
+        email: ${_param:gerrit_admin_email}
+        auth_method: basic
+        http_port: 8080
+        ssh_port: 29418
+        protocol: http
+        password: ${_param:gerrit_admin_password}
+        key: ${_param:gerrit_admin_private_key}
+      user:
+        admin:
+          ssh_key: ${_param:gerrit_admin_public_key}
+      group:
+        Event Streaming Users:
+          description: Event Streaming Users
+        devops-core:
+          description: Core maintainers
+        devops-release:
+          description: Release engineers
+        devops-contrib:
+          description: Service developers
+      default_access:
+        "refs/*":
+          actions:
+          - name: read
+            group: Non-Interactive Users
+        "refs/heads/*":
+          actions:
+          - name: abandon
+            group: devops-core
+          - name: create
+            group: devops-core
+          labels:
+          - name: label-Code-Review
+            group: devops-core
+            score: -2..+2
+          - name: label-Code-Review
+            group: Non-Interactive Users
+            score: -1..+1
+          - name: label-Verified
+            group: Non-Interactive Users
+            score: -1..+1
+          - name: label-Workflow
+            group: devops-core
+            score: -1..+1
+        "refs/tags/*":
+          actions:
+          - name: pushSignedTag
+            group: devops-core
+          - name: create
+            group: devops-core
+          - name: push
+            group: devops-core
+          - name: forgeCommitter
+            group: devops-core
+          - name: forgeAuthor
+            group: devops-core
