@@ -34,7 +34,7 @@ parameters:
     grafana_admin_password: admin
     keepalived_prometheus_vip_address: ${_param:cluster_vip_address}
     keepalived_prometheus_vip_password: password
-    keepalived_prometheus_vip_interface: eth1
+    keepalived_prometheus_vip_interface: ens3
     # Docker/Elasticsearch
     cluster_node01_hostname: ${_param:stacklight_node01_hostname}
     cluster_node01_address: ${_param:stacklight_node01_address}

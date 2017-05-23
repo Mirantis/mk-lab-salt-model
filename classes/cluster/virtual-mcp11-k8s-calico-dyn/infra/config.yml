@@ -38,7 +38,7 @@ parameters:
             salt_master_host:
               value_template: <<node_master_ip>>
         infra_config:
-          expression: <<node_hostname>>__equals__cfg01
+          expression: <<node_hostname>>__startswith__cfg
           cluster_param:
             infra_config_address:
               value_template: <<node_ip>>

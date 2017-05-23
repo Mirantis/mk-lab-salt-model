@@ -37,7 +37,7 @@ parameters:
           - 172.18.176.4
           - 172.18.176.7
       interface:
-        eth1:
+        ens3:
           route:
             kubernetes_services:
               address: 10.254.0.0
