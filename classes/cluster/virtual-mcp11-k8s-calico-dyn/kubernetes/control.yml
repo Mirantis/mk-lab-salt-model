@@ -8,7 +8,7 @@ classes:
 - cluster.virtual-mcp11-k8s-calico-dyn
 parameters:
   _param:
-    keepalived_vip_interface: ens4
+    keepalived_vip_interface: eth1
     keepalived_vip_virtual_router_id: 60
   etcd:
     server:

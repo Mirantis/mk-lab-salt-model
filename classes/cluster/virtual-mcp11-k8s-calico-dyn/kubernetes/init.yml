@@ -105,5 +105,5 @@ parameters:
           # Make sure that the script will "exit 0" on success or any other
           # value on error.
           #
-          ip r a 10.254.0.0/16 dev ens4
+          ip r a 10.254.0.0/16 dev eth1
           exit 0
