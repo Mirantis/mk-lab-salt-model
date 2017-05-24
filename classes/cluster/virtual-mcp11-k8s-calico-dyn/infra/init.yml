@@ -35,7 +35,7 @@ parameters:
           - ${_param:infra_config_hostname}
           - ${_param:infra_config_hostname}.${_param:cluster_domain}
       interface:
-        eth1:
+        ens3:
           enabled: true
           type: eth
           proto: static
