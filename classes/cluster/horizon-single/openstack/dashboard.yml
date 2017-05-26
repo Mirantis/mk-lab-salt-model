@@ -1,0 +1,6 @@
+classes:
+- cluster.horizon-single
+parameters:
+  _param:
+    keepalived_vip_interface: ${_param:primary_interface}
+    keepalived_vip_virtual_router_id: 60

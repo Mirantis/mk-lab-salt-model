@@ -1,0 +1,7 @@
+parameters:
+  _param:
+    salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+
+    # addresses and hostnames
+    openstack_dashboard_node01_address: 10.254.0.1

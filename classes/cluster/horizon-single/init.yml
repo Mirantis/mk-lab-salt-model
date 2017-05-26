@@ -1,0 +1,4 @@
+classes:
+- cluster.horizon-single.infra
+- cluster.horizon-single.openstack
+- cluster.overrides
