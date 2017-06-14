@@ -1,0 +1,11 @@
+classes:
+- system.linux.system.repo.mcp.extra
+- system.linux.system.single
+- system.rsyslog.client.single
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- cluster.os_ha_contrail.infra
+- cluster.os_ha_contrail.opencontrail
+- cluster.os_ha_contrail.openstack
+- cluster.overrides

@@ -1,0 +1,74 @@
+classes:
+- system.docker.host
+- system.linux.system.repo.glusterfs
+- system.linux.system.repo.influxdb
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.tcp_elastic
+- system.heka.remote_collector
+- system.heka.remote_collector.input.amqp
+- system.heka.remote_collector.output.elasticsearch
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.prometheus
+- system.elasticsearch.server.cluster
+- system.elasticsearch.server.curator
+- system.kibana.server.single
+- system.haproxy.proxy.listen.stacklight.elasticsearch
+- system.haproxy.proxy.listen.stacklight.kibana
+- system.haproxy.proxy.listen.stacklight.influxdb
+- service.haproxy.proxy.single
+- system.influxdb.server.single
+- system.influxdb.database.stacklight
+- system.keepalived.cluster.instance.prometheus_server_vip
+- system.telegraf.agent.remote
+- system.prometheus.server.remote_write.docker
+- system.prometheus.server.alertmanager.dns
+- system.prometheus.server.target.dns
+- system.docker.swarm.stack.monitoring
+- system.docker.swarm.stack.dashboard
+- cluster.sl_os_contrail
+parameters:
+  _param:
+    heka_amqp_host: ${_param:openstack_control_address}
+    kibana_elasticsearch_host: ${_param:stacklight_monitor_address}
+    keepalived_prometheus_vip_address: ${_param:stacklight_monitor_address}
+    keepalived_prometheus_vip_password: 'password'
+    keepalived_prometheus_vip_interface: ens4
+    cluster_vip_address: ${_param:stacklight_monitor_address}
+    cluster_elasticsearch_port: 9200
+    cluster_kibana_port: 5601
+    cluster_node01_hostname: mon01
+    cluster_node01_address: ${_param:stacklight_monitor_node01_address}
+    cluster_node02_hostname: mon02
+    cluster_node02_address: ${_param:stacklight_monitor_node02_address}
+    cluster_node03_hostname: mon03
+    cluster_node03_address: ${_param:stacklight_monitor_node03_address}
+    grafana_admin_password: admin
+    grafana_database_type: mysql
+    grafana_database_host: ${_param:openstack_database_address}
+    grafana_database_password: ${_param:mysql_grafana_password}
+    docker_image_alertmanager: mirantis/alertmanager:latest
+    docker_image_pushgateway: mirantis/pushgateway:latest
+    docker_image_prometheus: mirantis/prometheus:latest
+    docker_image_remote_agent: mirantis/telegraf:latest
+    docker_image_remote_storage_adapter: mirantis/remote_storage_adapter:latest
+    docker_image_grafana: grafana/grafana:latest
+    prometheus_glusterfs_service_host: ${_param:openstack_control_address}
+    glusterfs_node01_address: ${_param:openstack_control_node01_address}
+    glusterfs_node02_address: ${_param:openstack_control_node02_address}
+    glusterfs_node03_address: ${_param:openstack_control_node03_address}
+    influxdb_port: 8086
+    influxdb_admin_password: password
+    influxdb_stacklight_password: lmapass
+    prometheus_influxdb_url: "http://${_param:stacklight_monitor_address}:${_param:influxdb_port}/"
+    prometheus_influxdb_db: lma
+    prometheus_influxdb_username: lma
+    prometheus_influxdb_password: ${_param:influxdb_stacklight_password}
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0

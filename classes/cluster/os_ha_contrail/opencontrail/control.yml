@@ -1,0 +1,66 @@
+classes:
+- system.linux.system.lowmem
+- system.linux.system.repo.cassandra
+- system.linux.system.repo.mcp.contrail
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.trusty
+- system.opencontrail.client.resource.edge_router
+- system.opencontrail.control.cluster
+- system.opencontrail.client.cluster
+- system.opencontrail.client.resource.control_node
+- system.opencontrail.client.resource.config_node
+- system.opencontrail.client.resource.database_node
+- system.opencontrail.client.resource.analytics_node
+- system.haproxy.proxy.listen.opencontrail.analytics
+- cluster.os_ha_contrail
+parameters:
+  _param:
+    openstack_version: mitaka
+    keepalived_vip_interface: eth1
+    cluster_vip_address: ${_param:opencontrail_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ntw01
+    cluster_node01_address: ${_param:opencontrail_control_node01_address}
+    cluster_node02_hostname: ntw02
+    cluster_node02_address: ${_param:opencontrail_control_node02_address}
+    cluster_node03_hostname: ntw03
+    cluster_node03_address: ${_param:opencontrail_control_node03_address}
+    opencontrail_router01_hostname: vsrx01.${_param:cluster_domain}
+    opencontrail_router01_address: 172.16.10.131
+  linux:
+    network:
+      interface:
+        eth1:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          virtual_router_id: 144
+  opencontrail:
+    web:
+      database:
+        port: 9042
+      network:
+        host: ${_param:openstack_control_address}
+      identity:
+        host: ${_param:openstack_control_address}
+    common:
+      network:
+        host: ${_param:openstack_control_address}
+      identity:
+        host: ${_param:openstack_control_address}
+    config:
+      network:
+        host: ${_param:openstack_control_address}
+      identity:
+        host: ${_param:openstack_control_address}
+      message_queue:
+        engine: rabbitmq
+        host: ${_param:openstack_control_address}
+        port: 5672

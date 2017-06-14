@@ -1,0 +1,17 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.stacklight.grafana
+- system.nginx.server.proxy.monitoring.prometheus_server
+- system.nginx.server.proxy.monitoring.prometheus_alertmanager
+- system.salt.minion.cert.proxy
+- cluster.k8s_ha_contrail.infra
+parameters:
+  _param:
+    nginx_proxy_grafana_port: 15013
+    cluster_public_host: ${_param:prometheus_control_address}
+    nginx_proxy_ssl:
+      enabled: true
+      authority: ${_param:salt_minion_ca_authority}
+      engine: salt
+      mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}

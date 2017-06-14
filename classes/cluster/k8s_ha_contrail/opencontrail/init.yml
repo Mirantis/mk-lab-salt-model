@@ -1,0 +1,43 @@
+parameters:
+  _param:
+    opencontrail_version: 3.0
+    opencontrail_control_hostname: ntw
+    opencontrail_control_node01_hostname: ntw01
+    opencontrail_control_node02_hostname: ntw02
+    opencontrail_control_node03_hostname: ntw03
+
+    opencontrail_control_address: 172.16.10.252
+    opencontrail_control_node01_address: 172.16.10.110
+    opencontrail_control_node02_address: 172.16.10.111
+    opencontrail_control_node03_address: 172.16.10.112
+
+    keystone_admin_password: none
+    opencontrail_stats_password: password
+    keystone_service_token: none
+    openstack_version: mitaka
+    openstack_control_address: none
+    keystone_admin_password: none
+
+  linux:
+    network:
+      host:
+        ntw:
+          address: ${_param:opencontrail_control_address}
+          names:
+          - ${_param:opencontrail_control_hostname}
+          - ${_param:opencontrail_control_hostname}.${_param:cluster_domain}
+        ntw01:
+          address: ${_param:opencontrail_control_node01_address}
+          names:
+          - ${_param:opencontrail_control_node01_hostname}
+          - ${_param:opencontrail_control_node01_hostname}.${_param:cluster_domain}
+        ntw02:
+          address: ${_param:opencontrail_control_node02_address}
+          names:
+          - ${_param:opencontrail_control_node02_hostname}
+          - ${_param:opencontrail_control_node02_hostname}.${_param:cluster_domain}
+        ntw03:
+          address: ${_param:opencontrail_control_node03_address}
+          names:
+          - ${_param:opencontrail_control_node03_hostname}
+          - ${_param:opencontrail_control_node03_hostname}.${_param:cluster_domain}

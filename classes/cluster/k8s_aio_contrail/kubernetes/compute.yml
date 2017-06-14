@@ -1,0 +1,48 @@
+classes:
+- system.linux.system.repo.docker
+- system.kubernetes.pool.cluster
+- system.salt.minion.cert.k8s_client
+- system.salt.minion.cert.etcd_client
+- cluster.k8s_aio_contrail.infra
+- cluster.k8s_aio_contrail.opencontrail.compute
+- cluster.overrides
+parameters:
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: manual
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 1500
+          address: ${_param:single_address}
+          netmask: '255.255.255.0'
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          use_interfaces:
+          - ens4
+  docker:
+    host:
+      pkgs:
+        - docker-engine=1.12.6-0~ubuntu-xenial
+        - python-docker
+  kubernetes:
+    pool:
+      network:
+        engine: opencontrail
+        opencontrail:
+          address: ${_param:opencontrail_control_address}
+        etcd:
+          ssl:
+            enabled: true
+        image: ${_param:kubernetes_calico_image}
+        calicoctl:
+          image: ${_param:kubernetes_calicoctl_image}
+        cni:
+          image: ${_param:kubernetes_calico_cni_image}
+    common:
+      hyperkube:
+        image: ${_param:kubernetes_hyperkube_image}

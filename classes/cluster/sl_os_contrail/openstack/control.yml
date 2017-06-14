@@ -1,0 +1,169 @@
+classes:
+- system.linux.system.lowmem
+- system.linux.system.repo.glusterfs
+- system.linux.system.repo.mcp.contrail
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.memcached.server.single
+- system.rabbitmq.server.cluster
+- system.rabbitmq.server.vhost.openstack
+- system.keystone.server.wsgi
+- system.keystone.server.cluster
+- system.glusterfs.server.volume.glance
+- system.glusterfs.server.volume.keystone
+- system.glusterfs.server.volume.prometheus
+- system.glusterfs.server.cluster
+- system.glusterfs.client.cluster
+- system.glusterfs.client.volume.glance
+- system.glusterfs.client.volume.keystone
+- system.glance.control.cluster
+- system.nova.control.cluster
+- system.neutron.control.opencontrail.cluster
+- system.cinder.control.cluster
+- system.heat.server.cluster
+- system.designate.server.cluster
+- system.designate.server.backend.bind
+- system.ceilometer.server.cluster
+- system.aodh.server.cluster
+- system.galera.server.cluster
+- system.galera.server.database.aodh
+- system.galera.server.database.ceilometer
+- system.galera.server.database.cinder
+- system.galera.server.database.glance
+- system.galera.server.database.grafana
+- system.galera.server.database.heat
+- system.galera.server.database.keystone
+- system.galera.server.database.nova
+- system.galera.server.database.designate
+- cluster.sl_os_contrail
+parameters:
+  _param:
+    keepalived_vip_interface: ens4
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+    keepalived_openstack_telemetry_vip_interface: ens4
+  linux:
+    system:
+      package:
+        python-msgpack:
+          version: latest
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+  keepalived:
+    cluster:
+      instance:
+        VIP:
+          virtual_router_id: 150
+  bind:
+    server:
+      control:
+        mgmt:
+          enabled: true
+          bind:
+            address: ${_param:single_address}
+            port: 953
+          allow:
+            - ${_param:openstack_control_node01_address}
+            - ${_param:openstack_control_node02_address}
+            - ${_param:openstack_control_node03_address}
+          keys:
+            - designate
+  keystone:
+    server:
+      admin_email: ${_param:admin_email}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  designate:
+    server:
+      pools:
+        default:
+          description: 'test pool'
+          targets:
+            default:
+              description: 'test target1'
+            default1:
+              type: ${_param:designate_pool_target_type}
+              description: 'test target2'
+              masters: ${_param:designate_pool_target_masters}
+              options:
+                host: ${_param:openstack_control_node02_address}
+                port: 53
+                rndc_host: ${_param:openstack_control_node02_address}
+                rndc_port: 953
+                rndc_key_file: /etc/designate/rndc.key
+            default2:
+              type: ${_param:designate_pool_target_type}
+              description: 'test target3'
+              masters: ${_param:designate_pool_target_masters}
+              options:
+                host: ${_param:openstack_control_node03_address}
+                port: 53
+                rndc_host: ${_param:openstack_control_node03_address}
+                rndc_port: 953
+                rndc_key_file: /etc/designate/rndc.key
+  glance:
+    server:
+      storage:
+        engine: file
+      images: []
+      workers: 1
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  heat:
+    server:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  nova:
+    controller:
+      networking: contrail
+      cpu_allocation: 54
+      bind:
+        private_address: ${_param:cluster_local_address}
+        public_address: ${_param:cluster_vip_address}
+        novncproxy_port: 6080
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      cache:
+        engine: memcached
+        prefix: CACHE_NOVA
+        members:
+        - host: 127.0.0.1
+          port: 11211
+      workers: 1
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  neutron:
+    server:
+      plugin: contrail
+      tunnel_type: vxlan
+      public_networks: []
+      contrail:
+        version: ${_param:opencontrail_version}
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+  cinder:
+    volume:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"
+    controller:
+      notification:
+        driver: messagingv2
+        topics: "notifications,${_param:stacklight_notification_topic}"

@@ -1,0 +1,98 @@
+
+parameters:
+  _param:
+    salt_minion_ca_host: ${_param:infra_config_hostname}.${_param:cluster_domain}
+    salt_minion_ca_authority: salt_master_ca
+
+    # kubernetes settings
+    kubernetes_admin_user: admin
+    kubernetes_admin_password: sbPfel23ZigJF3Bm
+    kubernetes_admin_token: PpP6Mm3pAoPVqcKOKUu0x1dh7b1959Fi
+    kubernetes_kubelet_token: JJ2PKHxjiU6EYvIt18BqwdSK1HvWh8pt
+    kubernetes_kube-proxy_token: jT0hJk9L6cIw5UpYDNhsRwcj3Z2n62B6
+    kubernetes_scheduler_token: VgkUHfrW07zNxrb0ucFyX7NBnSJN9Xp6
+    kubernetes_controller-manager_token: uXrdZ1YKF6qlYm3sHje2iEXMGAGDWOIU
+    kubernetes_dns_token: 0S1I4iJeFjq5fopPwwCwTp3xFpEZfeUl
+    etcd_initial_token: IN7KaRMSo3xkGxkjAAPtkRkAgqN4ZNRq
+
+    # component docker images
+    kubernetes_calicoctl_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+    kubernetes_calico_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/node:latest
+    kubernetes_calico_cni_image: docker-prod-virtual.docker.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    kubernetes_hyperkube_image: docker-prod-virtual.docker.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
+    kubernetes_netchecker_agent_image: quay.io/l23network/k8s-netchecker-agent:v1.0
+    kubernetes_netchecker_server_image: quay.io/l23network/k8s-netchecker-server:v1.0
+
+    # addresses and hostnames
+    kubernetes_internal_api_address: 10.254.0.1
+    kubernetes_control_hostname: ctl
+    kubernetes_control_address: 172.16.10.253
+    kubernetes_control_node01_hostname: ctl01
+    kubernetes_control_node02_hostname: ctl02
+    kubernetes_control_node03_hostname: ctl03
+    kubernetes_compute_node01_hostname: cmp01
+    kubernetes_compute_node02_hostname: cmp02
+    kubernetes_control_node01_address: 172.16.10.101
+    kubernetes_control_node02_address: 172.16.10.102
+    kubernetes_control_node03_address: 172.16.10.103
+    kubernetes_compute_node01_address: 172.16.10.105
+    kubernetes_compute_node02_address: 172.16.10.106
+    kubernetes_proxy_node01_hostname: prx01
+    kubernetes_proxy_node01_address: 172.16.10.121
+
+    cluster_vip_address: ${_param:kubernetes_control_address}
+    cluster_local_address: ${_param:single_address}
+
+    # etcd stuff
+    cluster_node01_hostname: ${_param:kubernetes_control_node01_hostname}
+    cluster_node01_address: ${_param:kubernetes_control_node01_address}
+    cluster_node01_port: 4001
+    cluster_node02_hostname: ${_param:kubernetes_control_node02_hostname}
+    cluster_node02_address: ${_param:kubernetes_control_node02_address}
+    cluster_node02_port: 4001
+    cluster_node03_hostname: ${_param:kubernetes_control_node03_hostname}
+    cluster_node03_address: ${_param:kubernetes_control_node03_address}
+    cluster_node03_port: 4001
+
+    # calico
+    calico_private_network: 192.168.0.0
+    calico_private_netmask: 16
+
+  linux:
+    network:
+      host:
+        ctl:
+          address: ${_param:kubernetes_control_address}
+          names:
+          - ${_param:kubernetes_control_hostname}
+          - ${_param:kubernetes_control_hostname}.${_param:cluster_domain}
+        ctl01:
+          address: ${_param:kubernetes_control_node01_address}
+          names:
+          - ${_param:kubernetes_control_node01_hostname}
+          - ${_param:kubernetes_control_node01_hostname}.${_param:cluster_domain}
+        ctl02:
+          address: ${_param:kubernetes_control_node02_address}
+          names:
+          - ${_param:kubernetes_control_node02_hostname}
+          - ${_param:kubernetes_control_node02_hostname}.${_param:cluster_domain}
+        ctl03:
+          address: ${_param:kubernetes_control_node03_address}
+          names:
+          - ${_param:kubernetes_control_node03_hostname}
+          - ${_param:kubernetes_control_node03_hostname}.${_param:cluster_domain}
+        cmp01:
+          address: ${_param:kubernetes_compute_node01_address}
+          names:
+          - ${_param:kubernetes_compute_node01_hostname}
+          - ${_param:kubernetes_compute_node01_hostname}.${_param:cluster_domain}
+        cmp02:
+          address: ${_param:kubernetes_compute_node02_address}
+          names:
+          - ${_param:kubernetes_compute_node02_hostname}
+          - ${_param:kubernetes_compute_node02_hostname}.${_param:cluster_domain}
+        prx01:
+          address: ${_param:kubernetes_proxy_node01_address}
+          names:
+          - ${_param:kubernetes_proxy_node01_hostname}
+          - ${_param:kubernetes_proxy_node01_hostname}.${_param:cluster_domain}

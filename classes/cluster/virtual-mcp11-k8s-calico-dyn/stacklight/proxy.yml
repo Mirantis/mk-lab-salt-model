@@ -1,8 +1,0 @@
-classes:
-- system.nginx.server.single
-- system.nginx.server.proxy.monitoring.prometheus_server
-- system.nginx.server.proxy.monitoring.prometheus_alertmanager
-- cluster.virtual-mcp11-k8s-calico-dyn
-parameters:
-  _param:
-    cluster_public_host: ${_param:prometheus_control_address}

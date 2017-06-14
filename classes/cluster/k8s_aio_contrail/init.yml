@@ -1,0 +1,5 @@
+classes:
+- cluster.k8s_aio_contrail.kubernetes
+- cluster.k8s_aio_contrail.opencontrail
+- cluster.k8s_aio_contrail.infra
+- cluster.overrides

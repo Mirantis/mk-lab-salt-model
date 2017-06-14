@@ -1,0 +1,66 @@
+classes:
+- system.linux.system.repo.mcp.contrail
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.nova.compute.cluster
+- system.opencontrail.compute.cluster
+- system.opencontrail.client.cluster
+- system.opencontrail.client.resource.virtual_router
+- service.opencontrail.compute.cluster
+- cluster.os_ha_contrail
+parameters:
+  _param:
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
+    cluster_node01_hostname: ctl01
+    cluster_node01_address: ${_param:openstack_control_node01_address}
+    cluster_node02_hostname: ctl02
+    cluster_node02_address: ${_param:openstack_control_node02_address}
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: ${_param:openstack_control_node03_address}
+    opencontrail_compute_address: ${_param:single_address}
+    opencontrail_compute_gateway: 172.16.10.1
+    opencontrail_compute_iface: ens4
+    linux_system_codename: xenial
+  linux:
+    network:
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: manual
+        vhost0:
+          enabled: true
+          type: eth
+          mtu: 1500
+          address: ${_param:single_address}
+          netmask: '255.255.255.0'
+          pre_up_cmds:
+          - /usr/lib/contrail/if-vhost0
+          use_interfaces:
+          - ens4
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+        notify_on:
+          state_change: vm_and_task_state
+  ceilometer:
+    agent:
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}
+  opencontrail:
+    common:
+      network:
+        host: ${_param:openstack_control_address}
