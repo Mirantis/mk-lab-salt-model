@@ -1,0 +1,15 @@
+classes:
+- system.nginx.server.single
+- system.nginx.server.proxy.grafana_web
+- system.nginx.server.proxy.kibana_web
+- system.nginx.server.proxy.nagios_web
+- system.salt.minion.cert.proxy
+- cluster.sl_os_ovs
+parameters:
+  _param:
+    nginx_proxy_ssl:
+      enabled: true
+      authority: ${_param:salt_minion_ca_authority}
+      engine: salt
+      mode: secure
+    salt_minion_ca_host: cfg01.${_param:cluster_domain}

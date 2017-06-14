@@ -1,0 +1,17 @@
+classes:
+- service.grafana.collector
+- system.heka.log_collector.single
+- system.linux.system.repo.mcp.extra
+- system.linux.system.single
+- system.rsyslog.client.single
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.stacklight
+- system.openssh.server.team.mcp_qa
+- system.prometheus.collector
+- system.telegraf.agent
+- cluster.sl_os_contrail.infra
+- cluster.sl_os_contrail.opencontrail
+- cluster.sl_os_contrail.openstack
+- cluster.sl_os_contrail.stacklight
+- cluster.overrides

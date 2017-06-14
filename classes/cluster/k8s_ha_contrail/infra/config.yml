@@ -1,0 +1,51 @@
+classes:
+- system.linux.system.repo.ubuntu
+- system.openssh.client.lab
+- system.salt.master.pkg
+- system.salt.minion.ca.salt_master
+- system.salt.master.api
+- system.reclass.storage.salt
+- system.salt.minion.cert.k8s_server
+- system.reclass.storage.system.kubernetes_control_cluster
+- system.reclass.storage.system.opencontrail_control_cluster
+- cluster.k8s_ha_contrail
+parameters:
+  _param:
+    salt_master_base_environment: prd
+    reclass_data_repository: "https://gerrit.mcp.mirantis.net/salt-models/mcp-virtual-lab"
+    reclass_data_revision: master
+    reclass_config_master: ${_param:infra_config_deploy_address}
+    single_address: ${_param:infra_config_address}
+    linux_system_codename: xenial
+    salt_api_password_hash: "$6$WV0P1shnoDh2gI/Z$22/Bcd7ffMv0jDlFpT63cAU4PiXHz9pjXwngToKwqAsgoeK4HNR3PiKaushjxp3JsQ8hNoJmAC6TxzVqfV8WH/"
+    salt_master_host: ${_param:infra_config_deploy_address}
+  reclass:
+    storage:
+      node:
+        kubernetes_compute_node01:
+          name: ${_param:kubernetes_compute_node01_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.kubernetes.compute
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_compute_node01_address}
+        kubernetes_compute_node02:
+          name: ${_param:kubernetes_compute_node02_hostname}
+          domain: ${_param:cluster_domain}
+          classes:
+          - cluster.${_param:cluster_name}.kubernetes.compute
+          params:
+            salt_master_host: ${_param:infra_config_deploy_address}
+            linux_system_codename: xenial
+            single_address: ${_param:kubernetes_compute_node02_address}
+        opencontrail_control_node01:
+          params:
+            rabbitmq_cluster_role: master
+        opencontrail_control_node02:
+          params:
+            rabbitmq_cluster_role: slave
+        opencontrail_control_node03:
+          params:
+            rabbitmq_cluster_role: slave

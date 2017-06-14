@@ -1,0 +1,6 @@
+classes:
+- system.collectd.client.output.heka
+- system.heka.log_collector.single
+- system.heka.metric_collector.single
+- cluster.sl_os_ovs.stacklight
+- service.grafana.collector

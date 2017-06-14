@@ -1,0 +1,45 @@
+classes:
+- system.linux.system.repo.docker
+- system.kubernetes.pool.cluster
+- system.salt.minion.cert.k8s_client
+- system.salt.minion.cert.etcd_client
+- cluster.k8s_aio_calico
+parameters:
+  _param:
+    kubernetes_calicoctl_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/ctl:latest
+    kubernetes_calico_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/node:latest
+    kubernetes_calico_cni_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/projectcalico/calico/cni:latest
+    kubernetes_hyperkube_image: docker-prod-virtual.sandbox.mirantis.net/mirantis/kubernetes/hyperkube-amd64:v1.6.2-2
+  docker:
+    host:
+      pkgs:
+        - docker-engine=1.12.6-0~ubuntu-xenial
+        - python-docker
+  kubernetes:
+    pool:
+      network:
+        etcd:
+          ssl:
+            enabled: true
+        image: ${_param:kubernetes_calico_image}
+        calicoctl:
+          image: ${_param:kubernetes_calicoctl_image}
+        cni:
+          image: ${_param:kubernetes_calico_cni_image}
+    common:
+      hyperkube:
+        image: ${_param:kubernetes_hyperkube_image}
+  linux:
+    network:
+      resolv:
+        dns:
+          - 10.254.0.10
+          - 172.18.176.4
+          - 172.18.176.7
+      interface:
+        primary_interface:
+          route:
+            kubernetes_services:
+              address: 10.254.0.0
+              netmask: 255.255.0.0
+              gateway: ${_param:single_address}

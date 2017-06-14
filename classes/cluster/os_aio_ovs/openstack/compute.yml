@@ -1,0 +1,65 @@
+classes:
+- system.linux.system.repo.mcp.openstack
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.saltstack.xenial
+- system.nova.compute.cluster
+- system.neutron.compute.cluster
+- cluster.os_aio_ovs
+parameters:
+  _param:
+    primary_interface: ens4
+    tenant_interface: ens5
+    external_interface: ens6
+    interface_mtu: 9000
+    linux_system_codename: xenial
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2
+        topics: "notifications"
+        notify_on:
+          state_change: vm_and_task_state
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}
+  linux:
+    network:
+      bridge: openvswitch
+      interface:
+        dhcp_int:
+          enabled: true
+          name: ens3
+          proto: dhcp
+          type: eth
+          mtu: ${_param:interface_mtu}
+        primary_interface:
+          enabled: true
+          name: ${_param:primary_interface}
+          mtu: ${_param:interface_mtu}
+          proto: manual
+          type: eth
+        tenant_interface:
+          enabled: true
+          name: ${_param:tenant_interface}
+          mtu: ${_param:interface_mtu}
+          proto: manual
+          type: eth
+        br-mgmt:
+          enabled: true
+          type: bridge
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - ${_param:primary_interface}
+        br-mesh:
+          enabled: true
+          type: bridge
+          proto: static
+          address: ${_param:tenant_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - ${_param:tenant_interface}

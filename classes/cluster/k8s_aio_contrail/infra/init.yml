@@ -1,0 +1,38 @@
+alasses:
+- system.linux.system.single
+- system.linux.system.repo.mcp.extra
+- system.linux.system.repo.mcp.salt
+- system.linux.system.repo.ubuntu
+- system.openssh.server.team.lab
+- system.openssh.server.team.tcpcloud
+- system.openssh.server.team.mcp_qa
+- system.openssh.server.team.k8s_team
+- system.rsyslog.client.single
+parameters:
+  _param:
+    # infra service addresses
+    infra_config_hostname: cfg01
+    infra_config_address: 172.16.10.100
+    infra_config_deploy_address: 192.168.10.100
+
+    cluster_domain: k8s_aio_contrail.local
+    cluster_name: k8s_aio_contrail
+    apt_mk_version: nightly
+  linux:
+    network:
+      host:
+        cfg01:
+          address: ${_param:infra_config_address}
+          names:
+          - ${_param:infra_config_hostname}
+          - ${_param:infra_config_hostname}.${_param:cluster_domain}
+      interface:
+        ens4:
+          enabled: true
+          type: eth
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.255.0
+    system:
+      name: ${_param:infra_config_hostname}
+      domain: ${_param:cluster_domain}
