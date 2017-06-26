@@ -51,12 +51,6 @@ parameters:
 
   linux:
     network:
-      resolv:
-        domain: virtual-mcp11-k8s-calico.local
-        options:
-          - ndots:5
-          - timeout:2
-          - attempts:2
       host:
         ctl:
           address: ${_param:kubernetes_control_address}

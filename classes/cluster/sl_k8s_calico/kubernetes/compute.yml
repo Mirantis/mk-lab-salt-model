@@ -36,6 +36,11 @@ parameters:
           - 10.254.0.10
           - 172.18.176.4
           - 172.18.176.7
+        domain: virtual-mcp11-k8s-calico.local
+        options:
+          - ndots:5
+          - timeout:2
+          - attempts:2
       interface:
         primary_interface:
           route:
