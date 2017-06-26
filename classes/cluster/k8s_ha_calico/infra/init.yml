@@ -21,10 +21,6 @@ parameters:
     primary_interface: ens3
   linux:
     network:
-      resolv:
-        dns:
-          - 8.8.8.8
-          - 8.8.4.4
       host:
         cfg01:
           address: ${_param:infra_config_address}
